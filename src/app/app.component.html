@@ -1,20 +1,86 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav id="dk-navbar-header" class="navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div id="dk-navbar-brand" class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dk-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+      class="icon-bar"></span><span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://www.jquery2dotnet.com">Brand</a>
+  </div>
 
+  <!-- Application Name or Title -->
+  <div id="dk-navbar-title" class="navbar-app-centered">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Current Application <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Application 1</a></li>
+          <li><a href="#">Application 2</a></li>
+          <li><a href="#">Application 3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div id="dk-navbar-collapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+        class="glyphicon glyphicon-inbox"></span>Notification <span class="label label-primary">32</span>
+      </a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
+          <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
+          <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
+            design</a></li>
+          <li class="divider"></li>
+          <li><a href="#" class="text-center">View All</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+        class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+
+
+<div id="wrapper" class="active">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul id="sidebar_menu" class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a id="menu-toggle" href="#" (click)="toggleMenu(event)">
+          Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
+        </a>
+      </li>
+    </ul>
+    <ul class="sidebar-nav" id="sidebar">
+      <li><a>Link1<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+      <li><a>link2<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+    </ul>
+  </div>
+
+  <!-- Page content -->
+  <div id="page-content-wrapper">
+    <!-- Keep all page content within the page-content inset div! -->
+    <div class="page-content inset">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="well lead">An Experiment using the sidebar template from startbootstrap.com which I integrated in my website (<a href="http://animeshmanglik.name">animeshmanglik.name</a>)</p>
+          <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
+          <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
