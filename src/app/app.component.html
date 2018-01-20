@@ -1,86 +1,128 @@
-<nav id="dk-navbar-header" class="navbar-inverse" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div id="dk-navbar-brand" class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dk-navbar-collapse">
-      <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
-      class="icon-bar"></span><span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="http://www.jquery2dotnet.com">Brand</a>
-  </div>
-
-  <!-- Application Name or Title -->
-  <div id="dk-navbar-title" class="navbar-app-centered">
-    <ul class="nav navbar-nav">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Current Application <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Application 1</a></li>
-          <li><a href="#">Application 2</a></li>
-          <li><a href="#">Application 3</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div id="dk-navbar-collapse" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-        class="glyphicon glyphicon-inbox"></span>Notification <span class="label label-primary">32</span>
-      </a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
-          <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
-          <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
-            design</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="text-center">View All</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-        class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <!-- /.navbar-collapse -->
-</nav>
-
-
-<div id="wrapper" class="active">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul id="sidebar_menu" class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a id="menu-toggle" href="#" (click)="toggleMenu(event)">
-          Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span>
-        </a>
-      </li>
-    </ul>
-    <ul class="sidebar-nav" id="sidebar">
-      <li><a>Link1<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-      <li><a>link2<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-    </ul>
-  </div>
-
-  <!-- Page content -->
-  <div id="page-content-wrapper">
-    <!-- Keep all page content within the page-content inset div! -->
-    <div class="page-content inset">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="well lead">An Experiment using the sidebar template from startbootstrap.com which I integrated in my website (<a href="http://animeshmanglik.name">animeshmanglik.name</a>)</p>
-          <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
-          <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
-        </div>
-      </div>
+<div class="dk-frame-view">
+  <!-- Head Bar Navigation -->
+  <nav class="navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle ">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img alt="Brand" src="../assets/BrandIcon.png"></a>
     </div>
-  </div>
 
+    <!-- Application Name or Title -->
+    <div class="dk-navbar-center">
+      <ul class="nav navbar-nav dk-navbar-app-title">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Current Application <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Application 1</a></li>
+            <li><a href="#">Application 2</a></li>
+            <li><a href="#">Application 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Generic Functions in the header bar -->
+    <div class="navbar-collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+          class="glyphicon glyphicon-inbox"></span>Notification <span class="label label-primary">32</span>
+        </a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
+            <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
+            <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
+              design</a></li>
+            <li class="divider"></li>
+            <li><a href="#" class="text-center">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+          class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="dk-frame-content">
+    <!-- Side Bar Navigation -->
+    <div class="nav-side-menu">
+      <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+          <li>
+            <a href="https://handsontable.com/examples?filters&dropdown-menu&headers&csv-export" data-target="# content_area">
+              <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard
+            </a>
+          </li>
+
+          <li data-toggle="collapse" data-target="#dc" class="collapsed active">
+            <a href="#">
+              <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>Data Collection
+              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="dc">
+            <li class="active"><a href="#">Flexible Upload</a></li>
+            <li><a href="#">Balance Sheet Form</a></li>
+            <li><a href="#">Currency Translation</a></li>
+            <li><a href="#">Data Validation</a></li>
+          </ul>
+
+
+          <li data-toggle="collapse" data-target="#cons" class="collapsed">
+            <a href="#">
+              <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>Consolidation
+              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="cons">
+            <li><a href="#">Manually Posting</a></li>
+            <li><a href="#">Reconciliation</a></li>
+            <li><a href="#">Elimination</a></li>
+            <li><a href="#">Carry Forward</a></li>
+          </ul>
+
+
+          <li data-toggle="collapse" data-target="#report" class="collapsed">
+            <a href="#">
+              <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Reports
+              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="report">
+            <li><a href="#">Journal Entries</a></li>
+            <li><a href="#">Balance Sheets</a></li>
+            <li><a href="#">Income Statements</a></li>
+            <li><a href="#">Cash Flow</a></li>
+          </ul>
+
+        </ul>
+      </div>
+
+<!--      <div class="dk-nav-Separator"></div>
+      <div class="dk-nav-fixed menu-list">
+        <ul class="menu-content collapse out">
+          <li>
+            <a href="#">
+              <i class="fa fa-dashboard fa-lg"></i> Useful Links
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-dashboard fa-lg"></i> Legal Information
+            </a>
+          </li>
+        </ul>
+      </div>-->
+    </div>
+
+    <!-- Content Area -->
+    <iframe src="https://handsontable.com/examples?filters&dropdown-menu&headers&csv-export" name="content_area" class="nav-content-area" >
+    </iframe>
+  </div>
 </div>
