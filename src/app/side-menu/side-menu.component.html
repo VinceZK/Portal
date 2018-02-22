@@ -1,0 +1,147 @@
+<div #sideMenu class="dk-side-menu" [class.dk-side-menu-collapsed]="isCollapsed" (mouseleave)="mouseleaveMenu()" >
+  <div class="dk-menu-list">
+    <ul class="dk-menu-content">
+      <li *ngIf="!isCollapsed" >
+        <a routerLink="/dashboard">
+          <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard
+        </a>
+      </li>
+      <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(0)" (mouseleave)="mouseleaveRow(0)" (click)="clickRow(0)" >
+        <a routerLink="/dashboard">
+          <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+        </a>
+      </li>
+
+      <li *ngIf="!isCollapsed" data-toggle="collapse" data-target="#dc" class="collapsed active">
+        <a>
+          <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+          Data Collection
+          <span class="glyphicon arrow" [ngClass]="{'glyphicon-menu-right':isCollapsed, 'glyphicon-menu-down':!isCollapsed}"></span>
+        </a>
+      </li>
+      <ul *ngIf="!isCollapsed" class="dk-sub-menu collapse" id="dc">
+        <li class="active"><a routerLink="/mockup/Packages">Packages</a></li>
+        <li><a routerLink="/mockup/PackageDetail">Balance Sheet</a></li>
+        <li><a routerLink="/mockup/PackageDetailInput">Input Form</a></li>
+        <li><a routerLink="/mockup/PackageUpload">Package Upload</a></li>
+        <li><a routerLink="/mockup/CurrencyTranslation">Currency Translation</a></li>
+        <li><a routerLink="/mockup/PackageControls">Data Validation</a></li>
+        <li><a routerLink="/external-app/1">External APP</a></li>
+      </ul>
+      <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(1)" (mouseleave)="mouseleaveRow(1)" (click)="clickRow(1)">
+        <a>
+          <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+        </a>
+
+        <div class="dk-side-menu dk-side-menu-hover"
+             [style.top.rem]="subMenu[1].top"
+             [style.height.rem]="subMenu[1].height"
+             [style.display]="subMenu[1].visible">
+          <div style="overflow: scroll" [style.height.rem]="subMenu[1].height">
+          <ul class="dk-menu-content-hover">
+            <li><a>Data Collection</a></li>
+            <ul class="dk-sub-menu">
+              <li class="active"><a routerLink="/mockup/Packages">Packages</a></li>
+              <li><a routerLink="/mockup/PackageDetail">Balance Sheet</a></li>
+              <li><a routerLink="/mockup/PackageDetailInput">Input Form</a></li>
+              <li><a routerLink="/mockup/PackageUpload">Package Upload</a></li>
+              <li><a routerLink="/mockup/CurrencyTranslation">Currency Translation</a></li>
+              <li><a routerLink="/mockup/PackageControls">Data Validation</a></li>
+              <li><a routerLink="/external-app/1">External APP</a></li>
+            </ul>
+          </ul>
+        </div>
+          <span class="dk-popover-arrow" [style.top.rem]="subMenu[1].arrow"></span>
+        </div>
+      </li>
+
+      <li *ngIf="!isCollapsed" data-toggle="collapse" data-target="#cons" class="collapsed">
+        <a>
+          <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>Consolidation
+          <span class="glyphicon glyphicon-menu-right arrow"></span>
+        </a>
+      </li>
+      <ul *ngIf="!isCollapsed" class="dk-sub-menu collapse" id="cons">
+        <li><a routerLink="/mockup/JournalPosting">Journal Posting</a></li>
+        <li><a routerLink="/mockup/Reconciliation">Reconciliation</a></li>
+        <li><a routerLink="/mockup/ConsolidationPara">Run Consolidation</a></li>
+        <li><a routerLink="/mockup/CarryForward">Carry Forward</a></li>
+      </ul>
+      <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(2)" (mouseleave)="mouseleaveRow(2)" (click)="clickRow(2)">
+        <a>
+          <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>
+        </a>
+
+        <div class="dk-side-menu dk-side-menu-hover"
+             [style.top.rem]="subMenu[2].top"
+             [style.height.rem]="subMenu[2].height"
+             [style.display]="subMenu[2].visible">
+          <ul class="dk-menu-content-hover">
+            <li><a>Consolidation</a></li>
+            <ul class="dk-sub-menu dk-sub-menu-collapsed">
+              <li><a routerLink="/mockup/JournalPosting">Journal Posting</a></li>
+              <li><a routerLink="/mockup/Reconciliation">Reconciliation</a></li>
+              <li><a routerLink="/mockup/ConsolidationPara">Run Consolidation</a></li>
+              <li><a routerLink="/mockup/CarryForward">Carry Forward</a></li>
+            </ul>
+          </ul>
+          <span class="dk-popover-arrow" style="top: 1rem"></span>
+        </div>
+      </li>
+
+
+      <li *ngIf="!isCollapsed" data-toggle="collapse" data-target="#report" class="collapsed">
+        <a>
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Reports
+          <span class="glyphicon glyphicon-menu-right arrow"></span>
+        </a>
+      </li>
+      <ul *ngIf="!isCollapsed" class="dk-sub-menu collapse" id="report">
+        <li><a routerLink="/mockup/ReportBS">Balance Sheets</a></li>
+        <li><a routerLink="/mockup/JournalEntries">Journal Entries</a></li>
+        <li><a routerLink="/mockup/IncomeStatement">Income Statements</a></li>
+        <li><a routerLink="/mockup/CashFlow">Cash Flow</a></li>
+      </ul>
+      <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(3)" (mouseleave)="mouseleaveRow(3)" (click)="clickRow(3)">
+        <a>
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </a>
+        <div class="dk-side-menu dk-side-menu-hover"
+             [style.top.rem]="subMenu[3].top"
+             [style.height.rem]="subMenu[3].height"
+             [style.display]="subMenu[3].visible">
+          <ul class="dk-menu-content-hover">
+            <li><a>Reports</a></li>
+            <ul class="dk-sub-menu dk-sub-menu-collapsed">
+              <li><a routerLink="/mockup/ReportBS">Balance Sheets</a></li>
+              <li><a routerLink="/mockup/JournalEntries">Journal Entries</a></li>
+              <li><a routerLink="/mockup/IncomeStatement">Income Statements</a></li>
+              <li><a routerLink="/mockup/CashFlow">Cash Flow</a></li>
+            </ul>
+          </ul>
+          <span class="dk-popover-arrow" style="top: 1rem"></span>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="dk-separator"></div>
+
+  <div class="dk-menu-bottom">
+    <ul *ngIf="!isCollapsed" class="dk-menu-content">
+      <li >
+        <a href="#">
+          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Useful Links
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Education
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+

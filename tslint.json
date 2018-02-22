@@ -21,7 +21,7 @@
       "rxjs",
       "rxjs/Rx"
     ],
-    "import-spacing": true,
+    "import-spacing": false,
     "indent": [
       true,
       "spaces"
@@ -85,7 +85,7 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "radix": true,

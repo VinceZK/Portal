@@ -1,128 +1,14 @@
-<div class="dk-frame-view">
+<div class="nav-frame-view">
   <!-- Head Bar Navigation -->
-  <nav class="navbar-inverse">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle ">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><img alt="Brand" src="../assets/BrandIcon.png"></a>
-    </div>
+  <app-head-bar (onCollapse)="onCollapse()"></app-head-bar>
 
-    <!-- Application Name or Title -->
-    <div class="dk-navbar-center">
-      <ul class="nav navbar-nav dk-navbar-app-title">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Current Application <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Application 1</a></li>
-            <li><a href="#">Application 2</a></li>
-            <li><a href="#">Application 3</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Generic Functions in the header bar -->
-    <div class="navbar-collapse navbar-right">
-      <ul class="nav navbar-nav">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-          class="glyphicon glyphicon-inbox"></span>Notification <span class="label label-primary">32</span>
-        </a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
-            <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
-            <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
-              design</a></li>
-            <li class="divider"></li>
-            <li><a href="#" class="text-center">View All</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-          class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="dk-frame-content">
+  <div class="nav-frame-content">
     <!-- Side Bar Navigation -->
-    <div class="nav-side-menu">
-      <div class="menu-list">
-        <ul id="menu-content" class="menu-content collapse out">
-          <li>
-            <a href="https://handsontable.com/examples?filters&dropdown-menu&headers&csv-export" data-target="# content_area">
-              <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard
-            </a>
-          </li>
-
-          <li data-toggle="collapse" data-target="#dc" class="collapsed active">
-            <a href="#">
-              <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>Data Collection
-              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
-          </li>
-          <ul class="sub-menu collapse" id="dc">
-            <li class="active"><a href="#">Flexible Upload</a></li>
-            <li><a href="#">Balance Sheet Form</a></li>
-            <li><a href="#">Currency Translation</a></li>
-            <li><a href="#">Data Validation</a></li>
-          </ul>
-
-
-          <li data-toggle="collapse" data-target="#cons" class="collapsed">
-            <a href="#">
-              <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>Consolidation
-              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
-          </li>
-          <ul class="sub-menu collapse" id="cons">
-            <li><a href="#">Manually Posting</a></li>
-            <li><a href="#">Reconciliation</a></li>
-            <li><a href="#">Elimination</a></li>
-            <li><a href="#">Carry Forward</a></li>
-          </ul>
-
-
-          <li data-toggle="collapse" data-target="#report" class="collapsed">
-            <a href="#">
-              <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Reports
-              <span class="glyphicon glyphicon-menu-right arrow"></span></a>
-          </li>
-          <ul class="sub-menu collapse" id="report">
-            <li><a href="#">Journal Entries</a></li>
-            <li><a href="#">Balance Sheets</a></li>
-            <li><a href="#">Income Statements</a></li>
-            <li><a href="#">Cash Flow</a></li>
-          </ul>
-
-        </ul>
-      </div>
-
-<!--      <div class="dk-nav-Separator"></div>
-      <div class="dk-nav-fixed menu-list">
-        <ul class="menu-content collapse out">
-          <li>
-            <a href="#">
-              <i class="fa fa-dashboard fa-lg"></i> Useful Links
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-dashboard fa-lg"></i> Legal Information
-            </a>
-          </li>
-        </ul>
-      </div>-->
-    </div>
+    <app-side-menu></app-side-menu>
 
     <!-- Content Area -->
-    <iframe src="https://handsontable.com/examples?filters&dropdown-menu&headers&csv-export" name="content_area" class="nav-content-area" >
-    </iframe>
+    <div class="nav-content-area">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

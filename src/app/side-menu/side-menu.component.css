@@ -1,0 +1,128 @@
+/*Side Navigation Bar*/
+.dk-side-menu {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  position: static;
+  width: 24rem;
+  height: 100%;
+  background: #3f5161;
+  color: #fafafa;;
+  display: flex;
+  flex-direction: column;
+  z-index: 1031;
+}
+.dk-menu-list {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: scroll;
+}
+.dk-side-menu-collapsed {
+  width: 5rem;
+  background: #394958;
+}
+.dk-side-menu-hover {
+  width: 20rem;
+  left: 6rem;
+  border-radius: 0.3rem;
+  z-index: 1031;
+  overflow: visible;
+  background: #394958;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  bottom: 1rem;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.5s linear;
+}
+.dk-side-menu ul,
+.dk-side-menu li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 4rem;
+  cursor: pointer;
+}
+.dk-side-menu li a {
+  text-decoration: none;
+  color: #fafafa;
+}
+.dk-menu-content {
+  width: 100%;
+}
+.dk-menu-content-hover {
+  z-index: 1031;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  padding-bottom: 1rem;
+}
+.dk-menu-content-hover>li {
+  padding-left: 1rem;
+  border-bottom: thin dotted #fafafa;
+}
+.dk-menu-content>li:hover {
+  border-left: 4px solid #d19b3d;
+  background-color: #4f5b69;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.arrow {
+  float: right;
+  margin: 1rem !important;
+}
+.dk-menu-content>li.active{
+  border-left: 4px solid #d19b3d;
+  background-color: #465969;
+  border-bottom: 1px solid #4d6377;
+  z-index: 60;
+}
+.dk-sub-menu li {
+  background-color: #394958;
+  border: none;
+  line-height: 2.8rem;
+  padding-left: 4rem;
+}
+.dk-sub-menu-collapsed li {
+  line-height: 3rem;
+  padding-left: 2rem;
+}
+.dk-sub-menu li.active{
+  color: #d19b3d;
+}
+.dk-sub-menu li.active a {
+  color: #d19b3d;
+}
+.dk-sub-menu li:hover {
+  background-color: #4f7393;
+}
+.dk-popover-arrow {
+  content: " ";
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  left: -0.5rem;
+  background-color: #394958;
+  transform: rotate(-45deg);
+  pointer-events: none;
+  position: absolute;
+}
+.dk-separator {
+  margin: 0.25rem 1rem;
+  height: 1px;
+  min-height: 1px;
+  background-color: #0092d1;
+}
+.dk-menu-bottom {
+  display: block;
+  vertical-align: bottom;
+  position: static;
+}
+.label,.glyphicon {
+  margin:0 1.3rem;
+  font-size: 1.8rem;
+}
+

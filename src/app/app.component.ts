@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 // declare var jquery: any;
  declare var $: any;
 
@@ -8,11 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Portal';
+  @ViewChild(SideMenuComponent)
+  private sideMenu: SideMenuComponent;
 
+  isCollapsed = false;
   constructor() { }
 
-  toggleMenu(): void {
-      $('#wrapper').toggleClass('active');
+  onCollapse() {
+    this.isCollapsed = this.sideMenu.collapse();
   }
 }
