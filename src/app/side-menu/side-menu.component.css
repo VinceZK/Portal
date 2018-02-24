@@ -23,11 +23,12 @@
   background: #394958;
 }
 .dk-side-menu-hover {
+  position: absolute;
   width: 20rem;
   left: 6rem;
   border-radius: 0.3rem;
   z-index: 1031;
-  overflow: visible;
+  overflow: scroll;
   background: #394958;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   bottom: 1rem;
@@ -45,6 +46,7 @@
   cursor: pointer;
 }
 .dk-side-menu li a {
+  display: block;
   text-decoration: none;
   color: #fafafa;
 }
@@ -104,7 +106,7 @@
   display: block;
   width: 1rem;
   height: 1rem;
-  left: -0.5rem;
+  left: 5.5rem;
   background-color: #394958;
   transform: rotate(-45deg);
   pointer-events: none;

@@ -7,11 +7,11 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 })
 export class SideMenuComponent implements OnInit {
   isCollapsed = false;
-  subMenu = [
-    {top: 0, height: 0, originalHeight: 0, visible: 'none', arrow: 1},
-    {top: null, height: 18, originalHeight: 26, visible: 'block', arrow: 1 }, // 4 + 3 * 7 + 1
-    {top: 13, height: 17, originalHeight: 17, visible: 'none', arrow: 1}, // 4 + 3 * 4 + 1
-    {top: 17, height: 17, originalHeight: 17, visible: 'none', arrow: 1}  // 4 + 3 * 4 + 1
+  menuItem = [
+    {top: null, height: 0, originalHeight: 0, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true},
+    {top: null, height: 26, originalHeight: 26, arrowTop: 0, visible: 'none', active: true, isSubMenuCollapsed: true}, // 4 + 3 * 7 + 1
+    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true}, // 4 + 3 * 4 + 1
+    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true}  // 4 + 3 * 4 + 1
   ];
 
   activeRow = null;
@@ -21,7 +21,6 @@ export class SideMenuComponent implements OnInit {
 
   TOLERANCE = 75;  // bigger = more forgivey when entering submenu
   DELAY = 600;  // ms delay when user appears to be entering submenu
-  MIN_HEIGHT = 18; // minimal side menu height (rem)
 
   @ViewChild('sideMenu')
   sideMenu: ElementRef;
@@ -39,20 +38,24 @@ export class SideMenuComponent implements OnInit {
   activateSubMenu(row): void {
     const rem = parseInt(window.getComputedStyle(document.head).getPropertyValue('font-size'), 10);
     const menuHeight = this.sideMenu.nativeElement.offsetHeight / rem;
+    const menuScrollTop = this.sideMenu.nativeElement.getElementsByClassName('dk-menu-list')[0].scrollTop / rem;
 
-    // if (menuHeight + 6 <= this.subMenu[row].originalHeight) {
-    //   this.subMenu[row].top = null;
-    //   if ( menuHeight + 4 <= this.subMenu[row].originalHeight) {
-    //     this.subMenu[row].height = menuHeight + 4;
-    //   }
-    // } else {
-    //   this.subMenu[row].top = 5;
-    // }
-    this.subMenu[row].visible  = 'block';
+    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.menuItem[row].originalHeight) {
+      this.menuItem[row].top = null;
+      if ( menuHeight + 3 <= this.menuItem[row].originalHeight) {
+        this.menuItem[row].height = menuHeight + 3;
+      } else {
+        this.menuItem[row].height = this.menuItem[row].originalHeight;
+      }
+    } else {
+      this.menuItem[row].top = 5 + 4 * row - menuScrollTop;
+    }
+    this.menuItem[row].arrowTop = 6 + 4 * row - menuScrollTop;
+    this.menuItem[row].visible  = 'block';
   }
 
   deactivateSubMenu(row): void {
-    this.subMenu[row].visible  = 'none';
+    this.menuItem[row].visible  = 'none';
   }
 
   /**
@@ -98,7 +101,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left + menu.offsetWidth,
-      y: this.subMenu[this.activeRow].top * rem
+      y: this.menuItem[this.activeRow].top * rem
     };
     const upperRight = {
       x: upperLeft.x + rem,
@@ -106,7 +109,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left + menu.offsetWidth,
-      y: upperLeft.y + this.subMenu[this.activeRow].height * rem
+      y: upperLeft.y + this.menuItem[this.activeRow].height * rem
     };
     const lowerRight = {
       x: lowerLeft.x + rem,
@@ -142,7 +145,11 @@ export class SideMenuComponent implements OnInit {
    * Immediately activate a row if the user clicks on it.
    */
   clickRow(row): void {
-    this.activate(row);
+    if (this.isCollapsed) {
+      this.activate(row);
+    } else {
+      this.menuItem[row].isSubMenuCollapsed = !this.menuItem[row].isSubMenuCollapsed;
+    }
   }
 
   /**
@@ -159,6 +166,13 @@ export class SideMenuComponent implements OnInit {
 
     this.activateSubMenu(row);
     this.activeRow = row;
+  }
+
+  /**
+   * Click a submenu item
+   */
+  clickSubItem(): void {
+    this.menuItem[this.activeRow].visible = 'none';
   }
 
   /**
@@ -200,7 +214,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left,
-      y: this.subMenu[this.activeRow].top * rem + this.TOLERANCE
+      y: this.menuItem[this.activeRow].top * rem + this.TOLERANCE
     };
     const upperRight = {
       x: offset.left + menu.offsetWidth + rem,
@@ -208,7 +222,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left,
-      y: upperLeft.y + this.subMenu[this.activeRow].height * rem
+      y: upperLeft.y + this.menuItem[this.activeRow].height * rem
     };
     const lowerRight = {
       x: offset.left + menu.offsetWidth + rem,
