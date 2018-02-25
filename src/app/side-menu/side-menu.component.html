@@ -15,26 +15,29 @@
         </a>
       </li>
 
-      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[1].active,'collapsed':menuItem[1].isSubMenuCollapsed}"
+      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[1].active,'collapsed':!menuItem[1].isSubMenuShow}"
           (click)="clickRow(1)">
         <a>
           <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
           Data Collection
           <span class="glyphicon arrow"
-                [ngClass]="{'glyphicon-menu-right':menuItem[1].isSubMenuCollapsed,
-                            'glyphicon-menu-down':!menuItem[1].isSubMenuCollapsed}">
+                [ngClass]="{'glyphicon-menu-right': !menuItem[1].isSubMenuShow,
+                            'glyphicon-menu-down': menuItem[1].isSubMenuShow}">
           </span>
         </a>
       </li>
-      <ul *ngIf="!isCollapsed" class="dk-sub-menu" [ngClass]="{'collapse':menuItem[1].isSubMenuCollapsed}">
-        <li [ngClass]="{'active':menuItem[1].active}"><a routerLink="/mockup/Packages">Packages</a></li>
-        <li><a routerLink="/mockup/PackageDetail">Balance Sheet</a></li>
-        <li><a routerLink="/mockup/PackageDetailInput">Input Form</a></li>
-        <li><a routerLink="/mockup/PackageUpload">Package Upload</a></li>
-        <li><a routerLink="/mockup/CurrencyTranslation">Currency Translation</a></li>
-        <li><a routerLink="/mockup/PackageControls">Data Validation</a></li>
-        <li><a routerLink="/external-app/1">External APP</a></li>
-      </ul>
+      <div  *ngIf="!isCollapsed" class="dk-sub-menu"
+            [ngClass]="{'expended':menuItem[1].isSubMenuShow, 'collapsed':!menuItem[1].isSubMenuShow}">
+        <ul>
+          <li [ngClass]="{'active':menuItem[1].active}"><a routerLink="/mockup/Packages">Packages</a></li>
+          <li><a routerLink="/mockup/PackageDetail">Balance Sheet</a></li>
+          <li><a routerLink="/mockup/PackageDetailInput">Input Form</a></li>
+          <li><a routerLink="/mockup/PackageUpload">Package Upload</a></li>
+          <li><a routerLink="/mockup/CurrencyTranslation">Currency Translation</a></li>
+          <li><a routerLink="/mockup/PackageControls">Data Validation</a></li>
+          <li><a routerLink="/external-app/1">External APP</a></li>
+        </ul>
+      </div>
       <li *ngIf="isCollapsed"
           (mouseenter)="mouseenterRow(1)"
           (mouseleave)="mouseleaveRow(1)"
@@ -46,7 +49,7 @@
         <div class="dk-side-menu dk-side-menu-hover"
              [style.top.rem]="menuItem[1].top"
              [style.height.rem]="menuItem[1].height"
-             [style.display]="menuItem[1].visible">
+             [ngClass]="{'dk-side-menu-hover-show':menuItem[1].isSubMenuShow}">
           <ul class="dk-menu-content-hover">
             <li><a>Data Collection</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
@@ -60,34 +63,37 @@
             </ul>
           </ul>
         </div>
-        <span class="dk-popover-arrow" [style.display]="menuItem[1].visible" [style.top.rem]="menuItem[1].arrowTop"></span>
+        <span class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':menuItem[1].isSubMenuShow}"
+              [style.top.rem]="menuItem[1].arrowTop"></span>
       </li>
 
-      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[2].active,'collapsed':menuItem[2].isSubMenuCollapsed}"
+      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[2].active,'collapsed': !menuItem[2].isSubMenuShow}"
           (click)="clickRow(2)">
         <a>
           <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>Consolidation
           <span class="glyphicon arrow"
-                [ngClass]="{'glyphicon-menu-right':menuItem[2].isSubMenuCollapsed,
-                            'glyphicon-menu-down':!menuItem[2].isSubMenuCollapsed}">
+                [ngClass]="{'glyphicon-menu-right': !menuItem[2].isSubMenuShow,
+                            'glyphicon-menu-down': menuItem[2].isSubMenuShow}">
           </span>
         </a>
       </li>
-      <ul *ngIf="!isCollapsed" class="dk-sub-menu" [ngClass]="{'collapse':menuItem[2].isSubMenuCollapsed}">
-        <li><a routerLink="/mockup/JournalPosting">Journal Posting</a></li>
-        <li><a routerLink="/mockup/Reconciliation">Reconciliation</a></li>
-        <li><a routerLink="/mockup/ConsolidationPara">Run Consolidation</a></li>
-        <li><a routerLink="/mockup/CarryForward">Carry Forward</a></li>
-      </ul>
+      <div  *ngIf="!isCollapsed" class="dk-sub-menu"
+            [ngClass]="{'expended':menuItem[2].isSubMenuShow, 'collapsed':!menuItem[2].isSubMenuShow}">
+        <ul>
+          <li><a routerLink="/mockup/JournalPosting">Journal Posting</a></li>
+          <li><a routerLink="/mockup/Reconciliation">Reconciliation</a></li>
+          <li><a routerLink="/mockup/ConsolidationPara">Run Consolidation</a></li>
+          <li><a routerLink="/mockup/CarryForward">Carry Forward</a></li>
+        </ul>
+      </div>
       <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(2)" (mouseleave)="mouseleaveRow(2)" (click)="clickRow(2)">
         <a>
           <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>
         </a>
 
-        <div class="dk-side-menu dk-side-menu-hover"
+        <div class="dk-side-menu dk-side-menu-hover" [ngClass]="{'dk-side-menu-hover-show':menuItem[2].isSubMenuShow}"
              [style.top.rem]="menuItem[2].top"
-             [style.height.rem]="menuItem[2].height"
-             [style.display]="menuItem[2].visible">
+             [style.height.rem]="menuItem[2].height">
           <ul class="dk-menu-content-hover">
             <li><a>Consolidation</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
@@ -98,34 +104,37 @@
             </ul>
           </ul>
         </div>
-        <span class="dk-popover-arrow" [style.display]="menuItem[2].visible" [style.top.rem]="menuItem[2].arrowTop"></span>
+        <span class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':menuItem[2].isSubMenuShow}"
+              [style.top.rem]="menuItem[2].arrowTop"></span>
       </li>
 
 
-      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[3].active,'collapsed':menuItem[3].isSubMenuCollapsed}"
+      <li *ngIf="!isCollapsed" [ngClass]="{'active':menuItem[3].active,'collapsed': !menuItem[3].isSubMenuShow}"
           (click)="clickRow(3)">
         <a>
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Reports
           <span class="glyphicon arrow"
-                [ngClass]="{'glyphicon-menu-right':menuItem[3].isSubMenuCollapsed,
-                            'glyphicon-menu-down':!menuItem[3].isSubMenuCollapsed}">
+                [ngClass]="{'glyphicon-menu-right': !menuItem[3].isSubMenuShow,
+                            'glyphicon-menu-down': menuItem[3].isSubMenuShow}">
           </span>
         </a>
       </li>
-      <ul *ngIf="!isCollapsed" class="dk-sub-menu" [ngClass]="{'collapse':menuItem[3].isSubMenuCollapsed}">
-        <li><a routerLink="/mockup/ReportBS">Balance Sheets</a></li>
-        <li><a routerLink="/mockup/JournalEntries">Journal Entries</a></li>
-        <li><a routerLink="/mockup/IncomeStatement">Income Statements</a></li>
-        <li><a routerLink="/mockup/CashFlow">Cash Flow</a></li>
-      </ul>
+      <div  *ngIf="!isCollapsed" class="dk-sub-menu"
+            [ngClass]="{'expended':menuItem[3].isSubMenuShow, 'collapsed':!menuItem[3].isSubMenuShow}">
+        <ul>
+          <li><a routerLink="/mockup/ReportBS">Balance Sheets</a></li>
+          <li><a routerLink="/mockup/JournalEntries">Journal Entries</a></li>
+          <li><a routerLink="/mockup/IncomeStatement">Income Statements</a></li>
+          <li><a routerLink="/mockup/CashFlow">Cash Flow</a></li>
+        </ul>
+      </div>
       <li *ngIf="isCollapsed" (mouseenter)="mouseenterRow(3)" (mouseleave)="mouseleaveRow(3)" (click)="clickRow(3)">
         <a>
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </a>
-        <div class="dk-side-menu dk-side-menu-hover"
+        <div class="dk-side-menu dk-side-menu-hover" [ngClass]="{'dk-side-menu-hover-show':menuItem[3].isSubMenuShow}"
              [style.top.rem]="menuItem[3].top"
-             [style.height.rem]="menuItem[3].height"
-             [style.display]="menuItem[3].visible">
+             [style.height.rem]="menuItem[3].height">
           <ul class="dk-menu-content-hover">
             <li><a>Reports</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
@@ -136,7 +145,8 @@
             </ul>
           </ul>
         </div>
-        <span class="dk-popover-arrow" [style.display]="menuItem[3].visible" [style.top.rem]="menuItem[3].arrowTop"></span>
+        <span class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':menuItem[3].isSubMenuShow}"
+              [style.top.rem]="menuItem[3].arrowTop"></span>
       </li>
 
     </ul>

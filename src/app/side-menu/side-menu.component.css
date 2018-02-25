@@ -10,32 +10,37 @@
   color: #fafafa;;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
   z-index: 1031;
 }
 .dk-menu-list {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  overflow: scroll;
+  overflow: auto;
 }
 .dk-side-menu-collapsed {
   width: 5rem;
   background: #394958;
 }
 .dk-side-menu-hover {
+  display: block;
   position: absolute;
+  visibility: hidden;
+  opacity:0;
   width: 20rem;
   left: 6rem;
   border-radius: 0.3rem;
   z-index: 1031;
-  overflow: scroll;
+  overflow: auto;
   background: #394958;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   bottom: 1rem;
-  -webkit-transition: opacity 0.5s linear;
-  -moz-transition: opacity 0.2s linear;
-  -o-transition: opacity 0.2s linear;
-  transition: opacity 0.5s linear;
+}
+.dk-side-menu-hover-show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
 }
 .dk-side-menu ul,
 .dk-side-menu li {
@@ -66,10 +71,6 @@
 .dk-menu-content>li:hover {
   border-left: 4px solid #d19b3d;
   background-color: #4f5b69;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 .arrow {
@@ -81,6 +82,20 @@
   background-color: #465969;
   border-bottom: 1px solid #4d6377;
   z-index: 60;
+}
+.dk-sub-menu {
+  display: block;
+  overflow: hidden;
+}
+.dk-sub-menu.expended {
+  opacity: 1;
+  max-height: 50rem;
+  transition: opacity 0.5s, max-height 0.5s;
+}
+.dk-sub-menu.collapsed {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 275ms, max-height 0.28s;
 }
 .dk-sub-menu li {
   background-color: #394958;
@@ -111,6 +126,16 @@
   transform: rotate(-45deg);
   pointer-events: none;
   position: absolute;
+  z-index: 1030;
+  visibility: hidden;
+  opacity: 0;
+  /*transition: none;*/
+}
+.dk-popover-arrow-show {
+  /*width: 1rem;*/
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s 0.2s linear, opacity 0.3s 0.2s linear;
 }
 .dk-separator {
   margin: 0.25rem 1rem;

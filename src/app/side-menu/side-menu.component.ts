@@ -8,10 +8,10 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 export class SideMenuComponent implements OnInit {
   isCollapsed = false;
   menuItem = [
-    {top: null, height: 0, originalHeight: 0, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true},
-    {top: null, height: 26, originalHeight: 26, arrowTop: 0, visible: 'none', active: true, isSubMenuCollapsed: true}, // 4 + 3 * 7 + 1
-    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true}, // 4 + 3 * 4 + 1
-    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuCollapsed: true}  // 4 + 3 * 4 + 1
+    {top: null, height: 0, originalHeight: 0, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false},
+    {top: null, height: 26, originalHeight: 26, arrowTop: 0, visible: 'none', active: true, isSubMenuShow: false}, // 4 + 3 * 7 + 1
+    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false}, // 4 + 3 * 4 + 1
+    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false}  // 4 + 3 * 4 + 1
   ];
 
   activeRow = null;
@@ -51,11 +51,13 @@ export class SideMenuComponent implements OnInit {
       this.menuItem[row].top = 5 + 4 * row - menuScrollTop;
     }
     this.menuItem[row].arrowTop = 6 + 4 * row - menuScrollTop;
-    this.menuItem[row].visible  = 'block';
+    // this.menuItem[row].visible  = 'block';
+    this.menuItem[row].isSubMenuShow = true;
   }
 
   deactivateSubMenu(row): void {
-    this.menuItem[row].visible  = 'none';
+    // this.menuItem[row].visible  = 'none';
+    this.menuItem[row].isSubMenuShow = false;
   }
 
   /**
@@ -148,7 +150,7 @@ export class SideMenuComponent implements OnInit {
     if (this.isCollapsed) {
       this.activate(row);
     } else {
-      this.menuItem[row].isSubMenuCollapsed = !this.menuItem[row].isSubMenuCollapsed;
+      this.menuItem[row].isSubMenuShow = !this.menuItem[row].isSubMenuShow;
     }
   }
 
