@@ -1,4 +1,6 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {RoleService} from "../role.service";
+import { Role, Catalog, App } from '../role';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,13 +9,7 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 })
 export class SideMenuComponent implements OnInit {
   isCollapsed = false;
-  menuItem = [
-    {top: null, height: 0, originalHeight: 0, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false},
-    {top: null, height: 26, originalHeight: 26, arrowTop: 0, visible: 'none', active: true, isSubMenuShow: false}, // 4 + 3 * 7 + 1
-    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false}, // 4 + 3 * 4 + 1
-    {top: null, height: 17, originalHeight: 17, arrowTop: 0, visible: 'none', active: false, isSubMenuShow: false}  // 4 + 3 * 4 + 1
-  ];
-
+  role: Role;
   activeRow = null;
   mouseLocs = [];
   lastDelayLoc = null;
@@ -25,9 +21,10 @@ export class SideMenuComponent implements OnInit {
   @ViewChild('sideMenu')
   sideMenu: ElementRef;
 
-  constructor() {}
+  constructor(private roleService: RoleService) {}
 
   ngOnInit() {
+    this.role = this.roleService.getRoleDetail();
   }
 
   collapse(): boolean {
@@ -40,24 +37,22 @@ export class SideMenuComponent implements OnInit {
     const menuHeight = this.sideMenu.nativeElement.offsetHeight / rem;
     const menuScrollTop = this.sideMenu.nativeElement.getElementsByClassName('dk-menu-list')[0].scrollTop / rem;
 
-    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.menuItem[row].originalHeight) {
-      this.menuItem[row].top = null;
-      if ( menuHeight + 3 <= this.menuItem[row].originalHeight) {
-        this.menuItem[row].height = menuHeight + 3;
+    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.role.catalogs[row].originalHeight) {
+      this.role.catalogs[row].top = null;
+      if ( menuHeight + 3 <= this.role.catalogs[row].originalHeight) {
+        this.role.catalogs[row].height = menuHeight + 3;
       } else {
-        this.menuItem[row].height = this.menuItem[row].originalHeight;
+        this.role.catalogs[row].height = this.role.catalogs[row].originalHeight;
       }
     } else {
-      this.menuItem[row].top = 5 + 4 * row - menuScrollTop;
+      this.role.catalogs[row].top = 5 + 4 * row - menuScrollTop;
     }
-    this.menuItem[row].arrowTop = 6 + 4 * row - menuScrollTop;
-    // this.menuItem[row].visible  = 'block';
-    this.menuItem[row].isSubMenuShow = true;
+    this.role.catalogs[row].arrowTop = 6 + 4 * row - menuScrollTop;
+    this.role.catalogs[row].isSubMenuShow = true;
   }
 
   deactivateSubMenu(row): void {
-    // this.menuItem[row].visible  = 'none';
-    this.menuItem[row].isSubMenuShow = false;
+    this.role.catalogs[row].isSubMenuShow = false;
   }
 
   /**
@@ -103,7 +98,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left + menu.offsetWidth,
-      y: this.menuItem[this.activeRow].top * rem
+      y: this.role.catalogs[this.activeRow].top * rem
     };
     const upperRight = {
       x: upperLeft.x + rem,
@@ -111,7 +106,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left + menu.offsetWidth,
-      y: upperLeft.y + this.menuItem[this.activeRow].height * rem
+      y: upperLeft.y + this.role.catalogs[this.activeRow].height * rem
     };
     const lowerRight = {
       x: lowerLeft.x + rem,
@@ -150,7 +145,7 @@ export class SideMenuComponent implements OnInit {
     if (this.isCollapsed) {
       this.activate(row);
     } else {
-      this.menuItem[row].isSubMenuShow = !this.menuItem[row].isSubMenuShow;
+      this.role.catalogs[row].isSubMenuShow = !this.role.catalogs[row].isSubMenuShow;
     }
   }
 
@@ -174,7 +169,7 @@ export class SideMenuComponent implements OnInit {
    * Click a submenu item
    */
   clickSubItem(): void {
-    this.menuItem[this.activeRow].visible = 'none';
+    this.role.catalogs[this.activeRow].isSubMenuShow = false;
   }
 
   /**
@@ -216,7 +211,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left,
-      y: this.menuItem[this.activeRow].top * rem + this.TOLERANCE
+      y: this.role.catalogs[this.activeRow].top * rem + this.TOLERANCE
     };
     const upperRight = {
       x: offset.left + menu.offsetWidth + rem,
@@ -224,7 +219,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left,
-      y: upperLeft.y + this.menuItem[this.activeRow].height * rem
+      y: upperLeft.y + this.role.catalogs[this.activeRow].height * rem
     };
     const lowerRight = {
       x: offset.left + menu.offsetWidth + rem,

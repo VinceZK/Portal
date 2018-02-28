@@ -69,8 +69,11 @@
   border-bottom: thin dotted #fafafa;
 }
 .dk-menu-content>li:hover {
-  border-left: 4px solid #d19b3d;
   background-color: #4f5b69;
+  transition: all 0.3s ease;
+}
+.dk-menu-content>li>a:hover {
+  border-left: 4px solid #d19b3d;
   transition: all 0.3s ease;
 }
 .arrow {
@@ -78,9 +81,12 @@
   margin: 1rem !important;
 }
 .dk-menu-content>li.active{
-  border-left: 4px solid #d19b3d;
   background-color: #465969;
   border-bottom: 1px solid #4d6377;
+  z-index: 60;
+}
+.dk-menu-content>li.active>a{
+  border-left: 4px solid #d19b3d;
   z-index: 60;
 }
 .dk-sub-menu {
@@ -135,7 +141,7 @@
   /*width: 1rem;*/
   visibility: visible;
   opacity: 1;
-  transition: visibility 0.3s 0.2s linear, opacity 0.3s 0.2s linear;
+  transition: visibility 0.3s 10ms linear, opacity 0.3s 0.2s linear;
 }
 .dk-separator {
   margin: 0.25rem 1rem;

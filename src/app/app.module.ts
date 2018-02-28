@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MockupComponent } from './mockup/mockup.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { HeadBarComponent } from './head-bar/head-bar.component';
+import {RoleService} from "./role.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { HeadBarComponent } from './head-bar/head-bar.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    RoleService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
