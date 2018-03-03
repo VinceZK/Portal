@@ -19,6 +19,12 @@
   flex-grow: 1;
   overflow: auto;
 }
+.dk-search-box {
+  line-height: 2.5rem;
+  background-color: #2f3c48;
+  border-width: 1px;
+  border-color: gray;
+}
 .dk-side-menu-collapsed {
   width: 5rem;
   background: #394958;
@@ -54,6 +60,12 @@
   display: block;
   text-decoration: none;
   color: #fafafa;
+}
+.dk-menu-search{
+  list-style-position: inside;
+  border-bottom: 1px;
+  border-bottom-color: dimgray;
+  border-bottom-style: solid;
 }
 .dk-menu-content {
   width: 100%;
@@ -154,7 +166,7 @@
   vertical-align: bottom;
   position: static;
 }
-.label,.glyphicon {
+.label,.glyphicon, .fas{
   margin:0 1.3rem;
   font-size: 1.8rem;
 }

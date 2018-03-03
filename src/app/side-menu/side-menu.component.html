@@ -1,7 +1,18 @@
 <div #sideMenu class="dk-side-menu" [class.dk-side-menu-collapsed]="isCollapsed" (mouseleave)="mouseleaveMenu()" >
   <div class="dk-menu-list">
     <ul *ngIf="!isCollapsed" class="dk-menu-content">
-      <li *ngFor="let catalog of role.catalogs; index as i"
+      <li class="dk-menu-search">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        <input #searchBox id="search-box" class="dk-search-box" placeholder="Search"
+               (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/>
+        <ul class="dk-sub-menu">
+          <li *ngFor="let app of apps$ | async" >
+            <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+          </li>
+        </ul>
+      </li>
+
+      <li *ngFor="let catalog of role.catalogs; index as i" [style.display]="menuDisplay"
           [ngClass]="{'active':catalog.active,'collapsed':!catalog.isSubMenuShow}">
         <a routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
@@ -12,13 +23,17 @@
         <ul *ngIf="catalog.apps && catalog.apps.length > 0" class="dk-sub-menu"
             [ngClass]="{'expended':catalog.isSubMenuShow, 'collapsed':!catalog.isSubMenuShow}">
           <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
-            <a routerLink="{{app.routeLink}}">{{app.name}}</a>
+            <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
           </li>
         </ul>
       </li>
     </ul>
 
     <ul *ngIf="isCollapsed" class="dk-menu-content">
+      <li class="dk-menu-search">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </li>
+
       <li *ngFor="let catalog of role.catalogs; index as i"
           (mouseenter)="mouseenterRow(i)" (mouseleave)="mouseleaveRow(i)" (click)="clickRow(i)">
         <a routerLink="{{catalog.routeLink}}">
@@ -33,7 +48,7 @@
             <li><a>{{catalog.name}}</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
               <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
-                <a routerLink="{{app.routeLink}}" (click)="clickSubItem()">{{app.name}}</a>
+                <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
               </li>
             </ul>
           </ul>
@@ -51,7 +66,7 @@
     <ul *ngIf="!isCollapsed" class="dk-menu-content">
       <li >
         <a href="#">
-          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Useful Links
+          <span class="fas fa-question-circle" aria-hidden="true"></span> Useful Links
         </a>
       </li>
       <li>

@@ -1,7 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-// declare var jquery: any;
- declare var $: any;
 
 @Component({
   selector: 'app-root',

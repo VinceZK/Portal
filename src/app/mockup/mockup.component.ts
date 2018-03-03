@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MockupComponent implements OnInit, DoCheck {
 
-  constructor(private route: ActivatedRoute,) { }
+  constructor(private route: ActivatedRoute) { }
 
   mockupUI: String;
 
