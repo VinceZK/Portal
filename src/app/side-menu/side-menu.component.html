@@ -1,26 +1,28 @@
 <div #sideMenu class="dk-side-menu" [class.dk-side-menu-collapsed]="isCollapsed" (mouseleave)="mouseleaveMenu()" >
   <div class="dk-menu-list">
+    <!-- side menu in expended mode -->
     <ul *ngIf="!isCollapsed" class="dk-menu-content">
-      <li class="dk-menu-search">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        <input #searchBox id="search-box" class="dk-search-box" placeholder="Search"
+      <li *ngFor="let catalog of role.catalogs; index as i;"
+          [ngClass]="{'active':catalog.active,
+                      'collapsed':!catalog.isSubMenuShow,
+                      'dk-menu-search': catalog.routeLink === '/appSearch',
+                      'menuDisplay': catalog.routeLink === '/appSearch' || menuDisplay}">
+        <span *ngIf="catalog.routeLink === '/appSearch'" [ngClass]="catalog.icon" aria-hidden="true"></span>
+        <input *ngIf="catalog.routeLink === '/appSearch'" #searchBox class="dk-search-box" placeholder="Search"
                (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/>
-        <ul class="dk-sub-menu">
+        <ul *ngIf="catalog.routeLink === '/appSearch'" class="dk-sub-menu">
           <li *ngFor="let app of apps$ | async" >
             <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
           </li>
         </ul>
-      </li>
 
-      <li *ngFor="let catalog of role.catalogs; index as i" [style.display]="menuDisplay"
-          [ngClass]="{'active':catalog.active,'collapsed':!catalog.isSubMenuShow}">
-        <a routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
+        <a *ngIf="catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
           <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
                 [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
           </span>
         </a>
-        <ul *ngIf="catalog.apps && catalog.apps.length > 0" class="dk-sub-menu"
+        <ul *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0" class="dk-sub-menu"
             [ngClass]="{'expended':catalog.isSubMenuShow, 'collapsed':!catalog.isSubMenuShow}">
           <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
             <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
@@ -28,19 +30,37 @@
         </ul>
       </li>
     </ul>
-
+    <!-- side menu in collapsed mode -->
     <ul *ngIf="isCollapsed" class="dk-menu-content">
-      <li class="dk-menu-search">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-      </li>
-
-      <li *ngFor="let catalog of role.catalogs; index as i"
+      <li *ngFor="let catalog of role.catalogs; index as i" class="menuDisplay" [ngClass]="{'active':catalog.active}"
           (mouseenter)="mouseenterRow(i)" (mouseleave)="mouseleaveRow(i)" (click)="clickRow(i)">
-        <a routerLink="{{catalog.routeLink}}">
+        <a *ngIf="catalog.routeLink === '/appSearch'">
+          <span [ngClass]="catalog.icon" aria-hidden="true"></span>
+        </a>
+        <div *ngIf="catalog.routeLink === '/appSearch'"
+             class="dk-side-menu dk-side-menu-hover dk-menu-search-hover"
+             [ngClass]="{'dk-side-menu-hover-show':catalog.isSubMenuShow}"
+             [style.top.rem]="catalog.top">
+          <ul class="dk-menu-content-hover">
+            <li><input #searchBox class="dk-search-box" placeholder="Search" class="dk-search-box"
+                       (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/></li>
+            <ul class="dk-sub-menu dk-sub-menu-collapsed">
+              <li *ngFor="let app of apps$ | async" >
+                <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+              </li>
+            </ul>
+          </ul>
+        </div>
+        <span *ngIf="catalog.routeLink === '/appSearch'"
+              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
+              [style.top.rem]="catalog.arrowTop"></span>
+
+        <a *ngIf="catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span>
         </a>
 
-        <div *ngIf="catalog.apps && catalog.apps.length > 0" class="dk-side-menu dk-side-menu-hover"
+        <div *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0"
+             class="dk-side-menu dk-side-menu-hover"
              [style.top.rem]="catalog.top"
              [style.height.rem]="catalog.height"
              [ngClass]="{'dk-side-menu-hover-show':catalog.isSubMenuShow}">
@@ -53,8 +73,8 @@
             </ul>
           </ul>
         </div>
-        <span *ngIf="catalog.apps && catalog.apps.length > 0" class="dk-popover-arrow"
-              [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
+        <span *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0"
+              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
               [style.top.rem]="catalog.arrowTop"></span>
       </li>
     </ul>
@@ -71,19 +91,19 @@
       </li>
       <li>
         <a href="#">
-          <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Education
+          <span class="fas fa-balance-scale" aria-hidden="true"></span> Legal Information
         </a>
       </li>
     </ul>
     <ul *ngIf="isCollapsed" class="dk-menu-content">
       <li (mouseenter)="mouseenterRow(0)" (mouseleave)="mouseleaveRow(0)" (click)="clickRow(0)" >
-        <a a href="#">
-          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        <a href="#">
+          <span class="fas fa-question-circle" aria-hidden="true"></span>
         </a>
       </li>
       <li (mouseenter)="mouseenterRow(0)" (mouseleave)="mouseleaveRow(0)" (click)="clickRow(0)">
         <a href="#">
-          <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+          <span class="fas fa-balance-scale" aria-hidden="true"></span>
         </a>
       </li>
     </ul>

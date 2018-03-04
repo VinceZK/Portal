@@ -20,7 +20,7 @@ export class SideMenuComponent implements OnInit {
   private timeoutId = null;
   private rem = 0;
   private searchTerms = new Subject<string>();
-  private menuDisplay = 'list-item';
+  private menuDisplay = true;
 
   private readonly TOLERANCE = 75;  // bigger = more forgivey when entering submenu
   private readonly DELAY = 600;  // ms delay when user appears to be entering submenu
@@ -51,9 +51,9 @@ export class SideMenuComponent implements OnInit {
   searchApp(term: string): void {
     this.searchTerms.next(term);
     if (term) {
-      this.menuDisplay = 'none';
+      this.menuDisplay = false;
     } else {
-      this.menuDisplay = 'list-item';
+      this.menuDisplay = true;
     }
   }
 
@@ -68,15 +68,14 @@ export class SideMenuComponent implements OnInit {
     for (const catalog of this.role.catalogs) {
       catalog.isSubMenuShow = false;
     }
-    this.menuDisplay = 'list-item';
+    this.menuDisplay = true;
     return this.isCollapsed = !this.isCollapsed;
   }
 
   activateSubMenu(row): void {
     const menuHeight = this.sideMenu.nativeElement.offsetHeight / this.rem;
     const menuScrollTop = this.sideMenu.nativeElement.getElementsByClassName('dk-menu-list')[0].scrollTop / this.rem;
-    const rowPos = row + 1;
-    if (menuHeight + 1 - 4 * rowPos + menuScrollTop <= this.role.catalogs[row].originalHeight) {
+    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.role.catalogs[row].originalHeight) {
       this.role.catalogs[row].top = null;
       if ( menuHeight + 3 <= this.role.catalogs[row].originalHeight) {
         this.role.catalogs[row].height = menuHeight + 3;
@@ -84,9 +83,9 @@ export class SideMenuComponent implements OnInit {
         this.role.catalogs[row].height = this.role.catalogs[row].originalHeight;
       }
     } else {
-      this.role.catalogs[row].top = 5 + 4 * rowPos - menuScrollTop;
+      this.role.catalogs[row].top = 5 + 4 * row - menuScrollTop;
     }
-    this.role.catalogs[row].arrowTop = 6 + 4 * rowPos - menuScrollTop;
+    this.role.catalogs[row].arrowTop = 6 + 4 * row - menuScrollTop;
     this.role.catalogs[row].isSubMenuShow = true;
   }
 
@@ -163,7 +162,6 @@ export class SideMenuComponent implements OnInit {
       // Cancel any previous activation delays
       clearTimeout(this.timeoutId);
     }
-
     this.possiblyActivate(row);
   }
 

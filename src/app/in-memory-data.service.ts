@@ -7,12 +7,16 @@ export class InMemoryDataService implements InMemoryDbService {
       name: 'Consolidation Specialist',
       catalogs: [
         {
+          name: 'Search', icon: 'glyphicon glyphicon-search', height: 4, originalHeight: 4,
+          routeLink: '/appSearch', active: false, isSubMenuShow: false, apps: []
+        },
+        {
           name: 'Dashboard', icon: 'glyphicon glyphicon-dashboard', routeLink: '/dashboard', active: false,
           isSubMenuShow: false, apps: []
         },
         {
           name: 'Data Collection', icon: 'glyphicon glyphicon-cloud-upload', height: 26, originalHeight: 26,
-          active: true, isSubMenuShow: false,
+          active: false, isSubMenuShow: false,
           apps: [
             {name: 'Packages', routeLink: '/mockup/Packages', active: true},
             {name: 'Balance Sheet', routeLink: '/mockup/PackageDetail', active: false},
