@@ -27,8 +27,4 @@ export class ExternalAppComponent implements OnInit {
 
     this.appUrl = <string>this.sanitizer.bypassSecurityTrustResourceUrl(appDangerousUrl);
   }
-
-  getExternalAppUrl(): void {
-
-  }
 }

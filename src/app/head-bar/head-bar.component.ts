@@ -22,8 +22,4 @@ export class HeadBarComponent implements OnInit {
   collapse() {
     this.onCollapse.emit();
   }
-
-  clickLink(app: App): void {
-    this.history.addHistory(app);
-  }
 }

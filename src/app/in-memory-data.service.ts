@@ -18,7 +18,7 @@ export class InMemoryDataService implements InMemoryDbService {
           name: 'Data Collection', icon: 'glyphicon glyphicon-cloud-upload', height: 26, originalHeight: 26,
           active: false, isSubMenuShow: false,
           apps: [
-            {name: 'Packages', routeLink: '/mockup/Packages', active: true},
+            {name: 'Packages', routeLink: '/mockup/Packages', active: false},
             {name: 'Balance Sheet', routeLink: '/mockup/PackageDetail', active: false},
             {name: 'Input Form', routeLink: '/mockup/PackageDetailInput', active: false},
             {name: 'Package Upload', routeLink: '/mockup/PackageUpload', active: false},
@@ -31,6 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
           name: 'Consolidation', icon: 'glyphicon glyphicon-compressed', height: 17, originalHeight: 17,
           active: false, isSubMenuShow: false,
           apps: [
+            {name: 'Handson Table', routeLink: '/handsontable', active: false},
             {name: 'Journal Posting', routeLink: '/mockup/JournalPosting', active: false},
             {name: 'Reconciliation', routeLink: '/mockup/Reconciliation', active: false},
             {name: 'Run Consolidation', routeLink: '/mockup/ConsolidationPara', active: false},
@@ -52,13 +53,14 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const apps: App[] = [
       {name: 'Dashboard', routeLink: '/dashboard', active: false},
-      {name: 'Packages', routeLink: '/mockup/Packages', active: true},
+      {name: 'Packages', routeLink: '/mockup/Packages', active: false},
       {name: 'Balance Sheet', routeLink: '/mockup/PackageDetail', active: false},
       {name: 'Input Form', routeLink: '/mockup/PackageDetailInput', active: false},
       {name: 'Package Upload', routeLink: '/mockup/PackageUpload', active: false},
       {name: 'Currency Translation', routeLink: '/mockup/CurrencyTranslation', active: false},
       {name: 'Data Validation', routeLink: '/mockup/PackageControls', active: false},
       {name: 'External APP', routeLink: '/external-app/1', active: false},
+      {name: 'Handson Table', routeLink: '/handsontable', active: false},
       {name: 'Journal Posting', routeLink: '/mockup/JournalPosting', active: false},
       {name: 'Reconciliation', routeLink: '/mockup/Reconciliation', active: false},
       {name: 'Run Consolidation', routeLink: '/mockup/ConsolidationPara', active: false},

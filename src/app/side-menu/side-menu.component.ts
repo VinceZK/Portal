@@ -1,7 +1,6 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {RoleService} from "../role.service";
 import { Role, App } from '../role';
-import {HistoryService} from "../history.service";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
@@ -33,7 +32,6 @@ export class SideMenuComponent implements OnInit {
   sideMenu: ElementRef;
 
   constructor(private roleService: RoleService,
-              private history: HistoryService,
               private router: Router
               ) {}
 
@@ -191,11 +189,10 @@ export class SideMenuComponent implements OnInit {
   }
 
   /**
-   * Triggered when click a route link. Store the link to the navigation history
+   * Triggered when click a route link.
    * @param {App} app
    */
   clickLink(app: App): void {
-    this.history.addHistory(app);
     if (this.isCollapsed) {
       this.role.catalogs[this.activeRow].isSubMenuShow = false;
     }

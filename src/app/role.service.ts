@@ -19,7 +19,10 @@ export class RoleService {
     if (!term.trim()) {
       return of([]);
     }
-    // console.log(this.roleAppUrl + `/?name=${term}`);
     return this.http.get<App[]>(this.roleAppUrl + `/?name=${term}`);
+  }
+
+  getApp(routeLink: string): Observable<App> {
+    return this.http.get<App>(this.roleAppUrl + `/?routeLink=${routeLink}`);
   }
 }

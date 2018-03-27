@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ExternalAppComponent } from './external-app/external-app.component';
+import {NotFoundComponent} from "./not-found/not-found.component";
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'external-app/:appID', component: ExternalAppComponent },
-  { path: '**', component: DashboardComponent }
+  // The dashboard app is lazy loading
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

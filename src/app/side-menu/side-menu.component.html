@@ -12,11 +12,17 @@
                (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/>
         <ul *ngIf="catalog.routeLink === '/appSearch'" class="dk-sub-menu">
           <li *ngFor="let app of apps$ | async" >
-            <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+            <a routerLink="{{app.routeLink}}">{{app.name}}</a>
           </li>
         </ul>
 
-        <a *ngIf="catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
+        <a *ngIf="catalog.routeLink && catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
+          <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
+          <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
+                [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
+          </span>
+        </a>
+        <a *ngIf="!catalog.routeLink" (click)="clickRow(i)">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
           <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
                 [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
@@ -25,7 +31,7 @@
         <ul *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0" class="dk-sub-menu"
             [ngClass]="{'expended':catalog.isSubMenuShow, 'collapsed':!catalog.isSubMenuShow}">
           <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
-            <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+            <a routerLink="{{app.routeLink}}">{{app.name}}</a>
           </li>
         </ul>
       </li>

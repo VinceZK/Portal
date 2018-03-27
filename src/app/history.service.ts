@@ -14,7 +14,8 @@ export class HistoryService {
   constructor() { }
 
   addHistory(app: App) {
-    const idx = this.navHistory.indexOf(app);
+    const idx = this.navHistory.map(ele => ele.routeLink)
+                               .indexOf(app.routeLink);
     if ( idx > -1 ) {
       this.navHistory.splice(idx, 1);
     }

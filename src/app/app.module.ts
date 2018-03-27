@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ExternalAppComponent } from './external-app/external-app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { HeadBarComponent } from './head-bar/head-bar.component';
@@ -12,19 +10,22 @@ import {HistoryService} from "./history.service";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import {HttpClientModule} from "@angular/common/http";
+import {ExternalAppModule} from "./external-app/external-app.module";
+import { NotFoundComponent } from './not-found/not-found.component';
+import {HandsontableModule} from "./handsontable/handsontable.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExternalAppComponent,
-    DashboardComponent,
-    // MockupComponent,
     SideMenuComponent,
-    HeadBarComponent
+    HeadBarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     MockupModule,
+    ExternalAppModule,
+    HandsontableModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
