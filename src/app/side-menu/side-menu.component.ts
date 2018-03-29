@@ -58,7 +58,6 @@ export class SideMenuComponent implements OnInit {
   enterApp($event): void {
     if ($event.keyCode === 13 && this.searchedApps[0]) {
       this.router.navigate([this.searchedApps[0].routeLink]);
-      this.clickLink(this.searchedApps[0]);
     }
   }
 
@@ -173,29 +172,52 @@ export class SideMenuComponent implements OnInit {
   }
 
   /**
+   * Set the current opened app to be active
+   * @param {App} app
+   */
+  activateApp(app: App) {
+    // Clear the existing active app
+    let appIdx = -1;
+    let catalogIdx = this.role.catalogs.findIndex(catalog => catalog.active === true );
+    if (catalogIdx > -1 ) {
+      this.role.catalogs[catalogIdx].active = false;
+      if (!this.role.catalogs[catalogIdx].routeLink) {
+        appIdx = this.role.catalogs[catalogIdx].apps.findIndex(app1 => app1.active === true );
+        if (appIdx > -1) {
+          this.role.catalogs[catalogIdx].apps[appIdx].active = false;
+        }
+      }
+    }
+    // Set the new active app
+    catalogIdx = this.role.catalogs.findIndex(catalog => {
+      if ( catalog.routeLink === app.routeLink ) {
+        return true;
+      } else {
+        appIdx = catalog.apps.findIndex( app1 => app1.routeLink === app.routeLink);
+        return appIdx > -1;
+      }});
+    this.role.catalogs[catalogIdx].active = true;
+    if (appIdx > -1) {
+      this.role.catalogs[catalogIdx].apps[appIdx].active = true;
+    }
+  }
+
+  /**
    * Immediately activate a row if the user clicks on it.
    */
   clickRow(row): void {
     if (this.isCollapsed) {
       this.activate(row);
     } else {
-      if (this.role.catalogs[row].apps && this.role.catalogs[row].apps.length > 0) {
-        this.role.catalogs[row].isSubMenuShow = !this.role.catalogs[row].isSubMenuShow;
-      } else {
-        const app: App = <App>{name: this.role.catalogs[row].name, routeLink: this.role.catalogs[row].routeLink};
-        this.clickLink(app);
-      }
+      this.role.catalogs[row].isSubMenuShow = !this.role.catalogs[row].isSubMenuShow;
     }
   }
 
   /**
-   * Triggered when click a route link.
-   * @param {App} app
+   * Hide the sub-menu
    */
-  clickLink(app: App): void {
-    if (this.isCollapsed) {
-      this.role.catalogs[this.activeRow].isSubMenuShow = false;
-    }
+  hideSubMenu(): void {
+    this.role.catalogs[this.activeRow].isSubMenuShow = false;
   }
 
   /**
@@ -212,13 +234,6 @@ export class SideMenuComponent implements OnInit {
 
     this.activateSubMenu(row);
     this.activeRow = row;
-  }
-
-  /**
-   * Click a submenu item
-   */
-  clickSubItem(): void {
-    this.role.catalogs[this.activeRow].isSubMenuShow = false;
   }
 
   /**

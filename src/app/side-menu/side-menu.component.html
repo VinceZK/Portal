@@ -16,7 +16,7 @@
           </li>
         </ul>
 
-        <a *ngIf="catalog.routeLink && catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}" (click)="clickRow(i)">
+        <a *ngIf="catalog.routeLink && catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
           <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
                 [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
@@ -28,7 +28,7 @@
                 [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
           </span>
         </a>
-        <ul *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0" class="dk-sub-menu"
+        <ul *ngIf="!catalog.routeLink" class="dk-sub-menu"
             [ngClass]="{'expended':catalog.isSubMenuShow, 'collapsed':!catalog.isSubMenuShow}">
           <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
             <a routerLink="{{app.routeLink}}">{{app.name}}</a>
@@ -61,11 +61,14 @@
               class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
               [style.top.rem]="catalog.arrowTop"></span>
 
-        <a *ngIf="catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}">
+        <a *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length === 0" routerLink="{{catalog.routeLink}}">
+          <span [ngClass]="catalog.icon" aria-hidden="true"></span>
+        </a>
+        <a *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span>
         </a>
 
-        <div *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0"
+        <div *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0"
              class="dk-side-menu dk-side-menu-hover"
              [style.top.rem]="catalog.top"
              [style.height.rem]="catalog.height"
@@ -74,12 +77,12 @@
             <li><a>{{catalog.name}}</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
               <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
-                <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+                <a routerLink="{{app.routeLink}}" (click)="hideSubMenu()">{{app.name}}</a>
               </li>
             </ul>
           </ul>
         </div>
-        <span *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps && catalog.apps.length > 0"
+        <span *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0"
               class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
               [style.top.rem]="catalog.arrowTop"></span>
       </li>

@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
       .mergeMap(route => this.roleService.getApp(route.snapshot.url.join('/')))
       .subscribe(event => {
         if (event[0]) {
+          // TODO: flag current app in orange.
+          this.sideMenu.activateApp(event[0]);
           this.historyService.addHistory(event[0]);
         }
       });
