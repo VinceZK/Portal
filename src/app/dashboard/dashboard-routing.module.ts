@@ -4,7 +4,7 @@ import {DashboardComponent} from "./dashboard.component";
 
 const routes: Routes = [
   // Path is set to empty to support lazy loading:
-  { path: '', component: DashboardComponent, data: {title: 'Dashboard'} }
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({

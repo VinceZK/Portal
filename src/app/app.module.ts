@@ -12,7 +12,6 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import {HttpClientModule} from "@angular/common/http";
 import {ExternalAppModule} from "./external-app/external-app.module";
 import { NotFoundComponent } from './not-found/not-found.component';
-import {HandsontableModule} from "./handsontable/handsontable.module";
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import {HandsontableModule} from "./handsontable/handsontable.module";
     BrowserModule,
     MockupModule,
     ExternalAppModule,
-    HandsontableModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(

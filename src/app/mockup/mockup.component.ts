@@ -15,7 +15,7 @@ export class MockupComponent implements OnInit, DoCheck {
   ngOnInit() { }
 
   ngDoCheck() {
-    this.mockupUI = '../assets/' + this.route.snapshot.paramMap.get('UI') + '.png';
+    this.mockupUI = 'assets/' + this.route.snapshot.paramMap.get('UI') + '.png';
   }
 
 }

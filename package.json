@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "d3": "^5.0.0",
+    "express": "^4.16.3",
     "handsontable": "^0.38.1",
     "jquery": "^3.2.1",
     "rxjs": "^5.5.6",

@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
-  private isCollapsed = false;
   private activeRow = null;
   private mouseLocs = [];
   private lastDelayLoc = null;
@@ -20,10 +19,10 @@ export class SideMenuComponent implements OnInit {
   private rem = 0;
   private searchTerms = new Subject<string>();
   private menuDisplay = true;
-
   private readonly TOLERANCE = 75;  // bigger = more forgivey when entering submenu
   private readonly DELAY = 600;  // ms delay when user appears to be entering submenu
 
+  isCollapsed = false;
   role: Role = new Role;
   apps$: Observable<App[]>;
   searchedApps: App[];
