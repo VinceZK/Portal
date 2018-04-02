@@ -52,7 +52,7 @@
                        (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
               <li *ngFor="let app of apps$ | async" >
-                <a routerLink="{{app.routeLink}}" (click)="clickLink(app)">{{app.name}}</a>
+                <a routerLink="{{app.routeLink}}" (click)="hideSubMenu()">{{app.name}}</a>
               </li>
             </ul>
           </ul>

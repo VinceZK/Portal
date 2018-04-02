@@ -7,68 +7,70 @@ export class InMemoryDataService implements InMemoryDbService {
       name: 'Consolidation Specialist',
       catalogs: [
         {
-          name: 'Search', icon: 'glyphicon glyphicon-search', height: 4, originalHeight: 4,
+          name: 'Search', icon: 'fas fa-search', height: 4, originalHeight: 4,
           routeLink: '/appSearch', active: false, isSubMenuShow: false, apps: []
         },
         {
-          name: 'Dashboard', icon: 'glyphicon glyphicon-dashboard', routeLink: '/dashboard/dashboard', active: false,
-          isSubMenuShow: false, apps: []
-        },
-        {
-          name: 'Data Collection', icon: 'glyphicon glyphicon-cloud-upload', height: 26, originalHeight: 26,
+          name: 'Dashboard', icon: 'fas fa-tachometer-alt', height: 17, originalHeight: 17,
           active: false, isSubMenuShow: false,
           apps: [
-            {name: 'Packages', routeLink: '/mockup/Packages', active: false},
-            {name: 'Balance Sheet', routeLink: '/mockup/PackageDetail', active: false},
-            {name: 'Input Form', routeLink: '/mockup/PackageDetailInput', active: false},
-            {name: 'Package Upload', routeLink: '/mockup/PackageUpload', active: false},
-            {name: 'Currency Translation', routeLink: '/mockup/CurrencyTranslation', active: false},
-            {name: 'Data Validation', routeLink: '/mockup/PackageControls', active: false},
-            {name: 'External APP', routeLink: '/external-app/1', active: false}
+            {name: 'Bubble', routeLink: '/dashboard', active: false},
+            {name: 'Dashboard1', routeLink: '/mockup/dashboard1', active: false},
+            {name: 'Dashboard2', routeLink: '/mockup/dashboard2', active: false},
+            {name: 'Dashboard3', routeLink: '/mockup/dashboard3', active: false}
           ]
         },
         {
-          name: 'Consolidation', icon: 'glyphicon glyphicon-compressed', height: 17, originalHeight: 17,
+          name: 'External APP', icon: 'fas fa-link', routeLink: '/external-app/1',
+          active: false, isSubMenuShow: false, apps: []
+        },
+        {
+          name: 'Forms', icon: 'fas fa-dot-circle', height: 29, originalHeight: 29,
           active: false, isSubMenuShow: false,
           apps: [
-            {name: 'Handson Table', routeLink: '/handsontable/handsontable', active: false},
-            {name: 'Journal Posting', routeLink: '/mockup/JournalPosting', active: false},
-            {name: 'Reconciliation', routeLink: '/mockup/Reconciliation', active: false},
-            {name: 'Run Consolidation', routeLink: '/mockup/ConsolidationPara', active: false},
-            {name: 'Carry Forward', routeLink: '/mockup/CarryForward', active: false}
+            {name: 'HandsonTable', routeLink: '/handsontable', active: false},
+            {name: 'Standard', routeLink: '/mockup/standard', active: false},
+            {name: 'Extended', routeLink: '/mockup/extended', active: false},
+            {name: 'Validation', routeLink: '/mockup/validation', active: false},
+            {name: 'Upload', routeLink: '/mockup/upload', active: false},
+            {name: 'Standard Table', routeLink: '/mockup/standard-table', active: false},
+            {name: 'Extended Table', routeLink: '/mockup/extended-table', active: false},
+            {name: 'Grid Table', routeLink: '/mockup/grid-table', active: false},
+            {name: 'Ngx Table', routeLink: '/mockup/ngx-table', active: false}
           ]
         },
         {
-          name: 'Reports', icon: 'glyphicon glyphicon-list-alt', height: 17, originalHeight: 17,
+          name: 'Elements', icon: 'fas fa-calendar-check', height: 17, originalHeight: 17,
           active: false, isSubMenuShow: false,
           apps: [
-            {name: 'Balance Sheets', routeLink: '/mockup/ReportBS', active: false},
-            {name: 'Journal Entries', routeLink: '/mockup/JournalEntries', active: false},
-            {name: 'Income Statements', routeLink: '/mockup/IncomeStatement', active: false},
-            {name: 'Cash Flow', routeLink: '/mockup/CashFlow', active: false}
+            {name: 'Calendar', routeLink: '/mockup/calendar', active: false},
+            {name: 'Gallery', routeLink: '/mockup/gallery', active: false},
+            {name: 'Profile', routeLink: '/mockup/profile', active: false},
+            {name: 'Panel', routeLink: '/mockup/panel', active: false}
           ]
         },
       ]
     };
 
     const apps: App[] = [
-      {name: 'Dashboard', routeLink: '/dashboard/dashboard', active: false},
-      {name: 'Packages', routeLink: '/mockup/Packages', active: false},
-      {name: 'Balance Sheet', routeLink: '/mockup/PackageDetail', active: false},
-      {name: 'Input Form', routeLink: '/mockup/PackageDetailInput', active: false},
-      {name: 'Package Upload', routeLink: '/mockup/PackageUpload', active: false},
-      {name: 'Currency Translation', routeLink: '/mockup/CurrencyTranslation', active: false},
-      {name: 'Data Validation', routeLink: '/mockup/PackageControls', active: false},
+      {name: 'Bubble', routeLink: '/dashboard', active: false},
+      {name: 'Dashboard1', routeLink: '/mockup/dashboard1', active: false},
+      {name: 'Dashboard2', routeLink: '/mockup/dashboard2', active: false},
+      {name: 'Dashboard3', routeLink: '/mockup/dashboard3', active: false},
       {name: 'External APP', routeLink: '/external-app/1', active: false},
-      {name: 'Handson Table', routeLink: '/handsontable/handsontable', active: false},
-      {name: 'Journal Posting', routeLink: '/mockup/JournalPosting', active: false},
-      {name: 'Reconciliation', routeLink: '/mockup/Reconciliation', active: false},
-      {name: 'Run Consolidation', routeLink: '/mockup/ConsolidationPara', active: false},
-      {name: 'Carry Forward', routeLink: '/mockup/CarryForward', active: false},
-      {name: 'Balance Sheets', routeLink: '/mockup/ReportBS', active: false},
-      {name: 'Journal Entries', routeLink: '/mockup/JournalEntries', active: false},
-      {name: 'Income Statements', routeLink: '/mockup/IncomeStatement', active: false},
-      {name: 'Cash Flow', routeLink: '/mockup/CashFlow', active: false}
+      {name: 'HandsonTable', routeLink: '/handsontable', active: false},
+      {name: 'Standard', routeLink: '/mockup/standard', active: false},
+      {name: 'Extended', routeLink: '/mockup/extended', active: false},
+      {name: 'Validation', routeLink: '/mockup/validation', active: false},
+      {name: 'Upload', routeLink: '/mockup/upload', active: false},
+      {name: 'Standard Table', routeLink: '/mockup/standard-table', active: false},
+      {name: 'Extended Table', routeLink: '/mockup/extended-table', active: false},
+      {name: 'Grid Table', routeLink: '/mockup/grid-table', active: false},
+      {name: 'Ngx Table', routeLink: '/mockup/ngx-table', active: false},
+      {name: 'Calendar', routeLink: '/mockup/calendar', active: false},
+      {name: 'Gallery', routeLink: '/mockup/gallery', active: false},
+      {name: 'Profile', routeLink: '/mockup/profile', active: false},
+      {name: 'Panel', routeLink: '/mockup/panel', active: false}
     ];
     return {role, apps};
   }

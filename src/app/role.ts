@@ -1,7 +1,6 @@
 export class Role {
   name: string;
   catalogs: Catalog[];
-  apps: App[];
 }
 export class Catalog {
   name: string;

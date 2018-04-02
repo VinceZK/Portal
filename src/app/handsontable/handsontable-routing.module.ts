@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HandsontableComponent} from "./handsontable.component";
 
 const routes: Routes = [
-  {path: 'handsontable', component: HandsontableComponent}
+  {path: '', component: HandsontableComponent}
 ];
 
 @NgModule({

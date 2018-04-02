@@ -28,17 +28,20 @@ export class AppComponent implements OnInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
+      .filter(route => route.outlet === 'primary')
       .map(route => {
+        let url = '';
         while (route.firstChild) {
           route = route.firstChild;
+          if ( route.snapshot.url.length > 0 ) {
+            url = url ? url + '/' + route.snapshot.url.join('/') : route.snapshot.url.join('/');
+          }
         }
-        return route;
+        return url;
       })
-      .filter(route => route.outlet === 'primary')
-      .mergeMap(route => this.roleService.getApp(route.snapshot.url.join('/')))
+      .mergeMap(url => this.roleService.getApp(url))
       .subscribe(event => {
         if (event[0]) {
-          // TODO: flag current app in orange.
           this.sideMenu.activateApp(event[0]);
           this.historyService.addHistory(event[0]);
         }

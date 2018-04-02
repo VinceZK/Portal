@@ -1,5 +1,5 @@
 /* navigation Frame work */
-.nav-frame-view {
+.dk-frame-view {
   display: flex;
   flex-direction: column;
   min-width: 768px;
@@ -8,13 +8,13 @@
   height: 100%;
   overflow: hidden;
 }
-.nav-frame-content {
+.dk-frame-content {
   display: flex;
   position: static;
   height: 100%;
   width: auto;
 }
-.nav-content-area{
+.dk-content-area{
   overflow: auto;
   padding-left: 1rem;
   padding-top: 1rem;
