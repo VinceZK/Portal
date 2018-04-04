@@ -1,48 +1,53 @@
-<nav class="navbar-inverse">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle " (click)="collapse()">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+<nav class="dk-navbar-inverse">
+  <div class="dk-navbar-header">
+    <button type="button" class="dk-navbar-toggle " (click)="collapse()">
+      <span class="dk-sr-only">Toggle navigation</span>
+      <span class="dk-icon-bar"></span>
+      <span class="dk-icon-bar"></span>
+      <span class="dk-icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#"><img alt="Brand" src="assets/BrandIcon.png"></a>
+    <a class="dk-navbar-brand" href="#"><img alt="Brand" src="assets/BrandIcon.png"></a>
   </div>
 
   <!-- Application Name or Title -->
   <div class="dk-navbar-center">
-    <ul class="nav navbar-nav dk-navbar-app-title">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentApp.name}}<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li *ngFor="let app of navHistory"><a routerLink="{{app.routeLink}}">{{app.name}}</a></li>
+    <ul class="dk-nav dk-navbar-nav dk-navbar-app-title">
+      <li [ngClass]="{'open': histroyOpen}">
+        <a (click)="toggleHistoryDropdown()">{{currentApp.name}} <b class="dk-caret"></b></a>
+        <ul class="dk-dropdown-menu">
+          <li *ngFor="let app of navHistory"><a routerLink="{{app.routeLink}}" (click)="toggleHistoryDropdown()">
+            {{app.name}}</a>
+          </li>
         </ul>
       </li>
     </ul>
   </div>
 
   <!-- Generic Functions in the header bar -->
-  <div class="navbar-right">
-    <ul class="nav navbar-nav">
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-        class="fas fa-bell"></span><span class="label dk-badge">32</span>
-      </a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
-          <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
-          <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
+  <div class="dk-navbar-right">
+    <ul class="dk-nav dk-navbar-nav">
+      <li [ngClass]="{'open': notificationOpen}">
+        <a (click)="toggleNotificationDropdown()"><span
+          class="fas fa-bell"></span><span class="dk-label dk-badge">32</span>
+        </a>
+        <ul class="dk-dropdown-menu">
+          <li><a href="#"><span class="dk-label dk-label-warning">4:00 AM</span>Favourites Snippet</a></li>
+          <li><a href="#"><span class="dk-label dk-label-warning">4:30 AM</span>Email marketing</a></li>
+          <li><a href="#"><span class="dk-label dk-label-warning">5:00 AM</span>Subscriber focused email
             design</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="text-center">View All</a></li>
+          <li class="dk-divider"></li>
+          <li><a href="#" class="dk-text-center">View All</a></li>
         </ul>
       </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-        class="fas fa-user"></span>VinceZK <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+      <li [ngClass]="{'open': preferenceOpen}">
+        <a (click)="togglePreferenceOpen()"><span
+          class="fas fa-user"></span>VinceZK <b class="dk-caret"></b>
+        </a>
+        <ul class="dk-dropdown-menu">
+          <li><a href="#"><span class="fas fa-user"></span>Profile</a></li>
+          <li><a href="#"><span class="fas fa-cog"></span>Settings</a></li>
+          <li class="dk-divider"></li>
+          <li><a href="#"><span class="fas fa-power-off"></span>Logout</a></li>
         </ul>
       </li>
     </ul>

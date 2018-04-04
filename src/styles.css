@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/handsontable/dist/handsontable.full.css';
-
+html {
+  font-size: 10px;
+}
+body {
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  margin: 0;
+}
+*, :after, :before {
+  box-sizing: border-box;
+}
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
 .flag {
   background-size: 33px 22px;
   background-repeat: no-repeat;

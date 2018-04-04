@@ -11,6 +11,9 @@ export class HeadBarComponent implements OnInit {
   @Output() onCollapse = new EventEmitter<boolean>();
   navHistory: App[];
   currentApp: App;
+  histroyOpen: boolean;
+  notificationOpen: boolean;
+  preferenceOpen: boolean;
 
   constructor(private history: HistoryService) { }
 
@@ -21,5 +24,23 @@ export class HeadBarComponent implements OnInit {
 
   collapse() {
     this.onCollapse.emit();
+  }
+
+  toggleHistoryDropdown() {
+    this.histroyOpen = !this.histroyOpen;
+    this.notificationOpen = false;
+    this.preferenceOpen = false;
+  }
+
+  toggleNotificationDropdown() {
+    this.notificationOpen = !this.notificationOpen;
+    this.histroyOpen = false;
+    this.preferenceOpen = false;
+  }
+
+  togglePreferenceOpen() {
+    this.preferenceOpen = !this.preferenceOpen;
+    this.histroyOpen = false;
+    this.notificationOpen = false;
   }
 }

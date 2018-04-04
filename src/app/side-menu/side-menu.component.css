@@ -179,7 +179,7 @@
 .dk-menu-bottom>.dk-menu-content>li {
   display: list-item;
 }
-.label, .glyphicon, .fas{
+.fas{
   margin:0 1.3rem;
   font-size: 1.8rem;
 }

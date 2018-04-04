@@ -18,14 +18,11 @@
 
         <a *ngIf="catalog.routeLink && catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
-          <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
-                [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
-          </span>
         </a>
         <a *ngIf="!catalog.routeLink" (click)="clickRow(i)">
           <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
-          <span *ngIf="catalog.apps && catalog.apps.length > 0" class="glyphicon arrow"
-                [ngClass]="{'glyphicon-menu-right': !catalog.isSubMenuShow, 'glyphicon-menu-down': catalog.isSubMenuShow}">
+          <span *ngIf="catalog.apps && catalog.apps.length > 0" class="fas arrow"
+                [ngClass]="{'fa-angle-right': !catalog.isSubMenuShow, 'fa-angle-down': catalog.isSubMenuShow}">
           </span>
         </a>
         <ul *ngIf="!catalog.routeLink" class="dk-sub-menu"
