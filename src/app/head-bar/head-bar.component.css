@@ -27,6 +27,9 @@
 .dk-nav>li>a:hover {
   text-decoration: none;
 }
+.dk-nav-toggle{
+  /*Used for figure out toggle in navigation bar*/
+}
 .dk-navbar-nav>li {
   float:none;
 }
@@ -37,7 +40,7 @@
   box-sizing: border-box;
   white-space: pre-line;
   word-wrap: break-word;
-  cursor: text;
+  cursor: pointer;
   font-size: 1.5rem;
   font-family: Arial,Helvetica,sans-serif;
   background-color: #2f3c48;
@@ -86,6 +89,7 @@
   border: 1px solid;
   border-color: #333;
   border-radius: 4px;
+  cursor: pointer;
 }
 .dk-navbar-toggle:hover {
   background-color: #333;
@@ -200,9 +204,6 @@
 }
 .fas {
   margin-right: 0.5rem;
-}
-b, strong {
-  font-weight: 700;
 }
 @media (min-width: 768px) {
   .dk-navbar-right

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {App} from "../role";
 import {HistoryService} from "../history.service";
 
@@ -11,10 +11,11 @@ export class HeadBarComponent implements OnInit {
   @Output() onCollapse = new EventEmitter<boolean>();
   navHistory: App[];
   currentApp: App;
-  histroyOpen: boolean;
-  notificationOpen: boolean;
-  preferenceOpen: boolean;
-
+  dropdown = {
+    historyOpen: false,
+    notificationOpen: false,
+    preferenceOpen: false
+  };
   constructor(private history: HistoryService) { }
 
   ngOnInit() {
@@ -22,25 +23,34 @@ export class HeadBarComponent implements OnInit {
     this.history.currentAppObserver.subscribe(currentApp => this.currentApp = currentApp );
   }
 
+  @HostListener('document:mouseup', ['$event', 'dropdown'])
+  mouseupDocument($event, dropdown): void {
+    if ($event.srcElement.className !== 'dk-nav-toggle'){
+      dropdown.historyOpen = false;
+      dropdown.notificationOpen = false;
+      dropdown.preferenceOpen = false;
+    }
+  }
+
   collapse() {
     this.onCollapse.emit();
   }
 
   toggleHistoryDropdown() {
-    this.histroyOpen = !this.histroyOpen;
-    this.notificationOpen = false;
-    this.preferenceOpen = false;
+    this.dropdown.historyOpen = !this.dropdown.historyOpen;
+    this.dropdown.notificationOpen = false;
+    this.dropdown.preferenceOpen = false;
   }
 
   toggleNotificationDropdown() {
-    this.notificationOpen = !this.notificationOpen;
-    this.histroyOpen = false;
-    this.preferenceOpen = false;
+    this.dropdown.notificationOpen = !this.dropdown.notificationOpen;
+    this.dropdown.historyOpen = false;
+    this.dropdown.preferenceOpen = false;
   }
 
   togglePreferenceOpen() {
-    this.preferenceOpen = !this.preferenceOpen;
-    this.histroyOpen = false;
-    this.notificationOpen = false;
+    this.dropdown.preferenceOpen = !this.dropdown.preferenceOpen;
+    this.dropdown.historyOpen = false;
+    this.dropdown.notificationOpen = false;
   }
 }

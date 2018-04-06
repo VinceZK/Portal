@@ -1,6 +1,6 @@
 <nav class="dk-navbar-inverse">
   <div class="dk-navbar-header">
-    <button type="button" class="dk-navbar-toggle " (click)="collapse()">
+    <button type="button" class="dk-navbar-toggle" (click)="collapse()">
       <span class="dk-sr-only">Toggle navigation</span>
       <span class="dk-icon-bar"></span>
       <span class="dk-icon-bar"></span>
@@ -12,10 +12,10 @@
   <!-- Application Name or Title -->
   <div class="dk-navbar-center">
     <ul class="dk-nav dk-navbar-nav dk-navbar-app-title">
-      <li [ngClass]="{'open': histroyOpen}">
-        <a (click)="toggleHistoryDropdown()">{{currentApp.name}} <b class="dk-caret"></b></a>
+      <li [ngClass]="{'open': dropdown.historyOpen}">
+        <a (click)="toggleHistoryDropdown()" class="dk-nav-toggle">{{currentApp.name}} <b class="dk-caret"></b></a>
         <ul class="dk-dropdown-menu">
-          <li *ngFor="let app of navHistory"><a routerLink="{{app.routeLink}}" (click)="toggleHistoryDropdown()">
+          <li *ngFor="let app of navHistory"><a routerLink="{{app.routeLink}}">
             {{app.name}}</a>
           </li>
         </ul>
@@ -26,8 +26,8 @@
   <!-- Generic Functions in the header bar -->
   <div class="dk-navbar-right">
     <ul class="dk-nav dk-navbar-nav">
-      <li [ngClass]="{'open': notificationOpen}">
-        <a (click)="toggleNotificationDropdown()"><span
+      <li [ngClass]="{'open': dropdown.notificationOpen}">
+        <a (click)="toggleNotificationDropdown()" class="dk-nav-toggle"><span
           class="fas fa-bell"></span><span class="dk-label dk-badge">32</span>
         </a>
         <ul class="dk-dropdown-menu">
@@ -39,8 +39,8 @@
           <li><a href="#" class="dk-text-center">View All</a></li>
         </ul>
       </li>
-      <li [ngClass]="{'open': preferenceOpen}">
-        <a (click)="togglePreferenceOpen()"><span
+      <li [ngClass]="{'open': dropdown.preferenceOpen}">
+        <a (click)="togglePreferenceOpen()" class="dk-nav-toggle"><span
           class="fas fa-user"></span>VinceZK <b class="dk-caret"></b>
         </a>
         <ul class="dk-dropdown-menu">

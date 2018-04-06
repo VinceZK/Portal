@@ -24,6 +24,10 @@ button, input, select, textarea {
   font-size: inherit;
   line-height: inherit;
 }
+b, strong {
+  font-weight: 700;
+}
+
 .flag {
   background-size: 33px 22px;
   background-repeat: no-repeat;
@@ -31,7 +35,6 @@ button, input, select, textarea {
   width: 100%;
   height: 100%
 }
-
 .flag.eur, .flag.europe {
   background-image: url(https://handsontable.com/static/bower_components/flag-icon/svg/country-4x3/europeanunion.svg)
 }

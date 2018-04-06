@@ -24,12 +24,10 @@
     "@angular/router": "^5.1.0",
     "@handsontable/angular": "^1.0.0-beta4",
     "angular-in-memory-web-api": "^0.5.3",
-    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "d3": "^5.0.0",
     "express": "^4.16.3",
     "handsontable": "^0.38.1",
-    "jquery": "^3.2.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

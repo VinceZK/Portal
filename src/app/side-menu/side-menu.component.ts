@@ -47,11 +47,7 @@ export class SideMenuComponent implements OnInit {
 
   searchApp(term: string): void {
     this.searchTerms.next(term);
-    if (term) {
-      this.menuDisplay = false;
-    } else {
-      this.menuDisplay = true;
-    }
+    this.menuDisplay = !term;
   }
 
   enterApp($event): void {
