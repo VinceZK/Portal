@@ -25,7 +25,7 @@ export class HeadBarComponent implements OnInit {
 
   @HostListener('document:mouseup', ['$event', 'dropdown'])
   mouseupDocument($event, dropdown): void {
-    if ($event.srcElement.className !== 'dk-nav-toggle'){
+    if ($event.srcElement.className !== 'dk-nav-toggle') {
       dropdown.historyOpen = false;
       dropdown.notificationOpen = false;
       dropdown.preferenceOpen = false;

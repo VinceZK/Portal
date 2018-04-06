@@ -1,7 +1,7 @@
 {
-  "name": "portal",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "angular-portal",
+  "version": "1.0.0",
+  "description": "A role-based navigation framework in Angular5.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,6 @@
     "e2e": "ng e2e",
     "prod": "node server.js"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^5.1.0",
     "@angular/common": "^5.1.0",
@@ -53,5 +52,24 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VinceZK/Portal.git"
+  },
+  "keywords": [
+    "portal",
+    "navigation",
+    "console",
+    "admin template",
+    "software system",
+    "nodejs",
+    "angular"
+  ],
+  "author": "vincezk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VinceZK/Portal/issues"
+  },
+  "homepage": "https://github.com/VinceZK/Portal#readme"
 }
