@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
           routeLink: '/appSearch', active: false, isSubMenuShow: false, apps: []
         },
         {
-          name: 'Dashboard', icon: 'fas fa-tachometer-alt', height: 17, originalHeight: 17,
+          name: 'Dashboard', icon: 'fas fa-tachometer-alt', height: 17, originalHeight: 17, // originalHeight = (numberOfAPP + 1)*3 +2
           active: false, isSubMenuShow: false,
           apps: [
             {name: 'Bubble', routeLink: '/dashboard', active: false},

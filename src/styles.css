@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/handsontable/dist/handsontable.full.css';
+
+/* important! global styles */
 html {
   font-size: 10px;
 }
@@ -28,6 +30,7 @@ b, strong {
   font-weight: 700;
 }
 
+/* can be deleted: handsontable related css */
 .flag {
   background-size: 33px 22px;
   background-repeat: no-repeat;

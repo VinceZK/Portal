@@ -1,21 +1,21 @@
 export class Role {
   name: string;
-  catalogs: Catalog[];
+  catalogs: Catalog[]; // Containing Catalogs
 }
 export class Catalog {
   name: string;
-  icon: string;
-  routeLink: string;
-  top: number;
-  height: number;
-  originalHeight: number;
-  arrowTop: number;
-  active: boolean;
-  isSubMenuShow: boolean;
-  apps: App[];
+  icon: string;  // Catalog Icon using Font Awesome, like: "fas fa-search"
+  routeLink: string; // routeLink in Angular navigation and route system
+  top: number; // hover submenu position to the page top
+  height: number; // hover submenu height dynamically calculated based on the page height
+  originalHeight: number; // the original hover submenu height based on the number of APPs contained
+  arrowTop: number; // arrow position to the page top
+  active: boolean; // Indicates current catalog is in active status, that is one of the APPs contained is in shown.
+  isSubMenuShow: boolean; // Indicates the submenu is in shown (hovered)
+  apps: App[]; // Containing APPs
 }
 export class App {
   name: string;
-  routeLink: string;
-  active: boolean;
+  routeLink: string; // routeLink in Angular navigation and route system
+  active: boolean; // Indicates current APP is in active status, that is the APP is in shown.
 }
