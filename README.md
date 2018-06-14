@@ -16,7 +16,7 @@ Portal provides following features:
 
 ![Portal Demo](Portal.gif)
 
-You can also experience yourself in (http://darkhouse.com.cn/portal/dashboard). 
+You can also experience yourself in this [DEMO](http://darkhouse.com.cn/portal/dashboard). 
 
 ## To Begin
 1. Install it:

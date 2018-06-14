@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {App} from "./role";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 
 @Injectable()
 export class HistoryService {

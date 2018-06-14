@@ -1,10 +1,10 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {RoleService} from "../role.service";
 import { Role, App } from '../role';
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {Router} from "@angular/router";
+import {Subject} from "rxjs/internal/Subject";
+import {Observable} from "rxjs/internal/Observable";
 
 @Component({
   selector: 'app-side-menu',

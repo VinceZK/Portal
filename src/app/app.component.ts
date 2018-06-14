@@ -1,12 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-import {of} from "rxjs/observable/of";
 import {RoleService} from "./role.service";
 import {HistoryService} from "./history.service";
+import {filter, map, mergeMap} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-root',
@@ -25,11 +23,11 @@ export class AppComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .map(() => this.activatedRoute)
-      .filter(route => route.outlet === 'primary')
-      .map(route => {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      filter(route => route.outlet === 'primary'),
+      map(route => {
         let url = '';
         while (route.firstChild) {
           route = route.firstChild;
@@ -38,8 +36,8 @@ export class AppComponent implements OnInit {
           }
         }
         return url;
-      })
-      .mergeMap(url => this.roleService.getApp(url))
+      }),
+      mergeMap(url => this.roleService.getApp(url)))
       .subscribe(event => {
         if (event[0]) {
           this.sideMenu.activateApp(event[0]);

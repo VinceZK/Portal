@@ -1,6 +1,8 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Inject, OnInit, Output} from '@angular/core';
 import {App} from "../role";
 import {HistoryService} from "../history.service";
+import {IdentityService} from "../identity.service";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-head-bar',
@@ -16,7 +18,10 @@ export class HeadBarComponent implements OnInit {
     notificationOpen: false,
     preferenceOpen: false
   };
-  constructor(private history: HistoryService) { }
+  constructor(@Inject(DOCUMENT)
+              private document: any,
+              private history: HistoryService,
+              private identity: IdentityService) { }
 
   ngOnInit() {
     this.history.currentHistoryObserver.subscribe(history => this.navHistory = history );
@@ -52,5 +57,14 @@ export class HeadBarComponent implements OnInit {
     this.dropdown.preferenceOpen = !this.dropdown.preferenceOpen;
     this.dropdown.historyOpen = false;
     this.dropdown.notificationOpen = false;
+  }
+
+  logout() {
+    this.identity.logout().subscribe(
+      data => {
+        console.log(data);
+        // this.document.location.href = 'http://localhost:3000';
+      }
+    );
   }
 }
