@@ -63,7 +63,7 @@ export class HeadBarComponent implements OnInit {
     this.identity.logout().subscribe(
       data => {
         console.log(data);
-        // this.document.location.href = 'http://localhost:3000';
+        this.document.location.href = 'http://localhost:3000';
       }
     );
   }

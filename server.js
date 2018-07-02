@@ -15,11 +15,11 @@ app.use(session({
   secret:'darkhouse',
   saveUninitialized: false,
   store: new redisStore(),
-  unset: 'destroy', //Only for Redis session store to logout the session
+  unset: 'destroy', //Only for Redis session store
   resave: false,
-  cookie: {httpOnly: false }
+  cookie: {httpOnly: false, maxAge: 15 * 60 * 1000 }
 }));
-app.use(require('cookie-parser')());
+app.use(require('body-parser').json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(compress());
@@ -27,5 +27,10 @@ app.use(compress());
 // Routing
 const routes = require('./server/server_routes');
 app.use('/', routes);
+
+process.on('SIGINT',function(){
+  console.log("Closing.....");
+  process.exit()
+});
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'));
