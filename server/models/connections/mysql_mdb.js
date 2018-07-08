@@ -11,6 +11,8 @@ const pool = mysql.createPool({
     password: 'nodejs',
     database: 'MDB',
     createDatabaseTable: true,
+    multipleStatements: true,
+    dateStrings: true,
     port: 3306
 });
 const _ = require('underscore');
@@ -126,7 +128,7 @@ function _getEntityAttributes(entity, callback) {
 
 function _getEntityRoles(entity, callback) {
   let selectSQL =
-    "SELECT A.ROLE_ID, B.ROLE_DESC, C.RELATION_ID" +
+    "SELECT A.ROLE_ID, B.ROLE_DESC, C.RELATION_ID, C.CARDINALITY" +
     "  FROM ENTITY_ROLES AS A" +
     "  JOIN ROLE AS B" +
     "    ON A.ROLE_ID = B.ROLE_ID" +
@@ -146,11 +148,11 @@ function _getEntityRoles(entity, callback) {
         groupedRoles.push({
           ROLE_ID: role.ROLE_ID,
           ROLE_DESC: role.ROLE_DESC,
-          RELATIONS: [role.RELATION_ID],
+          RELATIONS: [{RELATION_ID: role.RELATION_ID, CARDINALITY: role.CARDINALITY}],
           RELATIONSHIPS: []
         });
       } else {
-        groupedRoles[1].RELATIONS.push(role.RELATION_ID);
+        groupedRoles[1].RELATIONS.push({RELATION_ID: role.RELATION_ID, CARDINALITY: role.CARDINALITY});
       }
     });
     entity.ROLES = groupedRoles;

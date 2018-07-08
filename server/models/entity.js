@@ -45,21 +45,28 @@ const message = new Message(msgStore, 'EN');
 module.exports = {
   entityDB: entityDB,
   createInstance: createInstance,
-  getInstanceByGUID:getInstanceByGUID,
-  hardDeleteByGuid: hardDeleteByGuid
+  getInstanceByGUID: getInstanceByGUID,
+  getInstanceByID: getInstanceByID,
+  changeInstance: changeInstance,
+  softDeleteInstanceByGUID: softDeleteInstanceByGUID,
+  softDeleteInstanceByID: softDeleteInstanceByID,
+  restoreInstanceByGUID: restoreInstanceByGUID,
+  restoreInstanceByID: restoreInstanceByID,
+  hardDeleteByGUID: hardDeleteByGUID,
+  hardDeleteByID: hardDeleteByID
 };
 
 /**
  * save the entity JSON object in DB
  * @param instance = JSON object, for example:
- * { entity_id: 'people',
+ * { ENTITY_GUID: 'people',
  *   attribute1: 'value1', attribute2: 'value2', attribute3: ['s1', 's2', 's3'] ... ,
  *   relation1: [{action: 'add', a: '1', b: '2'}, {action: 'delete', a: '3', b: '4'}],
  *   relation2: {c: '3', b: '4'}, ... ,
  *   relationships:[
- *     {relationship_id: 'user_role', entity_id: 'user_role', role_id: 'user_role',
- *      values:[{instance_guid: '8BFB602731CBCD2090D7F9347957C4C5',
- *               valid_from:'2018-06-27 00:00:00', valid_to:'2030-12-31 00:00:00'}]
+ *     {RELATIONSHIP_ID: 'user_role', ENTITY_ID: 'system_role',
+ *      values:[{INSTANCE_GUID: '8BFB602731CBCD2090D7F9347957C4C5',
+ *               VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2030-12-31 00:00:00'}]
  *     }]
  * }
  * @param callback(err,result,instanceGuid), result is the JSON of the instance created
@@ -70,8 +77,9 @@ function createInstance(instance, callback) {
   let insertSQL;
   let insertSQLs = [];
   let errorMessages = [];
-  let relations = [];
+  let foreignRelations = [];
   let relationshipInstances = [];
+  let results;
 
   if(!instance['ENTITY_ID']){
     return callback(message.report('ENTITY', 'ENTITY_ID_MISSING', 'E'));
@@ -82,27 +90,48 @@ function createInstance(instance, callback) {
   if(!entityMeta)
     return callback(message.report('ENTITY', 'ENTITY_NOT_EXIST', 'E', instance['ENTITY_ID']));
 
+  entityMeta.ROLES.forEach(function(role){
+    role.RELATIONS.forEach(function(relation){
+      if((relation.CARDINALITY === '[1..1]' || relation.CARDINALITY === '[1..n]') && !instance[relation.RELATION_ID])
+        errorMessages.push(message.report('ENTITY', 'MANDATORY_RELATION_MISSING', 'E', relation.RELATION_ID, entityMeta.ENTITY_ID))
+    })
+  });
+  if(errorMessages.length > 0) return callback(errorMessages);
+
   //Parse the give instance JSON and convert it SQLs
   _.each(instance, function (value, key) {
-    if(key === 'relationships'){ //Relationships is a reserved key
-      let results = _generateInsertRelationshipsSQL(value, entityMeta, instanceGUID, relationshipInstances);
-      _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
-    } else if (key === 'ENTITY_ID'){
-      //Do Nothing
-    } else {
-      if (typeof value === 'object') { //Relations or multiple value attributes
-        if (_isRelation(key)) { //Relations
-          __processRelations(value, key);
-        } else { //multiple value attributes
-          let results = _generateInsertMultiValueAttributeSQL(key, value, entityMeta, instanceGUID);
+    switch (key){
+      case 'ENTITY_ID':
+        break;
+      case 'INSTANCE_GUID':
+        break;
+      case 'relationships':
+        results = _generateRelationshipsSQL(value, entityMeta, instanceGUID, relationshipInstances);
+        if(_hasErrors(results)) {
+          _mergeResults(errorMessages, results)
+        }else{
+          results.forEach(function (element) {
+            if(element.action === 'add')
+              insertSQLs.push(element.SQL);
+          });
+        }
+        break;
+      default:
+        if (typeof value === 'object') { //Relations or multiple value attributes
+          if (_isRelation(key)) { //Relations
+            results = _generateCreateRelationSQL(value, key, entityMeta, foreignRelations, instanceGUID);
+            _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
+          } else { //multiple value attributes
+            results = _generateInsertMultiValueAttributeSQL(key, value, entityMeta, instanceGUID);
+            _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
+          }
+        } else { //Single value attributes
+          results = _generateInsertSingleValueAttributeSQL(key, value, entityMeta, instanceGUID);
           _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
         }
-      } else { // Single value attributes
-        let results = _generateInsertSingleValueAttributeSQL(key, value, entityMeta, instanceGUID);
-        _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
-      }
     }
   });
+
   if(errorMessages.length > 0) return callback(errorMessages);
 
   //Insert entity instance
@@ -114,7 +143,7 @@ function createInstance(instance, callback) {
   // console.log(insertSQLs);
   async.series([
     function (callback) {//Foreign key check
-      async.map(relations, function (relation, callback) {
+      async.map(foreignRelations, function (relation, callback) {
         _checkForeignKey(relation.relationRow, relation.association, callback);
       }, function (err, results) {
         if(err) return callback(err);
@@ -147,107 +176,80 @@ function createInstance(instance, callback) {
       return callback(null,instance);
     }
   });
-
-  function __processRelations(value, key){
-    if(!_checkEntityHasRelation(key, entityMeta)){
-      return errorMessages.push(message.report('ENTITY', 'RELATION_NOT_VALID', 'E', key, entityMeta.ENTITY_ID));
-    }
-    let relationMeta = entityDB.getRelationMeta(key);
-    if (_.isArray(value)){
-      value.forEach(function (element) {
-        __processSingleRelation(element, key, relationMeta);
-      })
-    }else{ //Single line
-      __processSingleRelation(value, key, relationMeta);
-    }
-  }
-
-  function __processSingleRelation(value, key, relationMeta) {
-    relationMeta.ASSOCIATIONS.forEach(function(association){
-      if(association.FOREIGN_KEY_CHECK === 1)
-        relations.push({relationID: key, relationRow: value, association: association});
-    });
-    let results = _generateInsertRelationSQL(key, value, instanceGUID);
-    _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(insertSQLs, results);
-  }
-}
-/**
- * save the entity JSON object in mysql DB and return an auto-incremental objectID
- * @param instance = JSON object
- * @param callback(err, results, recGuid)
- */
-function createObjectWithReturnId(instance, callback) {
-
 }
 
 /**
- * Soft delete an entity instance by set the DEL flag to 1
- * @param idAttr = {OBJECT_ID:ID_VALUE}
- * for example: {USER_ID: "JACK"}
- * @param callback(err, retCode)
- * retCode === -1: the unique attribute OBJECT_ID is not exist
- * retCode === 0: no object is updated, possibly the object ID is not exist
- * retCode === 1: the corresponding object is updated
+ * Soft delete an instance by the given business ID
+ * @param idAttr
+ * for example {RELATION_ID: 'r_user', USER_ID: 'DH001'}
+ * @param callback(err)
  */
-function softDeleteById(idAttr, callback) {
-
+function softDeleteInstanceByID(idAttr, callback) {
+  _getGUIDFromBusinessID(idAttr, function (err, instanceGUID) {
+    if(err) return callback(err);
+    softDeleteInstanceByGUID(instanceGUID,callback);
+  })
 }
 /**
- * Soft delete an entity instance by set the DEL flag to 1 through internal GUID
- * @param recGuid
- * @param callback(err, retCode)
- * retCode === 0: no object is updated, possibly the object ID is not exist
- * retCode === 1: the corresponding object is updated
+ * Soft delete an entity instance by set the DEL flag to 1 through instance GUID
+ * @param instanceGUID
+ * @param callback(err)
  */
-function softDeleteByGuid(recGuid, callback) {
-
+function softDeleteInstanceByGUID(instanceGUID, callback) {
+  let updateSQL = "update ENTITY_INSTANCES set DEL = 1 where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+  entityDB.executeSQL(updateSQL, function (err) {
+    if(err) callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    else callback(null);
+  })
+}
+/**
+ * Restore the soft deleted instance by the given business ID
+ * @param idAttr
+ * @param callback(err)
+ */
+function restoreInstanceByID(idAttr, callback) {
+  _getGUIDFromBusinessID(idAttr, function (err, instanceGUID) {
+    if(err) return callback(err);
+    restoreInstanceByGUID(instanceGUID,callback);
+  })
 }
 /**
  * Restore the soft deleted blog, set DEL flag = 0
- * @param idAttr = {OBJECT_ID:ID_VALUE}
- * for example: {USER_ID: "JACK"}
- * @param callback(err, retCode)
- * retCode === -1: the unique attribute OBJECT_ID is not exist
- * retCode === 0: no user is updated, possibly the userId is not exist
- * retCode === 1: the corresponding user is restored
+ * @param instanceGUID
+ * @param callback(err)
  */
-function restoreObject(idAttr, callback) {
-
-}
-/**
- * Restore the soft deleted blog, set DEL flag = 0
- * @param recGuid
- * @param callback(err, retCode)
- * retCode === 0: no user is updated, possibly the userId is not exist
- * retCode === 1: the corresponding user is restored
- */
-function restoreObjectByGuid(recGuid, callback) {
-
+function restoreInstanceByGUID(instanceGUID, callback) {
+  let updateSQL = "update ENTITY_INSTANCES set DEL = 0 where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+  entityDB.executeSQL(updateSQL, function (err) {
+    if(err) callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    else callback(null);
+  })
 }
 
 /**
- * Delete the object from the DB
- * @param idAttr = {OBJECT_ID:ID_VALUE}
- * for example: {USER_ID: "JACK"}
- * @param callback(err, retCode)
- * retCode === -2: Need soft deletion first
- * retCode === -1: the unique attribute OBJECT_ID is not exist
- * retCode === 0: no object is deleted, possibly the objectId is not exist
- * retCode === 1: the corresponding object is deleted
+ * Delete the object from the DB by a unique business ID
+ * @param idAttr
+ * for example {RELATION_ID: 'r_user', USER_ID: 'DH001'}
+ * @param callback(err)
  */
-function hardDeleteById(idAttr, callback) {
-
+function hardDeleteByID(idAttr, callback) {
+  _getGUIDFromBusinessID(idAttr, function (err, instanceGUID) {
+    if(err) return callback(err);
+    hardDeleteByGUID(instanceGUID,callback);
+  })
 }
-
 /**
  * Delete the object from the DB by INSTANCE_GUID
  * @param instanceGUID
  * @param callback(err)
  */
-function hardDeleteByGuid(instanceGUID, callback) {
+function hardDeleteByGUID(instanceGUID, callback) {
   let deleteSQLs = [];
   _getEntityInstanceHead(instanceGUID, function (err, instanceHead) {
     if(err)return callback(err); //Already message instance
+    if(instanceHead['DEL'] === 0)
+      return callback(message.report('ENTITY', 'INSTANCE_NOT_MARKED_DELETE', 'E', instanceHead.INSTANCE_GUID, instanceHead.ENTITY_ID));
+
     let entityMeta = entityDB.getEntityMeta(instanceHead.ENTITY_ID);
 
     deleteSQLs.push("delete from ENTITY_INSTANCES where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID));
@@ -262,7 +264,7 @@ function hardDeleteByGuid(instanceGUID, callback) {
     });
     entityMeta.ROLES.forEach(function (role) {
       role.RELATIONS.forEach(function (relation){
-        deleteSQLs.push("delete from " + entityDB.pool.escapeId(relation)
+        deleteSQLs.push("delete from " + entityDB.pool.escapeId(relation.RELATION_ID)
           + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID));
       });
     });
@@ -287,20 +289,22 @@ function hardDeleteByGuid(instanceGUID, callback) {
           callback(null);
         }
       });
-
     });
-
   });
 }
 
 /**
- * Get object in a JSON format from its ID attributes
- * @param idAttr = {OBJECT_ID:ID_VALUE}
+ * Get an instance in a JSON format from its business ID
+ * @param idAttr
+ * for example: {RELATION_ID: 'r_user', USER_ID: 'DH001'}
  * @param callback(err, instance)
- * err = 'UNIQUE_ATTR_NOT_EXIST' means the ID attribute is not exist
- * instance is a JSON object or NULL if the ID is not exist!
+ * For the return instance example, please refer method getInstanceByGUID
  */
-function getObjectById(idAttr, callback) {
+function getInstanceByID(idAttr, callback) {
+  _getGUIDFromBusinessID(idAttr, function (err, instanceGUID) {
+    if(err) return callback(err);
+    getInstanceByGUID(instanceGUID, callback);
+  })
 }
 /**
  * Get an instance in a JSON format from its instanceGUID
@@ -322,7 +326,7 @@ function getObjectById(idAttr, callback) {
                    TYPE: 'Born Place', PRIMARY:0}],
       r_employee: {USER_ID: 'DH001', COMPANY:'Darkhouse', DEPARTMENT: 'Development', TITLE: 'Developer', GENDER:'Male'},
       relationships:[
-         {RELATIONSHIP_ID: 'user_role', ENTITY_ID: 'user_role', ROLE_ID: 'user_role',
+         {RELATIONSHIP_ID: 'user_role', PARTNER_ENTITY_ID: 'system_role',PARTNER_ENTITY_ID: 'system_role',
             values:[{INSTANCE_GUID: '5F50DE92743683E1ED7F964E5B9F6167',
                        VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2030-12-31 00:00:00'}]
            }]
@@ -382,12 +386,12 @@ function getInstanceByGUID(instanceGUID, callback) {
     });
 
     async.map(relations, function (relation, callback) {
-      let selectSQL = "select * from " + entityDB.pool.escapeId(relation)
+      let selectSQL = "select * from " + entityDB.pool.escapeId(relation.RELATION_ID)
         + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
       entityDB.executeSQL(selectSQL, function (err, results) {
         if(err)return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
         if(results.length > 0)
-          instance[relation] = results;
+          instance[relation.RELATION_ID] = results;
         callback(null);
       })
     },function (err) {
@@ -402,7 +406,7 @@ function getInstanceByGUID(instanceGUID, callback) {
       "  from RELATIONSHIP_INVOLVES_INSTANCES as A " +
       "  join RELATIONSHIP_INSTANCES as B " +
       "    on A.RELATIONSHIP_INSTANCE_GUID = B.RELATIONSHIP_INSTANCE_GUID " +
-      " where B.RELATIONSHIP_INSTANCE_GUID = " +
+      " where B.RELATIONSHIP_INSTANCE_GUID in " +
       "(select RELATIONSHIP_INSTANCE_GUID from RELATIONSHIP_INVOLVES_INSTANCES " +
       " where ENTITY_INSTANCE_GUID =" + entityDB.pool.escape(instanceGUID) + ")";
     entityDB.executeSQL(selectSQL, function (err, results) {
@@ -441,6 +445,188 @@ function getInstanceByGUID(instanceGUID, callback) {
     })
   }
 }
+
+/**
+ * Get a piece of information from an instance.
+ * For example, only get the named attributes or relations
+ * @param instanceGUID
+ * @param piece
+ * {ATTRIBUTES: ['HOBBY', 'HEIGHT'],
+ *  RELATIONS: ['r_user', 'r_email'],
+ *  RELATIONSHIPS: ['user_role'] }
+ */
+function getInstancePieceByGUID(instanceGUID, piece) {
+  //TODO
+}
+
+/**
+ * Change an instance from the provided instance JSON.
+ * Only list attributes, relations, and relationships are got updated.
+ * @param instance
+ * { ENTITY_ID: 'people', INSTANCE_GUID: '43DAE23498B6FC121D67717E79B8F3C0',
+ *   attribute1: 'value1', attribute2: 'value2', attribute3: ['s1', 's2', 's3'] ... ,
+ *   relation1: [{action: 'add', a: '1', b: '2'}, {action: 'delete', a: '3', b: '4'}],
+ *   relation2: {c: '3', b: '4'}, ... ,
+ *   relationships:[
+ *     {RELATIONSHIP_ID: 'user_role', PARTNER_ENTITY_ID: 'system_role',
+ *      values:[{INSTANCE_GUID: '8BFB602731CBCD2090D7F9347957C4C5',
+ *               VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2030-12-31 00:00:00'}]
+ *     }]
+ * }
+ * @param callback(err)
+ * @returns {*}
+ */
+function changeInstance(instance, callback) {
+  let errorMessages = [];
+  let entityMeta;
+  if(!instance['ENTITY_ID']){
+    errorMessages.push(message.report('ENTITY', 'ENTITY_ID_MISSING', 'E'));
+    return callback(errorMessages);
+  }else{
+    entityMeta = entityDB.getEntityMeta(instance['ENTITY_ID'])
+  }
+  if(!entityMeta){
+    errorMessages.push(message.report('ENTITY', 'ENTITY_NOT_EXIST', 'E', instance['ENTITY_ID']));
+    return callback(errorMessages);
+  }
+
+  if(!instance['INSTANCE_GUID']){
+    errorMessages.push(message.report('ENTITY', 'INSTANCE_GUID_MISSING', 'E'));
+    return callback(errorMessages);
+  }
+
+  _getEntityInstanceHead(instance['INSTANCE_GUID'], function (err, instanceHead) {
+    if(err)return callback(err); //Already message instance
+    if(instanceHead['DEL'] === 1){
+      errorMessages.push(
+        message.report('ENTITY', 'INSTANCE_MARKED_DELETE', 'E', instanceHead.INSTANCE_GUID, instanceHead.ENTITY_ID));
+      return callback(errorMessages);
+    }
+
+    let updateSQLs = [];
+    let foreignRelations = [];
+    let add01Relations = [];
+    let delete1nRelations = [];
+    let relationshipInstances = [];
+    let results;
+    let relationshipSQLs;
+
+    //Parse the given instance JSON and convert it SQLs
+    _.each(instance, function (value, key) {
+      switch (key){
+        case 'ENTITY_ID':
+          break;
+        case 'INSTANCE_GUID':
+          break;
+        case 'relationships':
+          relationshipSQLs = _generateRelationshipsSQL(value, entityMeta, instance['INSTANCE_GUID'], relationshipInstances);
+          if(_hasErrors(relationshipSQLs))_mergeResults(errorMessages, relationshipSQLs);
+          break;
+        default:
+          if (typeof value === 'object') { //Relations or multiple value attributes
+            if (_isRelation(key)) { //Relations
+              results = _generateChangeRelationSQL(value, key, entityMeta, foreignRelations,
+                instance['INSTANCE_GUID'], add01Relations, delete1nRelations);
+              _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(updateSQLs, results);
+            } else { //Multiple value attributes
+              results = _generateUpdateMultiValueAttributeSQL(key, value, entityMeta, instance['INSTANCE_GUID']);
+              _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(updateSQLs, results);
+            }
+          } else { //Single value attributes
+            let results = _generateUpdateSingleValueAttributeSQL(key, value, entityMeta, instance['INSTANCE_GUID']);
+            _hasErrors(results)? _mergeResults(errorMessages, results) : _mergeResults(updateSQLs, results);
+          }
+      }
+    });
+
+    if(errorMessages.length > 0) return callback(errorMessages);
+
+    async.series([
+      function (callback) {//Foreign key check
+        async.map(foreignRelations, function (relation, callback) {
+          _checkForeignKey(relation.relationRow, relation.association, callback);
+        }, function (err, results) {
+          if(err) return callback(err);
+          if(results.length > 0 && results[0]) return callback(results);//The results should already be error messages
+          else return callback(null);
+        });
+      },
+      function (callback) {//Check adding [0..1] relations
+        async.map(add01Relations, function(relation, callback){
+          _checkAdd01Relation(relation, instance['INSTANCE_GUID'], callback)
+        }, function (err, results) {
+          if(err) return callback(err);
+          if(results.length > 0 && results[0]) return callback(results); //The results should already be error messages
+          else return callback(null);
+        })
+      },
+      function (callback) {//Check deleting [1..n] relations
+        async.map(delete1nRelations, function(relation, callback){
+          _checkDelete1nRelation(relation, instance['INSTANCE_GUID'], callback)
+        }, function (err, results) {
+          if(err) return callback(err);
+          if(results.length > 0 && results[0]) return callback(results); //The results should already be error messages
+          else return callback(null);
+        })
+      },
+      function (callback) {//Relationship involved instances check
+        async.map(relationshipInstances, function (relationshipInstance, callback) {
+          _checkEntityExist(relationshipInstance, callback)
+        }, function (err, results) {
+          if(err) return callback(err);
+          if(results.length > 0 && results[0]) return callback(results); //The results should already be error messages
+          else return callback(null);
+        });
+      },
+      function (callback) {//Relationship update/add check
+        async.map(relationshipInstances, function (relationshipInstance, callback){
+          _checkInstanceInvolvedInRelationship(
+            instance['INSTANCE_GUID'], relationshipInstance, relationshipSQLs, updateSQLs, callback)
+        }, function (err) {
+          if(err) return callback(err);
+          else return callback(null);
+        })
+      },
+      function (callback) {//Run all insert SQLs parallel
+        entityDB.doUpdatesParallel(updateSQLs, function (err) {
+          if (err) {
+            callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+          } else {
+            callback(null);
+          }
+        });
+      }
+    ],function (err) {
+      if(err) return callback(err); //The err should already be error messages
+      else return callback(null);
+    });
+
+  })
+}
+
+function _hasErrors(results) {
+  return results.find(function (element) {
+    return element['msgCat'];
+  })
+}
+
+function _isRelation(relationID) {
+  return entityDB.getRelationMeta(relationID);
+}
+
+function _mergeResults(to, from) {
+  from.forEach(function (element) {
+    to.push(element);
+  })
+}
+
+/**
+ * Get the instance head information from table ENTITY_INSTANCES.
+ * Always used for existence check.
+ * @param instanceGUID
+ * @param callback
+ * @private
+ */
 function _getEntityInstanceHead(instanceGUID, callback) {
   let selectSQL = "select * from ENTITY_INSTANCES where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
   entityDB.executeSQL(selectSQL, function (err, results) {
@@ -450,75 +636,15 @@ function _getEntityInstanceHead(instanceGUID, callback) {
     callback(null, results[0]);
   })
 }
-/**
- * update object attributes based on an ID
- * @param idAttr
- * @param changeAttr = {ATTR_NAME1:ATTR_VALUE1, ATTR_NAME2:ATTR_VALUE2, ....}
- * @param callback(err,retCode,key)
- * retCode === -4: Unique attributes can not be updated!
- * retCode === -3: Attribute is not exist for the entity!
- * retCode === -2: The object is soft deleted,so it can not be updated!
- * retCode === -1: The idAttr is not exist!
- * retCode === 0: The object ID is not exist!
- * retCode >= 1: number of attributes are updated!
- * key is the attribute key
- */
-function changeObjectById(idAttr, changeAttr, callback) {
-}
 
-/**
- * update object attributes based on an ID
- * @param recGuid
- * @param changeAttr = {ATTR_NAME1:ATTR_VALUE1, ATTR_NAME2:ATTR_VALUE2, ....}
- * @param callback(err,retCode,key)
- * retCode === -4: Unique attributes can not be updated!
- * retCode === -3: Attribute is not exist for the entity!
- * retCode === -2: The object is soft deleted,so it can not be updated!
- * retCode === 0: The object ID is not exist!
- * retCode >= 1: number of attributes are updated!
- * key is the attribute key
- */
-function changeObjectByGuid(recGuid, changeAttr, callback) {
-
-}
-
-/**
- * Interanl USE!
- * @param selectSQL
- * @param changeAttr
- * @param callback
- */
-function changeObject(selectSQL, changeAttr, callback) {
-
-}
-
-function _hasErrors(results) {
-  return results.find(function (element) {
-    return element['msgCat'];
-  })
-}
-
-function _mergeResults(to, from) {
-  from.forEach(function (element) {
-    to.push(element);
-  })
-}
-
-function _checkEntityInvolvesRelationship(relationshipID, entityMeta) {
-  return entityMeta.ROLES.find(function (element) {
-    let relationship = element.RELATIONSHIPS.find(function (element) {
-      return element.RELATIONSHIP_ID === relationshipID;
-    });
-    if(relationship) return true;
-  });
-}
 /**
  * @param relationships
- * relationships:
  * [
- *  {RELATIONSHIP_ID: 'user_role', PARTNER_ENTITY_ID: 'user_role', PARTNER_ROLE_ID: 'user_role',
+ *  {RELATIONSHIP_ID: 'user_role', PARTNER_ENTITY_ID: 'system_role', PARTNER_ROLE_ID: 'system_role',
  *   values:[{INSTANCE_GUID: '8BFB602731CBCD2090D7F9347957C4C5',
- *            VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2030-12-31 00:00:00'}]
+ *            VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2030-12-31 00:00:00'},
+ *           {INSTANCE_GUID: 'C1D5765AFB9E92F87C936C079837842C',
+ *            VALID_FROM:'2018-06-27 00:00:00', VALID_TO:'2018-07-04 00:00:00'}]
  *  }
  * ]
  * @param entityMeta
@@ -527,9 +653,9 @@ function _checkEntityInvolvesRelationship(relationshipID, entityMeta) {
  * @returns {*}
  * @private
  */
-function _generateInsertRelationshipsSQL(relationships, entityMeta, instanceGUID, relationshipInstances) {
+function _generateRelationshipsSQL(relationships, entityMeta, instanceGUID, relationshipInstances) {
   let errorMessages = [];
-  let insertSQLs = [];
+  let SQLs = [];
 
   relationships.forEach(function (relationship) {
     let roleMeta = _checkEntityInvolvesRelationship(relationship['RELATIONSHIP_ID'], entityMeta);
@@ -552,58 +678,221 @@ function _generateInsertRelationshipsSQL(relationships, entityMeta, instanceGUID
     }
     if(involvesMeta.CARDINALITY === '[1..1]' && values.length > 1){
       errorMessages.push(
-        message.report('ENTITY', 'R', 'RELATIONSHIP_INSTANCE_SINGULAR', involvesMeta.ROLE_ID, relationshipMeta.RELATIONSHIP_ID));
+        message.report('ENTITY', 'RELATIONSHIP_INSTANCE_SINGULAR', 'E', involvesMeta.ROLE_ID, relationshipMeta.RELATIONSHIP_ID));
       return;
     }
 
     relationship['values'].forEach(function (value) {
-      if(relationshipInstances)relationshipInstances.push(
-        {ENTITY_ID: relationship[`PARTNER_ENTITY_ID`] ,INSTANCE_GUID: value[`INSTANCE_GUID`]});
+      if(relationshipInstances)relationshipInstances.push( //For relationship partner entity existence check
+        {RELATIONSHIP_ID: relationship['RELATIONSHIP_ID'],
+          ENTITY_ID: relationship['PARTNER_ENTITY_ID'] ,
+          INSTANCE_GUID: value['INSTANCE_GUID']});
 
       let relationshipInstanceGUID = guid.genTimeBased();
-      let validFrom = value['VALID_FROM']?value['VALID_FROM']: timeUtil.getCurrentDateTime();
-      let validTo = value['VALID_TO']?value['VALID_TO']: timeUtil.getFutureDateTime(relationshipMeta.VALID_PERIOD);
-      insertSQLs.push(
-        "insert into RELATIONSHIP_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
-        + entityDB.pool.escape(validFrom) + " , " + entityDB.pool.escape(validTo) + " , "
-        + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + ")"
+      let currentTime = timeUtil.getCurrentDateTime();
+      let validFrom;
+      let validTo;
+      if(value['VALID_FROM']){
+        validFrom = value['VALID_FROM'] < currentTime?currentTime:value['VALID_FROM'];
+      }else{
+        validFrom = currentTime;
+      }
+      if(value['VALID_TO']){
+        if(timeUtil.StringToDate(value['VALID_TO']) < timeUtil.StringToDate(validFrom)){
+          errorMessages.push(message.report('ENTITY','VALID_TO_BEFORE_VALID_FROM', 'E', value['VALID_TO'], validFrom));
+          return;
+        }else{
+          validTo = value['VALID_TO'];
+        }
+      }else{
+        validTo = timeUtil.getFutureDateTime(relationshipMeta.VALID_PERIOD);
+      }
+      SQLs.push({action: "update", PARTNER_INSTANCE_GUID: value['INSTANCE_GUID'],
+        SQL: "update RELATIONSHIP_INSTANCES set VALID_TO = " + entityDB.pool.escape(validTo)
+             + " where RELATIONSHIP_INSTANCE_GUID = "});
+      SQLs.push({ action: "add", PARTNER_INSTANCE_GUID: value['INSTANCE_GUID'],
+        SQL: "insert into RELATIONSHIP_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
+             + entityDB.pool.escape(validFrom) + " , " + entityDB.pool.escape(validTo) + " , "
+             + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + ")"}
       );
-      insertSQLs.push( //Self
-        "insert into RELATIONSHIP_INVOLVES_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
-        + entityDB.pool.escape(instanceGUID) + " , " + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + " , "
-        + entityDB.pool.escape(entityMeta.ENTITY_ID) + " , " + entityDB.pool.escape(roleMeta.ROLE_ID) + ")"
+      SQLs.push({action: "add", PARTNER_INSTANCE_GUID: value['INSTANCE_GUID'], //Self
+        SQL: "insert into RELATIONSHIP_INVOLVES_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
+             + entityDB.pool.escape(instanceGUID) + " , " + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + " , "
+             + entityDB.pool.escape(entityMeta.ENTITY_ID) + " , " + entityDB.pool.escape(roleMeta.ROLE_ID) + ")"}
       );
-      insertSQLs.push( //Counter part
-        "insert into RELATIONSHIP_INVOLVES_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
-        + entityDB.pool.escape(value['INSTANCE_GUID']) + " , " + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + " , "
-        + entityDB.pool.escape(relationship['PARTNER_ENTITY_ID'])+ " , " + entityDB.pool.escape(relationship['PARTNER_ROLE_ID']) + ")"
+      SQLs.push({action: "add", PARTNER_INSTANCE_GUID: value['INSTANCE_GUID'], //Counter part
+        SQL: "insert into RELATIONSHIP_INVOLVES_INSTANCES values (" + entityDB.pool.escape(relationshipInstanceGUID) + " , "
+             + entityDB.pool.escape(value['INSTANCE_GUID']) + " , " + entityDB.pool.escape(relationshipMeta.RELATIONSHIP_ID) + " , "
+             + entityDB.pool.escape(relationship['PARTNER_ENTITY_ID'])+ " , " + entityDB.pool.escape(relationship['PARTNER_ROLE_ID']) + ")"}
       );
     });
   });
 
   if (errorMessages.length > 0) return errorMessages;
-  return insertSQLs;
+  return SQLs;
 }
 
-function _checkEntityHasRelation(relationID, entityMeta) {
-  let role = entityMeta.ROLES.find(function (element) {
-    return element.RELATIONS.find(function (element) {
-      return element === relationID;
+/**
+ * Generate creation SQLs for the relation values
+ * @param value: a value row of a relation
+ * @param key: the name of the relation
+ * @param entityMeta
+ * @param foreignRelations
+ * @param instanceGUID
+ * @returns {*}
+ * @private
+ */
+function _generateCreateRelationSQL(value, key, entityMeta, foreignRelations, instanceGUID){
+  let errorMessages = [];
+  let results;
+
+  let roleRelationMeta = _checkEntityHasRelation(key, entityMeta);
+  if(!roleRelationMeta){
+    errorMessages.push(message.report('ENTITY', 'RELATION_NOT_VALID', 'E', key, entityMeta.ENTITY_ID));
+    return errorMessages;
+  }
+
+  let relationMeta = entityDB.getRelationMeta(key);
+  if (_.isArray(value)){
+    if(roleRelationMeta.CARDINALITY === '[0..1]' || roleRelationMeta.CARDINALITY === '[1..1]'){
+      errorMessages.push(message.report('ENTITY', 'RELATION_NOT_ALLOW_MULTIPLE_VALUE', 'E', roleRelationMeta.RELATION_ID));
+      return errorMessages;
+    }
+
+    results = [];
+    value.forEach(function (element) {
+      _mergeResults(results, __processSingleRelation(element));
+    });
+  }else{ //Single line
+    results = __processSingleRelation(value);
+  }
+  if(errorMessages.length > 0) return errorMessages;
+  else return results;
+
+  function __processSingleRelation(value) {
+    if(value['action'] === 'update' || value['action'] === 'delete'){
+      errorMessages.push(message.report('ENTITY', 'UPDATE_DELETE_NOT_ALLOWED', 'E'));
+      return [];
+    }
+
+    relationMeta.ASSOCIATIONS.forEach(function(association){
+      if(association.FOREIGN_KEY_CHECK === 1)
+        foreignRelations.push({relationID: relationMeta.RELATION_ID, relationRow: value, association: association});
+    });
+
+    return _generateInsertSingleRelationSQL(relationMeta, value, instanceGUID);
+  }
+}
+
+/**
+ * Generate SQLs for changing already existing relations' value. It is rather complex due to cardinality.
+ * Following matrix indicates the behaviours:
+ * | action | [0..1] | [1..1] | [0..n] | [1..n] |
+ * |--------|--------|--------|--------|--------|
+ * | delete |   √    |    X   |    √   |    ?   |
+ * | add    |   ?    |    X   |    √   |    √   |
+ * | update |   √    |    √   |    √   |    √   |
+ * @param value
+ * @param key
+ * @param entityMeta
+ * @param foreignRelations: record relations that have foreign key check associations
+ * @param instanceGUID
+ * @param add01Relations: record relations that have cardinality [0..1] and are asked for adding
+ * @param delete1nRelations: record relations that have cardinality [1..n] and are asked for deletion
+ * @returns {*}
+ * @private
+ */
+function _generateChangeRelationSQL(value, key, entityMeta, foreignRelations, instanceGUID, add01Relations, delete1nRelations){
+  let errorMessages = [];
+  let results;
+
+  let roleRelationMeta = _checkEntityHasRelation(key, entityMeta);
+  if(!roleRelationMeta){
+    errorMessages.push(message.report('ENTITY', 'RELATION_NOT_VALID', 'E', key, entityMeta.ENTITY_ID));
+    return errorMessages;
+  }
+
+  let relationMeta = entityDB.getRelationMeta(key);
+  if (_.isArray(value)){
+    results = [];
+    value.forEach(function (element) {
+      _mergeResults(results, __processSingleRelation(element));
     })
-  });
+  }else{ //Single line
+    results = __processSingleRelation(value);
+  }
+  if(errorMessages.length > 0) return errorMessages;
+  else return results;
 
-  return role?role.RELATIONS.find(function (element) {
-    return element === relationID;
-  }):false;
+  function __processSingleRelation(value) {
+    let results;
+    switch (value['action']){
+      case 'add':
+        __validateForAdd();
+        results = _generateInsertSingleRelationSQL(relationMeta, value, instanceGUID);
+        break;
+      case 'update':
+        relationMeta.ASSOCIATIONS.forEach(function(association){
+          if(association.FOREIGN_KEY_CHECK === 1)
+            foreignRelations.push({relationID: relationMeta.RELATION_ID, relationRow: value, association: association});
+        });
+        results = _generateUpdateSingleRelationSQL(relationMeta, value);
+        break;
+      case 'delete':
+        if(roleRelationMeta.CARDINALITY === '[1..1]')
+          errorMessages.push(
+            message.report('ENTITY', 'MANDATORY_RELATION_MISSING', 'E', roleRelationMeta.RELATION_ID, entityMeta.ENTITY_ID));
+        if(roleRelationMeta.CARDINALITY === '[1..n]'){
+          let deleteRelation = delete1nRelations.find(function (element) {
+            return element.RELATION_ID === roleRelationMeta.RELATION_ID;
+          });
+          if(deleteRelation)
+            deleteRelation.COUNT = deleteRelation.COUNT + 1;
+          else
+            delete1nRelations.push({RELATION_ID:roleRelationMeta.RELATION_ID, COUNT: 1});
+        }
+        results = _generateDeleteSingleRelationSQL(relationMeta, value);
+        break;
+      default:
+        __validateForAdd();
+        results = _generateInsertSingleRelationSQL(relationMeta, value, instanceGUID);
+    }
+    return results;
+  }
+
+  function __validateForAdd() {
+    if(roleRelationMeta.CARDINALITY === '[1..1]')
+      errorMessages.push(message.report('ENTITY', 'RELATION_NOT_ALLOW_MULTIPLE_VALUE', 'E', roleRelationMeta.RELATION_ID));
+    if(roleRelationMeta.CARDINALITY === '[0..1]'){
+      if(_.contains(add01Relations, roleRelationMeta.RELATION_ID))
+        errorMessages.push(message.report('ENTITY', 'RELATION_NOT_ALLOW_MULTIPLE_VALUE', 'E', roleRelationMeta.RELATION_ID));
+      else add01Relations.push(roleRelationMeta.RELATION_ID);
+    }
+    if(roleRelationMeta.CARDINALITY === '[1..n]'){
+      let deleteRelation = delete1nRelations.find(function (element) {
+        return element.RELATION_ID === roleRelationMeta.RELATION_ID;
+      });
+      if(deleteRelation)
+        deleteRelation.COUNT = deleteRelation.COUNT - 1;
+      else
+        delete1nRelations.push({RELATION_ID:roleRelationMeta.RELATION_ID, COUNT: -1});
+    }
+    relationMeta.ASSOCIATIONS.forEach(function(association){
+      if(association.FOREIGN_KEY_CHECK === 1)
+        foreignRelations.push({relationID: relationMeta.RELATION_ID, relationRow: value, association: association});
+    });
+  }
 }
 
-function _isRelation(relationID) {
-  return entityDB.getRelationMeta(relationID);
-}
-
-//TODO Handle ROLE_INSTANCE
-function _generateInsertRelationSQL(relationID, relationRow, instanceGUID) {
-  let relationMeta = entityDB.getRelationMeta(relationID);
+/**
+ * Generate insert SQLs for a relation
+ * @param relationMeta
+ * @param relationRow
+ * @param instanceGUID
+ * @returns {Array}
+ * @private
+ */
+function _generateInsertSingleRelationSQL(relationMeta, relationRow, instanceGUID) {
   let errorMessages = [];
   let insertSQLs = [];
   let insertColumns;
@@ -621,7 +910,7 @@ function _generateInsertRelationSQL(relationID, relationRow, instanceGUID) {
         insertValues = " (" + entityDB.pool.escape(value);
     } else {
       if (key !== 'action'){ //Reserved key "Action" is ignored in creation, as it is supposed to be all 'add'
-        errorMessages.push(message.report('ENTITY','RELATION_ATTRIBUTE_NOT_EXIST', 'E', key, relationID));
+        errorMessages.push(message.report('ENTITY','RELATION_ATTRIBUTE_NOT_EXIST', 'E', key, relationMeta.RELATION_ID));
       }
     }
   });
@@ -630,12 +919,97 @@ function _generateInsertRelationSQL(relationID, relationRow, instanceGUID) {
   if(insertColumns)insertColumns = insertColumns + ", `INSTANCE_GUID` ) ";
   if(insertValues)insertValues = insertValues + " , " + entityDB.pool.escape(instanceGUID) + " ) ";
   if(insertColumns && insertValues){
-    insertSQLs.push("insert into " + entityDB.pool.escapeId(relationID) + insertColumns + " values " + insertValues);
-    return insertSQLs;
+    insertSQLs.push("insert into " + entityDB.pool.escapeId(relationMeta.RELATION_ID) + insertColumns + " values " + insertValues);
   }
-
+  return insertSQLs;
 }
 
+/**
+ * Generate update SQLs for a relation
+ * @param relationMeta
+ * @param relationRow
+ * @returns {Array}
+ * @private
+ */
+function _generateUpdateSingleRelationSQL(relationMeta, relationRow) {
+  let errorMessages = [];
+  let updateSQLs = [];
+  let updateColumns;
+  let whereClause;
+
+  //Check if primary keys are provided correctly.
+  _.where(relationMeta.ATTRIBUTES, {PRIMARY_KEY:1}).forEach(function(attribute){
+    if(!relationRow[attribute.ATTR_NAME])
+      errorMessages.push(message.report('ENTITY','PRIMARY_KEY_MISSING','E', attribute.ATTR_NAME));
+  });
+  if (errorMessages.length > 0) return errorMessages;
+
+  _.each(relationRow, function (value, key) {
+    if(key === 'action') return true; //reserved key "action"
+
+    let attributeMeta = relationMeta.ATTRIBUTES.find(function (ele) {
+      return ele.ATTR_NAME === key;
+    });
+
+    if(attributeMeta){
+      if(attributeMeta['PRIMARY_KEY'] === 1){
+        whereClause?whereClause = whereClause + " and " + entityDB.pool.escapeId(key) + "=" + entityDB.pool.escape(value):
+          whereClause = " where " + entityDB.pool.escapeId(key) + "=" + entityDB.pool.escape(value);
+      }else{
+        updateColumns?updateColumns = updateColumns + "," + entityDB.pool.escapeId(key) + "=" + entityDB.pool.escape(value):
+          updateColumns = entityDB.pool.escapeId(key) + "=" + entityDB.pool.escape(value);
+      }
+    } else {
+      errorMessages.push(message.report('ENTITY','RELATION_ATTRIBUTE_NOT_EXIST', 'E', key, relationMeta.RELATION_ID));
+    }
+  });
+  if (errorMessages.length > 0) return errorMessages;
+
+  if(updateColumns && whereClause){
+    updateSQLs.push("update " + entityDB.pool.escapeId(relationMeta.RELATION_ID) + " set " + updateColumns + whereClause);
+  }
+  return updateSQLs;
+}
+
+/**
+ * Generate delete SQLs for a relation
+ * @param relationMeta
+ * @param relationRow
+ * @returns {Array}
+ * @private
+ */
+function _generateDeleteSingleRelationSQL(relationMeta, relationRow) {
+  let errorMessages = [];
+  let deleteSQLs = [];
+  let whereClause;
+  let primaryKeys = _.where(relationMeta.ATTRIBUTES, {PRIMARY_KEY:1});
+
+  //Check if primary keys are provided correctly.
+  primaryKeys.forEach(function(attribute){
+    if(!relationRow[attribute.ATTR_NAME]){
+      errorMessages.push(message.report('ENTITY','PRIMARY_KEY_MISSING','E', attribute.ATTR_NAME));
+    }else{
+      whereClause?
+        whereClause = whereClause + " and " + entityDB.pool.escapeId(attribute.ATTR_NAME) + "=" + entityDB.pool.escape(relationRow[attribute.ATTR_NAME]):
+        whereClause = " where " + entityDB.pool.escapeId(attribute.ATTR_NAME) + "=" + entityDB.pool.escape(relationRow[attribute.ATTR_NAME]);
+    }
+  });
+  if (errorMessages.length > 0) return errorMessages;
+  if (whereClause){
+    deleteSQLs.push("delete from " + entityDB.pool.escapeId(relationMeta.RELATION_ID) + whereClause);
+  }
+  return deleteSQLs;
+}
+
+/**
+ * Generate insert SQLs for multiple values attributes
+ * @param attributeName
+ * @param value
+ * @param entityMeta
+ * @param instanceGUID
+ * @returns {Array}
+ * @private
+ */
 function _generateInsertMultiValueAttributeSQL(attributeName, value, entityMeta, instanceGUID) {
   let errorMessages = [];
   let attributeMeta = _checkEntityHasAttribute(attributeName, entityMeta);
@@ -654,7 +1028,7 @@ function _generateInsertMultiValueAttributeSQL(attributeName, value, entityMeta,
 
   //Insert attribute value
   multipleValues.forEach(function (element, index) {
-    insertSQL = "INSERT INTO VALUE (`INSTANCE_GUID`, `ATTR_GUID`, `VALUE_ID`, `VALUE`, `VERSION_NO`, `CHANGE_NO`) VALUES ("
+    insertSQL = "insert into VALUE (`INSTANCE_GUID`, `ATTR_GUID`, `VALUE_ID`, `VALUE`, `VERSION_NO`, `CHANGE_NO`) values ("
       + entityDB.pool.escape(instanceGUID) + ","
       + entityDB.pool.escape(attributeMeta.ATTR_GUID) + ","
       + index.toString() + ","
@@ -669,7 +1043,7 @@ function _generateInsertMultiValueAttributeSQL(attributeName, value, entityMeta,
   });
   if(attributeIndex){
     multipleValues.forEach(function (element) { // Remove duplicate values
-      insertSQL = "INSERT INTO " + attributeIndex.IDX_TABLE + " (`VALUE`, `INSTANCE_GUID`) VALUES ("
+      insertSQL = "insert into " + attributeIndex.IDX_TABLE + " (`VALUE`, `INSTANCE_GUID`) values ("
         + entityDB.pool.escape(element) + "," + entityDB.pool.escape(instanceGUID) + ")";
       insertSQLs.push(insertSQL);
     });
@@ -678,6 +1052,80 @@ function _generateInsertMultiValueAttributeSQL(attributeName, value, entityMeta,
   return insertSQLs;
 }
 
+/**
+ * Generate update SQLs for multiple values attributes
+ * @param attributeName
+ * @param value
+ * @param entityMeta
+ * @param instanceGUID
+ * @returns {Array}
+ * @private
+ */
+function _generateUpdateMultiValueAttributeSQL(attributeName, value, entityMeta, instanceGUID) {
+  let errorMessages = [];
+  let attributeMeta = _checkEntityHasAttribute(attributeName, entityMeta);
+  if(!attributeMeta){
+    errorMessages.push(message.report('ENTITY', 'ATTRIBUTE_NOT_VALID', 'E', entityMeta.ENTITY_ID, attributeName));
+    return errorMessages;
+  }
+  if(attributeMeta['IS_MULTI_VALUE'] !== 1){
+    errorMessages.push(message.report('ENTITY', 'ATTRIBUTE_NOT_MULTI_VALUE', 'E', attributeName, entityMeta.ENTITY_ID));
+    return errorMessages;
+  }
+
+  let insertSQLs = [];
+  let insertSQL = "delete from VALUE where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID)
+    + " and ATTR_GUID = " + entityDB.pool.escape(attributeMeta['ATTR_GUID']) + " ; "
+    + "insert into VALUE (`INSTANCE_GUID`, `ATTR_GUID`, `VALUE_ID`, `VALUE`, `VERSION_NO`, `CHANGE_NO`) values";
+  let multipleValues = _.unique(value); // Remove duplicate values
+
+  //Insert attribute value one by one
+  multipleValues.forEach(function (element, index) {
+    let valueString = " ("
+      + entityDB.pool.escape(instanceGUID) + ","
+      + entityDB.pool.escape(attributeMeta['ATTR_GUID']) + ","
+      + index.toString() + ","
+      + entityDB.pool.escape(element) + ","
+      + "'0', '1')";
+    if(index === 0){
+      insertSQL = insertSQL + valueString;
+    }else{
+      insertSQL = insertSQL + "," + valueString;
+    }
+  });
+  insertSQLs.push(insertSQL);
+
+  //Insert non-unique indices
+  let attributeIndex = entityMeta.ATTRIBUTE_INDICES.find(function (element) {
+    return element.ATTR_NAME === attributeName;
+  });
+  insertSQL = "delete from " + entityDB.pool.escapeId(attributeIndex.IDX_TABLE)
+  + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID) + "; "
+  +  "insert into " + entityDB.pool.escapeId(attributeIndex.IDX_TABLE) + " (`VALUE`, `INSTANCE_GUID`) values ";
+  if(attributeIndex){
+    multipleValues.forEach(function (element, index) {
+      let valueString = "(" + entityDB.pool.escape(element) + "," + entityDB.pool.escape(instanceGUID) + ")";
+      if(index === 0){
+        insertSQL = insertSQL + valueString;
+      }else{
+        insertSQL = insertSQL + "," + valueString;
+      }
+    });
+    insertSQLs.push(insertSQL);
+  }
+
+  return insertSQLs;
+}
+
+/**
+ * Generate insert SQLs for a single value attribute
+ * @param attributeName
+ * @param value
+ * @param entityMeta
+ * @param instanceGUID
+ * @returns {Array}
+ * @private
+ */
 function _generateInsertSingleValueAttributeSQL(attributeName, value, entityMeta, instanceGUID) {
   let errorMessages = [];
   let attributeMeta = _checkEntityHasAttribute(attributeName, entityMeta);
@@ -720,12 +1168,80 @@ function _generateInsertSingleValueAttributeSQL(attributeName, value, entityMeta
   return insertSQLs;
 }
 
+/**
+ * Generate update SQLs for a single value attribute
+ * @param attributeName
+ * @param value
+ * @param entityMeta
+ * @param instanceGUID
+ * @returns {Array}
+ * @private
+ */
+function _generateUpdateSingleValueAttributeSQL(attributeName, value, entityMeta, instanceGUID) {
+  let errorMessages = [];
+  let attributeMeta = _checkEntityHasAttribute(attributeName, entityMeta);
+  if(!attributeMeta){
+    errorMessages.push(message.report('ENTITY', 'ATTRIBUTE_NOT_VALID', 'E', entityMeta.ENTITY_ID, attributeName));
+    return errorMessages;
+  }
+
+  let updateSQLs = [];
+  let updateSQL;
+  //Update unique indices
+  let uniqueIndex = entityMeta.UNIQUE_ATTRIBUTE_INDICES.find(function (element) {
+    return element.ATTR_NAME === attributeName;
+  });
+  if(uniqueIndex){
+    updateSQL = "update " + entityDB.pool.escapeId(uniqueIndex.IDX_TABLE) + " set VALUE = "
+      + entityDB.pool.escape(value) + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+    updateSQLs.push(updateSQL);
+  }
+
+  //Update non-unique indices
+  let attributeIndex = entityMeta.ATTRIBUTE_INDICES.find(function (element) {
+    return element.ATTR_NAME === attributeName;
+  });
+  if(attributeIndex){
+    updateSQL = "update " + entityDB.pool.escapeId(attributeIndex.IDX_TABLE) + " set VALUE = "
+      + entityDB.pool.escape(value) + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+    updateSQLs.push(updateSQL);
+  }
+
+  //Update attribute value
+  updateSQL = "update VALUE set VALUE = " + entityDB.pool.escape(value)
+    + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID)
+    + " and ATTR_GUID = " + entityDB.pool.escape(attributeMeta['ATTR_GUID']);
+  updateSQLs.push(updateSQL);
+
+  return updateSQLs;
+}
+
 function _checkEntityHasAttribute(attributeName, entityMeta) {
   return entityMeta.ATTRIBUTES.find(function (element) {
     return element.ATTR_NAME === attributeName;
   })
 }
 
+function _checkEntityInvolvesRelationship(relationshipID, entityMeta) {
+  return entityMeta.ROLES.find(function (element) {
+    let relationship = element.RELATIONSHIPS.find(function (element) {
+      return element.RELATIONSHIP_ID === relationshipID;
+    });
+    if(relationship) return true;
+  });
+}
+
+function _checkEntityHasRelation(relationID, entityMeta) {
+  let role = entityMeta.ROLES.find(function (element) {
+    return element.RELATIONS.find(function (element) {
+      return element.RELATION_ID === relationID;
+    })
+  });
+
+  return role?role.RELATIONS.find(function (element) {
+    return element.RELATION_ID === relationID;
+  }):false;
+}
 /**
  * Check foreign key exist from the right relation
  * @param relationRow
@@ -740,17 +1256,17 @@ function _checkEntityHasAttribute(attributeName, entityMeta) {
  * @private
  */
 function _checkForeignKey(relationRow, association, callback) {
-  let selectSQL = "select * from " + entityDB.pool.escape(association.RIGHT_RELATION_ID) + " where ";
+  let selectSQL = "select * from " + entityDB.pool.escapeId(association.RIGHT_RELATION_ID) + " where ";
   let foreignKeyValue = '';
 
   association.FIELDS_MAPPING.forEach(function (element, index) {
     if(index === 0){
       selectSQL = selectSQL +
-        entityDB.pool.escape(element.RIGHT_FIELD) + " = " + entityDB.pool.escape(relationRow[element.LEFT_FIELD]);
+        entityDB.pool.escapeId(element.RIGHT_FIELD) + " = " + entityDB.pool.escape(relationRow[element.LEFT_FIELD]);
       foreignKeyValue = foreignKeyValue + element.RIGHT_FIELD + " : " + relationRow[element.LEFT_FIELD];
     }else{
       selectSQL = selectSQL + " and " +
-        entityDB.pool.escape(element.RIGHT_FIELD) + " = " + entityDB.pool.escape(relationRow[element.LEFT_FIELD]);
+        entityDB.pool.escapeId(element.RIGHT_FIELD) + " = " + entityDB.pool.escape(relationRow[element.LEFT_FIELD]);
       foreignKeyValue = foreignKeyValue + " , " + element.RIGHT_FIELD + " : " + relationRow[element.LEFT_FIELD];
     }
   });
@@ -758,8 +1274,7 @@ function _checkForeignKey(relationRow, association, callback) {
   entityDB.executeSQL(selectSQL, function (err, rows) {
     if (err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
     if (rows.length === 0)
-      return callback(null, message.report('ENTITY','FOREIGN_KEY_CHECK_ERROR','E',
-        foreignKeyValue,association.RIGHT_RELATION_ID));
+      callback(null, message.report('ENTITY','FOREIGN_KEY_CHECK_ERROR','E',foreignKeyValue,association.RIGHT_RELATION_ID));
     else callback(null, null);
   })
 }
@@ -771,7 +1286,145 @@ function _checkEntityExist(relationshipInstance, callback) {
   entityDB.executeSQL(selectSQL, function (err, rows) {
     if (err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
     if (rows.length === 0)
-      return callback(null, message.report('ENTITY','ENTITY_INSTANCE_NOT_EXIST','E', relationshipInstance.INSTANCE_GUID));
-    else return callback(null, null);
+      callback(null, message.report('ENTITY','ENTITY_INSTANCE_NOT_EXIST','E', relationshipInstance.INSTANCE_GUID));
+    else callback(null, null);
+  })
+}
+
+function _checkInstanceInvolvedInRelationship(selfGUID, relationship, relationshipSQLs, SQLs, callback) {
+  let selectSQL = "SELECT A.RELATIONSHIP_INSTANCE_GUID FROM RELATIONSHIP_INVOLVES_INSTANCES as A " +
+    "JOIN RELATIONSHIP_INVOLVES_INSTANCES as B ON A.RELATIONSHIP_INSTANCE_GUID = B.RELATIONSHIP_INSTANCE_GUID " +
+    "WHERE A.RELATIONSHIP_ID = " + entityDB.pool.escape(relationship.RELATIONSHIP_ID) +
+    " AND A.ENTITY_INSTANCE_GUID = " + entityDB.pool.escape(selfGUID) +
+    " AND B.ENTITY_INSTANCE_GUID = " + entityDB.pool.escape(relationship.INSTANCE_GUID);
+
+  entityDB.executeSQL(selectSQL, function (err, results) {
+    if (err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    if (results.length === 0) {
+      relationshipSQLs.forEach(function (element) {
+        if (element.PARTNER_INSTANCE_GUID === relationship.INSTANCE_GUID && element.action === 'add')
+          SQLs.push(element.SQL)
+      })
+    } else {
+      relationshipSQLs.forEach(function (element) {
+        if (element.PARTNER_INSTANCE_GUID === relationship.INSTANCE_GUID && element.action === 'update')
+          SQLs.push(element.SQL + entityDB.pool.escape(results[0]['RELATIONSHIP_INSTANCE_GUID']));
+      })
+    }
+    callback(null);
+  })
+}
+
+function _checkAdd01Relation(relationID, instanceGUID, callback) {
+  let selectSQL = "select * from " + entityDB.pool.escapeId(relationID)
+    + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+  entityDB.executeSQL(selectSQL, function (err, results) {
+    if (err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    if (results.length > 0) callback(null, message.report('ENTITY', 'RELATION_NOT_ALLOW_MULTIPLE_VALUE', 'E', relationID));
+    else callback(null, null);
+  })
+}
+
+function _checkDelete1nRelation(deleteRelation, instanceGUID, callback) {
+  let selectSQL = "select * from " + entityDB.pool.escapeId(deleteRelation.RELATION_ID)
+    + " where INSTANCE_GUID = " + entityDB.pool.escape(instanceGUID);
+  entityDB.executeSQL(selectSQL, function (err, results) {
+    if (err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    if (results.length <= deleteRelation.COUNT)
+      callback(null, message.report('ENTITY', 'MANDATORY_RELATION_MISSING', 'E', deleteRelation.RELATION_ID));
+    else callback(null, null);
+  })
+}
+/**
+ * Get the instance GUID from a give business ID.
+ * The given business ID must have 1:1 relationship with the Entity
+ * @param idAttr
+ * example: {RELATION_ID: 'r_user', USER_ID: 'DH001'}
+ * @param callback(err, instanceGUID)
+ * @private
+ */
+function _getGUIDFromBusinessID(idAttr, callback) {
+  if(!idAttr.RELATION_ID)return callback(message.report('ENTITY', 'RELATION_ID_MISSING', 'E'));
+
+  let entityMeta = entityDB.getEntityMeta(idAttr.RELATION_ID);
+  let relationMeta = entityDB.getRelationMeta(idAttr.RELATION_ID);
+  if(!entityMeta && !relationMeta)return callback(message.report('ENTITY', 'RELATION_NOT_EXIST', 'E', idAttr.RELATION_ID));
+
+  let uniqueAttributes;
+  let primaryAttributes;
+  if(entityMeta){
+    uniqueAttributes = _.where(entityMeta.ATTRIBUTES, {UNIQUE: 1});
+  } else {
+    uniqueAttributes = _.where(relationMeta.ATTRIBUTES, {UNIQUE: 1});
+    primaryAttributes = _.where(relationMeta.ATTRIBUTES, {PRIMARY_KEY: 1});
+  }
+
+  let uniqueIDKey = {};
+  let primaryIDKeys = {};
+  _.every(idAttr, function (value, key) { //Get unique attribute or primary key attributes
+    if(key === 'RELATION_ID') return true; //Continue
+
+    if(uniqueAttributes.find(function (element) {
+      return element.ATTR_NAME === key;
+    })){
+      uniqueIDKey[key] = value;
+      return false; //Break
+    }
+
+    if(primaryAttributes.find(function (element) {
+      return element.ATTR_NAME === key;
+    })) primaryIDKeys[key] = value;
+  });
+
+  //Compose select SQL
+  let selectSQL;
+  if(_.keys(uniqueIDKey).length === 1){ //If unique ID is provided
+    let uniqueAttribute = _.keys(uniqueIDKey)[0];
+    if(entityMeta){ //Get GUID from unique attribute index table
+      let uniqueAttributeIndex = entityMeta.UNIQUE_ATTRIBUTE_INDICES.find(function(element){
+        return element.ATTR_NAME === uniqueAttribute;
+      });
+      selectSQL = "select INSTANCE_GUID from " + entityDB.pool.escapeId(uniqueAttributeIndex.IDX_TABLE)
+        + " where VALUE = " + entityDB.pool.escape(_.values(uniqueIDKey)[0]);
+    }else{ //Get GUID from corresponding relation table
+      selectSQL = "select INSTANCE_GUID from " + entityDB.pool.escapeId(idAttr.RELATION_ID)
+        + " where " + entityDB.pool.escapeId(uniqueAttribute) + " = " + entityDB.pool.escape(_.values(uniqueIDKey)[0]);
+    }
+  }else{ //If primary keys are provided
+    let missingPrimaryKey;
+    _.every(primaryAttributes, function (element) {
+      if(!primaryIDKeys[element.ATTR_NAME]){
+        missingPrimaryKey = element.ATTR_NAME;
+        return false;
+      }
+    });
+
+    if(missingPrimaryKey)
+      return callback(message.report('ENTITY', 'PRIMARY_KEY_INCOMPLETE', 'E', missingPrimaryKey));
+
+    selectSQL = "select INSTANCE_GUID from " + entityDB.pool.escapeId(idAttr.RELATION_ID);
+    let whereClause;
+    _.each(primaryIDKeys, function(value, key){
+      whereClause?whereClause = whereClause + " and " + entityDB.pool.escapeId(key) + " = " + entityDB.pool.escape(value):
+        whereClause = " where " + entityDB.pool.escapeId(key) + " = " + entityDB.pool.escape(value);
+    });
+    if(whereClause)selectSQL = selectSQL + whereClause;
+  }
+
+  entityDB.executeSQL(selectSQL, function(err, results){
+    if(err) return callback(message.report('ENTITY', 'GENERAL_ERROR', 'E', err));
+    if(results.length === 0) return callback(message.report('ENTITY', 'INSTANCE_NOT_EXIST', 'E', uniqueIDKey));
+
+    if(entityMeta) return callback(null, results[0].INSTANCE_GUID); // Unique attribute index table
+
+    _getEntityInstanceHead(results[0].INSTANCE_GUID, function (err, instanceHead) {
+      if(err) return callback(err);
+      let entityMeta = entityDB.getEntityMeta(instanceHead.ENTITY_ID);
+      let roleRelationMeta = _checkEntityHasRelation(idAttr.RELATION_ID, entityMeta);
+      if (roleRelationMeta && ( roleRelationMeta.CARDINALITY === '[1..1]' || roleRelationMeta.CARDINALITY === '[0..1]'))
+        callback(null, instanceHead.INSTANCE_GUID);
+      else
+        callback(message.report('ENTITY', 'INSTANCE_NOT_DERIVE', 'E', idAttr.RELATION_ID));
+    })
   })
 }

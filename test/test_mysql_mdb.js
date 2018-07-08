@@ -13,8 +13,7 @@ describe('mysql connections tests', function () {
   /**
    * { ENTITY_ID: 'person',
    *   ENTITY_DESC: 'People Entity',
-   *   ATTRIBUTES:
-   *   [
+   *   ATTRIBUTES:[
    *     RowDataPacket {
    *       ATTR_GUID: '13976E0B39AEBAFBDC35764518DB72D9', RELATION_ID: 'person', ATTR_NAME: 'HEIGHT', ATTR_DESC: null,
    *       DATA_ELEMENT: null, DATA_TYPE: 2, DATA_LENGTH: null, SEARCHABLE: 0, NOT_NULL: 0, UNIQUE: 0, FINALIZE: 0,
@@ -24,21 +23,35 @@ describe('mysql connections tests', function () {
    *   [
    *     { ROLE_ID: 'system_user',
    *       ROLE_DESC: 'System user for login',
-   *       RELATIONS: ['r_address', 'r_email', 'r_user'],
+   *       RELATIONS: [{RELATION_ID: 'r_address', CARDINALITY: '[0..n]'},
+   *                   {RELATION_ID: 'r_email', CARDINALITY: '[1..n]'},
+   *                   {RELATION_ID: 'r_user', CARDINALITY: '[1..1]'}],
    *       RELATIONSHIPS: [{ RELATIONSHIP_ID: 'user_role',  RELATIONSHIP_DESC: 'A system user has multiple use roles',
    *                         VALID_PERIOD: 3162240000,
    *                         INVOLVES: [RowDataPacket { ROLE_ID: 'system_user', CARDINALITY: '[1..1]' },
-   *                                    RowDataPacket { ROLE_ID: 'user_role', CARDINALITY: '[1..n]' } ]}]
+   *                                    RowDataPacket { ROLE_ID: 'system_role', CARDINALITY: '[1..n]' } ]}]
    *     }
    *   ]
    * }
    *
-   * {
+   *[{
    *   RELATION_ID: 'r_user',
    *   RELATION_DESC: 'System Logon User',
    *   VERSION_NO: 1,
-   *   ATTRIBUTES: [ RowDataPacket {ATTR_GUID: '13976E0B39AEBAFBDC35764518DB72D9', RELATION_ID: 'person', ATTR_NAME: 'HEIGHT',}]
-   * }
+   *   ATTRIBUTES: [
+   *     RowDataPacket {
+   *       ATTR_GUID: '13976E0B39AEBAFBDC35764518DB72D9', RELATION_ID: 'person', ATTR_NAME: 'HEIGHT', ATTR_DESC: null,
+   *       DATA_ELEMENT: null, DATA_TYPE: 2, DATA_LENGTH: null, SEARCHABLE: 0, NOT_NULL: 0, UNIQUE: 0, FINALIZE: 0,
+   *       AUTO_INCREMENT: 0, IS_MULTI_VALUE: 0 }
+   *   ]
+   *   ASSOCIATIONS: [
+   *     { RIGHT_RELATION_ID: assoc.RIGHT_RELATION_ID,
+           CARDINALITY: assoc.CARDINALITY,
+           FOREIGN_KEY_CHECK: assoc.FOREIGN_KEY_CHECK,
+           FIELDS_MAPPING: [{LEFT_FIELD: assoc.LEFT_FIELD, RIGHT_FIELD: assoc.RIGHT_FIELD}]
+         }
+       ]
+   * }]
    */
   describe('#loadEntitye(person)', function () {
     it('should have the person entity', function () {
@@ -46,17 +59,26 @@ describe('mysql connections tests', function () {
       entityDB.getEntityMeta('person').ENTITY_ID.should.eql('person');
       entityDB.getEntityMeta('person').ATTRIBUTES.should.containDeep([{ATTR_NAME: 'HEIGHT'}]);
       entityDB.getEntityMeta('person').ROLES.should.containDeep([{ROLE_ID: 'employee'}, {ROLE_ID: 'system_user'}]);
+      entityDB.getEntityMeta('person').ROLES.should.containDeep(
+        [{ROLE_ID: 'system_user',
+          ROLE_DESC: 'System user for login',
+          RELATIONS: [{ RELATION_ID: 'r_address', CARDINALITY: '[0..n]' },
+            { RELATION_ID: 'r_email', CARDINALITY: '[1..n]' },
+            { RELATION_ID: 'r_user', CARDINALITY: '[1..1]' }]}]);
       entityDB.getEntityMeta('person').ROLES.should.containDeep( [{RELATIONSHIPS:
-        [{ RELATIONSHIP_ID: 'user_role',  RELATIONSHIP_DESC: 'A system user has multiple use roles', VALID_PERIOD: 3162240000,
-          INVOLVES: [ { ROLE_ID: 'system_user', CARDINALITY: '[1..1]' },
-                      { ROLE_ID: 'user_role', CARDINALITY: '[1..n]' } ]}]}]);
+        [{ RELATIONSHIP_ID: 'user_role',  RELATIONSHIP_DESC: 'A system user has multiple system roles', VALID_PERIOD: 3162240000,
+          INVOLVES: [ { ROLE_ID: 'system_user', CARDINALITY: '[1..n]' },
+                      { ROLE_ID: 'system_role', CARDINALITY: '[1..n]' } ]}]}]);
     });
 
     it('should have the relations', function(){
       entityDB.relations.should.containDeep([{RELATION_ID: 'r_employee'},{RELATION_ID: 'r_user'}]);
       entityDB.getRelationMeta('r_user')
-        .ASSOCIATIONS.should.containDeep([{ RIGHT_RELATION_ID: 'r_employee', CARDINALITY: '[1..n]', FOREIGN_KEY_CHECK: 0,
+        .ASSOCIATIONS.should.containDeep([{ RIGHT_RELATION_ID: 'r_employee', CARDINALITY: '[1..0]', FOREIGN_KEY_CHECK: 0,
         FIELDS_MAPPING: [ { LEFT_FIELD: 'USER_ID', RIGHT_FIELD: 'USER_ID' } ] }]);
+      entityDB.getRelationMeta('r_employee')
+        .ASSOCIATIONS.should.containDeep([{ RIGHT_RELATION_ID: 'r_company', CARDINALITY: '[1..1]', FOREIGN_KEY_CHECK: 1,
+        FIELDS_MAPPING: [ { LEFT_FIELD: 'COMPANY_ID', RIGHT_FIELD: 'COMPANY_ID' } ] }]);
     })
   });
 
@@ -167,7 +189,6 @@ describe('mysql connections tests', function () {
       insertSQLs.push(_.clone(insertSQL));
 
       entityDB.doUpdatesSeries(insertSQLs, function (err, results) {
-        console.log(results);
         should(err).eql(null);
         results.length.should.equal(2);
         done();
@@ -202,13 +223,13 @@ describe('mysql connections tests', function () {
     });
 
     it('should load 2 entities', function (done) {
-      entityDB.loadEntities(['person', 'user_role'],done);
+      entityDB.loadEntities(['person', 'system_role'],done);
     });
 
     it('should have 2 entities and 5 relations', function () {
-      entityDB.entities.should.containDeep([{ENTITY_ID: 'person'},{ENTITY_ID: 'user_role'}]);
+      entityDB.entities.should.containDeep([{ENTITY_ID: 'person'},{ENTITY_ID: 'system_role'}]);
       entityDB.relations.should.containDeep([{RELATION_ID: 'r_employee'},{RELATION_ID: 'r_user'},
-        {RELATION_ID: 'r_address'}, {RELATION_ID: 'r_email'}, {RELATION_ID: 'r_user_role'}])
+        {RELATION_ID: 'r_address'}, {RELATION_ID: 'r_email'}, {RELATION_ID: 'r_role'}])
     });
 
     it('should has person entity with new description', function () {
