@@ -20,7 +20,7 @@ export class ExternalAppComponent implements OnInit {
     let appDangerousUrl = "http://www.baidu.com";
     switch (appID) {
       case '1':
-        appDangerousUrl = "http://darkhouse.com.cn/blog/4  ";
+        appDangerousUrl = "https://darkhouse.com.cn/blog/4  ";
         break;
       default:
     }

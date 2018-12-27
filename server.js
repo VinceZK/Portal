@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 
 // We don't want to serve sessions for static resources
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/portal')));
 
 app.use(session({
   name: 'sessionID',
