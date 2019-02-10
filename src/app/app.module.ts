@@ -4,35 +4,28 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { HeadBarComponent } from './head-bar/head-bar.component';
-import { RoleService } from "./role.service";
 import { MockupModule } from "./mockup/mockup.module";
-import { HistoryService } from "./history.service";
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 import { HttpClientModule } from "@angular/common/http";
 import { ExternalAppModule } from "./external-app/external-app.module";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import {MessageModule} from "ui-message-angular";
 
 @NgModule({
   declarations: [
     AppComponent,
     SideMenuComponent,
     HeadBarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
+    MessageModule,
     MockupModule,
     ExternalAppModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
-  ],
-  providers: [
-    RoleService,
-    HistoryService
   ],
   bootstrap: [
     AppComponent

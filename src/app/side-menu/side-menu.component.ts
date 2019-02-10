@@ -1,10 +1,14 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {RoleService} from "../role.service";
 import { Role, App } from '../role';
 import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {Router} from "@angular/router";
 import {Subject} from "rxjs/internal/Subject";
 import {Observable} from "rxjs/internal/Observable";
+import * as fuzzySort from "fuzzysort";
+import {of} from "rxjs";
+import {IdentityService} from "../identity.service";
+import {MessageService} from "ui-message-angular";
+import {ShareService} from "../share.service";
 
 @Component({
   selector: 'app-side-menu',
@@ -19,30 +23,66 @@ export class SideMenuComponent implements OnInit {
   private rem = 0;
   private searchTerms = new Subject<string>();
   private menuDisplay = true;
-  private readonly TOLERANCE = 75;  // bigger = more forgivey when entering submenu
+  private readonly TOLERANCE = 75;  // bigger = more forgive when entering submenu
   private readonly DELAY = 600;  // ms delay when user appears to be entering submenu
 
   isCollapsed = false;
   role: Role = new Role;
   apps$: Observable<App[]>;
   searchedApps: App[];
+  // apps: App[] = [];
 
   @ViewChild('sideMenu')
   sideMenu: ElementRef;
 
-  constructor(private roleService: RoleService,
+  constructor(private identityService: IdentityService,
+              private messageService: MessageService,
+              private shareService: ShareService,
               private router: Router
               ) {}
 
   ngOnInit() {
     this.rem = parseInt(window.getComputedStyle(document.head).getPropertyValue('font-size'), 10);
-    this.roleService.getRoleDetail().subscribe(role => this.role = role);
+    this.identityService.getRoleDetail().subscribe(roles => this._processRoleData(roles));
+    this.shareService.updateIsCollapsed(this.isCollapsed);
     this.apps$ = this.searchTerms.pipe (
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.roleService.searchApp(term)),
+      switchMap((term: string) => {
+        const results = fuzzySort.go(term, this.shareService.apps, {key: 'name'});
+        const returnedApps = [];
+        results.forEach(result => returnedApps.push(result.obj));
+        return of(returnedApps as App[]);
+      })
     );
     this.apps$.subscribe(searchedApps => this.searchedApps = searchedApps );
+  }
+
+  _processRoleData(roles): void {
+    this.role = roles[0]; // Currently, only support one role per user logon
+    if (this.role['msgCat']) {
+      this.messageService.clearMessages();
+      roles.forEach( msg => this.messageService.add(msg));
+      this.router.navigate(['errors']);
+    } else {
+      this.role.categories.forEach(category => {
+        category.height = category.originalHeight = (category.apps.length + 1) * 3 + 2;
+        category.active = false;
+        category.isSubMenuShow = false;
+        category.apps.forEach( app => {
+          if (app.isExternal) {
+            app.originalRouteLink = app.routeLink;
+            app.routeLink = '/external-app/' + app.appID;
+          }
+          app.active = false;
+          this.shareService.apps.push(app);
+        });
+        if (category.apps.length === 1) {
+          category.routeLink = category.apps[0].routeLink;
+          category.apps = [];
+        }
+      });
+    }
   }
 
   searchApp(term: string): void {
@@ -57,32 +97,34 @@ export class SideMenuComponent implements OnInit {
   }
 
   collapse(): boolean {
-    for (const catalog of this.role.catalogs) {
-      catalog.isSubMenuShow = false;
+    for (const category of this.role.categories) {
+      category.isSubMenuShow = false;
     }
     this.menuDisplay = true;
-    return this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed = !this.isCollapsed;
+    this.shareService.updateIsCollapsed(this.isCollapsed);
+    return this.isCollapsed;
   }
 
   activateSubMenu(row): void {
     const menuHeight = this.sideMenu.nativeElement.offsetHeight / this.rem;
     const menuScrollTop = this.sideMenu.nativeElement.getElementsByClassName('dk-menu-list')[0].scrollTop / this.rem;
-    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.role.catalogs[row].originalHeight) {
-      this.role.catalogs[row].top = null;
-      if ( menuHeight + 3 <= this.role.catalogs[row].originalHeight) {
-        this.role.catalogs[row].height = menuHeight + 3;
+    if (menuHeight + 1 - 4 * row + menuScrollTop <= this.role.categories[row].originalHeight) {
+      this.role.categories[row].top = null;
+      if ( menuHeight + 3 <= this.role.categories[row].originalHeight) {
+        this.role.categories[row].height = menuHeight + 3;
       } else {
-        this.role.catalogs[row].height = this.role.catalogs[row].originalHeight;
+        this.role.categories[row].height = this.role.categories[row].originalHeight;
       }
     } else {
-      this.role.catalogs[row].top = 5 + 4 * row - menuScrollTop;
+      this.role.categories[row].top = 5 + 4 * row - menuScrollTop;
     }
-    this.role.catalogs[row].arrowTop = 6 + 4 * row - menuScrollTop;
-    this.role.catalogs[row].isSubMenuShow = true;
+    this.role.categories[row].arrowTop = 6 + 4 * row - menuScrollTop;
+    this.role.categories[row].isSubMenuShow = true;
   }
 
   deactivateSubMenu(row): void {
-    this.role.catalogs[row].isSubMenuShow = false;
+    this.role.categories[row].isSubMenuShow = false;
   }
 
   /**
@@ -127,7 +169,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left + menu.offsetWidth,
-      y: this.role.catalogs[this.activeRow].top * this.rem
+      y: this.role.categories[this.activeRow].top * this.rem
     };
     const upperRight = {
       x: upperLeft.x + this.rem,
@@ -135,7 +177,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left + menu.offsetWidth,
-      y: upperLeft.y + this.role.catalogs[this.activeRow].height * this.rem
+      y: upperLeft.y + this.role.categories[this.activeRow].height * this.rem
     };
     const lowerRight = {
       x: lowerLeft.x + this.rem,
@@ -173,27 +215,29 @@ export class SideMenuComponent implements OnInit {
   activateApp(app: App) {
     // Clear the existing active app
     let appIdx = -1;
-    let catalogIdx = this.role.catalogs.findIndex(catalog => catalog.active === true );
+    let catalogIdx = this.role.categories.findIndex(category => category.active === true );
     if (catalogIdx > -1 ) {
-      this.role.catalogs[catalogIdx].active = false;
-      if (!this.role.catalogs[catalogIdx].routeLink) {
-        appIdx = this.role.catalogs[catalogIdx].apps.findIndex(app1 => app1.active === true );
+      this.role.categories[catalogIdx].active = false;
+      if (!this.role.categories[catalogIdx].routeLink) {
+        appIdx = this.role.categories[catalogIdx].apps.findIndex(app1 => app1.active === true );
         if (appIdx > -1) {
-          this.role.catalogs[catalogIdx].apps[appIdx].active = false;
+          this.role.categories[catalogIdx].apps[appIdx].active = false;
         }
       }
     }
     // Set the new active app
-    catalogIdx = this.role.catalogs.findIndex(catalog => {
-      if ( catalog.routeLink === app.routeLink ) {
+    catalogIdx = this.role.categories.findIndex(category => {
+      if ( category.routeLink === app.routeLink ) {
         return true;
       } else {
-        appIdx = catalog.apps.findIndex( app1 => app1.routeLink === app.routeLink);
+        appIdx = category.apps.findIndex( app1 => app1.routeLink === app.routeLink);
         return appIdx > -1;
       }});
-    this.role.catalogs[catalogIdx].active = true;
-    if (appIdx > -1) {
-      this.role.catalogs[catalogIdx].apps[appIdx].active = true;
+    if (catalogIdx > -1) {
+      this.role.categories[catalogIdx].active = true;
+      if (appIdx > -1) {
+        this.role.categories[catalogIdx].apps[appIdx].active = true;
+      }
     }
   }
 
@@ -204,7 +248,7 @@ export class SideMenuComponent implements OnInit {
     if (this.isCollapsed) {
       this.activate(row);
     } else {
-      this.role.catalogs[row].isSubMenuShow = !this.role.catalogs[row].isSubMenuShow;
+      this.role.categories[row].isSubMenuShow = !this.role.categories[row].isSubMenuShow;
     }
   }
 
@@ -212,7 +256,7 @@ export class SideMenuComponent implements OnInit {
    * Hide the sub-menu
    */
   hideSubMenu(): void {
-    this.role.catalogs[this.activeRow].isSubMenuShow = false;
+    this.role.categories[this.activeRow].isSubMenuShow = false;
   }
 
   /**
@@ -270,7 +314,7 @@ export class SideMenuComponent implements OnInit {
     };
     const upperLeft = {
       x: offset.left,
-      y: this.role.catalogs[this.activeRow].top * rem + this.TOLERANCE
+      y: this.role.categories[this.activeRow].top * rem + this.TOLERANCE
     };
     const upperRight = {
       x: offset.left + menu.offsetWidth + rem,
@@ -278,7 +322,7 @@ export class SideMenuComponent implements OnInit {
     };
     const lowerLeft = {
       x: offset.left,
-      y: upperLeft.y + this.role.catalogs[this.activeRow].height * rem
+      y: upperLeft.y + this.role.categories[this.activeRow].height * rem
     };
     const lowerRight = {
       x: offset.left + menu.offsetWidth + rem,

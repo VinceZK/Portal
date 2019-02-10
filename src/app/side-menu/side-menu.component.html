@@ -2,32 +2,32 @@
   <div class="dk-menu-list">
     <!-- side menu in expended mode -->
     <ul *ngIf="!isCollapsed" class="dk-menu-content">
-      <li *ngFor="let catalog of role.catalogs; index as i;"
-          [ngClass]="{'active':catalog.active,
-                      'collapsed':!catalog.isSubMenuShow,
-                      'dk-menu-search': catalog.routeLink === '/appSearch',
-                      'menuDisplay': catalog.routeLink === '/appSearch' || menuDisplay}">
-        <span *ngIf="catalog.routeLink === '/appSearch'" [ngClass]="catalog.icon" aria-hidden="true"></span>
-        <input *ngIf="catalog.routeLink === '/appSearch'" #searchBox class="dk-search-box" placeholder="Search"
+      <li *ngFor="let category of role.categories; index as i;"
+          [ngClass]="{'active':category.active,
+                      'collapsed':!category.isSubMenuShow,
+                      'dk-menu-search': category.routeLink === '/appSearch',
+                      'menuDisplay': category.routeLink === '/appSearch' || menuDisplay}">
+        <span *ngIf="category.routeLink === '/appSearch'" [ngClass]="category.icon" aria-hidden="true"></span>
+        <input *ngIf="category.routeLink === '/appSearch'" #searchBox class="dk-search-box" placeholder="Search"
                (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/>
-        <ul *ngIf="catalog.routeLink === '/appSearch'" class="dk-sub-menu">
+        <ul *ngIf="category.routeLink === '/appSearch'" class="dk-sub-menu">
           <li *ngFor="let app of apps$ | async" >
             <a routerLink="{{app.routeLink}}">{{app.name}}</a>
           </li>
         </ul>
 
-        <a *ngIf="catalog.routeLink && catalog.routeLink !== '/appSearch'" routerLink="{{catalog.routeLink}}">
-          <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
+        <a *ngIf="category.routeLink && category.routeLink !== '/appSearch'" routerLink="{{category.routeLink}}">
+          <span [ngClass]="category.icon" aria-hidden="true"></span> {{category.name}}
         </a>
-        <a *ngIf="!catalog.routeLink" (click)="clickRow(i)">
-          <span [ngClass]="catalog.icon" aria-hidden="true"></span> {{catalog.name}}
-          <span *ngIf="catalog.apps && catalog.apps.length > 0" class="fas arrow"
-                [ngClass]="{'fa-angle-right': !catalog.isSubMenuShow, 'fa-angle-down': catalog.isSubMenuShow}">
+        <a *ngIf="!category.routeLink" (click)="clickRow(i)">
+          <span [ngClass]="category.icon" aria-hidden="true"></span> {{category.name}}
+          <span *ngIf="category.apps && category.apps.length > 0" class="fas arrow"
+                [ngClass]="{'fa-angle-right': !category.isSubMenuShow, 'fa-angle-down': category.isSubMenuShow}">
           </span>
         </a>
-        <ul *ngIf="!catalog.routeLink" class="dk-sub-menu"
-            [ngClass]="{'expended':catalog.isSubMenuShow, 'collapsed':!catalog.isSubMenuShow}">
-          <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
+        <ul *ngIf="!category.routeLink" class="dk-sub-menu"
+            [ngClass]="{'expended':category.isSubMenuShow, 'collapsed':!category.isSubMenuShow}">
+          <li *ngFor="let app of category.apps" [ngClass]="{'active':app.active}">
             <a routerLink="{{app.routeLink}}">{{app.name}}</a>
           </li>
         </ul>
@@ -35,15 +35,15 @@
     </ul>
     <!-- side menu in collapsed mode -->
     <ul *ngIf="isCollapsed" class="dk-menu-content">
-      <li *ngFor="let catalog of role.catalogs; index as i" class="menuDisplay" [ngClass]="{'active':catalog.active}"
+      <li *ngFor="let category of role.categories; index as i" class="menuDisplay" [ngClass]="{'active':category.active}"
           (mouseenter)="mouseenterRow(i)" (mouseleave)="mouseleaveRow(i)" (click)="clickRow(i)">
-        <a *ngIf="catalog.routeLink === '/appSearch'">
-          <span [ngClass]="catalog.icon" aria-hidden="true"></span>
+        <a *ngIf="category.routeLink === '/appSearch'">
+          <span [ngClass]="category.icon" aria-hidden="true"></span>
         </a>
-        <div *ngIf="catalog.routeLink === '/appSearch'"
+        <div *ngIf="category.routeLink === '/appSearch'"
              class="dk-side-menu dk-side-menu-hover dk-menu-search-hover"
-             [ngClass]="{'dk-side-menu-hover-show':catalog.isSubMenuShow}"
-             [style.top.rem]="catalog.top">
+             [ngClass]="{'dk-side-menu-hover-show':category.isSubMenuShow}"
+             [style.top.rem]="category.top">
           <ul class="dk-menu-content-hover">
             <li><input #searchBox class="dk-search-box" placeholder="Search" class="dk-search-box"
                        (keyup)="searchApp(searchBox.value)" (keypress)="enterApp($event)"/></li>
@@ -54,34 +54,34 @@
             </ul>
           </ul>
         </div>
-        <span *ngIf="catalog.routeLink === '/appSearch'"
-              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
-              [style.top.rem]="catalog.arrowTop"></span>
+        <span *ngIf="category.routeLink === '/appSearch'"
+              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':category.isSubMenuShow}"
+              [style.top.rem]="category.arrowTop"></span>
 
-        <a *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length === 0" routerLink="{{catalog.routeLink}}">
-          <span [ngClass]="catalog.icon" aria-hidden="true"></span>
+        <a *ngIf="category.routeLink !== '/appSearch' && category.apps.length === 0" routerLink="{{category.routeLink}}">
+          <span [ngClass]="category.icon" aria-hidden="true"></span>
         </a>
-        <a *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0">
-          <span [ngClass]="catalog.icon" aria-hidden="true"></span>
+        <a *ngIf="category.routeLink !== '/appSearch' && category.apps.length > 0">
+          <span [ngClass]="category.icon" aria-hidden="true"></span>
         </a>
 
-        <div *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0"
+        <div *ngIf="category.routeLink !== '/appSearch' && category.apps.length > 0"
              class="dk-side-menu dk-side-menu-hover"
-             [style.top.rem]="catalog.top"
-             [style.height.rem]="catalog.height"
-             [ngClass]="{'dk-side-menu-hover-show':catalog.isSubMenuShow}">
+             [style.top.rem]="category.top"
+             [style.height.rem]="category.height"
+             [ngClass]="{'dk-side-menu-hover-show':category.isSubMenuShow}">
           <ul class="dk-menu-content-hover">
-            <li><a>{{catalog.name}}</a></li>
+            <li><a>{{category.name}}</a></li>
             <ul class="dk-sub-menu dk-sub-menu-collapsed">
-              <li *ngFor="let app of catalog.apps" [ngClass]="{'active':app.active}">
+              <li *ngFor="let app of category.apps" [ngClass]="{'active':app.active}">
                 <a routerLink="{{app.routeLink}}" (click)="hideSubMenu()">{{app.name}}</a>
               </li>
             </ul>
           </ul>
         </div>
-        <span *ngIf="catalog.routeLink !== '/appSearch' && catalog.apps.length > 0"
-              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':catalog.isSubMenuShow}"
-              [style.top.rem]="catalog.arrowTop"></span>
+        <span *ngIf="category.routeLink !== '/appSearch' && category.apps.length > 0"
+              class="dk-popover-arrow" [ngClass]="{'dk-popover-arrow-show':category.isSubMenuShow}"
+              [style.top.rem]="category.arrowTop"></span>
       </li>
     </ul>
   </div>

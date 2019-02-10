@@ -66,14 +66,13 @@
 .dk-navbar-brand {
   float: left;
   height: 50px;
-  padding: 15px 15px;
+  padding: 10px 10px;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 30px;
 }
 .dk-navbar-brand>img {
   display: block;
-  width: 60%;
-  margin: auto;
+  width: 29%;
 }
 .dk-navbar-toggle {
   display: block;

@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { SideMenuComponent } from './side-menu/side-menu.component';
+import {SideMenuComponent} from "./side-menu/side-menu.component";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {RoleService} from "./role.service";
 import {HistoryService} from "./history.service";
 import {filter, map, mergeMap} from "rxjs/operators";
-
+import {IdentityService} from "./identity.service";
+import {ShareService} from "./share.service";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,10 @@ export class AppComponent implements OnInit {
   isCollapsed = false;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private roleService: RoleService,
+              private identityService: IdentityService,
+              private shareService: ShareService,
               private historyService: HistoryService
-              ) { }
+  ) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -37,11 +39,17 @@ export class AppComponent implements OnInit {
         }
         return url;
       }),
-      mergeMap(url => this.roleService.getApp(url)))
-      .subscribe(event => {
-        if (event[0]) {
-          this.sideMenu.activateApp(event[0]);
-          this.historyService.addHistory(event[0]);
+      mergeMap(url => {
+        if (this.shareService.apps.length === 0) {
+          return this.identityService.getApp('/' + url);
+        } else {
+          return of(this.shareService.apps.find( app => app.routeLink === '/' + url ));
+        }
+      }))
+      .subscribe(app => {
+        if (app.routeLink) {
+          this.sideMenu.activateApp(app);
+          this.historyService.addHistory(app);
         }
       });
   }

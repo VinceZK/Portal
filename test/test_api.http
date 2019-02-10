@@ -1,0 +1,12 @@
+### Get pieces of an entity instance through its business ID.
+POST http://localhost:3000/api/function/getRoleDetail
+Accept: */*
+Cookie: sessionID=s%3A_klgBzRY0ZzCOh_s2PoTtJtrJCVB_dvb.VQwriakLVI3AGMC0%2B3Ft80L7OFrcDzULK7X4OrXtZOY
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "userID": "DH001"
+}
+
+###

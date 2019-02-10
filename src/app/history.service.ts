@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {App} from "./role";
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HistoryService {
   private navHistory: App[] = [];
   private historySource = new BehaviorSubject<App[]>([]);
