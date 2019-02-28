@@ -1,4 +1,8 @@
-// User Function
+/**
+ * This file includes a user function 'getRoleDetail',
+ * which returns the role information and forms the portal navigation structure.
+ * The role information is read based on the logon user ID.
+ */
 const userFunction = require('json-on-relations').UserFunction;
 const entity = require('json-on-relations').Entity;
 const async = require('async');

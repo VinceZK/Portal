@@ -30,7 +30,6 @@ export class SideMenuComponent implements OnInit {
   role: Role = new Role;
   apps$: Observable<App[]>;
   searchedApps: App[];
-  // apps: App[] = [];
 
   @ViewChild('sideMenu')
   sideMenu: ElementRef;

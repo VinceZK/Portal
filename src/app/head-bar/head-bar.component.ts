@@ -1,5 +1,5 @@
 import {Component, EventEmitter, HostListener, Inject, OnInit, Output} from '@angular/core';
-import {App} from "../role";
+import {App, UserBasicInfo} from "../role";
 import {HistoryService} from "../history.service";
 import {IdentityService} from "../identity.service";
 import {DOCUMENT} from "@angular/common";
@@ -18,6 +18,8 @@ export class HeadBarComponent implements OnInit {
     notificationOpen: false,
     preferenceOpen: false
   };
+  userBasicInfo: UserBasicInfo = new UserBasicInfo();
+
   constructor(@Inject(DOCUMENT)
               private document: any,
               private history: HistoryService,
@@ -26,6 +28,7 @@ export class HeadBarComponent implements OnInit {
   ngOnInit() {
     this.history.currentHistoryObserver.subscribe(history => this.navHistory = history );
     this.history.currentAppObserver.subscribe(currentApp => this.currentApp = currentApp );
+    this.identity.getLogonUser().subscribe( logonUser => this.userBasicInfo = logonUser);
   }
 
   @HostListener('document:mouseup', ['$event', 'dropdown'])
@@ -60,11 +63,6 @@ export class HeadBarComponent implements OnInit {
   }
 
   logout() {
-    this.identity.logout().subscribe(
-      data => {
-        console.log(data);
-        this.document.location.href = 'http://localhost:3000';
-      }
-    );
+    this.identity.logout().subscribe( () => this.document.location.href = window.location.origin);
   }
 }

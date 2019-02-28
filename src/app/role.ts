@@ -22,3 +22,9 @@ export class App {
   originalRouteLink?: string; // original route link for external apps
   active?: boolean; // Indicates current APP is in active status, that is the APP is in shown.
 }
+export class UserBasicInfo {
+  userID: string;
+  userName?: string;
+  displayName?: string;
+  email?: string;
+}

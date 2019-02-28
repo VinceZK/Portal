@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {App, Role} from "./role";
+import {App, Role, UserBasicInfo} from "./role";
 import {Entity} from "jor-angular";
+import {Router} from "@angular/router";
+import {environment} from "../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,19 +13,30 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class IdentityService {
-  private logoutUrl = 'http://localhost:3000/api/logout';
-  private functionUrl = 'http://localhost:3000/api/function';
-  private entityUrl = 'http://localhost:3000/api/entity';
+  private originalHost = environment.originalHost;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   /**
    * Logout the system
    */
   logout(): Observable<any> {
-    return this.http.delete(this.logoutUrl, httpOptions).pipe(
+    return this.http.delete(this.originalHost + '/api/logout', httpOptions).pipe(
       catchError(this.handleError<any>('Logout')));
+  }
+
+  getLogonUser(): Observable<UserBasicInfo> {
+    return this.http.get<UserBasicInfo>(this.originalHost + '/api/session', httpOptions).pipe(
+      map( userSession => {
+        const userInfo = new UserBasicInfo();
+        userInfo.userID = userSession['identity']['userBasic']['USER_ID'];
+        userInfo.userName = userSession['identity']['userBasic']['USER_NAME'];
+        userInfo.displayName = userSession['identity']['userBasic']['DISPLAY_NAME'];
+        return userInfo;
+      }),
+      catchError(this.handleError<any>('getRoleDetail')));
   }
 
   /**
@@ -31,7 +44,7 @@ export class IdentityService {
    * @returns {Observable<Role>}
    */
   getRoleDetail(): Observable<Role[]> {
-    return this.http.post<Role[]>(this.functionUrl + `/getRoleDetail`, {}, httpOptions).pipe(
+    return this.http.post<Role[]>(this.originalHost + `/api/function/getRoleDetail`, {}, httpOptions).pipe(
       catchError(this.handleError<any>('getRoleDetail')));
   }
 
@@ -42,7 +55,7 @@ export class IdentityService {
    */
   getApp(routeLink: string): Observable<App> {
     if (routeLink.substr(0, 13) === '/external-app') {
-      return this.http.post<Entity>(this.entityUrl + `/instance`,
+      return this.http.post<Entity>(this.originalHost + `/api/entity/instance`,
         {RELATION_ID: 'app', APP_ID: routeLink.substr(14)}, httpOptions).pipe(
         map(appEntity => {
           const app: App = new App;
@@ -55,7 +68,7 @@ export class IdentityService {
         }),
         catchError(this.handleError<any>('getApp')));
     } else {
-      return this.http.post<Entity>(this.entityUrl + `/instance`,
+      return this.http.post<Entity>(this.originalHost + `/api/entity/instance`,
         {RELATION_ID: 'app', ROUTE_LINK: routeLink}, httpOptions).pipe(
         map(appEntity => {
           const app: App = new App;
@@ -75,7 +88,7 @@ export class IdentityService {
    * @param appID
    */
   getAppRouteLink(appID: string): Observable<string> {
-    return this.http.post<string>(this.entityUrl + `/instance`,
+    return this.http.post<string>(this.originalHost + `/api/entity/instance`,
       {RELATION_ID: 'app', APP_ID: appID}, httpOptions).pipe(
       map(appEntity => {
         if (Array.isArray(appEntity)) { appEntity = appEntity[0]; } // Could return an array, like message or multiple entities
@@ -90,8 +103,8 @@ export class IdentityService {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
+      // TODO add messages to message service
+      this.router.navigate(['errors']);
       console.error(operation, error); // log to console instead
 
       // Let the app keep running by returning an empty result.
