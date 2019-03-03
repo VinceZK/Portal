@@ -4,9 +4,9 @@ const app = express();
 
 // Register your Angular built files as static
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'app')));
 app.get('/logon', (req, res) => { // Open the logon page
-  res.sendFile(path.join(__dirname, 'dist/logon/index.html'));
+  res.sendFile(path.join(__dirname, 'app/logon/index.html'));
 });
 
 // Register express-session middle ware with redis
@@ -37,13 +37,13 @@ const router = require('ui-logon').Router;
 const jor = require('json-on-relations');
 router.use(jor.Routes); // JOR Routes
 router.get('/jor/*', (req, res) => { // Open the jor page
-  res.sendFile(path.join(__dirname, 'dist/jor/index.html'));
+  res.sendFile(path.join(__dirname, 'app/jor/index.html'));
 });
 router.get('/portal/*', (req, res) => { // Open the portal page
-  res.sendFile(path.join(__dirname, 'dist/portal/index.html'));
+  res.sendFile(path.join(__dirname, 'app/portal/index.html'));
 });
 router.get('*', (req, res) => { // The default index.html
-  res.sendFile(path.join(__dirname, 'dist/portal/index.html'));
+  res.sendFile(path.join(__dirname, 'app/portal/index.html'));
 });
 app.use('/', router);
 

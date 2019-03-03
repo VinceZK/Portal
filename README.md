@@ -46,8 +46,8 @@ Portal is developed using Angular and its server-side runs in NodeJS.
 You can either directly use it without any coding or enhance it according to your needs. 
 
 The UI codes reside in folder `src/app`, which follows the Angular default project template. 
-After changing, you can run `ng build` to generate the runtime stuff under folder `dist/portal`.
-Remember to adjust the `dist/portal/index.html` to make the base setting to `<base href="/portal/">`.
+After changing, you can run `ng build` to generate the runtime stuff under folder `app/portal`.
+Remember to adjust the `app/portal/index.html` to make the base setting to `<base href="/portal/">`.
 
 The server-side is quite simple with the help of [json-on-relations](https://github.com/VinceZK/json-on-relations).
 Besides the `server.js` in the root, there is only one js file 'identity_ctrl.js' in the folder `server`.
@@ -55,7 +55,7 @@ Usually, you don't need to change either of them. You can however add new js fil
 to encapsulate your own business logic. 
 
 The logon page is apart from Portal. It is another reusable component [ui-logon](https://github.com/VinceZK/Logon).
-You can only find the compiled runtime stuff under `dist/logon`. 
+You can only find the compiled runtime stuff under `app/logon`. 
 If you want to change the logon page, please refer [ui-logon](https://github.com/VinceZK/Logon).
 
 ### Change the Theme
