@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/handsontable/dist/handsontable.full.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 /* important! global styles */
 html {
@@ -28,6 +29,23 @@ button, input, select, textarea {
 }
 b, strong {
   font-weight: 700;
+}
+.dk-invalid input,
+.dk-invalid select{
+  border-color: #dc3545;
+}
+.dk-invalid .invalid-tooltip {
+  display: block;
+}
+.dk-invalid-feedback {
+  display: inline;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 90%;
+  color: #dc3545;
+}
+.dk-modal-open {
+  overflow: auto;
 }
 
 /* can be deleted: handsontable related css */

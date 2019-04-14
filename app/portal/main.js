@@ -15,6 +15,10 @@ var map = {
 	"app/handsontable/handsontable.module": [
 		"./src/app/handsontable/handsontable.module.ts",
 		"app-handsontable-handsontable-module"
+	],
+	"app/user/user.module": [
+		"./src/app/user/user.module.ts",
+		"app-user-user-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -65,6 +69,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var routes = [
     // The dashboard app is lazy loading
+    { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
     { path: 'handsontable', loadChildren: 'app/handsontable/handsontable.module#HandsontableModule' },
     { path: 'errors', component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_3__["ErrorPageComponent"] },
@@ -94,7 +99,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex;\n  flex-direction: column;\n  min-width: 768px;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.dk-frame-content {\n  display: flex;\n  position: static;\n  height: 100%;\n  width: auto;\n}\n.dk-content-area{\n  overflow: auto;\n  padding-left: 1rem;\n  padding-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsMkJBQTJCO0FBQzNCO0VBQ0UsY0FBYztFQUNkLHVCQUF1QjtFQUN2QixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixhQUFhO0VBQ2IsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixZQUFZO0NBQ2I7QUFDRDtFQUNFLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBuYXZpZ2F0aW9uIEZyYW1lIHdvcmsgKi9cbi5kay1mcmFtZS12aWV3IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWluLXdpZHRoOiA3NjhweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuLmRrLWZyYW1lLWNvbnRlbnQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBwb3NpdGlvbjogc3RhdGljO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiBhdXRvO1xufVxuLmRrLWNvbnRlbnQtYXJlYXtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIHBhZGRpbmctbGVmdDogMXJlbTtcbiAgcGFkZGluZy10b3A6IDFyZW07XG59XG4iXX0= */"
+module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex;\n  flex-direction: column;\n  min-width: 768px;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.dk-frame-content {\n  display: flex;\n  position: static;\n  height: 100%;\n  width: auto;\n}\n.dk-content-area{\n  width: -webkit-fill-available;\n  overflow: auto;\n  padding-left: 1rem;\n  padding-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsMkJBQTJCO0FBQzNCO0VBQ0UsY0FBYztFQUNkLHVCQUF1QjtFQUN2QixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixhQUFhO0VBQ2IsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixZQUFZO0NBQ2I7QUFDRDtFQUNFLDhCQUE4QjtFQUM5QixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogbmF2aWdhdGlvbiBGcmFtZSB3b3JrICovXG4uZGstZnJhbWUtdmlldyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1pbi13aWR0aDogNzY4cHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbi5kay1mcmFtZS1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgcG9zaXRpb246IHN0YXRpYztcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogYXV0bztcbn1cbi5kay1jb250ZW50LWFyZWF7XG4gIHdpZHRoOiAtd2Via2l0LWZpbGwtYXZhaWxhYmxlO1xuICBvdmVyZmxvdzogYXV0bztcbiAgcGFkZGluZy1sZWZ0OiAxcmVtO1xuICBwYWRkaW5nLXRvcDogMXJlbTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -105,7 +110,7 @@ module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dk-frame-view\">\n  <!-- Head Bar Navigation -->\n  <app-head-bar (onCollapse)=\"onCollapse()\"></app-head-bar>\n\n  <div class=\"dk-frame-content\">\n    <!-- Side Bar Navigation -->\n    <app-side-menu></app-side-menu>\n\n    <!-- Content Area -->\n    <div class=\"dk-content-area\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!--<div class=\"dk-frame-view\">-->\n  <!--&lt;!&ndash; Head Bar Navigation &ndash;&gt;-->\n  <!--<app-head-bar (onCollapse)=\"onCollapse()\"></app-head-bar>-->\n\n  <!--<div class=\"dk-frame-content\">-->\n    <!--&lt;!&ndash; Side Bar Navigation &ndash;&gt;-->\n    <!--<app-side-menu></app-side-menu>-->\n\n    <!--&lt;!&ndash; Content Area &ndash;&gt;-->\n    <!--<div class=\"dk-content-area\">-->\n      <!--<router-outlet></router-outlet>-->\n    <!--</div>-->\n  <!--</div>-->\n<!--</div>-->\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -166,14 +171,15 @@ var AppComponent = /** @class */ (function () {
             return url;
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["mergeMap"])(function (url) {
             if (_this.shareService.apps.length === 0) {
-                return _this.identityService.getApp('/' + url);
+                // return this.identityService.getApp('/' + url);
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(null);
             }
             else {
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(_this.shareService.apps.find(function (app) { return app.routeLink === '/' + url; }));
             }
         }))
             .subscribe(function (app) {
-            if (app.routeLink) {
+            if (app && app.routeLink) {
                 _this.sideMenu.activateApp(app);
                 _this.historyService.addHistory(app);
             }
@@ -558,7 +564,7 @@ module.exports = "/* Head Navigation Bar */\n.dk-navbar-inverse{\n  background-c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"dk-navbar-inverse\">\n  <div class=\"dk-navbar-header\">\n    <button type=\"button\" class=\"dk-navbar-toggle\" (click)=\"collapse()\">\n      <span class=\"dk-sr-only\">Toggle navigation</span>\n      <span class=\"dk-icon-bar\"></span>\n      <span class=\"dk-icon-bar\"></span>\n      <span class=\"dk-icon-bar\"></span>\n    </button>\n    <a class=\"dk-navbar-brand\" href=\"#\"><img alt=\"Brand\" src=\"assets/darkhouse.png\"></a>\n  </div>\n\n  <!-- Application Name or Title -->\n  <div class=\"dk-navbar-center\">\n    <ul class=\"dk-nav dk-navbar-nav dk-navbar-app-title\">\n      <li [ngClass]=\"{'open': dropdown.historyOpen}\">\n        <a (click)=\"toggleHistoryDropdown()\" class=\"dk-nav-toggle\">{{currentApp.name}} <b class=\"dk-caret\"></b></a>\n        <ul class=\"dk-dropdown-menu\">\n          <li *ngFor=\"let app of navHistory\"><a routerLink=\"{{app.routeLink}}\">\n            {{app.name}}</a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Generic Functions in the header bar -->\n  <div class=\"dk-navbar-right\">\n    <ul class=\"dk-nav dk-navbar-nav\">\n      <li [ngClass]=\"{'open': dropdown.notificationOpen}\">\n        <a (click)=\"toggleNotificationDropdown()\" class=\"dk-nav-toggle\"><span\n          class=\"fas fa-bell\"></span><span class=\"dk-label dk-badge\">32</span>\n        </a>\n        <ul class=\"dk-dropdown-menu\">\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">4:00 AM</span>Favourites Snippet</a></li>\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">4:30 AM</span>Email marketing</a></li>\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">5:00 AM</span>Subscriber focused email\n            design</a></li>\n          <li class=\"dk-divider\"></li>\n          <li><a href=\"#\" class=\"dk-text-center\">View All</a></li>\n        </ul>\n      </li>\n      <li [ngClass]=\"{'open': dropdown.preferenceOpen}\">\n        <a (click)=\"togglePreferenceOpen()\" class=\"dk-nav-toggle\"><span\n          class=\"fas fa-user\"></span>{{userBasicInfo.displayName}} <b class=\"dk-caret\"></b>\n        </a>\n        <ul class=\"dk-dropdown-menu\">\n          <li><a href=\"#\"><span class=\"fas fa-user\"></span>Profile</a></li>\n          <li><a href=\"#\"><span class=\"fas fa-cog\"></span>Settings</a></li>\n          <li class=\"dk-divider\"></li>\n          <li><a (click)=\"logout()\"><span class=\"fas fa-power-off\"></span>Logout</a></li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"dk-navbar-inverse\">\n  <div class=\"dk-navbar-header\">\n    <button type=\"button\" class=\"dk-navbar-toggle\" (click)=\"collapse()\">\n      <span class=\"dk-sr-only\">Toggle navigation</span>\n      <span class=\"dk-icon-bar\"></span>\n      <span class=\"dk-icon-bar\"></span>\n      <span class=\"dk-icon-bar\"></span>\n    </button>\n    <a class=\"dk-navbar-brand\" href=\"#\"><img alt=\"Brand\" src=\"assets/darkhouse.png\"></a>\n  </div>\n\n  <!-- Application Name or Title -->\n  <div class=\"dk-navbar-center\">\n    <ul class=\"dk-nav dk-navbar-nav dk-navbar-app-title\">\n      <li [ngClass]=\"{'open': dropdown.historyOpen}\">\n        <a (click)=\"toggleHistoryDropdown()\" class=\"dk-nav-toggle\">{{currentApp.name}} <b class=\"dk-caret\"></b></a>\n        <ul class=\"dk-dropdown-menu\">\n          <li *ngFor=\"let app of navHistory\"><a routerLink=\"{{app.routeLink}}\">\n            {{app.name}}</a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Generic Functions in the header bar -->\n  <div class=\"dk-navbar-right\">\n    <ul class=\"dk-nav dk-navbar-nav\">\n      <li [ngClass]=\"{'open': dropdown.notificationOpen}\">\n        <a (click)=\"toggleNotificationDropdown()\" class=\"dk-nav-toggle\"><span\n          class=\"fas fa-bell\"></span><span class=\"dk-label dk-badge\">32</span>\n        </a>\n        <ul class=\"dk-dropdown-menu\">\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">4:00 AM</span>Favourites Snippet</a></li>\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">4:30 AM</span>Email marketing</a></li>\n          <li><a href=\"#\"><span class=\"dk-label dk-label-warning\">5:00 AM</span>Subscriber focused email\n            design</a></li>\n          <li class=\"dk-divider\"></li>\n          <li><a href=\"#\" class=\"dk-text-center\">View All</a></li>\n        </ul>\n      </li>\n      <li [ngClass]=\"{'open': dropdown.preferenceOpen}\">\n        <a (click)=\"togglePreferenceOpen()\" class=\"dk-nav-toggle\"><span\n          class=\"fas fa-user\"></span>{{userBasicInfo && userBasicInfo.displayName}} <b class=\"dk-caret\"></b>\n        </a>\n        <ul class=\"dk-dropdown-menu\">\n          <li><a href=\"#\"><span class=\"fas fa-user\"></span>Profile</a></li>\n          <li><a href=\"#\"><span class=\"fas fa-cog\"></span>Settings</a></li>\n          <li class=\"dk-divider\"></li>\n          <li><a (click)=\"logout()\"><span class=\"fas fa-power-off\"></span>Logout</a></li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -741,8 +747,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _role__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./role */ "./src/app/role.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jor-angular */ "./node_modules/jor-angular/fesm5/jor-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./msgStore */ "./src/app/msgStore.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -759,14 +768,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
 var IdentityService = /** @class */ (function () {
-    function IdentityService(http, router) {
+    function IdentityService(http, messageService, router) {
         this.http = http;
+        this.messageService = messageService;
         this.router = router;
-        this.originalHost = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].originalHost;
+        this.originalHost = _environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].originalHost;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_9__["msgStore"], 'EN');
     }
     /**
      * Logout the system
@@ -840,11 +854,58 @@ var IdentityService = /** @class */ (function () {
             }
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getAppRouteLink')));
     };
+    IdentityService.prototype.searchUsers = function (userID, userName) {
+        var queryObject = new jor_angular__WEBPACK_IMPORTED_MODULE_5__["QueryObject"]();
+        queryObject.ENTITY_ID = 'person';
+        queryObject.RELATION_ID = 'r_user';
+        queryObject.PROJECTION = ['USER_ID', 'USER_NAME', 'DISPLAY_NAME', 'LOCK', 'PWD_STATE'];
+        queryObject.FILTER = [];
+        if (userID) {
+            if (userID.includes('*')) {
+                userID = userID.replace(/\*/gi, '%');
+                queryObject.FILTER.push({ FIELD_NAME: 'USER_ID', OPERATOR: 'CN', LOW: userID });
+            }
+            else {
+                queryObject.FILTER.push({ FIELD_NAME: 'USER_ID', OPERATOR: 'EQ', LOW: userID });
+            }
+        }
+        if (userName) {
+            if (userName.includes('*')) {
+                userName = userName.replace(/\*/gi, '%');
+                queryObject.FILTER.push({ FIELD_NAME: 'USER_NAME', OPERATOR: 'CN', LOW: userName });
+            }
+            else {
+                queryObject.FILTER.push({ FIELD_NAME: 'USER_NAME', OPERATOR: 'EQ', LOW: userName });
+            }
+        }
+        queryObject.SORT = ['USER_ID'];
+        return this.http.post(this.originalHost + "/api/query", queryObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('searchObjects')));
+    };
+    IdentityService.prototype.getUserDetail = function (userID) {
+        var pieceObject = {
+            ID: { RELATION_ID: 'r_user', USER_ID: userID },
+            piece: { RELATIONS: ['r_user', 'r_employee', 'r_email', 'r_address', 'r_personalization'],
+                RELATIONSHIPS: ['rs_user_role'] }
+        };
+        return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserDetail')));
+    };
+    IdentityService.prototype.getUserByUserName = function (userName) {
+        var pieceObject = {
+            ID: { RELATION_ID: 'r_user', USER_NAME: userName },
+            piece: { RELATIONS: ['r_user'] }
+        };
+        return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserByUserName')));
+    };
     IdentityService.prototype.handleError = function (operation, result) {
         var _this = this;
         if (operation === void 0) { operation = 'operation'; }
         return function (error) {
-            // TODO add messages to message service
+            if (error.status === 401) {
+                _this.messageService.addMessage('EXCEPTION', 'NOT_AUTHENTICATED_OR_SESSION_EXPIRED', ui_message_angular__WEBPACK_IMPORTED_MODULE_8__["messageType"].Exception);
+            }
+            else {
+                _this.messageService.addMessage('EXCEPTION', 'GENERIC', ui_message_angular__WEBPACK_IMPORTED_MODULE_8__["messageType"].Exception, operation, error.message);
+            }
             _this.router.navigate(['errors']);
             console.error(operation, error); // log to console instead
             // Let the app keep running by returning an empty result.
@@ -854,7 +915,8 @@ var IdentityService = /** @class */ (function () {
     IdentityService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: 'root' }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_8__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
     ], IdentityService);
     return IdentityService;
 }());
@@ -1008,6 +1070,50 @@ var MockupModule = /** @class */ (function () {
     return MockupModule;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/msgStore.ts":
+/*!*****************************!*\
+  !*** ./src/app/msgStore.ts ***!
+  \*****************************/
+/*! exports provided: msgStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "msgStore", function() { return msgStore; });
+var msgStore = [
+    { msgCat: 'EXCEPTION',
+        msgName: 'GENERIC',
+        msgText: {
+            EN: { shortText: 'Exception Occurs in Operation: %s',
+                longText: '%s2' }
+        }
+    },
+    { msgCat: 'EXCEPTION',
+        msgName: 'NOT_AUTHENTICATED_OR_SESSION_EXPIRED',
+        msgText: {
+            EN: { shortText: 'You are not authenticated or your session is expired!   ',
+                longText: 'You are not authenticated or your session is expired, please <a href="/logon">re-logon</a>.' }
+        }
+    },
+    { msgCat: 'GENERAL',
+        msgName: 'EMPTY_LIST',
+        msgText: {
+            EN: { shortText: 'No result is found',
+                longText: 'The system cannot find any items meet the search criteria.' }
+        }
+    },
+    { msgCat: 'USER_BASIC',
+        msgName: 'USER_NAME_EXISTS',
+        msgText: {
+            EN: { shortText: 'User name: "%s" already exists!',
+                longText: '' }
+        }
+    }
+];
 
 
 /***/ }),
@@ -1255,6 +1361,9 @@ var SideMenuComponent = /** @class */ (function () {
     };
     SideMenuComponent.prototype._processRoleData = function (roles) {
         var _this = this;
+        if (!roles) {
+            return;
+        }
         this.role = roles[0]; // Currently, only support one role per user logon
         if (this.role['msgCat']) {
             this.messageService.clearMessages();

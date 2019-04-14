@@ -5,6 +5,7 @@ import {ErrorPageComponent} from "./error-page/error-page.component";
 
 const routes: Routes = [
   // The dashboard app is lazy loading
+  { path: 'users', loadChildren: 'app/user/user.module#UserModule'},
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
   { path: 'handsontable', loadChildren: 'app/handsontable/handsontable.module#HandsontableModule'},
   { path: 'errors', component: ErrorPageComponent },

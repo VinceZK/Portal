@@ -58,6 +58,8 @@ export class SideMenuComponent implements OnInit {
   }
 
   _processRoleData(roles): void {
+    if (!roles) {return; }
+
     this.role = roles[0]; // Currently, only support one role per user logon
     if (this.role['msgCat']) {
       this.messageService.clearMessages();

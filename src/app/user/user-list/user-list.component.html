@@ -1,0 +1,91 @@
+<div class="card mb-3 pt-3">
+  <div class="mt-2 pl-4 row">
+    <div class="col-6 form-group row">
+      <label for="user_id" class="col-sm-3 col-form-label">User ID:</label>
+      <input id="user_id" name="user_id" [(ngModel)]="userID" type="text" class="col-sm-6 form-control" (keyup)="enterSearch($event)" autofocus>
+    </div>
+    <div class="col-6 form-group row">
+      <label for="user_name" class="col-sm-3 col-form-label">User Name:</label>
+      <input id="user_name" name="user_name" [(ngModel)]="userName" type="text" class="col-sm-6 form-control" (keyup)="enterSearch($event)">
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <button type="button" class="btn btn-primary float-right mr-4" (click)="search()">Search</button>
+  </div>
+</div>
+
+<div class="mt-2 mb-4 mx-4">
+  <dk-message></dk-message>
+  <div class="btn-toolbar justify-content-end my-2" role="toolbar">
+    <button type="button" class="btn btn-light" (click)="newUser()"><span class="fas fa-plus"></span> New</button>
+  </div>
+  <table class="table table-bordered table-sm">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Display Name</th>
+      <th scope="col">Locked?</th>
+      <th scope="col">Password State</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td><a [routerLink]="['/user', user.USER_ID, {action: 'display'}]">{{user.USER_ID}}</a></td>
+      <td>{{user.USER_NAME}}</td>
+      <td>{{user.DISPLAY_NAME}}</td>
+      <td class="dk-lock">
+        <span *ngIf="user.LOCK" class="fas fa-lock" title="Locked"></span>
+        <span *ngIf="!user.LOCK" class="fas fa-lock-open" title="Unlocked"></span>
+      </td>
+      <td class="dk-password-state" [ngSwitch]="user.PWD_STATE">
+        <div *ngSwitchCase="">
+          <span class="badge badge-primary">Initial</span>
+        </div>
+        <div *ngSwitchCase="1">
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div *ngSwitchCase="2">
+          <span class="badge badge-warning">Need Change</span>
+        </div>
+      </td>
+      <td class="dk-actions">
+        <button title="Display" class="btn" type="button" (click)="displayUser(user.USER_ID)">
+          <span class="fas fa-search"></span>
+        </button>
+        <button title="Change" class="btn" type="button" (click)="changeUser(user.USER_ID)">
+          <span class="fas fa-pen"></span>
+        </button>
+        <button title="Delete" class="btn" type="button" (click)="deleteUser(user.USER_ID)">
+          <span class="far fa-trash-alt"></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="modal fade dk-modal-open" [class.show]="showDeletionConfirmation"
+       [ngStyle]="{'display': displayDeletionConfirmation}" id="deletionConfirmation" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="entityMeta">Confirm Deletion</h5>
+          <button type="button" class="close" (click)="cancelDeletion()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete the user '{{toBeDeletedUser}}'?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cancelDeletion()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="confirmDeletion()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+<table class="table table-bordered dk-table ml-3 mt-4" [formGroup]="userForm">
+  <thead class="thead-light dk-form-label">
+    <tr>
+      <th scope="col">Role</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody formArrayName="userRole" class="mb-4">
+    <tr *ngFor="let userRoleForm of userRoleFormArray.controls; let i = index">
+      <td [formGroup]="userRoleForm"
+          [class.dk-invalid]="userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)">
+        <div class="input-group dk-name">
+            <input class="form-control" type="text" formControlName="NAME"
+                 [readonly]="readonly || oldRole(userRoleForm) && userRoleForm.valid" (change)="onChangeRoleID(i)">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary btn-light" type="button" id="button-addon2">
+              <span class="fas fa-search"></span>
+            </button>
+          </div>
+          <div class="invalid-tooltip">
+            {{userRoleForm.get('NAME').errors?.message}}
+          </div>
+        </div>
+      </td>
+      <td [formGroup]="userRoleForm" class="dk-description">
+        <input type="text" formControlName="DESCRIPTION" readonly class="form-control">
+      </td>
+      <td class="dk-actions">
+        <button class="btn" type="button" [disabled]="readonly" (click)="deleteRole(i)" title="Delete">
+          <span class="far fa-trash-alt"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

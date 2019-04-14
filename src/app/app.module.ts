@@ -10,6 +10,8 @@ import { ExternalAppModule } from "./external-app/external-app.module";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {MessageModule} from "ui-message-angular";
+import {RouteReuseStrategy} from "@angular/router";
+import {CustomReuseStrategy} from "./custom.reuse.strategy";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,9 @@ import {MessageModule} from "ui-message-angular";
   ],
   bootstrap: [
     AppComponent
+  ],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
   ]
 })
 export class AppModule { }

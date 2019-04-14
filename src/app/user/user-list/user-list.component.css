@@ -1,0 +1,15 @@
+.dk-lock {
+  width: 5rem;
+  max-width: 5rem;
+  min-width: 5rem;
+}
+.dk-password-state {
+  width: 15rem;
+  max-width: 15rem;
+  min-width: 15rem;
+}
+.dk-actions{
+  width: 9rem;
+  min-width: 9rem;
+  max-width: 9rem;
+}

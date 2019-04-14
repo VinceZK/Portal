@@ -41,13 +41,14 @@ export class AppComponent implements OnInit {
       }),
       mergeMap(url => {
         if (this.shareService.apps.length === 0) {
-          return this.identityService.getApp('/' + url);
+          // return this.identityService.getApp('/' + url);
+          return of(null);
         } else {
           return of(this.shareService.apps.find( app => app.routeLink === '/' + url ));
         }
       }))
       .subscribe(app => {
-        if (app.routeLink) {
+        if (app && app.routeLink) {
           this.sideMenu.activateApp(app);
           this.historyService.addHistory(app);
         }

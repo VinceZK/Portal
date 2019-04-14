@@ -70900,6 +70900,177 @@ return fuzzysortNew()
 
 /***/ }),
 
+/***/ "./node_modules/jor-angular/fesm5/jor-angular.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/jor-angular/fesm5/jor-angular.js ***!
+  \*******************************************************/
+/*! exports provided: Entity, Relationship, RelationshipInstance, PartnerInstance, EntityMeta, Attribute, Role, RoleRelation, RelationshipMeta, Involve, RelationMeta, Association, FieldsMappingPair, EntityRelation, Selection, Projection, QueryObject, Sort, EntityType, Relation, RelationshipH, RoleH, RoleMeta */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Entity", function() { return Entity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relationship", function() { return Relationship; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipInstance", function() { return RelationshipInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartnerInstance", function() { return PartnerInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityMeta", function() { return EntityMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Role", function() { return Role; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleRelation", function() { return RoleRelation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipMeta", function() { return RelationshipMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Involve", function() { return Involve; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationMeta", function() { return RelationMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Association", function() { return Association; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FieldsMappingPair", function() { return FieldsMappingPair; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityRelation", function() { return EntityRelation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Selection", function() { return Selection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Projection", function() { return Projection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryObject", function() { return QueryObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sort", function() { return Sort; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityType", function() { return EntityType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relation", function() { return Relation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipH", function() { return RelationshipH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleH", function() { return RoleH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleMeta", function() { return RoleMeta; });
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+// TODO Export these types in packaging
+var  
+// TODO Export these types in packaging
+Entity = /** @class */ (function () {
+    function Entity() {
+    }
+    return Entity;
+}());
+var Relationship = /** @class */ (function () {
+    function Relationship() {
+    }
+    return Relationship;
+}());
+var RelationshipInstance = /** @class */ (function () {
+    function RelationshipInstance() {
+    }
+    return RelationshipInstance;
+}());
+var PartnerInstance = /** @class */ (function () {
+    function PartnerInstance() {
+    }
+    return PartnerInstance;
+}());
+var EntityMeta = /** @class */ (function () {
+    function EntityMeta() {
+    }
+    return EntityMeta;
+}());
+var Attribute = /** @class */ (function () {
+    function Attribute() {
+    }
+    return Attribute;
+}());
+var Role = /** @class */ (function () {
+    function Role() {
+    }
+    return Role;
+}());
+var RoleRelation = /** @class */ (function () {
+    function RoleRelation() {
+    }
+    return RoleRelation;
+}());
+var RelationshipMeta = /** @class */ (function () {
+    function RelationshipMeta() {
+    }
+    return RelationshipMeta;
+}());
+var Involve = /** @class */ (function () {
+    function Involve() {
+    }
+    return Involve;
+}());
+var RelationMeta = /** @class */ (function () {
+    function RelationMeta() {
+    }
+    return RelationMeta;
+}());
+var Association = /** @class */ (function () {
+    function Association() {
+    }
+    return Association;
+}());
+var FieldsMappingPair = /** @class */ (function () {
+    function FieldsMappingPair() {
+    }
+    return FieldsMappingPair;
+}());
+var EntityRelation = /** @class */ (function () {
+    function EntityRelation() {
+    }
+    return EntityRelation;
+}());
+var Selection = /** @class */ (function () {
+    function Selection() {
+    }
+    return Selection;
+}());
+var Projection = /** @class */ (function () {
+    function Projection() {
+    }
+    return Projection;
+}());
+var QueryObject = /** @class */ (function () {
+    function QueryObject() {
+    }
+    return QueryObject;
+}());
+var Sort = /** @class */ (function () {
+    function Sort() {
+    }
+    return Sort;
+}());
+var EntityType = /** @class */ (function () {
+    function EntityType() {
+    }
+    return EntityType;
+}());
+var Relation = /** @class */ (function () {
+    function Relation() {
+    }
+    return Relation;
+}());
+var RelationshipH = /** @class */ (function () {
+    function RelationshipH() {
+    }
+    return RelationshipH;
+}());
+var RoleH = /** @class */ (function () {
+    function RoleH() {
+    }
+    return RoleH;
+}());
+var RoleMeta = /** @class */ (function () {
+    function RoleMeta() {
+    }
+    return RoleMeta;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=jor-angular.js.map
+
+/***/ }),
+
 /***/ "./node_modules/rxjs/_esm5/index.js":
 /*!******************************************!*\
   !*** ./node_modules/rxjs/_esm5/index.js ***!

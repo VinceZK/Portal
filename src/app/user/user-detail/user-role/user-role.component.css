@@ -1,0 +1,18 @@
+.dk-table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  border: none;
+}
+.dk-name{
+  width: 20rem;
+}
+.dk-description{
+  width: 40rem;
+}
+.dk-actions{
+  width: 3rem;
+}
+.dk-form-label {
+  font-size: 1.2rem;
+}

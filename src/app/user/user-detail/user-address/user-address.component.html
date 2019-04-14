@@ -1,0 +1,51 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <div *ngFor="let userAddressForm of userAddressFormArray.controls; let i = index" class="card mb-4">
+      <button type="button" class="dk-close-button close d-flex justify-content-end mr-2" aria-label="Close" (click)="deleteAddress(i)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="card-body row" [formGroup]="userAddressForm">
+        <div class="col-3 row form-group ml-2 mr-2"
+             [class.dk-invalid]="userAddressForm.get('TYPE').invalid && (userAddressForm.touched || userAddressForm.dirty)">
+          <label for="addressType" class="col-form-label dk-form-label"> Address Type:
+            <span class="dk-invalid-feedback">{{userAddressForm.get('TYPE').errors?.required ? 'Required': null}}</span>
+          </label>
+          <input type="text" class="form-control" id="addressType" [readonly]="readonly"
+                 name="addressType" formControlName="TYPE">
+        </div>
+        <div class="col-6 row form-group mr-2"
+             [class.dk-invalid]="userAddressForm.get('ADDRESS_VALUE').invalid && (userAddressForm.touched || userAddressForm.dirty)">
+          <label for="address" class="col-form-label dk-form-label"> Address:
+            <span class="dk-invalid-feedback">{{userAddressForm.get('ADDRESS_VALUE').errors?.required ? 'Required': null}}</span>
+          </label>
+          <input type="text" class="form-control" id="address" [readonly]="readonly"
+                 name="address" formControlName="ADDRESS_VALUE">
+        </div>
+        <div class="col-1 row form-group mr-2">
+          <label for="primaryAddress" class="col-form-label dk-form-label">Primary</label>
+          <input type="radio" class="form-control" id="primaryAddress" [value]="1" name="PRIMARY" formControlName="PRIMARY">
+        </div>
+
+        <div class="col-md-3 row form-group ml-2">
+          <label for="postcode" class="col-form-label dk-form-label"> Postcode:
+          </label>
+          <input type="text" class="form-control" id="postcode" [readonly]="readonly"
+                 name="postcode" formControlName="POSTCODE">
+        </div>
+        <div class="col-md-3 row form-group ml-2">
+          <label for="city" class="col-form-label dk-form-label"> City:
+          </label>
+          <input type="text" class="form-control" id="city" [readonly]="readonly"
+                 name="city" formControlName="CITY">
+        </div>
+        <div class="col-md-3 row form-group ml-2">
+          <label for="country" class="col-form-label dk-form-label">Country:
+          </label>
+          <input type="text" class="form-control" id="country" [readonly]="readonly"
+                 name="country" formControlName="COUNTRY">
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary float-right" [disabled]="readonly" (click)="addAddress()">Add</button>
+  </div>
+</div>

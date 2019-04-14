@@ -41,7 +41,7 @@
       </li>
       <li [ngClass]="{'open': dropdown.preferenceOpen}">
         <a (click)="togglePreferenceOpen()" class="dk-nav-toggle"><span
-          class="fas fa-user"></span>{{userBasicInfo.displayName}} <b class="dk-caret"></b>
+          class="fas fa-user"></span>{{userBasicInfo && userBasicInfo.displayName}} <b class="dk-caret"></b>
         </a>
         <ul class="dk-dropdown-menu">
           <li><a href="#"><span class="fas fa-user"></span>Profile</a></li>

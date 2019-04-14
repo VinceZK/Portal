@@ -3,9 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {App, Role, UserBasicInfo} from "./role";
-import {Entity} from "jor-angular";
+import {Entity, QueryObject} from "jor-angular";
 import {Router} from "@angular/router";
 import {environment} from "../environments/environment";
+import {Message, MessageService, messageType} from "ui-message-angular";
+import {msgStore} from "./msgStore";
+import {UserList} from "./user";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +19,9 @@ export class IdentityService {
   private originalHost = environment.originalHost;
 
   constructor(private http: HttpClient,
+              private messageService: MessageService,
               private router: Router) {
+    this.messageService.setMessageStore(msgStore, 'EN');
   }
 
   /**
@@ -101,9 +106,112 @@ export class IdentityService {
       catchError(this.handleError<any>('getAppRouteLink')));
   }
 
+  searchUsers(userID: string, userName: string): Observable<UserList[] | Message[]> {
+    const queryObject = new QueryObject();
+    queryObject.ENTITY_ID = 'person';
+    queryObject.RELATION_ID = 'r_user';
+    queryObject.PROJECTION = ['USER_ID', 'USER_NAME', 'DISPLAY_NAME', 'LOCK', 'PWD_STATE'];
+    queryObject.FILTER = [];
+    if (userID) {
+      if (userID.includes('*')) {
+        userID = userID.replace(/\*/gi, '%');
+        queryObject.FILTER.push({FIELD_NAME: 'USER_ID', OPERATOR: 'CN', LOW: userID});
+      } else {
+        queryObject.FILTER.push({FIELD_NAME: 'USER_ID', OPERATOR: 'EQ', LOW: userID});
+      }
+    }
+    if (userName) {
+      if (userName.includes('*')) {
+        userName = userName.replace(/\*/gi, '%');
+        queryObject.FILTER.push({FIELD_NAME: 'USER_NAME', OPERATOR: 'CN', LOW: userName});
+      } else {
+        queryObject.FILTER.push({FIELD_NAME: 'USER_NAME', OPERATOR: 'EQ', LOW: userName});
+      }
+    }
+    queryObject.SORT = ['USER_ID'];
+    return this.http.post<any>(this.originalHost + `/api/query`, queryObject, httpOptions).pipe(
+      catchError(this.handleError<any>('searchObjects')));
+  }
+
+  getUserDetail(userID: string): Observable<Entity | Message[]> {
+    const pieceObject = {
+      ID: { RELATION_ID: 'r_user', USER_ID: userID},
+      piece: {RELATIONS: ['r_user', 'r_employee', 'r_email', 'r_address', 'r_personalization'],
+              RELATIONSHIPS: [
+                {
+                  RELATIONSHIP_ID: 'rs_user_role',
+                  PARTNER_ENTITY_PIECES: { RELATIONS: ['r_role'] }
+                }]
+      }
+    };
+    return this.http.post<Entity | Message[]>(
+      this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(
+      catchError(this.handleError<any>('getUserDetail')));
+  }
+
+  getUserByUserID(userID: string): Observable<Entity | Message[]> {
+    const pieceObject = {
+      ID: { RELATION_ID: 'r_user', USER_ID: userID},
+      piece: {RELATIONS: ['r_user']}
+    };
+    return this.http.post<Entity | Message[]>(
+      this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(
+      catchError(this.handleError<any>('getUserByUserID')));
+  }
+
+  getUserByUserName(userName: string): Observable<Entity | Message[]> {
+    const pieceObject = {
+      ID: { RELATION_ID: 'r_user', USER_NAME: userName},
+      piece: {RELATIONS: ['r_user']}
+    };
+    return this.http.post<Entity | Message[]>(
+      this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(
+      catchError(this.handleError<any>('getUserByUserName')));
+  }
+
+  getRoleDesc(roleID: string): Observable<{}> {
+    const pieceObject = {
+      ID: { RELATION_ID: 'r_role', NAME: roleID},
+      piece: {RELATIONS: ['r_role']}
+    };
+    return this.http.post<string>(
+      this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(
+       map(instance => {
+         return 'INSTANCE_GUID' in instance ?
+         {
+           INSTANCE_GUID: instance['INSTANCE_GUID'],
+           DESCRIPTION: instance['r_role'] ? instance['r_role'][0].DESCRIPTION : ''
+         } : instance[0];
+       }),
+       catchError(this.handleError<any>('getRoleDesc')));
+  }
+
+  saveUser(user: Entity): Observable<Entity | Message[]> {
+    if (user['INSTANCE_GUID']) {
+      return this.http.put<Entity | Message[]>(
+        this.originalHost + `/api/entity`, user, httpOptions).pipe(
+        catchError(this.handleError<any>('getUserByUserName')));
+    } else {
+      return this.http.post<Entity | Message[]>(
+        this.originalHost + `/api/entity`, user, httpOptions).pipe(
+        catchError(this.handleError<any>('getUserByUserName')));
+    }
+  }
+
+  deleteUser(userGUID: string): Observable<null | Message[]> {
+    return this.http.delete<null | Message[]>(this.originalHost + `/api/entity/instance/` + userGUID, httpOptions).pipe(
+      catchError(this.handleError<any>('deleteUser'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO add messages to message service
+      if (error.status === 401) {
+        this.messageService.addMessage('EXCEPTION', 'NOT_AUTHENTICATED_OR_SESSION_EXPIRED', messageType.Exception);
+      } else {
+        this.messageService.addMessage('EXCEPTION', 'GENERIC', messageType.Exception, operation, error.message);
+      }
+
       this.router.navigate(['errors']);
       console.error(operation, error); // log to console instead
 

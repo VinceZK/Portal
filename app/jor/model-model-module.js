@@ -61,7 +61,7 @@ module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mt-2\">\n  <div class=\"card-header\"><span class=\"fab fa-elementor\"></span> Attribute</div>\n  <div class=\"card-body\">\n    <table class=\"table table-bordered table-sm dk-table\" [formGroup]=\"parentForm\">\n      <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Attribute Name</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Data Element</th>\n          <th scope=\"col\">Data Type</th>\n          <th scope=\"col\">Length</th>\n          <th scope=\"col\">Decimal</th>\n          <th scope=\"col\" title=\"Primary Key\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">PK</th>\n          <th scope=\"col\" title=\"Auto Incremental\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">AI</th>\n        </tr>\n      </thead>\n\n      <tbody formArrayName=\"ATTRIBUTES\">\n        <tr *ngFor=\"let attrFormGroup of formArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteAttribute(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"ATTR_NAME\" [readonly]=\"readonly\"\n                   class=\"form-control form-control-sm\" (change)=\"onChangeAttributeName(i)\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"ATTR_DESC\" class=\"form-control form-control-sm dk-description\"\n                   [readonly]=\"readonly\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"DATA_ELEMENT\" [readonly]=\"readonly\" class=\"form-control form-control-sm\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <select formControlName=\"DATA_TYPE\" (change)=\"onChangeDataType(attrFormGroup)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let opt of dataTypes\" [value]=\"opt.key\">{{opt.value}}</option>\n            </select>\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"number\" formControlName=\"DATA_LENGTH\" class=\"dk-number\"\n                   class=\"form-control form-control-sm\"\n                   [readonly]=\"(+attrFormGroup.value.DATA_TYPE !== 1 && +attrFormGroup.value.DATA_TYPE !== 4) || readonly\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"number\" formControlName=\"DECIMAL\" class=\"dk-number\"\n                   class=\"form-control form-control-sm\" [readonly]=\"+attrFormGroup.value.DATA_TYPE !== 4 || readonly\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">\n            <input type=\"checkbox\" formControlName=\"PRIMARY_KEY\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">\n            <input type=\"checkbox\" formControlName=\"AUTO_INCREMENT\">\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card mt-2\">\n  <div class=\"card-header\"><span class=\"fab fa-elementor\"></span> Attribute</div>\n  <div class=\"card-body\">\n    <table class=\"table table-bordered table-sm dk-table\" [formGroup]=\"parentForm\">\n      <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Attribute Name</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Data Element</th>\n          <th scope=\"col\">Data Type</th>\n          <th scope=\"col\">Length</th>\n          <th scope=\"col\">Decimal</th>\n          <th scope=\"col\" title=\"Primary Key\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">PK</th>\n          <th scope=\"col\" title=\"Auto Incremental\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">AI</th>\n        </tr>\n      </thead>\n\n      <tbody formArrayName=\"ATTRIBUTES\">\n        <tr *ngFor=\"let attrFormGroup of formArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly || isFieldGray(attrFormGroup.value)\"\n                    (click)=\"deleteAttribute(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"ATTR_NAME\" [readonly]=\"readonly || isFieldGray(attrFormGroup.value)\"\n                   class=\"form-control form-control-sm\" (change)=\"onChangeAttributeName(i)\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"ATTR_DESC\" class=\"form-control form-control-sm dk-description\"\n                   [readonly]=\"readonly || isFieldGray(attrFormGroup.value)\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"text\" formControlName=\"DATA_ELEMENT\" [readonly]=\"readonly || isFieldGray(attrFormGroup.value)\"\n                   class=\"form-control form-control-sm\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <select formControlName=\"DATA_TYPE\" (change)=\"onChangeDataType(attrFormGroup)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let opt of dataTypes\" [value]=\"opt.key\">{{opt.value}}</option>\n            </select>\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"number\" formControlName=\"DATA_LENGTH\" class=\"dk-number\"\n                   class=\"form-control form-control-sm\"\n                   [readonly]=\"(+attrFormGroup.value.DATA_TYPE !== 1 && +attrFormGroup.value.DATA_TYPE !== 4) || readonly || isFieldGray(attrFormGroup.value)\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\">\n            <input type=\"number\" formControlName=\"DECIMAL\" class=\"dk-number\"\n                   class=\"form-control form-control-sm\" [readonly]=\"+attrFormGroup.value.DATA_TYPE !== 4 || readonly || isFieldGray(attrFormGroup.value)\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">\n            <input type=\"checkbox\" formControlName=\"PRIMARY_KEY\">\n          </td>\n          <td [formGroup]=\"attrFormGroup\" [hidden]=\"relationID.substring(0,2) !== 'r_'\">\n            <input type=\"checkbox\" formControlName=\"AUTO_INCREMENT\">\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -105,7 +105,7 @@ var AttributeMetaComponent = /** @class */ (function () {
     }
     AttributeMetaComponent.prototype.ngOnInit = function () { };
     AttributeMetaComponent.prototype.ngOnChanges = function () {
-        this._generateFormArray();
+        this.generateFormArray();
         this.formArray = this.parentForm.get('ATTRIBUTES');
     };
     AttributeMetaComponent.prototype.deleteAttribute = function (index) {
@@ -116,8 +116,20 @@ var AttributeMetaComponent = /** @class */ (function () {
         }
     };
     AttributeMetaComponent.prototype.onChangeDataType = function (attrFormGroup) {
-        attrFormGroup.controls['DATA_LENGTH'].setValue(null);
-        attrFormGroup.controls['DATA_LENGTH'].markAsDirty();
+        switch (attrFormGroup.get('DATA_TYPE').value) {
+            case '1': // char
+                attrFormGroup.get('DATA_LENGTH').setValue(10);
+                attrFormGroup.get('DECIMAL').setValue(null);
+                break;
+            case '4': // decimal
+                attrFormGroup.get('DATA_LENGTH').setValue(23);
+                attrFormGroup.get('DECIMAL').setValue(2);
+                break;
+            default:
+                attrFormGroup.get('DATA_LENGTH').setValue(null);
+                attrFormGroup.get('DECIMAL').setValue(null);
+        }
+        attrFormGroup.get('DATA_LENGTH').markAsDirty();
     };
     AttributeMetaComponent.prototype.onChangeAttributeName = function (index) {
         if (index === this.formArray.length - 1 && !this.formArray.controls[index].value.ATTR_GUID) {
@@ -129,7 +141,7 @@ var AttributeMetaComponent = /** @class */ (function () {
                 ATTR_DESC: [''],
                 DATA_ELEMENT: [''],
                 DATA_TYPE: [1],
-                DATA_LENGTH: [null],
+                DATA_LENGTH: [10],
                 DECIMAL: [null],
                 PRIMARY_KEY: [false],
                 AUTO_INCREMENT: [false]
@@ -139,13 +151,16 @@ var AttributeMetaComponent = /** @class */ (function () {
     AttributeMetaComponent.prototype.processChangedAttributes = function () {
         var changedAttributes = [];
         var changedAttribute;
+        var order = 0;
         if (this.formArray.dirty) {
-            this.formArray.controls.forEach(function (attribute) {
+            this.formArray.controls.forEach(function (attribute, index) {
+                var currentOrder = attribute.get('ORDER') ? attribute.get('ORDER').value : index;
+                order = order <= currentOrder ? currentOrder + 1 : order + 1;
                 if (attribute.get('ATTR_NAME').value.trim() === '') {
                     return;
                 }
                 if (attribute.dirty) {
-                    changedAttribute = {};
+                    changedAttribute = { ORDER: order };
                     if (attribute.get('ATTR_GUID').value) { // Update Case
                         changedAttribute['action'] = 'update';
                         changedAttribute['ATTR_GUID'] = attribute.get('ATTR_GUID').value;
@@ -181,7 +196,7 @@ var AttributeMetaComponent = /** @class */ (function () {
             return changedAttributes;
         }
     };
-    AttributeMetaComponent.prototype._generateFormArray = function () {
+    AttributeMetaComponent.prototype.generateFormArray = function () {
         var _this = this;
         var formArray = [];
         if (this.attributes) {
@@ -192,11 +207,12 @@ var AttributeMetaComponent = /** @class */ (function () {
                     ATTR_NAME: [attribute.ATTR_NAME],
                     ATTR_DESC: [attribute.ATTR_DESC],
                     DATA_ELEMENT: [attribute.DATA_ELEMENT],
-                    DATA_TYPE: [{ value: attribute.DATA_TYPE, disabled: _this.readonly }],
+                    DATA_TYPE: [{ value: attribute.DATA_TYPE, disabled: _this.readonly || _this.isFieldGray(attribute) }],
                     DATA_LENGTH: [attribute.DATA_LENGTH],
                     DECIMAL: [attribute.DECIMAL],
-                    PRIMARY_KEY: [{ value: attribute.PRIMARY_KEY, disabled: _this.readonly }],
-                    AUTO_INCREMENT: [{ value: attribute.AUTO_INCREMENT, disabled: _this.readonly }]
+                    ORDER: [attribute.ORDER],
+                    PRIMARY_KEY: [{ value: attribute.PRIMARY_KEY, disabled: _this.readonly || _this.isFieldGray(attribute) }],
+                    AUTO_INCREMENT: [{ value: attribute.AUTO_INCREMENT, disabled: _this.readonly || _this.isFieldGray(attribute) }]
                 }));
             });
         }
@@ -208,7 +224,7 @@ var AttributeMetaComponent = /** @class */ (function () {
                 ATTR_DESC: [''],
                 DATA_ELEMENT: [''],
                 DATA_TYPE: [1],
-                DATA_LENGTH: [null],
+                DATA_LENGTH: [10],
                 DECIMAL: [null],
                 PRIMARY_KEY: [false],
                 AUTO_INCREMENT: [false]
@@ -217,11 +233,14 @@ var AttributeMetaComponent = /** @class */ (function () {
         this.parentForm.addControl('ATTRIBUTES', new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormArray"](formArray));
     };
     AttributeMetaComponent.prototype.switchEditDisplay = function (readonly) {
+        var _this = this;
         if (!readonly) { // Edit Mode
             this.formArray.controls.forEach(function (attrFormGroup) {
-                attrFormGroup.get('DATA_TYPE').enable();
-                attrFormGroup.get('PRIMARY_KEY').enable();
-                attrFormGroup.get('AUTO_INCREMENT').enable();
+                if (!_this.isFieldGray(attrFormGroup.value)) {
+                    attrFormGroup.get('DATA_TYPE').enable();
+                    attrFormGroup.get('PRIMARY_KEY').enable();
+                    attrFormGroup.get('AUTO_INCREMENT').enable();
+                }
             });
             this.formArray.push(this.fb.group({
                 ATTR_GUID: [''],
@@ -230,7 +249,7 @@ var AttributeMetaComponent = /** @class */ (function () {
                 ATTR_DESC: [''],
                 DATA_ELEMENT: [''],
                 DATA_TYPE: [1],
-                DATA_LENGTH: [null],
+                DATA_LENGTH: [10],
                 DECIMAL: [null],
                 PRIMARY_KEY: [false],
                 AUTO_INCREMENT: [false]
@@ -248,6 +267,14 @@ var AttributeMetaComponent = /** @class */ (function () {
                 attrFormGroup.get('AUTO_INCREMENT').disable();
             });
         }
+    };
+    AttributeMetaComponent.prototype.isFieldGray = function (attribute) {
+        return this.relationID.substr(0, 3) === 'rs_' &&
+            attribute && attribute.ATTR_NAME &&
+            (attribute.ATTR_NAME === 'VALID_FROM' ||
+                attribute.ATTR_NAME === 'VALID_TO' ||
+                attribute.ATTR_NAME.substr(-14, 14) === '_INSTANCE_GUID' ||
+                attribute.ATTR_NAME.substr(-10, 10) === '_ENTITY_ID');
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -643,7 +670,7 @@ var EntityTypeDetailComponent = /** @class */ (function () {
             else {
                 _this.readonly = true;
                 _this.isNewMode = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(_this.entityService.getEntityMeta(params.get('entityID')), _this.entityService.getRelationMeta(params.get('entityID')));
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(_this.entityService.getEntityMeta(entityID), _this.entityService.getRelationMeta(entityID));
             }
         })).subscribe(function (data) {
             if ('ENTITY_ID' in data[0]) {
@@ -2278,7 +2305,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationshipMeta\" [formGroup]=\"relationshipForm\">\n  <div class=\"form-group\"\n       [class.dk-invalid]=\"relationshipForm.get('RELATIONSHIP_ID').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n    <label for=\"relationship\" class=\"col-form-label form-control-sm\">Relationship:\n      <span class=\"dk-invalid-feedback\">\n        {{relationshipForm.get('RELATIONSHIP_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relationship\" [readonly]=\"readonly || !isNewMode\"\n           name=\"relationship\" formControlName=\"RELATIONSHIP_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relationship-desc\" class=\"col-form-label form-control-sm\">Relationship Description:</label>\n    <textarea class=\"form-control\" id=\"relationship-desc\" name=\"relationship-desc\" rows=\"2\"\n              formControlName=\"RELATIONSHIP_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRelationshipDesc()\"></textarea>\n  </div>\n  <div class=\"form-group\" >\n    <label for=\"valid_period\" class=\"col-form-label form-control-sm\">Valid Period(second):\n      <span class=\"errorMessage\" *ngIf=\"!relationshipForm.get('VALID_PERIOD').valid\">\n        {{relationshipForm.get('VALID_PERIOD').errors['message']}}\n      </span>\n    </label>\n    <input type=\"number\" class=\"form-control form-control-sm\" id=\"valid_period\" [readonly]=\"readonly\"\n           name=\"valid_period\" formControlName=\"VALID_PERIOD\">\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationshipForm\" [attributes]=\"attributes\"\n                      [relationID]=\"relationshipMeta.RELATIONSHIP_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Involved Roles</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Role</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\">Direction</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"INVOLVES\">\n        <tr *ngFor=\"let involveFormGroup of involveFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteInvolve(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"involveFormGroup\"\n              [class.dk-invalid]=\"involveFormGroup.get('ROLE_ID').invalid && (involveFormGroup.touched || involveFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldInvolve(involveFormGroup) && involveFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{involveFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[1..1]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"DIRECTION\" [readonly]=\"readonly\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationshipMeta\" [formGroup]=\"relationshipForm\">\n  <div class=\"form-group\"\n       [class.dk-invalid]=\"relationshipForm.get('RELATIONSHIP_ID').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n    <label for=\"relationship\" class=\"col-form-label form-control-sm\">Relationship:\n      <span class=\"dk-invalid-feedback\">\n        {{relationshipForm.get('RELATIONSHIP_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relationship\" [readonly]=\"readonly || !isNewMode\"\n           name=\"relationship\" formControlName=\"RELATIONSHIP_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relationship-desc\" class=\"col-form-label form-control-sm\">Relationship Description:</label>\n    <textarea class=\"form-control\" id=\"relationship-desc\" name=\"relationship-desc\" rows=\"2\"\n              formControlName=\"RELATIONSHIP_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRelationshipDesc()\"></textarea>\n  </div>\n  <div class=\"row ml-2\">\n    <div class=\"col-3 form-group row\" >\n      <label for=\"timeDependent\" class=\"col-form-label form-control-sm\">Time Dependent: </label>\n      <input type=\"checkbox\" class=\"form-control ml-2\" id=\"timeDependent\" name=\"timeDependent\"\n             formControlName=\"TIME_DEPENDENT\" (change)=\"onChangeTimeDependency()\">\n    </div>\n    <div class=\"col-4 form-group row ml-3\" >\n      <label for=\"valid_period\" class=\"col-form-label form-control-sm\">Valid Period(second):\n        <span class=\"errorMessage\" *ngIf=\"!relationshipForm.get('VALID_PERIOD').valid\">\n        {{relationshipForm.get('VALID_PERIOD').errors?.message}}\n      </span>\n      </label>\n      <input type=\"number\" class=\"form-control form-control-sm\" id=\"valid_period\" [readonly]=\"readonly\"\n             name=\"valid_period\" formControlName=\"VALID_PERIOD\">\n    </div>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationshipForm\" [attributes]=\"attributes\"\n                      [relationID]=\"relationshipMeta.RELATIONSHIP_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Involved Roles</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Role</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\">Direction</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"INVOLVES\">\n        <tr *ngFor=\"let involveFormGroup of involveFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteInvolve(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"involveFormGroup\"\n              [class.dk-invalid]=\"involveFormGroup.get('ROLE_ID').invalid && (involveFormGroup.touched || involveFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldInvolve(involveFormGroup) && involveFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{involveFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[1..1]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"DIRECTION\" [readonly]=\"readonly\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -2358,7 +2385,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 var relationship = new _entity__WEBPACK_IMPORTED_MODULE_1__["RelationshipMeta"]();
                 relationship.RELATIONSHIP_ID = 'rs_';
                 relationship.RELATIONSHIP_DESC = '';
-                relationship.VALID_PERIOD = 36000000;
+                relationship.VALID_PERIOD = 0;
                 relationship.INVOLVES = [];
                 _this.isNewMode = true;
                 _this.readonly = false;
@@ -2382,19 +2409,30 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 _this.relationshipMeta = data[0];
                 _this.attributes = 'msgName' in data[1] ? [] : data[1]['ATTRIBUTES'];
                 _this._generateRelationshipForm();
+                if (_this.readonly) {
+                    _this.relationshipForm.get('TIME_DEPENDENT').disable();
+                }
             }
         });
     };
     RelationshipDetailComponent.prototype._generateRelationshipForm = function () {
         var _this = this;
-        this.relationshipForm = this.fb.group({});
-        this.relationshipForm.addControl('RELATIONSHIP_ID', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.relationshipMeta.RELATIONSHIP_ID, { updateOn: 'blur' }));
-        if (this.isNewMode) {
-            this.relationshipForm.get('RELATIONSHIP_ID').setValidators(this._validateRelationshipID);
-            this.relationshipForm.get('RELATIONSHIP_ID').setAsyncValidators(this.uniqueRelationshipValidator.validate.bind(this.uniqueRelationshipValidator));
+        if (this.relationshipForm) {
+            this.relationshipForm.markAsPristine({ onlySelf: false });
+            this.relationshipForm.get('RELATIONSHIP_ID').setValue(this.relationshipMeta.RELATIONSHIP_ID);
+            this.relationshipForm.get('RELATIONSHIP_DESC').setValue(this.relationshipMeta.RELATIONSHIP_DESC);
+            this.relationshipForm.get('TIME_DEPENDENT').setValue(this.relationshipMeta.VALID_PERIOD > 0);
+            this.relationshipForm.get('VALID_PERIOD').setValue(this.relationshipMeta.VALID_PERIOD);
+            this.relationshipForm.removeControl('ATTRIBUTES');
         }
-        this.relationshipForm.addControl('RELATIONSHIP_DESC', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.relationshipMeta.RELATIONSHIP_DESC));
-        this.relationshipForm.addControl('VALID_PERIOD', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.relationshipMeta.VALID_PERIOD));
+        else {
+            this.relationshipForm = this.fb.group({
+                RELATIONSHIP_ID: [this.relationshipMeta.RELATIONSHIP_ID, { updateOn: 'blur' }],
+                RELATIONSHIP_DESC: [this.relationshipMeta.RELATIONSHIP_DESC],
+                TIME_DEPENDENT: [this.relationshipMeta.VALID_PERIOD > 0],
+                VALID_PERIOD: [this.relationshipMeta.VALID_PERIOD]
+            });
+        }
         // Compose Involves
         var formArray = [];
         this.relationshipMeta.INVOLVES.forEach(function (involve) {
@@ -2406,6 +2444,9 @@ var RelationshipDetailComponent = /** @class */ (function () {
             }));
         });
         if (this.isNewMode) {
+            this.relationshipForm.get('RELATIONSHIP_ID').setValidators(this._validateRelationshipID);
+            this.relationshipForm.get('RELATIONSHIP_ID').setAsyncValidators(this.uniqueRelationshipValidator.validate.bind(this.uniqueRelationshipValidator));
+            this.relationshipForm.get('TIME_DEPENDENT').enable();
             formArray.push(this.fb.group({
                 ROLE_ID: [''],
                 ROLE_DESC: [''],
@@ -2413,7 +2454,11 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 DIRECTION: ['']
             }));
         }
-        this.relationshipForm.addControl('INVOLVES', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormArray"](formArray));
+        else {
+            this.relationshipForm.get('RELATIONSHIP_ID').clearValidators();
+            this.relationshipForm.get('RELATIONSHIP_ID').clearAsyncValidators();
+        }
+        this.relationshipForm.setControl('INVOLVES', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormArray"](formArray));
     };
     RelationshipDetailComponent.prototype._validateRelationshipID = function (c) {
         if (c.value.trim() === '') {
@@ -2427,6 +2472,9 @@ var RelationshipDetailComponent = /** @class */ (function () {
         }
         if (c.value.toString().length < 4) {
             return { message: 'Relationship ID must have length larger than 3!' };
+        }
+        if (c.value.toString().length > 32) {
+            return { message: 'Relationship ID must have length less than 32!' };
         }
         return null;
     };
@@ -2461,6 +2509,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
         }
         else { // In Display Mode -> Change Mode
             this.readonly = false;
+            this.relationshipForm.get('TIME_DEPENDENT').enable();
             this.attrComponent.switchEditDisplay(this.readonly);
             this.involveFormArray.controls.forEach(function (involveFormGroup) {
                 involveFormGroup.get('CARDINALITY').enable();
@@ -2475,6 +2524,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
     };
     RelationshipDetailComponent.prototype._switch2DisplayMode = function () {
         this.readonly = true;
+        this.relationshipForm.get('TIME_DEPENDENT').disable();
         this.attrComponent.switchEditDisplay(this.readonly);
         var lastIndex = this.involveFormArray.length - 1;
         while (lastIndex >= 0 && this.involveFormArray.controls[lastIndex].get('ROLE_ID').value.trim() === '') {
@@ -2488,16 +2538,79 @@ var RelationshipDetailComponent = /** @class */ (function () {
     RelationshipDetailComponent.prototype.onChangeRelationshipID = function () {
         this.modelService.updateRelationshipID(this.relationshipForm.get('RELATIONSHIP_ID').value);
     };
+    RelationshipDetailComponent.prototype.onChangeTimeDependency = function () {
+        var timeDependent = this.relationshipForm.get('TIME_DEPENDENT').value;
+        var validPeriodCtrl = this.relationshipForm.get('VALID_PERIOD');
+        var relationID = this.relationshipForm.get('RELATIONSHIP_ID').value;
+        var attrFormArray = this.relationshipForm.get('ATTRIBUTES');
+        if (timeDependent) {
+            validPeriodCtrl.setValue(28080000); // 3600 * 24 * 365
+            validPeriodCtrl.markAsDirty();
+            validPeriodCtrl.enable();
+            var validFromFormGroup = this.fb.group({
+                ATTR_GUID: [''],
+                RELATION_ID: [relationID],
+                ATTR_NAME: ['VALID_FROM'],
+                ATTR_DESC: ['Valid from'],
+                DATA_ELEMENT: [''],
+                DATA_TYPE: [{ value: 8, disabled: true }],
+                DATA_LENGTH: [null],
+                DECIMAL: [null],
+                PRIMARY_KEY: [false],
+                AUTO_INCREMENT: [false]
+            });
+            validFromFormGroup.markAsDirty();
+            attrFormArray.insert(attrFormArray.length - 1, validFromFormGroup);
+            var validToFormGroup = this.fb.group({
+                ATTR_GUID: [''],
+                RELATION_ID: [relationID],
+                ATTR_NAME: ['VALID_TO'],
+                ATTR_DESC: ['Valid to'],
+                DATA_ELEMENT: [''],
+                DATA_TYPE: [{ value: 8, disabled: true }],
+                DATA_LENGTH: [null],
+                DECIMAL: [null],
+                PRIMARY_KEY: [false],
+                AUTO_INCREMENT: [false]
+            });
+            validToFormGroup.markAsDirty();
+            attrFormArray.insert(attrFormArray.length - 1, validToFormGroup);
+        }
+        else {
+            validPeriodCtrl.setValue(0);
+            validPeriodCtrl.disable();
+            validPeriodCtrl.markAsDirty();
+            var attributeValidFromIndex = attrFormArray.controls.findIndex(function (attrCtrl) { return attrCtrl.get('ATTR_NAME').value === 'VALID_FROM'; });
+            if (attributeValidFromIndex >= 0) {
+                this.attrComponent.deleteAttribute(attributeValidFromIndex);
+            }
+            var attributeValidToIndex = attrFormArray.controls.findIndex(function (attrCtrl) { return attrCtrl.get('ATTR_NAME').value === 'VALID_TO'; });
+            if (attributeValidToIndex >= 0) {
+                this.attrComponent.deleteAttribute(attributeValidToIndex);
+            }
+        }
+    };
     RelationshipDetailComponent.prototype.onChangeRelationshipDesc = function () {
         this.modelService.updateRelationshipDesc(this.relationshipForm.get('RELATIONSHIP_DESC').value);
     };
     RelationshipDetailComponent.prototype.deleteInvolve = function (index) {
         if (index !== this.involveFormArray.length - 1) {
+            var currentRoleID_1 = this.involveFormArray.at(index).get('ROLE_ID').value;
             this.involveFormArray.removeAt(index);
             this.involveFormArray.markAsDirty();
+            var attrFormArray = this.relationshipForm.get('ATTRIBUTES');
+            var attributeInstanceGUIDIndex = attrFormArray.controls.findIndex(function (attrCtrl) { return attrCtrl.get('ATTR_NAME').value === currentRoleID_1 + '_INSTANCE_GUID'; });
+            if (attributeInstanceGUIDIndex >= 0) {
+                this.attrComponent.deleteAttribute(attributeInstanceGUIDIndex);
+            }
+            var attributeEntityIDIndex = attrFormArray.controls.findIndex(function (attrCtrl) { return attrCtrl.get('ATTR_NAME').value === currentRoleID_1 + '_ENTITY_ID'; });
+            if (attributeEntityIDIndex >= 0) {
+                this.attrComponent.deleteAttribute(attributeEntityIDIndex);
+            }
         }
     };
     RelationshipDetailComponent.prototype.onChangeRoleID = function (index) {
+        var _this = this;
         var currentInvolveFormGroup = this.involveFormArray.controls[index];
         if (this.involveFormArray.controls.findIndex(function (involveCtrl, i) {
             return i !== index && involveCtrl.get('ROLE_ID').value === currentInvolveFormGroup.get('ROLE_ID').value;
@@ -2520,6 +2633,37 @@ var RelationshipDetailComponent = /** @class */ (function () {
             }
             else {
                 currentInvolveFormGroup.get('ROLE_DESC').setValue(data);
+                var attrFormArray = _this.relationshipForm.get('ATTRIBUTES');
+                var relationID = _this.relationshipForm.get('RELATIONSHIP_ID').value;
+                var instanceGUIDFormGroup = _this.fb.group({
+                    ATTR_GUID: [''],
+                    RELATION_ID: [relationID],
+                    ATTR_NAME: [currentInvolveFormGroup.value.ROLE_ID + '_INSTANCE_GUID'],
+                    ATTR_DESC: ['Entity Instance GUID of role ' + currentInvolveFormGroup.value.ROLE_ID],
+                    DATA_ELEMENT: [''],
+                    DATA_TYPE: [{ value: 1, disabled: true }],
+                    DATA_LENGTH: [32],
+                    DECIMAL: [null],
+                    PRIMARY_KEY: [false],
+                    AUTO_INCREMENT: [false]
+                });
+                instanceGUIDFormGroup.markAsDirty();
+                attrFormArray.insert(attrFormArray.length - 1, instanceGUIDFormGroup);
+                var entityIDFormGroup = _this.fb.group({
+                    ATTR_GUID: [''],
+                    RELATION_ID: [relationID],
+                    ATTR_NAME: [currentInvolveFormGroup.value.ROLE_ID + '_ENTITY_ID'],
+                    ATTR_DESC: ['Entity ID of role ' + currentInvolveFormGroup.value.ROLE_ID],
+                    DATA_ELEMENT: [''],
+                    DATA_TYPE: [{ value: 1, disabled: true }],
+                    DATA_LENGTH: [32],
+                    DECIMAL: [null],
+                    PRIMARY_KEY: [false],
+                    AUTO_INCREMENT: [false]
+                });
+                entityIDFormGroup.markAsDirty();
+                attrFormArray.insert(attrFormArray.length - 1, entityIDFormGroup);
+                attrFormArray.markAsDirty();
             }
         });
     };
@@ -2567,12 +2711,18 @@ var RelationshipDetailComponent = /** @class */ (function () {
             this.changedRelationship['VALID_PERIOD'] = this.relationshipForm.controls['VALID_PERIOD'].value;
         }
         this.changedRelationship['ATTRIBUTES'] = this.attrComponent.processChangedAttributes();
-        this._processChangedInvolves();
-        this.entityService.saveRelationship(this.changedRelationship)
-            .subscribe(function (data) { return _this._postActivityAfterSavingRelationship(data); });
+        if (this._processChangedInvolves()) {
+            // console.log(this.changedRelationship);
+            this.entityService.saveRelationship(this.changedRelationship)
+                .subscribe(function (data) { return _this._postActivityAfterSavingRelationship(data); });
+        }
     };
     RelationshipDetailComponent.prototype._processChangedInvolves = function () {
         var _this = this;
+        if (this.involveFormArray.length <= 2) { // An empty line is included
+            this.messageService.reportMessage('MODEL', 'RELATIONSHIP_LACK_INVOLVED_ROLES', 'E');
+            return false;
+        }
         var changedInvolves = [];
         if (this.involveFormArray.dirty) {
             this.changedRelationship['INVOLVES'] = changedInvolves;
@@ -2604,6 +2754,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 }
             });
         }
+        return true;
     };
     RelationshipDetailComponent.prototype._postActivityAfterSavingRelationship = function (data) {
         var _this = this;
@@ -2615,6 +2766,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
             }
             else {
                 this.readonly = true;
+                this.relationshipForm.get('TIME_DEPENDENT').disable();
                 this.relationshipMeta = data[0];
                 this.attributes = data[1].ATTRIBUTES;
                 this.changedRelationship = {};

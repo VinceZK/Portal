@@ -1,0 +1,68 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <div>
+    <span class="font-weight-bold mb-0 mx-1">{{isNewMode? 'New User' : readonly? 'Display User' : 'Change User'}}</span>
+  </div>
+
+  <div class="flex-row-reverse">
+    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Edit/Display" (click)="switchEditDisplay()">
+      <span *ngIf="readonly" class="fas fa-edit"> Edit</span>
+      <span *ngIf="!readonly" class="fas fa-glasses"> Display</span>
+    </button>
+    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Save" (click)="save()" [disabled]="readonly">
+      <span class="fas fa-save"> Save</span>
+    </button>
+  </div>
+</nav>
+
+<div class="mt-5 pt-4 mb-2">
+  <dk-message></dk-message>
+</div>
+
+<div *ngIf="userForm" class="ml-2">
+  <div class="mt-2 ml-3 row">
+    <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm"
+         [class.dk-invalid]="userForm.get('USER_ID').invalid && (userForm.touched || userForm.dirty)">
+      <label for="user_id" class="col-form-label dk-form-label">User ID:
+        <span class="dk-invalid-feedback">{{userForm.get('USER_ID').errors?.required ? 'Required': null}}</span>
+        <span class="dk-invalid-feedback">{{userForm.get('USER_ID').errors?.message}}</span>
+      </label>
+      <input id="user_id" name="user_id" formControlName="USER_ID" type="text" class="form-control" [readonly]="!isNewMode">
+    </div>
+    <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm">
+      <label for="lockStatus" class="col-form-label dk-form-label">Lock Status:</label>
+      <input id="lockStatus" name="lock" type="text" class="form-control"
+             [value]="userForm.get('LOCK').value ? 'Locked' : 'Unlocked'" readonly>
+    </div>
+    <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm">
+      <label for="passwordStatus" class="col-form-label dk-form-label">Password Status:</label>
+      <input id="passwordStatus" name="lock" type="text" class="form-control"
+             [value]="pwdStatus" readonly>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs mt-1">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabStrip===1" href="javascript:void(0);" (click)="switchTabStrip(1)">Basic</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabStrip===2" href="javascript:void(0);" (click)="switchTabStrip(2)">Email</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabStrip===3" href="javascript:void(0);" (click)="switchTabStrip(3)">Address</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabStrip===4" href="javascript:void(0);" (click)="switchTabStrip(4)">Personalization</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabStrip===5" href="javascript:void(0);" (click)="switchTabStrip(5)">Role</a>
+    </li>
+  </ul>
+
+  <div class="mt-2" [ngSwitch]="tabStrip">
+    <app-user-basic *ngSwitchCase="1" [userForm]="userForm" [readonly]="readonly"></app-user-basic>
+    <app-user-email *ngSwitchCase="2" [userForm]="userForm" [readonly]="readonly"></app-user-email>
+    <app-user-address *ngSwitchCase="3" [userForm]="userForm" [readonly]="readonly"></app-user-address>
+    <app-user-personalization *ngSwitchCase="4" [userForm]="userForm" [readonly]="readonly"></app-user-personalization>
+    <app-user-role *ngSwitchCase="5" [userForm]="userForm" [readonly]="readonly"></app-user-role>
+  </div>
+</div>
