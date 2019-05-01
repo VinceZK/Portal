@@ -8,7 +8,7 @@
     "build": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --dev-server-target= --webdriverUpdate=false",
     "redis": "redis-server /etc/redis/6379.conf",
     "prod": "node server.js"
   },

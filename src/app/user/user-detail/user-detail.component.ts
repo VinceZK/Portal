@@ -8,6 +8,7 @@ import {IdentityService} from "../../identity.service";
 import {Observable, of} from "rxjs";
 import {Entity} from "jor-angular";
 import {existingUserIDValidator, existingUserNameValidator} from "./async-validators";
+import {DialogService} from "../../dialog.service";
 
 @Component({
   selector: 'app-user-detail',
@@ -19,7 +20,8 @@ export class UserDetailComponent implements OnInit {
   readonly = true;
   isNewMode = false;
   action: string;
-  originalEntity: Entity;
+  instanceGUID: string;
+  originalUserValue = {};
   changedUser = {};
   tabStrip = 1;
 
@@ -38,6 +40,7 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
+              private dialogService: DialogService,
               private identityService: IdentityService,
               private messageService: MessageService) {
     this.messageService.setMessageStore(msgStore, 'EN');
@@ -57,8 +60,9 @@ export class UserDetailComponent implements OnInit {
       })
     ).subscribe( data => {
       if ('ENTITY_ID' in data) {
-        this.originalEntity = <Entity>data;
-        this._generateUserForm(this.originalEntity);
+        this.instanceGUID = data['INSTANCE_GUID'];
+        this._generateUserForm(<Entity>data);
+        this.originalUserValue = this.userForm.getRawValue();
         if (this.isNewMode || this.action === 'change') {
           this._switch2EditMode();
         } else {
@@ -79,15 +83,20 @@ export class UserDetailComponent implements OnInit {
     if (this.readonly ) {
       this._switch2EditMode();
     } else {
-      this._switch2DisplayMode();
+      if (this.userForm.dirty) {
+        this.dialogService.confirm('Discard changes?').subscribe(confirm => {
+          if (confirm) {
+            this.userForm.reset(this.originalUserValue);
+            this._switch2DisplayMode();
+          }
+        });
+      } else {
+        this._switch2DisplayMode();
+      }
     }
   }
 
   _switch2DisplayMode(): void {
-    if (this.userForm.dirty) {
-      // TODO Popup work protection
-    }
-
     this.readonly = true;
     this._setCheckBoxState();
 
@@ -96,12 +105,37 @@ export class UserDetailComponent implements OnInit {
     const userNameCtrl = this.userForm.get('userBasic.names.USER_NAME') as FormControl;
     userNameCtrl.clearAsyncValidators();
 
-    const roleArray = this.userForm.get('userRole') as FormArray;
-    const lastIndex = roleArray.length - 1;
-    if (lastIndex >= 0 && roleArray.at(lastIndex).value.NAME.trim() === '') {
-      roleArray.removeAt(lastIndex);
+    const emailArray = this.userForm.get('emails') as FormArray;
+    let lastIndex = emailArray.length - 1;
+    while (lastIndex >= 0) {
+      const emailFormGroup = emailArray.at(lastIndex);
+      if (emailFormGroup.invalid || !emailFormGroup.value.EMAIL || emailFormGroup.value.EMAIL.trim() === '') {
+        emailArray.removeAt(lastIndex);
+      }
+      lastIndex--;
     }
 
+    const addressArray = this.userForm.get('addresses') as FormArray;
+    lastIndex = addressArray.length - 1;
+    while (lastIndex >= 0) {
+      const addressFormGroup = addressArray.at(lastIndex);
+      if (addressFormGroup.invalid || !addressFormGroup.value.ADDRESS_VALUE || addressFormGroup.value.ADDRESS_VALUE.trim() === '') {
+        addressArray.removeAt(lastIndex);
+      }
+      lastIndex--;
+    }
+
+    const roleArray = this.userForm.get('userRole') as FormArray;
+    lastIndex = roleArray.length - 1;
+    while (lastIndex >= 0) {
+      const roleFormGroup = roleArray.at(lastIndex);
+      if (roleFormGroup.invalid || !roleFormGroup.value.NAME || roleFormGroup.value.NAME.trim() === '') {
+        roleArray.removeAt(lastIndex);
+      }
+      lastIndex--;
+    }
+
+    this.userForm.markAsPristine();
     // Replace the URL from to display
     window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=display`);
   }
@@ -124,7 +158,7 @@ export class UserDetailComponent implements OnInit {
     roleArray.push( this.fb.group({NAME: [''], DESCRIPTION: [''], INSTANCE_GUID: ['']}));
 
     // Replace the URL from to display
-    window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=change`);
+    window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=` + this.action);
   }
 
   _createNewUser(): Observable<Entity> {
@@ -238,15 +272,13 @@ export class UserDetailComponent implements OnInit {
     if (this._composeChangedUser()) {
       this.identityService.saveUser(<Entity>this.changedUser).subscribe( data => {
         this.changedUser = {};
-        if ('r_user' in data) {
+        if ('INSTANCE_GUID' in data) {
           const userID = data['r_user'][0]['USER_ID'];
-          this.identityService.getUserDetail(userID).subscribe( user => {
-            this.originalEntity = <Entity>user;
-            this.isNewMode = false;
-            this._generateUserForm(this.originalEntity);
-            this._switch2DisplayMode();
-            this.messageService.reportMessage('USER', 'USER_SAVED', 'S', userID);
-          });
+          this.isNewMode = false;
+          this.instanceGUID = data['INSTANCE_GUID'];
+          this.originalUserValue = this.userForm.getRawValue();
+          this._switch2DisplayMode();
+          this.messageService.reportMessage('USER', 'USER_SAVED', 'S', userID);
         } else {
           const errorMessages = <Message[]>data;
           errorMessages.forEach( msg => this.messageService.add(msg));
@@ -266,21 +298,21 @@ export class UserDetailComponent implements OnInit {
       return false;
     }
 
-    this.changedUser['ENTITY_ID'] = this.originalEntity.ENTITY_ID;
-    this.changedUser['INSTANCE_GUID'] = this.originalEntity.INSTANCE_GUID;
+    this.changedUser['ENTITY_ID'] = 'person';
+    this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
 
     const userBasicFormGroup = this.userForm.get('userBasic');
     if (userBasicFormGroup.dirty) {
-       const userBasicNamesFormGroup = userBasicFormGroup.get('names') as FormGroup;
-       if (userBasicNamesFormGroup.dirty) {
-         const r_user = this.changedUser['r_user'] = {
-           action: this.isNewMode ? 'add' : 'update', USER_ID: this.userForm.get('USER_ID').value};
-         // r_user [1..1], always update
-         Object.keys(userBasicNamesFormGroup.controls).forEach( key => {
-           const control = userBasicNamesFormGroup.get(key);
-           if (control.dirty) { r_user[key] = control.value; }
-         });
-       }
+      const userBasicNamesFormGroup = userBasicFormGroup.get('names') as FormGroup;
+      if (userBasicNamesFormGroup.dirty) {
+        const r_user = this.changedUser['r_user'] = {
+          action: this.isNewMode ? 'add' : 'update', USER_ID: this.userForm.get('USER_ID').value};
+          // r_user [1..1], always update
+        Object.keys(userBasicNamesFormGroup.controls).forEach( key => {
+          const control = userBasicNamesFormGroup.get(key);
+          if (control.dirty) { r_user[key] = control.value; }
+        });
+      }
       const userBasicEmployeeFormGroup = userBasicFormGroup.get('employee') as FormGroup;
       if (userBasicEmployeeFormGroup.dirty) {
         const r_employee = this.changedUser['r_employee'] = {
@@ -296,11 +328,12 @@ export class UserDetailComponent implements OnInit {
     const userEmailFormArray = this.userForm.get('emails') as FormArray;
     if (userEmailFormArray.dirty) {
       const r_email = this.changedUser['r_email'] = [];
+      const originalEmails = this.originalUserValue['emails'];
       userEmailFormArray.controls.forEach( emailFormGroup => {
         if (emailFormGroup.dirty) {
           const changedEmail = {};
           r_email.push(changedEmail);
-          const index = this.originalEntity['r_email']
+          const index = originalEmails
             .findIndex( element => element['EMAIL'] === emailFormGroup.value['EMAIL']);
           changedEmail['action'] = index === -1 ? 'add' : 'update';
           changedEmail['EMAIL'] = emailFormGroup.get('EMAIL').value;
@@ -310,7 +343,7 @@ export class UserDetailComponent implements OnInit {
           });
         }
       });
-      this.originalEntity['r_email'].forEach( originalEmail => {
+      originalEmails.forEach( originalEmail => {
         if (userEmailFormArray.controls
           .findIndex( element => element.value['EMAIL'] === originalEmail['EMAIL']) === -1) {
           r_email.push({ action: 'delete', EMAIL: originalEmail['EMAIL']});
@@ -321,7 +354,7 @@ export class UserDetailComponent implements OnInit {
     const userAddressFormArray = this.userForm.get('addresses') as FormArray;
     if (userAddressFormArray.dirty) {
       const r_address = this.changedUser['r_address'] = [];
-      const originalAddresses = this.originalEntity['r_address'] || [];
+      const originalAddresses = this.originalUserValue['addresses'];
       userAddressFormArray.controls.forEach( addressFormGroup => {
         if (addressFormGroup.dirty) {
           const changedAddress = {};
@@ -349,7 +382,8 @@ export class UserDetailComponent implements OnInit {
     const userPersonalizationFormGroup = this.userForm.get('userPersonalization');
     if (userPersonalizationFormGroup.dirty) {
       const r_personalization = this.changedUser['r_personalization'] = {};
-      r_personalization['action'] = this.isNewMode ? 'add' : this.originalEntity['r_personalization'] ? 'update' : 'add';
+      const originalPersonalization = this.originalUserValue['userPersonalization'];
+      r_personalization['action'] = originalPersonalization['USER_ID'] ? 'update' : 'add';
       r_personalization['USER_ID'] = this.userForm.get('USER_ID').value;
       Object.keys(userPersonalizationFormGroup['controls']).forEach( key => {
         const control = userPersonalizationFormGroup.get(key);
@@ -358,8 +392,7 @@ export class UserDetailComponent implements OnInit {
     }
 
     const userRoleFormArray = this.userForm.get('userRole') as FormArray;
-    const originalAssignedRoles = this.originalEntity['relationships'][0] ?
-      this.originalEntity['relationships'][0].values : [];
+    const originalAssignedRoles = this.originalUserValue['userRole'];
     if (userRoleFormArray.dirty) {
       this.changedUser['relationships'] = [
         {
@@ -388,5 +421,13 @@ export class UserDetailComponent implements OnInit {
     }
 
     return true;
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.isNewMode || (this.userForm && this.userForm.dirty)) {
+      return this.dialogService.confirm('Discard changes?');
+    } else {
+      return true;
+    }
   }
 }

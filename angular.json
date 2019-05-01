@@ -77,7 +77,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/fontawesome-all.min.css"
+              "src/assets/css/fontawesome.min.css"
             ],
             "assets": [
               "src/assets",

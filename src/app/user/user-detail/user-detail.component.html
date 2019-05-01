@@ -8,7 +8,7 @@
       <span *ngIf="readonly" class="fas fa-edit"> Edit</span>
       <span *ngIf="!readonly" class="fas fa-glasses"> Display</span>
     </button>
-    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Save" (click)="save()" [disabled]="readonly">
+    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Save" id="save" (click)="save()" [disabled]="readonly">
       <span class="fas fa-save"> Save</span>
     </button>
   </div>

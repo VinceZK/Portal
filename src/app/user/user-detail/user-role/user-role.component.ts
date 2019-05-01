@@ -17,6 +17,10 @@ export class UserRoleComponent implements OnInit {
 
   ngOnInit() {
     this.userRoleFormArray = this.userForm.get('userRole') as FormArray;
+    // Recheck each role since every time the template is initialized, Angular clears the error status.
+    this.userRoleFormArray.controls.forEach( (ctrl, index) => {
+      this.onChangeRoleID(index);
+    });
   }
 
   deleteRole(index: number): void {

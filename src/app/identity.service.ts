@@ -174,13 +174,13 @@ export class IdentityService {
       ID: { RELATION_ID: 'r_role', NAME: roleID},
       piece: {RELATIONS: ['r_role']}
     };
-    return this.http.post<string>(
+    return this.http.post<{}>(
       this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(
        map(instance => {
          return 'INSTANCE_GUID' in instance ?
          {
            INSTANCE_GUID: instance['INSTANCE_GUID'],
-           DESCRIPTION: instance['r_role'] ? instance['r_role'][0].DESCRIPTION : ''
+           DESCRIPTION: instance['r_role'] ? instance['r_role'][0]['DESCRIPTION'] : ''
          } : instance[0];
        }),
        catchError(this.handleError<any>('getRoleDesc')));

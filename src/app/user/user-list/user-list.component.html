@@ -11,14 +11,14 @@
   </div>
 
   <div class="mb-4">
-    <button type="button" class="btn btn-primary float-right mr-4" (click)="search()">Search</button>
+    <button type="button" id="search" class="btn btn-primary float-right mr-4" (click)="search()">Search</button>
   </div>
 </div>
 
 <div class="mt-2 mb-4 mx-4">
   <dk-message></dk-message>
   <div class="btn-toolbar justify-content-end my-2" role="toolbar">
-    <button type="button" class="btn btn-light" (click)="newUser()"><span class="fas fa-plus"></span> New</button>
+    <button type="button" id="new" class="btn btn-light" (click)="newUser()"><span class="fas fa-plus"></span> New</button>
   </div>
   <table class="table table-bordered table-sm">
     <thead class="thead-light">
@@ -34,7 +34,7 @@
 
     <tbody>
     <tr *ngFor="let user of users">
-      <td><a [routerLink]="['/user', user.USER_ID, {action: 'display'}]">{{user.USER_ID}}</a></td>
+      <td><a [routerLink]="['/users', user.USER_ID, {action: 'display'}]">{{user.USER_ID}}</a></td>
       <td>{{user.USER_NAME}}</td>
       <td>{{user.DISPLAY_NAME}}</td>
       <td class="dk-lock">
@@ -53,13 +53,13 @@
         </div>
       </td>
       <td class="dk-actions">
-        <button title="Display" class="btn" type="button" (click)="displayUser(user.USER_ID)">
+        <button title="Display" id="display" class="btn" type="button" (click)="displayUser(user.USER_ID)">
           <span class="fas fa-search"></span>
         </button>
-        <button title="Change" class="btn" type="button" (click)="changeUser(user.USER_ID)">
+        <button title="Change" id="change" class="btn" type="button" (click)="changeUser(user.USER_ID)">
           <span class="fas fa-pen"></span>
         </button>
-        <button title="Delete" class="btn" type="button" (click)="deleteUser(user.USER_ID)">
+        <button title="Delete" id="delete" class="btn" type="button" (click)="deleteUser(user.USER_ID)">
           <span class="far fa-trash-alt"></span>
         </button>
       </td>
@@ -81,8 +81,8 @@
           <p>Are you sure to delete the user '{{toBeDeletedUser}}'?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="cancelDeletion()">Cancel</button>
-          <button type="button" class="btn btn-primary" (click)="confirmDeletion()">Confirm</button>
+          <button type="button" id="cancel" class="btn btn-secondary" (click)="cancelDeletion()">Cancel</button>
+          <button type="button" id="confirm" class="btn btn-primary" (click)="confirmDeletion()">Confirm</button>
         </div>
       </div>
     </div>
