@@ -90,6 +90,13 @@ export class UserPage {
     genderInput.clear().then(() => genderInput.sendKeys('Male'));
   }
 
+  changeTitle() {
+    element.all(by.css('li a')).get(0).click();
+    const userBasicTemplate = element(by.tagName('app-user-basic'));
+    const titleInput = userBasicTemplate.element(by.id('title'));
+    titleInput.clear().then(() => titleInput.sendKeys('architect'));
+  }
+
   fillUserEmail() {
     element.all(by.css('li a')).get(1).click();
     const userEmailTemplate = element(by.tagName('app-user-email'));
@@ -112,6 +119,12 @@ export class UserPage {
     }
   }
 
+  removeUserEmail() {
+    element.all(by.css('li a')).get(1).click();
+    const userEmailTemplate = element(by.tagName('app-user-email'));
+    userEmailTemplate.all(by.id('remove')).first().click();
+  }
+
   addUserAddress(isPrimary: boolean) {
     element.all(by.css('li a')).get(2).click();
     const userAddressTemplate = element(by.tagName('app-user-address'));
@@ -129,6 +142,12 @@ export class UserPage {
     if (isPrimary) {
       userAddressTemplate.all(by.id('primaryAddress')).last().click();
     }
+  }
+
+  removeUserAddress() {
+    element.all(by.css('li a')).get(2).click();
+    const userAddressTemplate = element(by.tagName('app-user-address'));
+    userAddressTemplate.all(by.id('remove')).first().click();
   }
 
   fillUserPersonalization() {
@@ -159,6 +178,10 @@ export class UserPage {
 
   clickSaveButton() {
     element(by.id('save')).click();
+  }
+
+  clickEditDisplayToggleButton() {
+    element(by.id('editDisplay')).click();
   }
 
   getMessage() {

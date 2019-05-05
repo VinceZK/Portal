@@ -54,6 +54,7 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
         rs_system_role_category.values.forEach( roleCategoryValue => {
           const roleCategoryInstance = roleCategoryValue.PARTNER_INSTANCES[0];
           const categoryInstance = {
+            order: roleCategoryValue['ORDER'],
             name: roleCategoryInstance['r_app_category'][0]['NAME'],
             icon: roleCategoryInstance['r_app_category'][0]['ICON'],
             apps: []
@@ -65,6 +66,7 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
           rs_app_category.values.forEach( categoryAppValue => {
             const categoryAppInstance = categoryAppValue.PARTNER_INSTANCES[0];
             const appInstance = {
+              order: categoryAppValue['ORDER'],
               name: categoryAppInstance['app'][0]['NAME'],
               appID: categoryAppInstance['app'][0]['APP_ID'],
               routeLink: categoryAppInstance['app'][0]['ROUTE_LINK'],
@@ -74,6 +76,7 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
           })
         });
       });
+      results[0]['categories'].sort((a, b) => a.order - b.order);
       callback(null, results);
     }
   )

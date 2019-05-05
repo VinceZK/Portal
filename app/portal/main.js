@@ -15,10 +15,6 @@ var map = {
 	"app/handsontable/handsontable.module": [
 		"./src/app/handsontable/handsontable.module.ts",
 		"app-handsontable-handsontable-module"
-	],
-	"app/user/user.module": [
-		"./src/app/user/user.module.ts",
-		"app-user-user-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -57,6 +53,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
 /* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
+/* harmony import */ var _user_user_list_user_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/user-list/user-list.component */ "./src/app/user/user-list/user-list.component.ts");
+/* harmony import */ var _user_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user/user-detail/user-detail.component */ "./src/app/user/user-detail/user-detail.component.ts");
+/* harmony import */ var _work_protection_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./work-protection.guard */ "./src/app/work-protection.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,9 +66,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var routes = [
     // The dashboard app is lazy loading
-    { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
+    // { path: 'users', loadChildren: 'app/user/user.module#UserModule'},
+    { path: 'users', component: _user_user_list_user_list_component__WEBPACK_IMPORTED_MODULE_4__["UserListComponent"] },
+    { path: 'users/:userID', component: _user_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_5__["UserDetailComponent"], canDeactivate: [_work_protection_guard__WEBPACK_IMPORTED_MODULE_6__["WorkProtectionGuard"]] },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
     { path: 'handsontable', loadChildren: 'app/handsontable/handsontable.module#HandsontableModule' },
     { path: 'errors', component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_3__["ErrorPageComponent"] },
@@ -110,7 +114,7 @@ module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"dk-frame-view\">-->\n  <!--&lt;!&ndash; Head Bar Navigation &ndash;&gt;-->\n  <!--<app-head-bar (onCollapse)=\"onCollapse()\"></app-head-bar>-->\n\n  <!--<div class=\"dk-frame-content\">-->\n    <!--&lt;!&ndash; Side Bar Navigation &ndash;&gt;-->\n    <!--<app-side-menu></app-side-menu>-->\n\n    <!--&lt;!&ndash; Content Area &ndash;&gt;-->\n    <!--<div class=\"dk-content-area\">-->\n      <!--<router-outlet></router-outlet>-->\n    <!--</div>-->\n  <!--</div>-->\n<!--</div>-->\n\n<router-outlet></router-outlet>\n"
+module.exports = "<div class=\"dk-frame-view\">\n  <!-- Head Bar Navigation -->\n  <app-head-bar (onCollapse)=\"onCollapse()\"></app-head-bar>\n\n  <div class=\"dk-frame-content\">\n    <!-- Side Bar Navigation -->\n    <app-side-menu></app-side-menu>\n\n    <!-- Content Area -->\n    <div class=\"dk-content-area\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>\n\n<!--<router-outlet></router-outlet>-->\n"
 
 /***/ }),
 
@@ -233,12 +237,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
 /* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./custom.reuse.strategy */ "./src/app/custom.reuse.strategy.ts");
+/* harmony import */ var _user_user_list_user_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user/user-list/user-list.component */ "./src/app/user/user-list/user-list.component.ts");
+/* harmony import */ var _user_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user/user-detail/user-detail.component */ "./src/app/user/user-detail/user-detail.component.ts");
+/* harmony import */ var _user_user_detail_user_basic_user_basic_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user/user-detail/user-basic/user-basic.component */ "./src/app/user/user-detail/user-basic/user-basic.component.ts");
+/* harmony import */ var _user_user_detail_user_personalization_user_personalization_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/user-detail/user-personalization/user-personalization.component */ "./src/app/user/user-detail/user-personalization/user-personalization.component.ts");
+/* harmony import */ var _user_user_detail_user_role_user_role_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/user-detail/user-role/user-role.component */ "./src/app/user/user-detail/user-role/user-role.component.ts");
+/* harmony import */ var _user_user_detail_user_email_user_email_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/user-detail/user-email/user-email.component */ "./src/app/user/user-detail/user-email/user-email.component.ts");
+/* harmony import */ var _user_user_detail_user_address_user_address_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user-detail/user-address/user-address.component */ "./src/app/user/user-detail/user-address/user-address.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -260,11 +284,20 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_4__["SideMenuComponent"],
                 _head_bar_head_bar_component__WEBPACK_IMPORTED_MODULE_5__["HeadBarComponent"],
+                _user_user_list_user_list_component__WEBPACK_IMPORTED_MODULE_14__["UserListComponent"],
+                _user_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_15__["UserDetailComponent"],
+                _user_user_detail_user_basic_user_basic_component__WEBPACK_IMPORTED_MODULE_16__["UserBasicComponent"],
+                _user_user_detail_user_personalization_user_personalization_component__WEBPACK_IMPORTED_MODULE_17__["UserPersonalizationComponent"],
+                _user_user_detail_user_role_user_role_component__WEBPACK_IMPORTED_MODULE_18__["UserRoleComponent"],
+                _user_user_detail_user_email_user_email_component__WEBPACK_IMPORTED_MODULE_19__["UserEmailComponent"],
+                _user_user_detail_user_address_user_address_component__WEBPACK_IMPORTED_MODULE_20__["UserAddressComponent"],
                 _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_9__["NotFoundComponent"],
                 _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__["ErrorPageComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["ReactiveFormsModule"],
                 ui_message_angular__WEBPACK_IMPORTED_MODULE_11__["MessageModule"],
                 _mockup_mockup_module__WEBPACK_IMPORTED_MODULE_6__["MockupModule"],
                 _external_app_external_app_module__WEBPACK_IMPORTED_MODULE_8__["ExternalAppModule"],
@@ -273,10 +306,126 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]
+            ],
+            providers: [
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_13__["CustomReuseStrategy"] }
             ]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/custom.reuse.strategy.ts":
+/*!******************************************!*\
+  !*** ./src/app/custom.reuse.strategy.ts ***!
+  \******************************************/
+/*! exports provided: CustomReuseStrategy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomReuseStrategy", function() { return CustomReuseStrategy; });
+var CustomReuseStrategy = /** @class */ (function () {
+    function CustomReuseStrategy() {
+        this.routesToCache = ['users'];
+        this.storedRouteHandles = new Map();
+    }
+    /**
+     * When navigation from a reusable component, and if shouldReuseRoute return false,
+     * this method is invoked to decide whether the current route should be stored.
+     * @param route
+     */
+    CustomReuseStrategy.prototype.shouldDetach = function (route) {
+        // console.log('detaching', route);
+        return this.routesToCache.indexOf(route.routeConfig.path) > -1;
+    };
+    /**
+     * If the current route need to be stored, that is shouldDetach return true,
+     * then on this method, you can implement a way to store routes. Usually in a Map.
+     * @param route
+     * @param handle
+     */
+    CustomReuseStrategy.prototype.store = function (route, handle) {
+        // console.log('store', route);
+        this.storedRouteHandles.set(route.routeConfig.path, handle);
+    };
+    /**
+     * When navigation to a reusable component, and if shouldReuseRoute return false,
+     * this method is invoked to decide whether the target component can be get from a reuse buffer.
+     * @param route
+     */
+    CustomReuseStrategy.prototype.shouldAttach = function (route) {
+        // console.log('shouldAttach', route);
+        return this.storedRouteHandles.has(route.routeConfig.path);
+    };
+    /**
+     * If shouldAttach return true, then this method is invoke to retrieve the component from the buffer.
+     * @param route
+     */
+    CustomReuseStrategy.prototype.retrieve = function (route) {
+        return this.storedRouteHandles.get(route.routeConfig.path);
+    };
+    /**
+     * By default, Angular doesn't re-initializing the same component if the navigation is not to
+     * a different one. For example, you switch different entity ID in the same entity type detail page.
+     * In this way, shouldReuseRoute should return true to avoid executing other methods in this Class.
+     * However, if you navigate from search&list component to entity detail component, then the method should return false.
+     * So that other methods can be executed to decide whether the search&list component should be stored for future reuse.
+     * @param future
+     * @param curr
+     */
+    CustomReuseStrategy.prototype.shouldReuseRoute = function (future, curr) {
+        // console.log('shouldReuseRoute, future:', future, 'current:', curr);
+        return future.routeConfig === curr.routeConfig;
+    };
+    return CustomReuseStrategy;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/dialog.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/dialog.service.ts ***!
+  \***********************************/
+/*! exports provided: DialogService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogService", function() { return DialogService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var DialogService = /** @class */ (function () {
+    function DialogService() {
+    }
+    /**
+     * Ask user to confirm an action. `message` explains the action and choices.
+     * Returns observable resolving to `true`=confirm or `false`=cancel
+     */
+    DialogService.prototype.confirm = function (message) {
+        var confirmation = window.confirm(message || 'Is it OK?');
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(confirmation);
+    };
+    DialogService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], DialogService);
+    return DialogService;
 }());
 
 
@@ -885,9 +1034,22 @@ var IdentityService = /** @class */ (function () {
         var pieceObject = {
             ID: { RELATION_ID: 'r_user', USER_ID: userID },
             piece: { RELATIONS: ['r_user', 'r_employee', 'r_email', 'r_address', 'r_personalization'],
-                RELATIONSHIPS: ['rs_user_role'] }
+                RELATIONSHIPS: [
+                    {
+                        RELATIONSHIP_ID: 'rs_user_role',
+                        PARTNER_ENTITY_PIECES: { RELATIONS: ['r_role'] }
+                    }
+                ]
+            }
         };
         return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserDetail')));
+    };
+    IdentityService.prototype.getUserByUserID = function (userID) {
+        var pieceObject = {
+            ID: { RELATION_ID: 'r_user', USER_ID: userID },
+            piece: { RELATIONS: ['r_user'] }
+        };
+        return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserByUserID')));
     };
     IdentityService.prototype.getUserByUserName = function (userName) {
         var pieceObject = {
@@ -895,6 +1057,30 @@ var IdentityService = /** @class */ (function () {
             piece: { RELATIONS: ['r_user'] }
         };
         return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserByUserName')));
+    };
+    IdentityService.prototype.getRoleDesc = function (roleID) {
+        var pieceObject = {
+            ID: { RELATION_ID: 'r_role', NAME: roleID },
+            piece: { RELATIONS: ['r_role'] }
+        };
+        return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (instance) {
+            return 'INSTANCE_GUID' in instance ?
+                {
+                    INSTANCE_GUID: instance['INSTANCE_GUID'],
+                    DESCRIPTION: instance['r_role'] ? instance['r_role'][0]['DESCRIPTION'] : ''
+                } : instance[0];
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRoleDesc')));
+    };
+    IdentityService.prototype.saveUser = function (user) {
+        if (user['INSTANCE_GUID']) {
+            return this.http.put(this.originalHost + "/api/entity", user, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserByUserName')));
+        }
+        else {
+            return this.http.post(this.originalHost + "/api/entity", user, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserByUserName')));
+        }
+    };
+    IdentityService.prototype.deleteUser = function (userGUID) {
+        return this.http.delete(this.originalHost + "/api/entity/instance/" + userGUID, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteUser')));
     };
     IdentityService.prototype.handleError = function (operation, result) {
         var _this = this;
@@ -1085,32 +1271,82 @@ var MockupModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "msgStore", function() { return msgStore; });
 var msgStore = [
-    { msgCat: 'EXCEPTION',
-        msgName: 'GENERIC',
+    { msgCat: "EXCEPTION",
+        msgName: "GENERIC",
         msgText: {
-            EN: { shortText: 'Exception Occurs in Operation: %s',
-                longText: '%s2' }
+            EN: { shortText: "Exception Occurs in Operation: '%s'",
+                longText: "%s1" }
         }
     },
-    { msgCat: 'EXCEPTION',
-        msgName: 'NOT_AUTHENTICATED_OR_SESSION_EXPIRED',
+    { msgCat: "EXCEPTION",
+        msgName: "NOT_AUTHENTICATED_OR_SESSION_EXPIRED",
         msgText: {
-            EN: { shortText: 'You are not authenticated or your session is expired!   ',
-                longText: 'You are not authenticated or your session is expired, please <a href="/logon">re-logon</a>.' }
+            EN: { shortText: "You are not authenticated or your session is expired!",
+                longText: "You are not authenticated or your session is expired, please <a href='/logon'>re-logon</a>." }
         }
     },
-    { msgCat: 'GENERAL',
-        msgName: 'EMPTY_LIST',
+    { msgCat: "GENERAL",
+        msgName: "EMPTY_LIST",
         msgText: {
-            EN: { shortText: 'No result is found',
-                longText: 'The system cannot find any items meet the search criteria.' }
+            EN: { shortText: "No result is found",
+                longText: "The system cannot find any items meet the search criteria." }
         }
     },
-    { msgCat: 'USER_BASIC',
-        msgName: 'USER_NAME_EXISTS',
+    { msgCat: "GENERAL",
+        msgName: "UNSAVED_CHANGES",
         msgText: {
-            EN: { shortText: 'User name: "%s" already exists!',
-                longText: '' }
+            EN: {
+                shortText: "There are unsaved changes. Do you want to save the changes?",
+                longText: ""
+            }
+        }
+    },
+    { msgCat: "GENERAL",
+        msgName: "NO_CHANGE",
+        msgText: {
+            EN: {
+                shortText: "No change is made, saving is not necessary.",
+                longText: "The data is not changed, thus there is no need to save changes"
+            }
+        }
+    },
+    { msgCat: "USER",
+        msgName: "INVALID",
+        msgText: {
+            EN: { shortText: "Data is invalid, please check.",
+                longText: "The data still contains some errors, please make sure all mandatory fields are filled!" }
+        }
+    },
+    { msgCat: "USER",
+        msgName: "USER_NAME_EXISTS",
+        msgText: {
+            EN: { shortText: "User name: '%s' already exists!",
+                longText: "" }
+        }
+    },
+    { msgCat: "USER",
+        msgName: "USER_ID_EXISTS",
+        msgText: {
+            EN: { shortText: "User ID: '%s' already exists!",
+                longText: "" }
+        }
+    },
+    { msgCat: "USER",
+        msgName: "AT_LEAST_ONE_EMAIL",
+        msgText: {
+            EN: {
+                shortText: "At least one email needs to be maintained!",
+                longText: ""
+            }
+        }
+    },
+    { msgCat: "USER",
+        msgName: "USER_SAVED",
+        msgText: {
+            EN: {
+                shortText: "User '%s' is saved!",
+                longText: ""
+            }
         }
     }
 ];
@@ -1678,6 +1914,1157 @@ var SideMenuComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], SideMenuComponent);
     return SideMenuComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/async-validators.ts":
+/*!******************************************************!*\
+  !*** ./src/app/user/user-detail/async-validators.ts ***!
+  \******************************************************/
+/*! exports provided: existingUserNameValidator, existingUserIDValidator */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existingUserNameValidator", function() { return existingUserNameValidator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existingUserIDValidator", function() { return existingUserIDValidator; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+function existingUserNameValidator(identityService, messageService, userID) {
+    return function (control) {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["timer"])(500).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(function () { return identityService.getUserByUserName(control.value).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            if (data['r_user'] && data['r_user'][0]['USER_ID'] !== userID) {
+                return { message: messageService.generateMessage('USER', 'USER_NAME_EXISTS', 'E', control.value).msgShortText };
+            }
+            else {
+                return null;
+            }
+        })); }));
+    };
+}
+function existingUserIDValidator(identityService, messageService) {
+    return function (control) {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["timer"])(500).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(function () { return identityService.getUserByUserID(control.value).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            if (data['r_user'] && data['r_user'][0]['USER_ID'] === control.value) {
+                return { message: messageService.generateMessage('USER', 'USER_ID_EXISTS', 'E', control.value).msgShortText };
+            }
+            else {
+                return null;
+            }
+        })); }));
+    };
+}
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-address/user-address.component.css":
+/*!**************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-address/user-address.component.css ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci1kZXRhaWwvdXNlci1hZGRyZXNzL3VzZXItYWRkcmVzcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-address/user-address.component.html":
+/*!***************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-address/user-address.component.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card mt-4\">\n  <div class=\"card-body\">\n    <div *ngFor=\"let userAddressForm of userAddressFormArray.controls; let i = index\" class=\"card mb-4\">\n      <button type=\"button\" id=\"remove\" class=\"dk-close-button close d-flex justify-content-end mr-2\" aria-label=\"Close\" (click)=\"deleteAddress(i)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n      <div class=\"card-body row\" [formGroup]=\"userAddressForm\">\n        <div class=\"col-3 row form-group ml-2 mr-2\"\n             [class.dk-invalid]=\"userAddressForm.get('TYPE').invalid && (userAddressForm.touched || userAddressForm.dirty)\">\n          <label for=\"addressType\" class=\"col-form-label dk-form-label\"> Address Type:\n            <span class=\"dk-invalid-feedback\">{{userAddressForm.get('TYPE').errors?.required ? 'Required': null}}</span>\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"addressType\" [readonly]=\"readonly\"\n                 name=\"addressType\" formControlName=\"TYPE\">\n        </div>\n        <div class=\"col-6 row form-group mr-2\"\n             [class.dk-invalid]=\"userAddressForm.get('ADDRESS_VALUE').invalid && (userAddressForm.touched || userAddressForm.dirty)\">\n          <label for=\"address\" class=\"col-form-label dk-form-label\"> Address:\n            <span class=\"dk-invalid-feedback\">{{userAddressForm.get('ADDRESS_VALUE').errors?.required ? 'Required': null}}</span>\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"address\" [readonly]=\"readonly\"\n                 name=\"address\" formControlName=\"ADDRESS_VALUE\">\n        </div>\n        <div class=\"col-1 row form-group mr-2\">\n          <label for=\"primaryAddress\" class=\"col-form-label dk-form-label\">Primary</label>\n          <input type=\"radio\" class=\"form-control\" id=\"primaryAddress\" [value]=\"1\" name=\"PRIMARY\" formControlName=\"PRIMARY\">\n        </div>\n\n        <div class=\"col-md-3 row form-group ml-2\">\n          <label for=\"postcode\" class=\"col-form-label dk-form-label\"> Postcode:\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"postcode\" [readonly]=\"readonly\"\n                 name=\"postcode\" formControlName=\"POSTCODE\">\n        </div>\n        <div class=\"col-md-3 row form-group ml-2\">\n          <label for=\"city\" class=\"col-form-label dk-form-label\"> City:\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"city\" [readonly]=\"readonly\"\n                 name=\"city\" formControlName=\"CITY\">\n        </div>\n        <div class=\"col-md-3 row form-group ml-2\">\n          <label for=\"country\" class=\"col-form-label dk-form-label\">Country:\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"country\" [readonly]=\"readonly\"\n                 name=\"country\" formControlName=\"COUNTRY\">\n        </div>\n      </div>\n    </div>\n    <button type=\"button\" id=\"add\" class=\"btn btn-primary float-right\" [disabled]=\"readonly\" (click)=\"addAddress()\">Add</button>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-address/user-address.component.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-address/user-address.component.ts ***!
+  \*************************************************************************/
+/*! exports provided: UserAddressComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserAddressComponent", function() { return UserAddressComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserAddressComponent = /** @class */ (function () {
+    function UserAddressComponent(fb) {
+        this.fb = fb;
+    }
+    UserAddressComponent.prototype.ngOnInit = function () {
+        this.userAddressFormArray = this.userForm.get('addresses');
+    };
+    UserAddressComponent.prototype.addAddress = function () {
+        var addressFormGroup = this.fb.group({
+            ADDRESS_ID: [''],
+            TYPE: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            ADDRESS_VALUE: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            POSTCODE: [''],
+            CITY: [''],
+            COUNTRY: [''],
+            PRIMARY: []
+        });
+        if (this.userAddressFormArray.length === 0) {
+            addressFormGroup.get('PRIMARY').setValue(1);
+            addressFormGroup.get('PRIMARY').markAsDirty();
+        }
+        this.userAddressFormArray.push(addressFormGroup);
+    };
+    UserAddressComponent.prototype.deleteAddress = function (index) {
+        if (this.userAddressFormArray.length > 1 &&
+            this.userAddressFormArray.at(index).value['PRIMARY']) {
+            var newPrimaryIndex = index === 0 ? 1 : 0;
+            this.userAddressFormArray.at(newPrimaryIndex).get('PRIMARY').setValue(1);
+            this.userAddressFormArray.at(newPrimaryIndex).get('PRIMARY').markAsDirty();
+        }
+        this.userAddressFormArray.removeAt(index);
+        this.userAddressFormArray.markAsDirty();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UserAddressComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
+    ], UserAddressComponent.prototype, "userForm", void 0);
+    UserAddressComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-address',
+            template: __webpack_require__(/*! ./user-address.component.html */ "./src/app/user/user-detail/user-address/user-address.component.html"),
+            styles: [__webpack_require__(/*! ./user-address.component.css */ "./src/app/user/user-detail/user-address/user-address.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
+    ], UserAddressComponent);
+    return UserAddressComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-basic/user-basic.component.css":
+/*!**********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-basic/user-basic.component.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dk-form-label {\n  font-size: 1.2rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci91c2VyLWRldGFpbC91c2VyLWJhc2ljL3VzZXItYmFzaWMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci1kZXRhaWwvdXNlci1iYXNpYy91c2VyLWJhc2ljLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGstZm9ybS1sYWJlbCB7XG4gIGZvbnQtc2l6ZTogMS4ycmVtO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-basic/user-basic.component.html":
+/*!***********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-basic/user-basic.component.html ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card mt-4\">\n  <div class=\"card-header\">Name</div>\n  <div class=\"card-body\">\n    <form [formGroup]=\"userBasicNamesForm\" class=\"mt-2 pl-4 row\">\n      <div class=\"col-md-4 row form-group mr-2\"\n           [class.dk-invalid]=\"userBasicNamesForm.get('USER_NAME').invalid && (userBasicNamesForm.touched || userBasicNamesForm.dirty)\">\n        <label for=\"userName\" class=\"col-form-label dk-form-label\">User Name:\n          <span class=\"dk-invalid-feedback\">{{userBasicNamesForm.get('USER_NAME').errors?.required ? 'Required': null}}</span>\n          <span class=\"dk-invalid-feedback\">{{userBasicNamesForm.get('USER_NAME').errors?.message}}</span>\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"userName\" [readonly]=\"readonly\"\n               name=\"userName\" formControlName=\"USER_NAME\">\n      </div>\n      <div class=\"col-md-4 row form-group mr-2\"\n           [class.dk-invalid]=\"userBasicNamesForm.get('DISPLAY_NAME').invalid && (userBasicNamesForm.touched || userBasicNamesForm.dirty)\">\n        <label for=\"displayName\" class=\"col-form-label dk-form-label\">Display Name:\n          <span class=\"dk-invalid-feedback\">{{userBasicNamesForm.get('DISPLAY_NAME').errors?.required ? 'Required': null}}</span>\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"displayName\" [readonly]=\"readonly\"\n               name=\"displayName\" formControlName=\"DISPLAY_NAME\">\n      </div>\n      <div class=\"col-md-4 row form-group mr-2\"></div>\n      <div class=\"col-md-4 row form-group mr-2\">\n        <label for=\"givenName\" class=\"col-form-label dk-form-label\">Given Name:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"givenName\" [readonly]=\"readonly\"\n               name=\"givenName\" formControlName=\"GIVEN_NAME\">\n      </div>\n      <div class=\"col-md-4 row form-group mr-2 \">\n        <label for=\"middleName\" class=\"col-form-label dk-form-label\">Middle Name:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"middleName\" [readonly]=\"readonly\"\n               name=\"middleName\" formControlName=\"MIDDLE_NAME\">\n      </div>\n      <div class=\"col-md-4 row form-group mr-2\">\n        <label for=\"familyName\" class=\"col-form-label dk-form-label\">Family Name:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"familyName\" [readonly]=\"readonly\"\n               name=\"familyName\" formControlName=\"FAMILY_NAME\">\n      </div>\n    </form>\n  </div>\n</div>\n\n<div class=\"card mt-4\">\n  <div class=\"card-header\">Employee</div>\n  <div class=\"card-body\">\n    <form [formGroup]=\"userBasicEmployeeForm\" class=\"mt-2 pl-4 row\">\n      <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n        <label for=\"title\" class=\"col-form-label dk-form-label\">Title:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"title\" [readonly]=\"readonly\"\n               name=\"title\" formControlName=\"TITLE\">\n      </div>\n      <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n        <label for=\"DepartmentID\" class=\"col-form-label dk-form-label\">Department:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"DepartmentID\" [readonly]=\"readonly\"\n               name=\"DepartmentID\" formControlName=\"DEPARTMENT_ID\">\n      </div>\n      <div class=\"col-md-6 col-lg-4 row form-group mr-2\"\n           [class.dk-invalid]=\"userBasicEmployeeForm.get('COMPANY_ID').invalid && (userBasicEmployeeForm.touched || userBasicEmployeeForm.dirty)\">\n        <label for=\"companyID\" class=\"col-form-label dk-form-label\">Company:\n          <span class=\"dk-invalid-feedback\">{{userBasicEmployeeForm.get('COMPANY_ID').errors?.required ? 'Required': null}}</span>\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"companyID\" [readonly]=\"readonly\"\n               name=\"companyID\" formControlName=\"COMPANY_ID\">\n      </div>\n      <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n        <label for=\"gender\" class=\"col-form-label dk-form-label\">Gender:\n        </label>\n        <input type=\"text\" class=\"form-control\" id=\"gender\" [readonly]=\"readonly\"\n               name=\"gender\" formControlName=\"GENDER\">\n      </div>\n    </form>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-basic/user-basic.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-basic/user-basic.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: UserBasicComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserBasicComponent", function() { return UserBasicComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserBasicComponent = /** @class */ (function () {
+    function UserBasicComponent() {
+    }
+    UserBasicComponent.prototype.ngOnInit = function () {
+        this.userBasicNamesForm = this.userForm.get('userBasic.names');
+        this.userBasicEmployeeForm = this.userForm.get('userBasic.employee');
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UserBasicComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
+    ], UserBasicComponent.prototype, "userForm", void 0);
+    UserBasicComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-basic',
+            template: __webpack_require__(/*! ./user-basic.component.html */ "./src/app/user/user-detail/user-basic/user-basic.component.html"),
+            styles: [__webpack_require__(/*! ./user-basic.component.css */ "./src/app/user/user-detail/user-basic/user-basic.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UserBasicComponent);
+    return UserBasicComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-detail.component.css":
+/*!************************************************************!*\
+  !*** ./src/app/user/user-detail/user-detail.component.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dk-btn-size {\n  font-size: 1.5rem;\n}\n.dk-form-label {\n  font-size: 1.2rem;\n}\n.dk-fixed-top {\n  position: relative;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci91c2VyLWRldGFpbC91c2VyLWRldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxrQkFBa0I7Q0FDbkI7QUFDRDtFQUNFLG1CQUFtQjtFQUNuQixPQUFPO0VBQ1AsU0FBUztFQUNULFFBQVE7RUFDUixjQUFjO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC91c2VyL3VzZXItZGV0YWlsL3VzZXItZGV0YWlsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGstYnRuLXNpemUge1xuICBmb250LXNpemU6IDEuNXJlbTtcbn1cbi5kay1mb3JtLWxhYmVsIHtcbiAgZm9udC1zaXplOiAxLjJyZW07XG59XG4uZGstZml4ZWQtdG9wIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICBsZWZ0OiAwO1xuICB6LWluZGV4OiAxMDMwO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-detail.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/user/user-detail/user-detail.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar dk-fixed-top navbar-light bg-light\">\n  <div>\n    <span class=\"font-weight-bold mb-0 mx-1\">{{isNewMode? 'New User' : readonly? 'Display User' : 'Change User'}}</span>\n  </div>\n\n  <div class=\"flex-row-reverse\">\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Edit/Display\" id=\"editDisplay\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"> Edit</span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"> Display</span>\n    </button>\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Save\" id=\"save\" (click)=\"save()\" [disabled]=\"readonly\">\n      <span class=\"fas fa-save\"> Save</span>\n    </button>\n  </div>\n</nav>\n\n<div class=\"mt-2 mb-2\">\n  <dk-message></dk-message>\n</div>\n\n<div *ngIf=\"userForm\" class=\"ml-2\">\n  <div class=\"mt-2 ml-3 row\">\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\"\n         [class.dk-invalid]=\"userForm.get('USER_ID').invalid && (userForm.touched || userForm.dirty)\">\n      <label for=\"user_id\" class=\"col-form-label dk-form-label\">User ID:\n        <span class=\"dk-invalid-feedback\">{{userForm.get('USER_ID').errors?.required ? 'Required': null}}</span>\n        <span class=\"dk-invalid-feedback\">{{userForm.get('USER_ID').errors?.message}}</span>\n      </label>\n      <input id=\"user_id\" name=\"user_id\" formControlName=\"USER_ID\" type=\"text\" class=\"form-control\" [readonly]=\"!isNewMode\">\n    </div>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"lockStatus\" class=\"col-form-label dk-form-label\">Lock Status:</label>\n      <input id=\"lockStatus\" name=\"lock\" type=\"text\" class=\"form-control\"\n             [value]=\"userForm.get('LOCK').value ? 'Locked' : 'Unlocked'\" readonly>\n    </div>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"passwordStatus\" class=\"col-form-label dk-form-label\">Password Status:</label>\n      <input id=\"passwordStatus\" name=\"lock\" type=\"text\" class=\"form-control\"\n             [value]=\"pwdStatus\" readonly>\n    </div>\n  </div>\n\n  <ul class=\"nav nav-tabs mt-1\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===1\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(1)\">Basic</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===2\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(2)\">Email</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===3\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(3)\">Address</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===4\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(4)\">Personalization</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===5\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(5)\">Role</a>\n    </li>\n  </ul>\n\n  <div class=\"mt-2\" [ngSwitch]=\"tabStrip\">\n    <app-user-basic *ngSwitchCase=\"1\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-basic>\n    <app-user-email *ngSwitchCase=\"2\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-email>\n    <app-user-address *ngSwitchCase=\"3\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-address>\n    <app-user-personalization *ngSwitchCase=\"4\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-personalization>\n    <app-user-role *ngSwitchCase=\"5\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-role>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-detail.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/user/user-detail/user-detail.component.ts ***!
+  \***********************************************************/
+/*! exports provided: UserDetailComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserDetailComponent", function() { return UserDetailComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _identity_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../identity.service */ "./src/app/identity.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jor-angular */ "./node_modules/jor-angular/fesm5/jor-angular.js");
+/* harmony import */ var _async_validators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./async-validators */ "./src/app/user/user-detail/async-validators.ts");
+/* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../dialog.service */ "./src/app/dialog.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+var UserDetailComponent = /** @class */ (function () {
+    function UserDetailComponent(fb, route, router, dialogService, identityService, uiMapperService, messageService) {
+        this.fb = fb;
+        this.route = route;
+        this.router = router;
+        this.dialogService = dialogService;
+        this.identityService = identityService;
+        this.uiMapperService = uiMapperService;
+        this.messageService = messageService;
+        this.readonly = true;
+        this.isNewMode = false;
+        this.originalUserValue = {};
+        this.changedUser = {};
+        this.tabStrip = 1;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_4__["msgStore"], 'EN');
+    }
+    Object.defineProperty(UserDetailComponent.prototype, "pwdStatus", {
+        get: function () {
+            switch (this.userForm.get('PWD_STATUS').value) {
+                case '':
+                    return 'Initial';
+                case 1:
+                    return 'Active';
+                case 3:
+                    return 'Need Change';
+                default:
+                    return 'Initial';
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    UserDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (params) {
+            _this.action = params.get('action');
+            if (_this.action === 'new') {
+                _this.isNewMode = true;
+                return _this._createNewUser();
+            }
+            else {
+                _this.isNewMode = false;
+                return _this.identityService.getUserDetail(params.get('userID'));
+            }
+        })).subscribe(function (data) {
+            if ('ENTITY_ID' in data) {
+                _this.instanceGUID = data['INSTANCE_GUID'];
+                _this._generateUserForm(data);
+                if (_this.isNewMode || _this.action === 'change') {
+                    _this._switch2EditMode();
+                }
+                else {
+                    _this._switch2DisplayMode();
+                }
+            }
+            else {
+                var errorMessages = data;
+                errorMessages.forEach(function (msg) { return _this.messageService.add(msg); });
+            }
+        });
+    };
+    UserDetailComponent.prototype.switchTabStrip = function (tabStripID) {
+        this.tabStrip = tabStripID;
+    };
+    UserDetailComponent.prototype.switchEditDisplay = function () {
+        var _this = this;
+        if (this.readonly) {
+            this._switch2EditMode();
+        }
+        else {
+            if (this.userForm.dirty) {
+                this.dialogService.confirm('Discard changes?').subscribe(function (confirm) {
+                    if (confirm) {
+                        _this.userForm.reset(_this.originalUserValue);
+                        _this._switch2DisplayMode();
+                    }
+                });
+            }
+            else {
+                this._switch2DisplayMode();
+            }
+        }
+    };
+    UserDetailComponent.prototype._switch2DisplayMode = function () {
+        this.readonly = true;
+        this._setCheckBoxState();
+        var userIDCtrl = this.userForm.get('USER_ID');
+        userIDCtrl.clearAsyncValidators();
+        var userNameCtrl = this.userForm.get('userBasic.names.USER_NAME');
+        userNameCtrl.clearAsyncValidators();
+        var emailArray = this.userForm.get('emails');
+        var lastIndex = emailArray.length - 1;
+        while (lastIndex >= 0) {
+            var emailFormGroup = emailArray.at(lastIndex);
+            if (emailFormGroup.invalid || !emailFormGroup.value.EMAIL) {
+                emailArray.removeAt(lastIndex);
+            }
+            lastIndex--;
+        }
+        var addressArray = this.userForm.get('addresses');
+        lastIndex = addressArray.length - 1;
+        while (lastIndex >= 0) {
+            var addressFormGroup = addressArray.at(lastIndex);
+            if (addressFormGroup.invalid || !addressFormGroup.value.ADDRESS_VALUE) {
+                addressArray.removeAt(lastIndex);
+            }
+            lastIndex--;
+        }
+        var roleArray = this.userForm.get('userRole');
+        lastIndex = roleArray.length - 1;
+        while (lastIndex >= 0) {
+            var roleFormGroup = roleArray.at(lastIndex);
+            if (roleFormGroup.invalid || !roleFormGroup.value.NAME) {
+                roleArray.removeAt(lastIndex);
+            }
+            lastIndex--;
+        }
+        this.userForm.markAsPristine();
+        // Replace the URL from to display
+        window.history.replaceState({}, '', "/users/" + userIDCtrl.value + ";action=display");
+    };
+    UserDetailComponent.prototype._switch2EditMode = function () {
+        this.readonly = false;
+        this._setCheckBoxState();
+        var userIDCtrl = this.userForm.get('USER_ID');
+        if (this.isNewMode) {
+            userIDCtrl.setAsyncValidators(Object(_async_validators__WEBPACK_IMPORTED_MODULE_9__["existingUserIDValidator"])(this.identityService, this.messageService));
+        }
+        var userNameCtrl = this.userForm.get('userBasic.names.USER_NAME');
+        userNameCtrl.setAsyncValidators(Object(_async_validators__WEBPACK_IMPORTED_MODULE_9__["existingUserNameValidator"])(this.identityService, this.messageService, this.userForm.get('USER_ID').value));
+        var roleArray = this.userForm.get('userRole');
+        roleArray.push(this.fb.group({
+            NAME: [''],
+            DESCRIPTION: [''],
+            system_role_INSTANCE_GUID: [''],
+            RELATIONSHIP_INSTANCE_GUID: [''],
+        }));
+        // Replace the URL from to display
+        window.history.replaceState({}, '', "/users/" + userIDCtrl.value + ";action=" + this.action);
+    };
+    UserDetailComponent.prototype._createNewUser = function () {
+        var userDetail = new jor_angular__WEBPACK_IMPORTED_MODULE_8__["Entity"]();
+        userDetail['ENTITY_ID'] = 'person';
+        userDetail['r_user'] = [
+            { USER_ID: '', LOCK: 0, PWD_STATUS: '', USER_NAME: '', DISPLAY_NAME: '',
+                GIVEN_NAME: '', MIDDLE_NAME: '', FAMILY_NAME: '' }
+        ];
+        userDetail['r_employee'] = [
+            { TITLE: '', DEPARTMENT_ID: '', COMPANY_ID: '', GENDER: '' }
+        ];
+        userDetail['r_email'] = [];
+        userDetail['r_personalization'] = [
+            { USER_ID: '', LANGUAGE: '', TIMEZONE: '', DECIMAL_FORMAT: '', DATE_FORMAT: '' }
+        ];
+        userDetail['relationships'] = [];
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(userDetail);
+    };
+    UserDetailComponent.prototype._generateUserForm = function (data) {
+        var _this = this;
+        this.userForm = this.fb.group({
+            USER_ID: [data['r_user'][0]['USER_ID'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            LOCK: [data['r_user'][0]['LOCK']],
+            PWD_STATUS: [data['r_user'][0]['PWD_STATUS']],
+            userBasic: this.fb.group({
+                names: this.fb.group({
+                    USER_NAME: [data['r_user'][0]['USER_NAME'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                    DISPLAY_NAME: [data['r_user'][0]['DISPLAY_NAME'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                    GIVEN_NAME: [data['r_user'][0]['GIVEN_NAME']],
+                    MIDDLE_NAME: [data['r_user'][0]['MIDDLE_NAME']],
+                    FAMILY_NAME: [data['r_user'][0]['FAMILY_NAME']]
+                }),
+                employee: this.fb.group({
+                    TITLE: [data['r_employee'][0]['TITLE']],
+                    DEPARTMENT_ID: [data['r_employee'][0]['DEPARTMENT_ID']],
+                    COMPANY_ID: [data['r_employee'][0]['COMPANY_ID'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                    GENDER: [data['r_employee'][0]['GENDER']]
+                })
+            }),
+            emails: this.fb.array([]),
+            addresses: this.fb.array([]),
+            userPersonalization: this.fb.group({
+                USER_ID: [data['r_personalization'] ? data['r_personalization'][0]['USER_ID'] : ''],
+                LANGUAGE: [data['r_personalization'] ? data['r_personalization'][0]['LANGUAGE'] : ''],
+                TIMEZONE: [data['r_personalization'] ? data['r_personalization'][0]['TIMEZONE'] : ''],
+                DECIMAL_FORMAT: [data['r_personalization'] ? data['r_personalization'][0]['DECIMAL_FORMAT'] : ''],
+                DATE_FORMAT: [data['r_personalization'] ? data['r_personalization'][0]['DATE_FORMAT'] : '']
+            }),
+            userRole: this.fb.array([])
+        });
+        var emailArray = this.userForm.get('emails');
+        data['r_email'].forEach(function (email) {
+            emailArray.push(_this.fb.group({
+                EMAIL: [email['EMAIL'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                TYPE: [email['TYPE'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                PRIMARY: [email['PRIMARY']]
+            }));
+        });
+        var addressArray = this.userForm.get('addresses');
+        if (data['r_address']) {
+            data['r_address'].forEach(function (address) {
+                addressArray.push(_this.fb.group({
+                    ADDRESS_ID: [address['ADDRESS_ID']],
+                    TYPE: [address['TYPE'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                    ADDRESS_VALUE: [address['ADDRESS_VALUE'], [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+                    POSTCODE: [address['POSTCODE']],
+                    CITY: [address['CITY']],
+                    COUNTRY: [address['COUNTRY']],
+                    PRIMARY: [address['PRIMARY']]
+                }));
+            });
+        }
+        var roleArray = this.userForm.get('userRole');
+        var userRoleRelationship = data['relationships'][0];
+        if (userRoleRelationship) {
+            userRoleRelationship.values.forEach(function (value) {
+                var roleInstance = value.PARTNER_INSTANCES[0];
+                roleArray.push(_this.fb.group({
+                    NAME: [roleInstance['r_role'][0]['NAME']],
+                    DESCRIPTION: [roleInstance['r_role'][0]['DESCRIPTION']],
+                    system_role_INSTANCE_GUID: [roleInstance['INSTANCE_GUID']],
+                    RELATIONSHIP_INSTANCE_GUID: [value['RELATIONSHIP_INSTANCE_GUID']]
+                }));
+            });
+        }
+        this.originalUserValue = this.userForm.getRawValue();
+    };
+    UserDetailComponent.prototype._resetUserValue = function (data) {
+        var _this = this;
+        this.originalUserValue = {
+            USER_ID: data['r_user'][0]['USER_ID'],
+            LOCK: data['r_user'][0]['LOCK'],
+            PWD_STATUS: data['r_user'][0]['PWD_STATUS'],
+            userBasic: {
+                names: {
+                    USER_NAME: data['r_user'][0]['USER_NAME'],
+                    DISPLAY_NAME: data['r_user'][0]['DISPLAY_NAME'],
+                    GIVEN_NAME: data['r_user'][0]['GIVEN_NAME'],
+                    MIDDLE_NAME: data['r_user'][0]['MIDDLE_NAME'],
+                    FAMILY_NAME: data['r_user'][0]['FAMILY_NAME']
+                },
+                employee: {
+                    TITLE: data['r_employee'][0]['TITLE'],
+                    DEPARTMENT_ID: data['r_employee'][0]['DEPARTMENT_ID'],
+                    COMPANY_ID: data['r_employee'][0]['COMPANY_ID'],
+                    GENDER: data['r_employee'][0]['GENDER']
+                }
+            },
+            emails: [],
+            addresses: [],
+            userPersonalization: {
+                USER_ID: data['r_personalization'] ? data['r_personalization'][0]['USER_ID'] : '',
+                LANGUAGE: data['r_personalization'] ? data['r_personalization'][0]['LANGUAGE'] : '',
+                TIMEZONE: data['r_personalization'] ? data['r_personalization'][0]['TIMEZONE'] : '',
+                DECIMAL_FORMAT: data['r_personalization'] ? data['r_personalization'][0]['DECIMAL_FORMAT'] : '',
+                DATE_FORMAT: data['r_personalization'] ? data['r_personalization'][0]['DATE_FORMAT'] : ''
+            },
+            userRole: []
+        };
+        data['r_email'].forEach(function (email) {
+            _this.originalUserValue['emails'].push({
+                EMAIL: email['EMAIL'],
+                TYPE: email['TYPE'],
+                PRIMARY: email['PRIMARY']
+            });
+        });
+        if (data['r_address']) {
+            data['r_address'].forEach(function (address) {
+                _this.originalUserValue['addresses'].push({
+                    ADDRESS_ID: address['ADDRESS_ID'],
+                    TYPE: address['TYPE'],
+                    ADDRESS_VALUE: address['ADDRESS_VALUE'],
+                    POSTCODE: address['POSTCODE'],
+                    CITY: address['CITY'],
+                    COUNTRY: address['COUNTRY'],
+                    PRIMARY: address['PRIMARY']
+                });
+            });
+        }
+        var userRoleRelationship = data['relationships'][0];
+        if (userRoleRelationship) {
+            userRoleRelationship.values.forEach(function (value) {
+                var roleInstance = value.PARTNER_INSTANCES[0];
+                _this.originalUserValue['userRole'].push({
+                    NAME: [roleInstance['r_role'][0]['NAME']],
+                    DESCRIPTION: [roleInstance['r_role'][0]['DESCRIPTION']],
+                    system_role_INSTANCE_GUID: [roleInstance['INSTANCE_GUID']],
+                    RELATIONSHIP_INSTANCE_GUID: [value['RELATIONSHIP_INSTANCE_GUID']]
+                });
+            });
+        }
+        this.userForm.reset(this.originalUserValue);
+    };
+    UserDetailComponent.prototype._setCheckBoxState = function () {
+        var userEmailFormArray = this.userForm.get('emails');
+        var userAddressFormArray = this.userForm.get('addresses');
+        if (this.readonly) {
+            userEmailFormArray.controls.forEach(function (userEmailForm) { return userEmailForm.get('PRIMARY').disable(); });
+            userAddressFormArray.controls.forEach(function (userEmailForm) { return userEmailForm.get('PRIMARY').disable(); });
+        }
+        else {
+            userEmailFormArray.controls.forEach(function (userEmailForm) { return userEmailForm.get('PRIMARY').enable(); });
+            userAddressFormArray.controls.forEach(function (userEmailForm) { return userEmailForm.get('PRIMARY').enable(); });
+        }
+    };
+    UserDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.messageService.clearMessages();
+        if (this._composeChangedUser()) {
+            this.identityService.saveUser(this.changedUser).subscribe(function (data) {
+                _this.changedUser = {};
+                if ('INSTANCE_GUID' in data) {
+                    var userID = data['r_user'][0]['USER_ID'];
+                    _this.instanceGUID = data['INSTANCE_GUID'];
+                    _this.isNewMode = false;
+                    _this.identityService.getUserDetail(userID).subscribe(function (userData) {
+                        if ('ENTITY_ID' in userData) {
+                            _this._switch2DisplayMode();
+                            _this._resetUserValue(userData);
+                        }
+                        else {
+                            var errorMessages = userData;
+                            errorMessages.forEach(function (msg) { return _this.messageService.add(msg); });
+                        }
+                    });
+                    _this.messageService.reportMessage('USER', 'USER_SAVED', 'S', userID);
+                }
+                else {
+                    var errorMessages = data;
+                    errorMessages.forEach(function (msg) { return _this.messageService.add(msg); });
+                }
+            });
+        }
+    };
+    UserDetailComponent.prototype._composeChangedUser = function () {
+        if (this.userForm.invalid) {
+            this.messageService.reportMessage('USER', 'INVALID', 'E');
+            return false;
+        }
+        if (this.userForm.dirty === false) {
+            this.messageService.reportMessage('GENERAL', 'NO_CHANGE', 'W');
+            return false;
+        }
+        this.changedUser['ENTITY_ID'] = 'person';
+        this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
+        var userBasicFormGroup = this.userForm.get('userBasic');
+        var userID = this.userForm.get('USER_ID').value;
+        if (userBasicFormGroup.dirty) {
+            var userBasicNamesFormGroup = userBasicFormGroup.get('names');
+            this.changedUser['r_user'] = this.uiMapperService.composeChangedRelation(userBasicNamesFormGroup, { USER_ID: userID }, this.isNewMode);
+            var userBasicEmployeeFormGroup = userBasicFormGroup.get('employee');
+            this.changedUser['r_employee'] = this.uiMapperService.composeChangedRelation(userBasicEmployeeFormGroup, { USER_ID: userID }, this.isNewMode);
+        }
+        var userEmailFormArray = this.userForm.get('emails');
+        this.changedUser['r_email'] = this.uiMapperService.composeChangedRelationArray(userEmailFormArray, this.originalUserValue['emails'], { EMAIL: null });
+        var userAddressFormArray = this.userForm.get('addresses');
+        this.changedUser['r_address'] = this.uiMapperService.composeChangedRelationArray(userAddressFormArray, this.originalUserValue['addresses'], { ADDRESS_ID: null });
+        var userPersonalizationFormGroup = this.userForm.get('userPersonalization');
+        this.changedUser['r_personalization'] = this.uiMapperService.composeChangedRelation(userPersonalizationFormGroup, { USER_ID: userID }, !userPersonalizationFormGroup.get('USER_ID').value);
+        var userRoleFormArray = this.userForm.get('userRole');
+        var relationship = this.uiMapperService.composeChangedRelationship('rs_user_role', [{ ENTITY_ID: 'permission', ROLE_ID: 'system_role' }], userRoleFormArray, this.originalUserValue['userRole'], ['NAME', 'DESCRIPTION']);
+        if (relationship) {
+            this.changedUser['relationships'] = [relationship];
+        }
+        return true;
+    };
+    UserDetailComponent.prototype.canDeactivate = function () {
+        if (this.isNewMode || (this.userForm && this.userForm.dirty)) {
+            return this.dialogService.confirm('Discard changes?');
+        }
+        else {
+            return true;
+        }
+    };
+    UserDetailComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-detail',
+            template: __webpack_require__(/*! ./user-detail.component.html */ "./src/app/user/user-detail/user-detail.component.html"),
+            styles: [__webpack_require__(/*! ./user-detail.component.css */ "./src/app/user/user-detail/user-detail.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _dialog_service__WEBPACK_IMPORTED_MODULE_10__["DialogService"],
+            _identity_service__WEBPACK_IMPORTED_MODULE_6__["IdentityService"],
+            jor_angular__WEBPACK_IMPORTED_MODULE_8__["UiMapperService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+    ], UserDetailComponent);
+    return UserDetailComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-email/user-email.component.css":
+/*!**********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-email/user-email.component.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci1kZXRhaWwvdXNlci1lbWFpbC91c2VyLWVtYWlsLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-email/user-email.component.html":
+/*!***********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-email/user-email.component.html ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card mt-4\">\n  <div class=\"card-body\">\n    <div *ngFor=\"let userEmailForm of userEmailFormArray.controls; let i = index\" class=\"card mb-4\">\n      <button type=\"button\" id=\"remove\" class=\"dk-close-button close d-flex justify-content-end mr-2\" aria-label=\"Close\" (click)=\"deleteEmail(i)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n      <div class=\"card-body row\" [formGroup]=\"userEmailForm\">\n        <div class=\"col-3 row form-group ml-2 mr-2\"\n             [class.dk-invalid]=\"userEmailForm.get('TYPE').invalid && (userEmailForm.touched || userEmailForm.dirty)\">\n          <label for=\"emailType\" class=\"col-form-label dk-form-label\"> Email Type:\n            <span class=\"dk-invalid-feedback\">{{userEmailForm.get('TYPE').errors?.required ? 'Required': null}}</span>\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"emailType\" [readonly]=\"readonly\"\n                 name=\"emailType\" formControlName=\"TYPE\">\n        </div>\n        <div class=\"col-6 row form-group mr-2\"\n             [class.dk-invalid]=\"userEmailForm.get('EMAIL').invalid && (userEmailForm.touched || userEmailForm.dirty)\">\n          <label for=\"emailAddress\" class=\"col-form-label dk-form-label\"> Email Address:\n            <span class=\"dk-invalid-feedback\">{{userEmailForm.get('EMAIL').errors?.required ? 'Required': null}}</span>\n          </label>\n          <input type=\"text\" class=\"form-control\" id=\"emailAddress\" [readonly]=\"readonly\"\n                 name=\"emailAddress\" formControlName=\"EMAIL\">\n        </div>\n        <div class=\"col-1 row form-group mr-2\">\n          <label for=\"primaryEmail\" class=\"col-form-label dk-form-label\">Primary</label>\n          <input type=\"radio\" class=\"form-control\" id=\"primaryEmail\" [value]=\"1\" name=\"PRIMARY\" formControlName=\"PRIMARY\">\n        </div>\n      </div>\n    </div>\n    <button type=\"button\" id=\"add\" class=\"btn btn-primary float-right\" [disabled]=\"readonly\" (click)=\"addEmail()\">Add</button>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-email/user-email.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-email/user-email.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: UserEmailComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserEmailComponent", function() { return UserEmailComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UserEmailComponent = /** @class */ (function () {
+    function UserEmailComponent(fb, messageService) {
+        this.fb = fb;
+        this.messageService = messageService;
+    }
+    UserEmailComponent.prototype.ngOnInit = function () {
+        this.userEmailFormArray = this.userForm.get('emails');
+        if (!this.readonly && this.userEmailFormArray.length === 0) {
+            this.addEmail();
+        }
+    };
+    UserEmailComponent.prototype.addEmail = function () {
+        var emailFormGroup = this.fb.group({
+            EMAIL: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            TYPE: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            PRIMARY: ['']
+        });
+        if (this.userEmailFormArray.length === 0) {
+            emailFormGroup.get('PRIMARY').setValue(1);
+            emailFormGroup.get('PRIMARY').markAsDirty();
+        }
+        this.userEmailFormArray.push(emailFormGroup);
+    };
+    UserEmailComponent.prototype.deleteEmail = function (index) {
+        if (this.userEmailFormArray.length === 1) {
+            this.messageService.reportMessage('USER', 'AT_LEAST_ONE_EMAIL', 'E');
+        }
+        else {
+            if (this.userEmailFormArray.at(index).value['PRIMARY']) {
+                var newPrimaryIndex = index === 0 ? 1 : 0;
+                this.userEmailFormArray.at(newPrimaryIndex).get('PRIMARY').setValue(1);
+                this.userEmailFormArray.at(newPrimaryIndex).get('PRIMARY').markAsDirty();
+            }
+            this.userEmailFormArray.removeAt(index);
+            this.userEmailFormArray.markAsDirty();
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UserEmailComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
+    ], UserEmailComponent.prototype, "userForm", void 0);
+    UserEmailComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-email',
+            template: __webpack_require__(/*! ./user-email.component.html */ "./src/app/user/user-detail/user-email/user-email.component.html"),
+            styles: [__webpack_require__(/*! ./user-email.component.css */ "./src/app/user/user-detail/user-email/user-email.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+    ], UserEmailComponent);
+    return UserEmailComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-personalization/user-personalization.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-personalization/user-personalization.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dk-form-label {\n  font-size: 1.2rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci91c2VyLWRldGFpbC91c2VyLXBlcnNvbmFsaXphdGlvbi91c2VyLXBlcnNvbmFsaXphdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvdXNlci91c2VyLWRldGFpbC91c2VyLXBlcnNvbmFsaXphdGlvbi91c2VyLXBlcnNvbmFsaXphdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRrLWZvcm0tbGFiZWwge1xuICBmb250LXNpemU6IDEuMnJlbTtcbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-personalization/user-personalization.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-personalization/user-personalization.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form [formGroup]=\"userPersonalizationForm\" class=\"mt-4 ml-2 pl-4 row\">\n  <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n    <label for=\"language\" class=\"col-form-label dk-form-label\">Language:\n    </label>\n    <input type=\"text\" class=\"form-control\" id=\"language\" [readonly]=\"readonly\"\n           name=\"language\" formControlName=\"LANGUAGE\">\n  </div>\n  <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n    <label for=\"timezone\" class=\"col-form-label dk-form-label\">Timezone:\n    </label>\n    <input type=\"text\" class=\"form-control\" id=\"timezone\" [readonly]=\"readonly\"\n           name=\"timezone\" formControlName=\"TIMEZONE\">\n  </div>\n  <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n    <label for=\"decimalFormat\" class=\"col-form-label dk-form-label\">Decimal Format:\n    </label>\n    <input type=\"text\" class=\"form-control\" id=\"decimalFormat\" [readonly]=\"readonly\"\n           name=\"decimalFormat\" formControlName=\"DECIMAL_FORMAT\">\n  </div>\n  <div class=\"col-md-6 col-lg-4 row form-group mr-2\">\n    <label for=\"datetimeFormat\" class=\"col-form-label dk-form-label\">Date and Time Format:\n    </label>\n    <input type=\"text\" class=\"form-control\" id=\"datetimeFormat\" [readonly]=\"readonly\"\n           name=\"datetimeFormat\" formControlName=\"DATE_FORMAT\">\n  </div>\n</form>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-personalization/user-personalization.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/user/user-detail/user-personalization/user-personalization.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: UserPersonalizationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserPersonalizationComponent", function() { return UserPersonalizationComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserPersonalizationComponent = /** @class */ (function () {
+    function UserPersonalizationComponent() {
+    }
+    UserPersonalizationComponent.prototype.ngOnInit = function () {
+        this.userPersonalizationForm = this.userForm.get('userPersonalization');
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UserPersonalizationComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
+    ], UserPersonalizationComponent.prototype, "userForm", void 0);
+    UserPersonalizationComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-personalization',
+            template: __webpack_require__(/*! ./user-personalization.component.html */ "./src/app/user/user-detail/user-personalization/user-personalization.component.html"),
+            styles: [__webpack_require__(/*! ./user-personalization.component.css */ "./src/app/user/user-detail/user-personalization/user-personalization.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UserPersonalizationComponent);
+    return UserPersonalizationComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-role/user-role.component.css":
+/*!********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-role/user-role.component.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-space: nowrap;\n  border: none;\n}\n.dk-name{\n  width: 20rem;\n}\n.dk-description{\n  width: 40rem;\n}\n.dk-actions{\n  width: 3rem;\n}\n.dk-form-label {\n  font-size: 1.2rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci91c2VyLWRldGFpbC91c2VyLXJvbGUvdXNlci1yb2xlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLG9CQUFvQjtFQUNwQixhQUFhO0NBQ2Q7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUNEO0VBQ0UsYUFBYTtDQUNkO0FBQ0Q7RUFDRSxZQUFZO0NBQ2I7QUFDRDtFQUNFLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci1kZXRhaWwvdXNlci1yb2xlL3VzZXItcm9sZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRrLXRhYmxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIGJvcmRlcjogbm9uZTtcbn1cbi5kay1uYW1le1xuICB3aWR0aDogMjByZW07XG59XG4uZGstZGVzY3JpcHRpb257XG4gIHdpZHRoOiA0MHJlbTtcbn1cbi5kay1hY3Rpb25ze1xuICB3aWR0aDogM3JlbTtcbn1cbi5kay1mb3JtLWxhYmVsIHtcbiAgZm9udC1zaXplOiAxLjJyZW07XG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-role/user-role.component.html":
+/*!*********************************************************************!*\
+  !*** ./src/app/user/user-detail/user-role/user-role.component.html ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<table class=\"table table-bordered dk-table ml-3 mt-4\" [formGroup]=\"userForm\">\n  <thead class=\"thead-light dk-form-label\">\n    <tr>\n      <th scope=\"col\">Role</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n  </thead>\n\n  <tbody formArrayName=\"userRole\" class=\"mb-4\">\n    <tr *ngFor=\"let userRoleForm of userRoleFormArray.controls; let i = index\">\n      <td [formGroup]=\"userRoleForm\"\n          [class.dk-invalid]=\"userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)\">\n        <div class=\"input-group dk-name\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"NAME\"\n                 [readonly]=\"readonly || oldRole(userRoleForm) && userRoleForm.valid\" (change)=\"onChangeRoleID(i)\">\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary btn-light\" type=\"button\" id=\"button-addon2\">\n              <span class=\"fas fa-search\"></span>\n            </button>\n          </div>\n          <div class=\"invalid-tooltip\">\n            {{userRoleForm.get('NAME').errors?.message}}\n          </div>\n        </div>\n      </td>\n      <td [formGroup]=\"userRoleForm\" class=\"dk-description\">\n        <input type=\"text\" formControlName=\"DESCRIPTION\" readonly class=\"form-control\">\n      </td>\n      <td class=\"dk-actions\">\n        <button class=\"btn\" type=\"button\" id=\"delete\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-detail/user-role/user-role.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/user/user-detail/user-role/user-role.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: UserRoleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRoleComponent", function() { return UserRoleComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _identity_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../identity.service */ "./src/app/identity.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UserRoleComponent = /** @class */ (function () {
+    function UserRoleComponent(fb, identityService) {
+        this.fb = fb;
+        this.identityService = identityService;
+    }
+    UserRoleComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userRoleFormArray = this.userForm.get('userRole');
+        // Recheck each role since every time the template is initialized, Angular clears the error status.
+        if (!this.readonly) {
+            this.userRoleFormArray.controls.forEach(function (ctrl, index) {
+                _this.onChangeRoleID(index);
+            });
+        }
+    };
+    UserRoleComponent.prototype.deleteRole = function (index) {
+        if (index !== this.userRoleFormArray.length - 1) {
+            this.userRoleFormArray.removeAt(index);
+            this.userRoleFormArray.markAsDirty();
+        }
+    };
+    UserRoleComponent.prototype.onChangeRoleID = function (index) {
+        var currentRole = this.userRoleFormArray.at(index);
+        if (this.oldRole(currentRole)) {
+            currentRole.get('NAME').setErrors({ message: 'Duplicate Role' });
+            return;
+        }
+        if (index === this.userRoleFormArray.length - 1 && currentRole.value.NAME.trim() !== '') {
+            // Only work if the last line is not new and empty
+            this.userRoleFormArray.push(this.fb.group({
+                NAME: [''],
+                DESCRIPTION: [''],
+                system_role_INSTANCE_GUID: [''],
+                RELATIONSHIP_INSTANCE_GUID: ['']
+            }));
+        }
+        if (currentRole.value.NAME) {
+            this.identityService.getRoleDesc(currentRole.value.NAME).subscribe(function (data) {
+                if (data['msgCat']) {
+                    currentRole.get('NAME').setErrors({ message: data['msgShortText'] });
+                }
+                else {
+                    currentRole.get('DESCRIPTION').setValue(data['DESCRIPTION']);
+                    currentRole.get('system_role_INSTANCE_GUID').setValue(data['INSTANCE_GUID']);
+                }
+            });
+        }
+    };
+    UserRoleComponent.prototype.oldRole = function (userRoleForm) {
+        var existIndex = this.userRoleFormArray.controls.findIndex(function (role) { return role.value.NAME === userRoleForm.value.NAME && role.pristine && role.value.NAME !== ''; });
+        return existIndex !== -1;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UserRoleComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
+    ], UserRoleComponent.prototype, "userForm", void 0);
+    UserRoleComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-role',
+            template: __webpack_require__(/*! ./user-role.component.html */ "./src/app/user/user-detail/user-role/user-role.component.html"),
+            styles: [__webpack_require__(/*! ./user-role.component.css */ "./src/app/user/user-detail/user-role/user-role.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _identity_service__WEBPACK_IMPORTED_MODULE_2__["IdentityService"]])
+    ], UserRoleComponent);
+    return UserRoleComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user-list/user-list.component.css":
+/*!********************************************************!*\
+  !*** ./src/app/user/user-list/user-list.component.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dk-lock {\n  width: 5rem;\n  max-width: 5rem;\n  min-width: 5rem;\n}\n.dk-password-state {\n  width: 15rem;\n  max-width: 15rem;\n  min-width: 15rem;\n}\n.dk-actions{\n  width: 9rem;\n  min-width: 9rem;\n  max-width: 9rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci91c2VyLWxpc3QvdXNlci1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osZ0JBQWdCO0VBQ2hCLGdCQUFnQjtDQUNqQjtBQUNEO0VBQ0UsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0NBQ2pCIiwiZmlsZSI6InNyYy9hcHAvdXNlci91c2VyLWxpc3QvdXNlci1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGstbG9jayB7XG4gIHdpZHRoOiA1cmVtO1xuICBtYXgtd2lkdGg6IDVyZW07XG4gIG1pbi13aWR0aDogNXJlbTtcbn1cbi5kay1wYXNzd29yZC1zdGF0ZSB7XG4gIHdpZHRoOiAxNXJlbTtcbiAgbWF4LXdpZHRoOiAxNXJlbTtcbiAgbWluLXdpZHRoOiAxNXJlbTtcbn1cbi5kay1hY3Rpb25ze1xuICB3aWR0aDogOXJlbTtcbiAgbWluLXdpZHRoOiA5cmVtO1xuICBtYXgtd2lkdGg6IDlyZW07XG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/user/user-list/user-list.component.html":
+/*!*********************************************************!*\
+  !*** ./src/app/user/user-list/user-list.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card mb-3 pt-3\">\n  <div class=\"mt-2 pl-4 row\">\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_id\" class=\"col-sm-3 col-form-label\">User ID:</label>\n      <input id=\"user_id\" name=\"user_id\" [(ngModel)]=\"userID\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\" autofocus>\n    </div>\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_name\" class=\"col-sm-3 col-form-label\">User Name:</label>\n      <input id=\"user_name\" name=\"user_name\" [(ngModel)]=\"userName\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\">\n    </div>\n  </div>\n\n  <div class=\"mb-4\">\n    <button type=\"button\" id=\"search\" class=\"btn btn-primary float-right mr-4\" (click)=\"search()\">Search</button>\n  </div>\n</div>\n\n<div class=\"mt-2 mb-4 mx-4\">\n  <dk-message></dk-message>\n  <div class=\"btn-toolbar justify-content-end my-2\" role=\"toolbar\">\n    <button type=\"button\" id=\"new\" class=\"btn btn-light\" (click)=\"newUser()\"><span class=\"fas fa-plus\"></span> New</button>\n  </div>\n  <table class=\"table table-bordered table-sm\">\n    <thead class=\"thead-light\">\n    <tr>\n      <th scope=\"col\">User ID</th>\n      <th scope=\"col\">User Name</th>\n      <th scope=\"col\">Display Name</th>\n      <th scope=\"col\">Locked?</th>\n      <th scope=\"col\">Password State</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n    </thead>\n\n    <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td><a [routerLink]=\"['/users', user.USER_ID, {action: 'display'}]\">{{user.USER_ID}}</a></td>\n      <td>{{user.USER_NAME}}</td>\n      <td>{{user.DISPLAY_NAME}}</td>\n      <td class=\"dk-lock\">\n        <span *ngIf=\"user.LOCK\" class=\"fas fa-lock\" title=\"Locked\"></span>\n        <span *ngIf=\"!user.LOCK\" class=\"fas fa-lock-open\" title=\"Unlocked\"></span>\n      </td>\n      <td class=\"dk-password-state\" [ngSwitch]=\"user.PWD_STATE\">\n        <div *ngSwitchCase=\"\">\n          <span class=\"badge badge-primary\">Initial</span>\n        </div>\n        <div *ngSwitchCase=\"1\">\n          <span class=\"badge badge-success\">Active</span>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <span class=\"badge badge-warning\">Need Change</span>\n        </div>\n      </td>\n      <td class=\"dk-actions\">\n        <button title=\"Display\" id=\"display\" class=\"btn\" type=\"button\" (click)=\"displayUser(user.USER_ID)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n        <button title=\"Change\" id=\"change\" class=\"btn\" type=\"button\" (click)=\"changeUser(user.USER_ID)\">\n          <span class=\"fas fa-pen\"></span>\n        </button>\n        <button title=\"Delete\" id=\"delete\" class=\"btn\" type=\"button\" (click)=\"deleteUser(user.USER_ID)\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"modal fade dk-modal-open\" [class.show]=\"showDeletionConfirmation\"\n       [ngStyle]=\"{'display': displayDeletionConfirmation}\" id=\"deletionConfirmation\" tabindex=\"-1\" role=\"dialog\">\n    <div class=\"modal-dialog modal-sm modal-dialog-centered\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"entityMeta\">Confirm Deletion</h5>\n          <button type=\"button\" class=\"close\" (click)=\"cancelDeletion()\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <p>Are you sure to delete the user '{{toBeDeletedUser}}'?</p>\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" id=\"cancel\" class=\"btn btn-secondary\" (click)=\"cancelDeletion()\">Cancel</button>\n          <button type=\"button\" id=\"confirm\" class=\"btn btn-primary\" (click)=\"confirmDeletion()\">Confirm</button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/user/user-list/user-list.component.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/user/user-list/user-list.component.ts ***!
+  \*******************************************************/
+/*! exports provided: UserListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserListComponent", function() { return UserListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _identity_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../identity.service */ "./src/app/identity.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var UserListComponent = /** @class */ (function () {
+    function UserListComponent(identityService, messageService, router) {
+        this.identityService = identityService;
+        this.messageService = messageService;
+        this.router = router;
+        this.showDeletionConfirmation = false;
+    }
+    Object.defineProperty(UserListComponent.prototype, "displayDeletionConfirmation", {
+        get: function () { return this.showDeletionConfirmation ? 'block' : 'none'; },
+        enumerable: true,
+        configurable: true
+    });
+    UserListComponent.prototype.ngOnInit = function () {
+    };
+    UserListComponent.prototype.search = function () {
+        var _this = this;
+        this.messageService.clearMessages();
+        this.users = [];
+        this.userID = this.userID ? this.userID.trim() : '';
+        this.userName = this.userName ? this.userName.trim() : '';
+        this.identityService.searchUsers(this.userID, this.userName).subscribe(function (data) {
+            if (!data[0]) {
+                _this.messageService.reportMessage('GENERAL', 'EMPTY_LIST', ui_message_angular__WEBPACK_IMPORTED_MODULE_1__["messageType"].Warning);
+            }
+            else if (data[0]['msgCat']) {
+                var messages = data;
+                messages.forEach(function (msg) { return _this.messageService.add(msg); });
+            }
+            else {
+                _this.users = data;
+            }
+        });
+    };
+    UserListComponent.prototype.enterSearch = function ($event) {
+        if ($event.keyCode === 13) {
+            this.search();
+        }
+    };
+    UserListComponent.prototype.newUser = function () {
+        this.router.navigate(['users', '/', { action: 'new' }]);
+    };
+    UserListComponent.prototype.displayUser = function (userID) {
+        this.router.navigate(['users', userID, { action: 'display' }]);
+    };
+    UserListComponent.prototype.changeUser = function (userID) {
+        this.router.navigate(['users', userID, { action: 'change' }]);
+    };
+    UserListComponent.prototype.deleteUser = function (userID) {
+        this.toBeDeletedUser = userID;
+        this.showDeletionConfirmation = true;
+    };
+    UserListComponent.prototype.cancelDeletion = function () {
+        this.showDeletionConfirmation = false;
+    };
+    UserListComponent.prototype.confirmDeletion = function () {
+        var _this = this;
+        var toBeDeletedUserGUID = this.users.find(function (ele) { return ele.USER_ID === _this.toBeDeletedUser; }).INSTANCE_GUID;
+        this.identityService.deleteUser(toBeDeletedUserGUID).subscribe(function (errorMsg) {
+            _this.showDeletionConfirmation = false;
+            if (errorMsg) {
+                var messages = errorMsg;
+                messages.forEach(function (msg) { return _this.messageService.add(msg); });
+            }
+            else {
+                _this.search();
+            }
+        });
+    };
+    UserListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-list',
+            template: __webpack_require__(/*! ./user-list.component.html */ "./src/app/user/user-list/user-list.component.html"),
+            styles: [__webpack_require__(/*! ./user-list.component.css */ "./src/app/user/user-list/user-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_identity_service__WEBPACK_IMPORTED_MODULE_3__["IdentityService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_1__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], UserListComponent);
+    return UserListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/work-protection.guard.ts":
+/*!******************************************!*\
+  !*** ./src/app/work-protection.guard.ts ***!
+  \******************************************/
+/*! exports provided: WorkProtectionGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkProtectionGuard", function() { return WorkProtectionGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var WorkProtectionGuard = /** @class */ (function () {
+    function WorkProtectionGuard() {
+    }
+    WorkProtectionGuard.prototype.canDeactivate = function (component, currentRoute, currentState, nextState) {
+        return component.canDeactivate ? component.canDeactivate() : true;
+    };
+    WorkProtectionGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], WorkProtectionGuard);
+    return WorkProtectionGuard;
 }());
 
 

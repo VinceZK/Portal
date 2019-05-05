@@ -1,5 +1,438 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~entity-entity-module~model-model-module"],{
 
+/***/ "./dist/jor-angular/fesm5/jor-angular.js":
+/*!***********************************************!*\
+  !*** ./dist/jor-angular/fesm5/jor-angular.js ***!
+  \***********************************************/
+/*! exports provided: Entity, Relationship, RelationshipInstance, PartnerInstance, PartnerRole, EntityMeta, Attribute, Role, RoleRelation, RelationshipMeta, Involve, RelationMeta, Association, FieldsMappingPair, EntityRelation, Selection, Projection, QueryObject, Sort, EntityType, Relation, RelationshipH, RoleH, RoleMeta, UiMapperService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Entity", function() { return Entity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relationship", function() { return Relationship; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipInstance", function() { return RelationshipInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartnerInstance", function() { return PartnerInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartnerRole", function() { return PartnerRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityMeta", function() { return EntityMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Role", function() { return Role; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleRelation", function() { return RoleRelation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipMeta", function() { return RelationshipMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Involve", function() { return Involve; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationMeta", function() { return RelationMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Association", function() { return Association; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FieldsMappingPair", function() { return FieldsMappingPair; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityRelation", function() { return EntityRelation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Selection", function() { return Selection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Projection", function() { return Projection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryObject", function() { return QueryObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sort", function() { return Sort; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityType", function() { return EntityType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relation", function() { return Relation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipH", function() { return RelationshipH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleH", function() { return RoleH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleMeta", function() { return RoleMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UiMapperService", function() { return UiMapperService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var Entity = /** @class */ (function () {
+    function Entity() {
+    }
+    return Entity;
+}());
+var Relationship = /** @class */ (function () {
+    function Relationship() {
+    }
+    return Relationship;
+}());
+var RelationshipInstance = /** @class */ (function () {
+    function RelationshipInstance() {
+    }
+    return RelationshipInstance;
+}());
+var PartnerInstance = /** @class */ (function () {
+    function PartnerInstance() {
+    }
+    return PartnerInstance;
+}());
+var PartnerRole = /** @class */ (function () {
+    function PartnerRole() {
+    }
+    return PartnerRole;
+}());
+var EntityMeta = /** @class */ (function () {
+    function EntityMeta() {
+    }
+    return EntityMeta;
+}());
+var Attribute = /** @class */ (function () {
+    function Attribute() {
+    }
+    return Attribute;
+}());
+var Role = /** @class */ (function () {
+    function Role() {
+    }
+    return Role;
+}());
+var RoleRelation = /** @class */ (function () {
+    function RoleRelation() {
+    }
+    return RoleRelation;
+}());
+var RelationshipMeta = /** @class */ (function () {
+    function RelationshipMeta() {
+    }
+    return RelationshipMeta;
+}());
+var Involve = /** @class */ (function () {
+    function Involve() {
+    }
+    return Involve;
+}());
+var RelationMeta = /** @class */ (function () {
+    function RelationMeta() {
+    }
+    return RelationMeta;
+}());
+var Association = /** @class */ (function () {
+    function Association() {
+    }
+    return Association;
+}());
+var FieldsMappingPair = /** @class */ (function () {
+    function FieldsMappingPair() {
+    }
+    return FieldsMappingPair;
+}());
+var EntityRelation = /** @class */ (function () {
+    function EntityRelation() {
+    }
+    return EntityRelation;
+}());
+var Selection = /** @class */ (function () {
+    function Selection() {
+    }
+    return Selection;
+}());
+var Projection = /** @class */ (function () {
+    function Projection() {
+    }
+    return Projection;
+}());
+var QueryObject = /** @class */ (function () {
+    function QueryObject() {
+    }
+    return QueryObject;
+}());
+var Sort = /** @class */ (function () {
+    function Sort() {
+    }
+    return Sort;
+}());
+var EntityType = /** @class */ (function () {
+    function EntityType() {
+    }
+    return EntityType;
+}());
+var Relation = /** @class */ (function () {
+    function Relation() {
+    }
+    return Relation;
+}());
+var RelationshipH = /** @class */ (function () {
+    function RelationshipH() {
+    }
+    return RelationshipH;
+}());
+var RoleH = /** @class */ (function () {
+    function RoleH() {
+    }
+    return RoleH;
+}());
+var RoleMeta = /** @class */ (function () {
+    function RoleMeta() {
+    }
+    return RoleMeta;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var UiMapperService = /** @class */ (function () {
+    function UiMapperService() {
+    }
+    /**
+     * Map a FormGroup to a JOR relation(with cardinality [0..1] and [1..1]) for adding or updating.
+     * @param formGroup: It must be a flat Angular FormGroup, which means no deep structure.
+     * @param keys: Business primary keys to identify one row in the relation(DB table).
+     * For example: Given {USER_ID: 'DH001'}, it means the relation has the primary key 'USER_ID'.
+     * And it must be filled with a fix value 'DH001'.
+     * However, if the value of the key can be derived from the formGroup, then assign null value to it.
+     * For example: Given {EMAIL: null}, the value of key EMAIL will be derived from formGroup.value['EMAIL'].
+     * @param isNew: Determine whether to update or add the value.
+     *
+     * The return is an object like:
+     * {
+     *     action: 'update', USER_ID: 'DH001', MIDDLE_NAME: "xxxxxx"
+     * }
+     */
+    /**
+     * Map a FormGroup to a JOR relation(with cardinality [0..1] and [1..1]) for adding or updating.
+     * @param {?} formGroup
+     * @param {?} keys
+     * @param {?=} isNew
+     * @return {?}
+     */
+    UiMapperService.prototype.composeChangedRelation = /**
+     * Map a FormGroup to a JOR relation(with cardinality [0..1] and [1..1]) for adding or updating.
+     * @param {?} formGroup
+     * @param {?} keys
+     * @param {?=} isNew
+     * @return {?}
+     */
+    function (formGroup, keys, isNew) {
+        if (isNew === void 0) { isNew = true; }
+        if (!formGroup.dirty || !keys || Object.keys(keys).length === 0) {
+            return {};
+        }
+        /** @type {?} */
+        var changedRelation = { action: isNew ? 'add' : 'update' };
+        Object.keys(keys).forEach(function (key) { return changedRelation[key] = keys[key] || formGroup.value[key]; });
+        Object.keys(formGroup.controls).forEach(function (key) {
+            /** @type {?} */
+            var control = formGroup.get(key);
+            if (control.dirty) {
+                changedRelation[key] = control.value;
+            }
+        });
+        return changedRelation;
+    };
+    /**
+     * Map a FormArray to JOR relation(with cardinality [0..n] or [1..n]) for adding, updating, or deletion.
+     * @param formArray: It must be a flat Angular FormArray, which means no deep structure.
+     * @param originalArray: To determine whether an item is for adding, or for updating, or for deletion.
+     * the original array, which shares the same structure with the formArray, is used for comparison.
+     * Tips: You can get the originalArray by calling *FormArray.getRawValue()* right after
+     * the FormArray is constructed from the backend data, usually, in ngOnInit().
+     * @param keys: Business primary keys to identify one row in the formArray and originalArray.
+     * For example: Given {EMAIL: null}, it will use the attribute EMAIL to compare if the same item exists or not.
+     * First it iterates the formArray to whether check EMAIL exists in the originalArray,
+     * if exists, use action 'update', otherwise, use action 'add'.
+     * Then it iterates the originalArray to check EMAIL exists in formArray,
+     * if not exists, then the action is set to 'delete'.
+     *
+     * The return is an array like:
+     * [
+     *   {action: "update", EMAIL: "dh003@hotmail.com", PRIMARY: 1},
+     *   {action: "add", EMAIL: "dh003@gmail.com", TYPE: "work"},
+     *   {action: "delete", EMAIL: "dh003@darkhouse.com"}
+     * ]
+     */
+    /**
+     * Map a FormArray to JOR relation(with cardinality [0..n] or [1..n]) for adding, updating, or deletion.
+     * @param {?} formArray
+     * @param {?} originalArray
+     * @param {?} keys
+     * @return {?}
+     */
+    UiMapperService.prototype.composeChangedRelationArray = /**
+     * Map a FormArray to JOR relation(with cardinality [0..n] or [1..n]) for adding, updating, or deletion.
+     * @param {?} formArray
+     * @param {?} originalArray
+     * @param {?} keys
+     * @return {?}
+     */
+    function (formArray, originalArray, keys) {
+        if (!formArray.dirty || !keys || Object.keys(keys).length === 0) {
+            return [];
+        }
+        if (!originalArray) {
+            originalArray = [];
+        }
+        /** @type {?} */
+        var changedRelationArray = [];
+        formArray.controls.forEach(function (formGroup) {
+            if (formGroup.dirty) {
+                /** @type {?} */
+                var changedRelation_1 = {};
+                changedRelationArray.push(changedRelation_1);
+                /** @type {?} */
+                var index = originalArray.findIndex(function (element) {
+                    /** @type {?} */
+                    var found = true;
+                    Object.keys(keys).forEach(function (key) {
+                        if (keys[key]) {
+                            return;
+                        }
+                        found = found && (element[key] === formGroup.value[key]);
+                    });
+                    return found;
+                });
+                changedRelation_1['action'] = index === -1 ? 'add' : 'update';
+                Object.keys(keys).forEach(function (key) { return changedRelation_1[key] = keys[key] || formGroup.value[key]; });
+                Object.keys(formGroup['controls']).forEach(function (key) {
+                    /** @type {?} */
+                    var control = formGroup.get(key);
+                    if (control.dirty) {
+                        changedRelation_1[key] = control.value;
+                    }
+                });
+            }
+        });
+        originalArray.forEach(function (originalRelation) {
+            /** @type {?} */
+            var index = formArray.controls.findIndex(function (element) {
+                /** @type {?} */
+                var found = true;
+                Object.keys(keys).forEach(function (key) {
+                    if (keys[key]) {
+                        return;
+                    }
+                    found = found && (element.value[key] === originalRelation[key]);
+                });
+                return found;
+            });
+            if (index === -1) {
+                /** @type {?} */
+                var deletedRelation_1 = { action: 'delete' };
+                Object.keys(keys).forEach(function (key) { return deletedRelation_1[key] = keys[key] || originalRelation[key]; });
+                changedRelationArray.push(deletedRelation_1);
+            }
+        });
+        return changedRelationArray;
+    };
+    /**
+     * Map a FormArray to JOR relationships for adding, updating, or deletion.
+     * @param relationshipID: Relationship ID defined in JOR. For example: 'rs_marriage'
+     * @param partnerRoles: Partner roles involved in the relationship.
+     * For example: Given [{ENTITY_ID: 'person', ROLE_ID: 'wife'}], it means the partner is a 'person' with role 'wife'.
+     * In most cases, a relationship only involves 2 roles, like husband and wife.
+     * However, in certain case, there could be more than two. So the partner role is provided as an array.
+     * @param formArray: First, it must be a flat Angular FormArray, which means no deep structure.
+     * Second, it must contain fields: RELATIONSHIP_INSTANCE_GUID and <partner_role_name>_INSTANCE_GUID.
+     * @param originalArray: To determine whether an item is for adding, or for updating, or for deletion.
+     * the original array, which shares the same structure with the formArray, is used for comparison.
+     * Tips: You can get the originalArray by calling *FormArray.getRawValue()* right after
+     * the FormArray is constructed from the backend data, usually, in ngOnInit().
+     * @param nonRelationshipAttributes: Attributes that are not belong to the relationship, but exist in the formArray.
+     * A relationship has its own attributes, for example, rs_marriage has REG_PLACE and COUNTRY.
+     * However, on the UI, you not only want to show the 2 fields, but also the partner's ID, NAME, BIRTHDAY, and so on.
+     * And these attributes should be excluded when adding and changing the relationship.
+     *
+     * The Return will either a null object or a relationship object like:
+     * {
+     *   RELATIONSHIP_ID: "rs_marriage",
+     *   values: [
+     *     {action: "add", REG_PLACE: "Shanghai", COUNTRY: "China",
+     *      PARTNER_INSTANCES: [
+     *       {ENTITY_ID: "person", ROLE_ID: "wife", INSTANCE_GUID: "391E75B02A1811E981F3C33C6FB0A7C1"}
+     *     ]},
+     *     {action: "update", REG_PLACE: "Beijing", RELATIONSHIP_INSTANCE_GUID: "96DF7F706EE011E9B7B5F7E76DA40E87"},
+     *     {action: "delete", RELATIONSHIP_INSTANCE_GUID: "96DF7F706EE011E9B7B5F7E76DA40E87"}
+     *   ]
+     * }
+     */
+    /**
+     * Map a FormArray to JOR relationships for adding, updating, or deletion.
+     * @param {?} relationshipID
+     * @param {?} partnerRoles
+     * @param {?} formArray
+     * @param {?} originalArray
+     * @param {?} nonRelationshipAttributes
+     * @return {?}
+     */
+    UiMapperService.prototype.composeChangedRelationship = /**
+     * Map a FormArray to JOR relationships for adding, updating, or deletion.
+     * @param {?} relationshipID
+     * @param {?} partnerRoles
+     * @param {?} formArray
+     * @param {?} originalArray
+     * @param {?} nonRelationshipAttributes
+     * @return {?}
+     */
+    function (relationshipID, partnerRoles, formArray, originalArray, nonRelationshipAttributes) {
+        if (!formArray.dirty) {
+            return null;
+        }
+        /** @type {?} */
+        var relationship = {
+            RELATIONSHIP_ID: relationshipID,
+            values: []
+        };
+        formArray.controls.forEach(function (formGroup) {
+            if (formGroup.dirty) {
+                /** @type {?} */
+                var changedRelationshipValue_1 = {};
+                relationship.values.push(changedRelationshipValue_1);
+                if (formGroup.value['RELATIONSHIP_INSTANCE_GUID']) {
+                    changedRelationshipValue_1['action'] = 'update';
+                    changedRelationshipValue_1['RELATIONSHIP_INSTANCE_GUID'] = formGroup.value['RELATIONSHIP_INSTANCE_GUID'];
+                }
+                else {
+                    changedRelationshipValue_1['action'] = 'add';
+                    changedRelationshipValue_1['PARTNER_INSTANCES'] = [];
+                    partnerRoles.forEach(function (partnerRole) {
+                        return changedRelationshipValue_1['PARTNER_INSTANCES'].push({
+                            ENTITY_ID: partnerRole.ENTITY_ID,
+                            ROLE_ID: partnerRole.ROLE_ID,
+                            INSTANCE_GUID: formGroup.value[partnerRole.ROLE_ID + '_INSTANCE_GUID']
+                        });
+                    });
+                }
+                Object.keys(formGroup['controls']).forEach(function (key) {
+                    if (nonRelationshipAttributes.includes(key) || key.substr(-13) === 'INSTANCE_GUID') {
+                        return;
+                    }
+                    /** @type {?} */
+                    var control = formGroup.get(key);
+                    if (control.dirty) {
+                        changedRelationshipValue_1[key] = control.value;
+                    }
+                });
+            }
+        });
+        originalArray.forEach(function (original) {
+            if (formArray.controls.findIndex(function (formGroup) { return formGroup.value['RELATIONSHIP_INSTANCE_GUID'] === original['RELATIONSHIP_INSTANCE_GUID']; }) === -1) {
+                relationship.values.push({ action: 'delete', RELATIONSHIP_INSTANCE_GUID: original['RELATIONSHIP_INSTANCE_GUID'] });
+            }
+        });
+        return relationship.values.length === 0 ? null : relationship;
+    };
+    UiMapperService.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{
+                    providedIn: 'root'
+                },] }
+    ];
+    /** @nocollapse */
+    UiMapperService.ctorParameters = function () { return []; };
+    /** @nocollapse */ UiMapperService.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["defineInjectable"])({ factory: function UiMapperService_Factory() { return new UiMapperService(); }, token: UiMapperService, providedIn: "root" });
+    return UiMapperService;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=jor-angular.js.map
+
+/***/ }),
+
 /***/ "./node_modules/rxjs/internal/BehaviorSubject.js":
 /*!*******************************************************!*\
   !*** ./node_modules/rxjs/internal/BehaviorSubject.js ***!
@@ -1867,181 +2300,6 @@ var EntityService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/entity.ts":
-/*!***************************!*\
-  !*** ./src/app/entity.ts ***!
-  \***************************/
-/*! exports provided: Entity, Relationship, RelationshipInstance, PartnerInstance, EntityMeta, Attribute, Role, RoleRelation, RelationshipMeta, Involve, RelationMeta, Association, FieldsMappingPair, EntityRelation, Selection, Projection, QueryObject, Sort, EntityType, Relation, RelationshipH, RoleH, RoleMeta */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Entity", function() { return Entity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relationship", function() { return Relationship; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipInstance", function() { return RelationshipInstance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartnerInstance", function() { return PartnerInstance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityMeta", function() { return EntityMeta; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Role", function() { return Role; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleRelation", function() { return RoleRelation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipMeta", function() { return RelationshipMeta; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Involve", function() { return Involve; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationMeta", function() { return RelationMeta; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Association", function() { return Association; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FieldsMappingPair", function() { return FieldsMappingPair; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityRelation", function() { return EntityRelation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Selection", function() { return Selection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Projection", function() { return Projection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryObject", function() { return QueryObject; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sort", function() { return Sort; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityType", function() { return EntityType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Relation", function() { return Relation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelationshipH", function() { return RelationshipH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleH", function() { return RoleH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleMeta", function() { return RoleMeta; });
-// TODO Export these types in packaging
-var Entity = /** @class */ (function () {
-    function Entity() {
-    }
-    return Entity;
-}());
-
-var Relationship = /** @class */ (function () {
-    function Relationship() {
-    }
-    return Relationship;
-}());
-
-var RelationshipInstance = /** @class */ (function () {
-    function RelationshipInstance() {
-    }
-    return RelationshipInstance;
-}());
-
-var PartnerInstance = /** @class */ (function () {
-    function PartnerInstance() {
-    }
-    return PartnerInstance;
-}());
-
-var EntityMeta = /** @class */ (function () {
-    function EntityMeta() {
-    }
-    return EntityMeta;
-}());
-
-var Attribute = /** @class */ (function () {
-    function Attribute() {
-    }
-    return Attribute;
-}());
-
-var Role = /** @class */ (function () {
-    function Role() {
-    }
-    return Role;
-}());
-
-var RoleRelation = /** @class */ (function () {
-    function RoleRelation() {
-    }
-    return RoleRelation;
-}());
-
-var RelationshipMeta = /** @class */ (function () {
-    function RelationshipMeta() {
-    }
-    return RelationshipMeta;
-}());
-
-var Involve = /** @class */ (function () {
-    function Involve() {
-    }
-    return Involve;
-}());
-
-var RelationMeta = /** @class */ (function () {
-    function RelationMeta() {
-    }
-    return RelationMeta;
-}());
-
-var Association = /** @class */ (function () {
-    function Association() {
-    }
-    return Association;
-}());
-
-var FieldsMappingPair = /** @class */ (function () {
-    function FieldsMappingPair() {
-    }
-    return FieldsMappingPair;
-}());
-
-var EntityRelation = /** @class */ (function () {
-    function EntityRelation() {
-    }
-    return EntityRelation;
-}());
-
-var Selection = /** @class */ (function () {
-    function Selection() {
-    }
-    return Selection;
-}());
-
-var Projection = /** @class */ (function () {
-    function Projection() {
-    }
-    return Projection;
-}());
-
-var QueryObject = /** @class */ (function () {
-    function QueryObject() {
-    }
-    return QueryObject;
-}());
-
-var Sort = /** @class */ (function () {
-    function Sort() {
-    }
-    return Sort;
-}());
-
-var EntityType = /** @class */ (function () {
-    function EntityType() {
-    }
-    return EntityType;
-}());
-
-var Relation = /** @class */ (function () {
-    function Relation() {
-    }
-    return Relation;
-}());
-
-var RelationshipH = /** @class */ (function () {
-    function RelationshipH() {
-    }
-    return RelationshipH;
-}());
-
-var RoleH = /** @class */ (function () {
-    function RoleH() {
-    }
-    return RoleH;
-}());
-
-var RoleMeta = /** @class */ (function () {
-    function RoleMeta() {
-    }
-    return RoleMeta;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/msgStore.ts":
 /*!*****************************!*\
   !*** ./src/app/msgStore.ts ***!
@@ -2070,7 +2328,7 @@ var msgStore = [
     { msgCat: 'ENTITY',
         msgName: 'NO_CHANGE',
         msgText: {
-            EN: { shortText: 'Entity instance is not changed', longText: '' }
+            EN: { shortText: 'No Change is made, nothing is saved!', longText: '' }
         }
     },
     { msgCat: 'ENTITY',
@@ -2124,7 +2382,7 @@ var msgStore = [
     { msgCat: 'MODEL',
         msgName: 'NO_CHANGE',
         msgText: {
-            EN: { shortText: 'No Change is made!', longText: '' }
+            EN: { shortText: 'No Change is made, nothing is saved!', longText: '' }
         }
     },
     { msgCat: 'MODEL',

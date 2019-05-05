@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Message, MessageService} from "ui-message-angular";
 import {msgStore} from "../../msgStore";
 import {switchMap} from "rxjs/operators";
 import {IdentityService} from "../../identity.service";
 import {Observable, of} from "rxjs";
-import {Entity} from "jor-angular";
+import {Entity, UiMapperService} from "jor-angular";
 import {existingUserIDValidator, existingUserNameValidator} from "./async-validators";
 import {DialogService} from "../../dialog.service";
 
@@ -40,8 +40,10 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
+              private router: Router,
               private dialogService: DialogService,
               private identityService: IdentityService,
+              private uiMapperService: UiMapperService,
               private messageService: MessageService) {
     this.messageService.setMessageStore(msgStore, 'EN');
   }
@@ -62,7 +64,6 @@ export class UserDetailComponent implements OnInit {
       if ('ENTITY_ID' in data) {
         this.instanceGUID = data['INSTANCE_GUID'];
         this._generateUserForm(<Entity>data);
-        this.originalUserValue = this.userForm.getRawValue();
         if (this.isNewMode || this.action === 'change') {
           this._switch2EditMode();
         } else {
@@ -109,7 +110,7 @@ export class UserDetailComponent implements OnInit {
     let lastIndex = emailArray.length - 1;
     while (lastIndex >= 0) {
       const emailFormGroup = emailArray.at(lastIndex);
-      if (emailFormGroup.invalid || !emailFormGroup.value.EMAIL || emailFormGroup.value.EMAIL.trim() === '') {
+      if (emailFormGroup.invalid || !emailFormGroup.value.EMAIL) {
         emailArray.removeAt(lastIndex);
       }
       lastIndex--;
@@ -119,7 +120,7 @@ export class UserDetailComponent implements OnInit {
     lastIndex = addressArray.length - 1;
     while (lastIndex >= 0) {
       const addressFormGroup = addressArray.at(lastIndex);
-      if (addressFormGroup.invalid || !addressFormGroup.value.ADDRESS_VALUE || addressFormGroup.value.ADDRESS_VALUE.trim() === '') {
+      if (addressFormGroup.invalid || !addressFormGroup.value.ADDRESS_VALUE) {
         addressArray.removeAt(lastIndex);
       }
       lastIndex--;
@@ -129,7 +130,7 @@ export class UserDetailComponent implements OnInit {
     lastIndex = roleArray.length - 1;
     while (lastIndex >= 0) {
       const roleFormGroup = roleArray.at(lastIndex);
-      if (roleFormGroup.invalid || !roleFormGroup.value.NAME || roleFormGroup.value.NAME.trim() === '') {
+      if (roleFormGroup.invalid || !roleFormGroup.value.NAME) {
         roleArray.removeAt(lastIndex);
       }
       lastIndex--;
@@ -155,7 +156,12 @@ export class UserDetailComponent implements OnInit {
       existingUserNameValidator(this.identityService, this.messageService, this.userForm.get('USER_ID').value));
 
     const roleArray = this.userForm.get('userRole') as FormArray;
-    roleArray.push( this.fb.group({NAME: [''], DESCRIPTION: [''], INSTANCE_GUID: ['']}));
+    roleArray.push( this.fb.group({
+      NAME: [''],
+      DESCRIPTION: [''],
+      system_role_INSTANCE_GUID: [''],
+      RELATIONSHIP_INSTANCE_GUID: [''],
+    }));
 
     // Replace the URL from to display
     window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=` + this.action);
@@ -248,11 +254,90 @@ export class UserDetailComponent implements OnInit {
           this.fb.group({
             NAME: [roleInstance['r_role'][0]['NAME']],
             DESCRIPTION: [roleInstance['r_role'][0]['DESCRIPTION']],
-            INSTANCE_GUID: [roleInstance['INSTANCE_GUID']]
+            system_role_INSTANCE_GUID: [roleInstance['INSTANCE_GUID']],
+            RELATIONSHIP_INSTANCE_GUID: [value['RELATIONSHIP_INSTANCE_GUID']]
           })
         );
       });
     }
+
+    this.originalUserValue = this.userForm.getRawValue();
+  }
+
+  _resetUserValue(data: Entity): void {
+    this.originalUserValue = {
+      USER_ID: data['r_user'][0]['USER_ID'],
+      LOCK: data['r_user'][0]['LOCK'],
+      PWD_STATUS: data['r_user'][0]['PWD_STATUS'],
+      userBasic: {
+        names: {
+          USER_NAME: data['r_user'][0]['USER_NAME'],
+          DISPLAY_NAME: data['r_user'][0]['DISPLAY_NAME'],
+          GIVEN_NAME: data['r_user'][0]['GIVEN_NAME'],
+          MIDDLE_NAME: data['r_user'][0]['MIDDLE_NAME'],
+          FAMILY_NAME: data['r_user'][0]['FAMILY_NAME']
+        },
+        employee: {
+          TITLE: data['r_employee'][0]['TITLE'],
+          DEPARTMENT_ID: data['r_employee'][0]['DEPARTMENT_ID'],
+          COMPANY_ID: data['r_employee'][0]['COMPANY_ID'],
+          GENDER: data['r_employee'][0]['GENDER']
+        }
+      },
+      emails: [],
+      addresses: [],
+      userPersonalization: {
+        USER_ID: data['r_personalization'] ? data['r_personalization'][0]['USER_ID'] : '',
+        LANGUAGE: data['r_personalization'] ? data['r_personalization'][0]['LANGUAGE'] : '',
+        TIMEZONE: data['r_personalization'] ? data['r_personalization'][0]['TIMEZONE'] : '',
+        DECIMAL_FORMAT: data['r_personalization'] ? data['r_personalization'][0]['DECIMAL_FORMAT'] : '',
+        DATE_FORMAT: data['r_personalization'] ? data['r_personalization'][0]['DATE_FORMAT'] : ''
+      },
+      userRole: []
+    };
+
+    data['r_email'].forEach( email => {
+      this.originalUserValue['emails'].push(
+        {
+          EMAIL: email['EMAIL'],
+          TYPE: email['TYPE'],
+          PRIMARY: email['PRIMARY']
+        }
+      );
+    });
+
+    if (data['r_address']) {
+      data['r_address'].forEach( address => {
+        this.originalUserValue['addresses'].push(
+          {
+            ADDRESS_ID: address['ADDRESS_ID'],
+            TYPE: address['TYPE'],
+            ADDRESS_VALUE: address['ADDRESS_VALUE'],
+            POSTCODE: address['POSTCODE'],
+            CITY: address['CITY'],
+            COUNTRY: address['COUNTRY'],
+            PRIMARY: address['PRIMARY']
+          }
+        );
+      });
+    }
+
+    const userRoleRelationship = data['relationships'][0];
+    if (userRoleRelationship) {
+      userRoleRelationship.values.forEach( value => {
+        const roleInstance = value.PARTNER_INSTANCES[0];
+        this.originalUserValue['userRole'].push(
+          {
+            NAME: [roleInstance['r_role'][0]['NAME']],
+            DESCRIPTION: [roleInstance['r_role'][0]['DESCRIPTION']],
+            system_role_INSTANCE_GUID: [roleInstance['INSTANCE_GUID']],
+            RELATIONSHIP_INSTANCE_GUID: [value['RELATIONSHIP_INSTANCE_GUID']]
+          }
+        );
+      });
+    }
+
+    this.userForm.reset(this.originalUserValue);
   }
 
   _setCheckBoxState() {
@@ -274,10 +359,17 @@ export class UserDetailComponent implements OnInit {
         this.changedUser = {};
         if ('INSTANCE_GUID' in data) {
           const userID = data['r_user'][0]['USER_ID'];
-          this.isNewMode = false;
           this.instanceGUID = data['INSTANCE_GUID'];
-          this.originalUserValue = this.userForm.getRawValue();
-          this._switch2DisplayMode();
+          this.isNewMode = false;
+          this.identityService.getUserDetail(userID).subscribe(userData => {
+            if ('ENTITY_ID' in userData) {
+              this._switch2DisplayMode();
+              this._resetUserValue(<Entity>userData);
+            } else {
+              const errorMessages = <Message[]>userData;
+              errorMessages.forEach( msg => this.messageService.add(msg));
+            }
+          });
           this.messageService.reportMessage('USER', 'USER_SAVED', 'S', userID);
         } else {
           const errorMessages = <Message[]>data;
@@ -302,123 +394,35 @@ export class UserDetailComponent implements OnInit {
     this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
 
     const userBasicFormGroup = this.userForm.get('userBasic');
+    const userID = this.userForm.get('USER_ID').value;
     if (userBasicFormGroup.dirty) {
       const userBasicNamesFormGroup = userBasicFormGroup.get('names') as FormGroup;
-      if (userBasicNamesFormGroup.dirty) {
-        const r_user = this.changedUser['r_user'] = {
-          action: this.isNewMode ? 'add' : 'update', USER_ID: this.userForm.get('USER_ID').value};
-          // r_user [1..1], always update
-        Object.keys(userBasicNamesFormGroup.controls).forEach( key => {
-          const control = userBasicNamesFormGroup.get(key);
-          if (control.dirty) { r_user[key] = control.value; }
-        });
-      }
+      this.changedUser['r_user'] = this.uiMapperService.composeChangedRelation(
+        userBasicNamesFormGroup, {USER_ID: userID}, this.isNewMode);
+
       const userBasicEmployeeFormGroup = userBasicFormGroup.get('employee') as FormGroup;
-      if (userBasicEmployeeFormGroup.dirty) {
-        const r_employee = this.changedUser['r_employee'] = {
-          action: this.isNewMode ? 'add' : 'update', USER_ID: this.userForm.get('USER_ID').value};
-        // r_employee [1..1], always update
-        Object.keys(userBasicEmployeeFormGroup.controls).forEach( key => {
-          const control = userBasicEmployeeFormGroup.get(key);
-          if (control.dirty) { r_employee[key] = control.value; }
-        });
-      }
+      this.changedUser['r_employee'] = this.uiMapperService.composeChangedRelation(
+        userBasicEmployeeFormGroup, {USER_ID: userID}, this.isNewMode);
     }
 
     const userEmailFormArray = this.userForm.get('emails') as FormArray;
-    if (userEmailFormArray.dirty) {
-      const r_email = this.changedUser['r_email'] = [];
-      const originalEmails = this.originalUserValue['emails'];
-      userEmailFormArray.controls.forEach( emailFormGroup => {
-        if (emailFormGroup.dirty) {
-          const changedEmail = {};
-          r_email.push(changedEmail);
-          const index = originalEmails
-            .findIndex( element => element['EMAIL'] === emailFormGroup.value['EMAIL']);
-          changedEmail['action'] = index === -1 ? 'add' : 'update';
-          changedEmail['EMAIL'] = emailFormGroup.get('EMAIL').value;
-          Object.keys(emailFormGroup['controls']).forEach( key => {
-            const control = emailFormGroup.get(key);
-            if (control.dirty) { changedEmail[key] = control.value; }
-          });
-        }
-      });
-      originalEmails.forEach( originalEmail => {
-        if (userEmailFormArray.controls
-          .findIndex( element => element.value['EMAIL'] === originalEmail['EMAIL']) === -1) {
-          r_email.push({ action: 'delete', EMAIL: originalEmail['EMAIL']});
-        }
-      });
-    }
+    this.changedUser['r_email'] = this.uiMapperService.composeChangedRelationArray(
+      userEmailFormArray, this.originalUserValue['emails'], {EMAIL: null});
 
     const userAddressFormArray = this.userForm.get('addresses') as FormArray;
-    if (userAddressFormArray.dirty) {
-      const r_address = this.changedUser['r_address'] = [];
-      const originalAddresses = this.originalUserValue['addresses'];
-      userAddressFormArray.controls.forEach( addressFormGroup => {
-        if (addressFormGroup.dirty) {
-          const changedAddress = {};
-          r_address.push(changedAddress);
-          const index = originalAddresses
-            .findIndex( element => element['ADDRESS_ID'] === addressFormGroup.value['ADDRESS_ID']);
-          changedAddress['action'] = index === -1 ? 'add' : 'update';
-          if (changedAddress['action'] === 'update') {
-            changedAddress['ADDRESS_ID'] = addressFormGroup.get('ADDRESS_ID').value;
-          }
-          Object.keys(addressFormGroup['controls']).forEach( key => {
-            const control = addressFormGroup.get(key);
-            if (control.dirty) { changedAddress[key] = control.value; }
-          });
-        }
-      });
-      originalAddresses.forEach( originalAddress => {
-        if (userAddressFormArray.controls
-          .findIndex( element => element.value['ADDRESS_ID'] === originalAddress['ADDRESS_ID']) === -1) {
-          r_address.push({ action: 'delete', ADDRESS_ID: originalAddress['ADDRESS_ID']});
-        }
-      });
-    }
+    this.changedUser['r_address'] = this.uiMapperService.composeChangedRelationArray(
+      userAddressFormArray, this.originalUserValue['addresses'], {ADDRESS_ID: null});
 
-    const userPersonalizationFormGroup = this.userForm.get('userPersonalization');
-    if (userPersonalizationFormGroup.dirty) {
-      const r_personalization = this.changedUser['r_personalization'] = {};
-      const originalPersonalization = this.originalUserValue['userPersonalization'];
-      r_personalization['action'] = originalPersonalization['USER_ID'] ? 'update' : 'add';
-      r_personalization['USER_ID'] = this.userForm.get('USER_ID').value;
-      Object.keys(userPersonalizationFormGroup['controls']).forEach( key => {
-        const control = userPersonalizationFormGroup.get(key);
-        if (control.dirty) { r_personalization[key] = control.value; }
-      });
-    }
+    const userPersonalizationFormGroup = this.userForm.get('userPersonalization') as FormGroup;
+    this.changedUser['r_personalization'] = this.uiMapperService.composeChangedRelation(
+      userPersonalizationFormGroup, {USER_ID: userID}, !userPersonalizationFormGroup.get('USER_ID').value);
 
     const userRoleFormArray = this.userForm.get('userRole') as FormArray;
-    const originalAssignedRoles = this.originalUserValue['userRole'];
-    if (userRoleFormArray.dirty) {
-      this.changedUser['relationships'] = [
-        {
-          RELATIONSHIP_ID: 'rs_user_role',
-          values: []
-        }
-      ];
-      const assignedRoles = this.changedUser['relationships'][0].values;
-      userRoleFormArray.controls.forEach( roleFormGroup => {
-        if (roleFormGroup.dirty) {
-          assignedRoles.push({
-            action: 'add', SYNCED: 1,
-            PARTNER_INSTANCES: [
-              {ENTITY_ID: 'permission', ROLE_ID: 'system_role', INSTANCE_GUID: roleFormGroup.value['INSTANCE_GUID']}
-            ]
-          });
-        }
-      });
-      originalAssignedRoles.forEach( assignedRole => {
-        const roleGUID = assignedRole.PARTNER_INSTANCES[0].INSTANCE_GUID;
-        if (userRoleFormArray.controls.findIndex(
-          roleFormGroup => roleFormGroup.value['INSTANCE_GUID'] === roleGUID) === -1) {
-          assignedRoles.push({action: 'delete', RELATIONSHIP_INSTANCE_GUID: assignedRole.RELATIONSHIP_INSTANCE_GUID});
-        }
-      });
-    }
+    const relationship = this.uiMapperService.composeChangedRelationship(
+      'rs_user_role',
+      [{ENTITY_ID: 'permission', ROLE_ID: 'system_role'}],
+      userRoleFormArray, this.originalUserValue['userRole'], ['NAME', 'DESCRIPTION']);
+    if (relationship) {this.changedUser['relationships'] = [relationship]; }
 
     return true;
   }
@@ -431,3 +435,4 @@ export class UserDetailComponent implements OnInit {
     }
   }
 }
+

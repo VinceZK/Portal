@@ -1,10 +1,10 @@
-<nav class="navbar fixed-top navbar-light bg-light">
+<nav class="navbar dk-fixed-top navbar-light bg-light">
   <div>
     <span class="font-weight-bold mb-0 mx-1">{{isNewMode? 'New User' : readonly? 'Display User' : 'Change User'}}</span>
   </div>
 
   <div class="flex-row-reverse">
-    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Edit/Display" (click)="switchEditDisplay()">
+    <button class="btn btn-lg btn-outline-primary mr-2" type="button" title="Edit/Display" id="editDisplay" (click)="switchEditDisplay()">
       <span *ngIf="readonly" class="fas fa-edit"> Edit</span>
       <span *ngIf="!readonly" class="fas fa-glasses"> Display</span>
     </button>
@@ -14,7 +14,7 @@
   </div>
 </nav>
 
-<div class="mt-5 pt-4 mb-2">
+<div class="mt-2 mb-2">
   <dk-message></dk-message>
 </div>
 

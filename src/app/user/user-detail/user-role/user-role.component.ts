@@ -18,9 +18,11 @@ export class UserRoleComponent implements OnInit {
   ngOnInit() {
     this.userRoleFormArray = this.userForm.get('userRole') as FormArray;
     // Recheck each role since every time the template is initialized, Angular clears the error status.
-    this.userRoleFormArray.controls.forEach( (ctrl, index) => {
-      this.onChangeRoleID(index);
-    });
+    if (!this.readonly) {
+      this.userRoleFormArray.controls.forEach( (ctrl, index) => {
+        this.onChangeRoleID(index);
+      });
+    }
   }
 
   deleteRole(index: number): void {
@@ -43,19 +45,22 @@ export class UserRoleComponent implements OnInit {
         this.fb.group({
           NAME: [''],
           DESCRIPTION: [''],
-          INSTANCE_GUID: ['']
+          system_role_INSTANCE_GUID: [''],
+          RELATIONSHIP_INSTANCE_GUID: ['']
         })
       );
     }
 
-    this.identityService.getRoleDesc(currentRole.value.NAME).subscribe(data => {
-      if (data['msgCat']) {
-        currentRole.get('NAME').setErrors({message: data['msgShortText']});
-      } else {
-        currentRole.get('DESCRIPTION').setValue(data['DESCRIPTION']);
-        currentRole.get('INSTANCE_GUID').setValue(data['INSTANCE_GUID']);
-      }
-    });
+    if (currentRole.value.NAME) {
+      this.identityService.getRoleDesc(currentRole.value.NAME).subscribe(data => {
+        if (data['msgCat']) {
+          currentRole.get('NAME').setErrors({message: data['msgShortText']});
+        } else {
+          currentRole.get('DESCRIPTION').setValue(data['DESCRIPTION']);
+          currentRole.get('system_role_INSTANCE_GUID').setValue(data['INSTANCE_GUID']);
+        }
+      });
+    }
   }
 
   oldRole(userRoleForm: AbstractControl): boolean {

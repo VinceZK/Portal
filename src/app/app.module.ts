@@ -12,17 +12,34 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import {MessageModule} from "ui-message-angular";
 import {RouteReuseStrategy} from "@angular/router";
 import {CustomReuseStrategy} from "./custom.reuse.strategy";
+import {UserListComponent} from "./user/user-list/user-list.component";
+import {UserDetailComponent} from "./user/user-detail/user-detail.component";
+import {UserBasicComponent} from "./user/user-detail/user-basic/user-basic.component";
+import {UserPersonalizationComponent} from "./user/user-detail/user-personalization/user-personalization.component";
+import {UserRoleComponent} from "./user/user-detail/user-role/user-role.component";
+import {UserEmailComponent} from "./user/user-detail/user-email/user-email.component";
+import {UserAddressComponent} from "./user/user-detail/user-address/user-address.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     SideMenuComponent,
     HeadBarComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserBasicComponent,
+    UserPersonalizationComponent,
+    UserRoleComponent,
+    UserEmailComponent,
+    UserAddressComponent,
     NotFoundComponent,
     ErrorPageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     MessageModule,
     MockupModule,
     ExternalAppModule,

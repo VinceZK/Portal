@@ -3,7 +3,7 @@ import { UserPage } from './user.po';
 fdescribe('user App', () => {
   const page = new UserPage();
 
-  describe('Search&List Page', () => {
+  xdescribe('Search&List Page', () => {
     beforeAll(() => {
       page.navigateToSearch();
     });
@@ -60,7 +60,7 @@ fdescribe('user App', () => {
     });
   });
 
-  describe('Detail Page: User Creation', () => {
+  describe('Detail Page: User Creation & Changing', () => {
     beforeAll(() => {
       page.navigateToSearch();
     });
@@ -94,9 +94,21 @@ fdescribe('user App', () => {
       expect(page.getMessage()).toEqual(`User 'DH003' is saved!`);
       page.closeMessage();
     });
+
+    it(`should change the user successfully`, () => {
+      page.clickEditDisplayToggleButton();
+      page.changeTitle();
+      page.removeUserEmail();
+      page.removeUserAddress();
+      page.addUserRole('administrator');
+      page.deleteUserRole(0);
+      page.clickSaveButton();
+      expect(page.getMessage()).toEqual(`User 'DH003' is saved!`);
+      page.closeMessage();
+    });
   });
 
-  describe('Detail Page: User Deletion', () => {
+  describe('Search&List: User Deletion', () => {
     beforeAll(() => {
       page.navigateToSearch();
     });

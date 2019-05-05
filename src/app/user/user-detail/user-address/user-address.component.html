@@ -1,7 +1,7 @@
 <div class="card mt-4">
   <div class="card-body">
     <div *ngFor="let userAddressForm of userAddressFormArray.controls; let i = index" class="card mb-4">
-      <button type="button" class="dk-close-button close d-flex justify-content-end mr-2" aria-label="Close" (click)="deleteAddress(i)">
+      <button type="button" id="remove" class="dk-close-button close d-flex justify-content-end mr-2" aria-label="Close" (click)="deleteAddress(i)">
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="card-body row" [formGroup]="userAddressForm">

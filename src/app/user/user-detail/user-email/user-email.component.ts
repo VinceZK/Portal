@@ -41,7 +41,7 @@ export class UserEmailComponent implements OnInit {
     } else {
       if (this.userEmailFormArray.at(index).value['PRIMARY']) {
         const newPrimaryIndex = index === 0 ? 1 : 0;
-        this.userEmailFormArray.at(newPrimaryIndex).get('PRIMARY').setValue(true);
+        this.userEmailFormArray.at(newPrimaryIndex).get('PRIMARY').setValue(1);
         this.userEmailFormArray.at(newPrimaryIndex).get('PRIMARY').markAsDirty();
       }
       this.userEmailFormArray.removeAt(index);

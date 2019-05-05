@@ -82840,7 +82840,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeTableComponent", function() { return AttributeTableComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _entity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../entity */ "./src/app/entity.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -82920,7 +82920,7 @@ var AttributeTableComponent = /** @class */ (function () {
     ], AttributeTableComponent.prototype, "parentFormGroup", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _entity__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"])
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"])
     ], AttributeTableComponent.prototype, "entityRelation", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -83186,7 +83186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListComponent", function() { return ListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _entity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../entity */ "./src/app/entity.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var _handsontable_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @handsontable/angular */ "./node_modules/@handsontable/angular/fesm5/handsontable-angular.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
@@ -83230,7 +83230,7 @@ var ListComponent = /** @class */ (function () {
         this.entityIDs$ = this.entityService.listEntityID();
         this.entityID = 'person';
         this.getRelationIDs();
-        this.queryObject = new _entity__WEBPACK_IMPORTED_MODULE_2__["QueryObject"]();
+        this.queryObject = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["QueryObject"]();
         this.entityIDPattern = new RegExp(/<a href="javascript:void\(0\)" role="button">([A-F 0-9]{32})<\/a>/);
         this.settingsObj = {
             stretchH: 'all',
@@ -83409,7 +83409,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityRelationComponent", function() { return EntityRelationComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _entity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../entity */ "./src/app/entity.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var _attribute_attribute_control_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../attribute/attribute-control.service */ "./src/app/entity/attribute/attribute-control.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -83455,7 +83455,7 @@ var EntityRelationComponent = /** @class */ (function () {
     ], EntityRelationComponent.prototype, "relationAttributes", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _entity__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"])
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"])
     ], EntityRelationComponent.prototype, "entityRelation", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -83502,7 +83502,7 @@ module.exports = ".dk-relationship-validity {\n  width: 9rem;\n  max-width: 9rem
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mt-2\">\n  <div class=\"card-header\">\n    <span class=\"fab fa-connectdevelop\"></span> Relationship: <strong>{{relationship.RELATIONSHIP_ID}}</strong>,\n    Involved Role: <strong>{{relationship.SELF_ROLE_ID}}</strong>\n\n    <div class=\"float-right\">\n      <button class=\"btn btn-sm btn-outline-secondary ml-2\" type=\"button\"\n              [disabled]=\"readonly\" (click)=\"showModalAdd()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n  </div>\n\n  <div class=\"card-body\">\n\n    <table class=\"table table-bordered table-sm mt-2 mb-4\">\n      <thead class=\"thead-light\">\n      <tr>\n        <th scope=\"col\">Action</th>\n        <th scope=\"col\">Relationship GUID</th>\n        <th scope=\"col\">Valid From</th>\n        <th scope=\"col\">Valid To</th>\n        <th scope=\"col\">Validity</th>\n      </tr>\n      </thead>\n\n      <tbody>\n      <tr *ngFor=\"let value of relationship.values; let i = index\">\n        <td class=\"actions\">\n          <button *ngIf=\"readonly || value.action === 'delete' || value.action === 'expire' || currentTime > value.VALID_TO\"\n                  title=\"Display Relationship\" class=\"btn btn-sm\" type=\"button\" (click)=\"showModalForDisplay(i)\">\n            <span  class=\"fas fa-search\"></span>\n          </button>\n          <button *ngIf=\"!readonly && value.action !== 'delete' && value.action !== 'expire' && currentTime <= value.VALID_TO\" title=\"Change Relationship\"\n                  class=\"btn btn-sm\" type=\"button\" (click)=\"showModalForChange(i)\">\n            <span  class=\"fas fa-pen\"></span>\n          </button>\n          <button *ngIf=\"currentTime >= value.VALID_FROM && currentTime < value.VALID_TO\" title=\"Expire\"\n                  class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"expireRelationship(i)\">\n            <span class=\"far fa-calendar-times\"></span>\n          </button>\n          <button *ngIf=\"currentTime >= value.VALID_FROM && currentTime < value.VALID_TO\" title=\"Extend\"\n                  class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"showModalForExtend(i)\">\n            <span class=\"fas fa-expand-arrows-alt\"></span>\n          </button>\n          <button *ngIf=\"value.action === 'add' || (currentTime < value.VALID_FROM && value.action !== 'delete')\" title=\"Delete\"\n                  class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelationship(i)\">\n            <span class=\"far fa-trash-alt\"></span>\n          </button>\n        </td>\n        <td>\n          <button type=\"button\" class=\"btn btn-sm btn-link\" placement=\"right\" popoverTitle=\"Partner Instance(s)\" triggers=\"manual\"\n                  [ngbPopover]=\"popContent\" popoverClass=\"popoverW\" #p=\"ngbPopover\" (click)=\"popoverPartnerInstances($event)\">\n            {{value.RELATIONSHIP_INSTANCE_GUID}}\n          </button>\n        </td>\n        <td>{{value.VALID_FROM}}</td>\n        <td>{{value.VALID_TO}}</td>\n        <td class=\"dk-relationship-validity\" [ngSwitch]=\"getValidityStatus(value)\">\n          <div *ngSwitchCase=\"'new'\">\n            <span class=\"badge badge-primary\">New</span>\n          </div>\n          <div *ngSwitchCase=\"'delete'\">\n            <span class=\"badge badge-danger\">Deleted</span>\n          </div>\n          <div *ngSwitchCase=\"'current'\">\n            <span class=\"badge badge-success\">Current</span>\n          </div>\n          <div *ngSwitchCase=\"'expired'\">\n            <span class=\"badge badge-danger\">Expired</span>\n          </div>\n          <div *ngSwitchCase=\"'future'\">\n            <span class=\"badge badge-warning\">Future</span>\n          </div>\n        </td>\n\n        <ng-template #popContent>\n          <table class=\"table table-bordered table-sm mt-2 mb-4\">\n            <thead class=\"thead-light\">\n            <tr>\n              <th scope=\"col\">Entity</th>\n              <th scope=\"col\">Role</th>\n              <th scope=\"col\">Instance GUID</th>\n            </tr>\n            </thead>\n\n            <tbody>\n              <tr *ngFor=\"let partnerEntity of value.PARTNER_INSTANCES\">\n                <td>{{partnerEntity.ENTITY_ID}}</td>\n                <td>{{partnerEntity.ROLE_ID}}</td>\n                <td><a [routerLink]=\"['/entity', partnerEntity.INSTANCE_GUID]\">{{partnerEntity.INSTANCE_GUID}}</a></td>\n              </tr>\n            </tbody>\n          </table>\n        </ng-template>\n      </tr>\n      </tbody>\n    </table>\n\n  </div>\n</div>\n\n<div class=\"modal fade\" [ngClass]=\"{'show': isModalShown}\"\n     [ngStyle]=\"{'display': displayModal}\" id=\"addRelationshipInstanceModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"addRelationshipInstance\">Add Relationship Instance</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeAddModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <dk-message></dk-message>\n        <form>\n          <div class=\"form-row\" *ngIf=\"detailValue.VALID_FROM && detailValue.VALID_TO\">\n            <div class=\"form-group col-6\">\n              <label for=\"valid-from\" class=\"col-form-label form-control-sm\">Valid From:</label>\n              <input type=\"text\" class=\"form-control form-control-sm\" id=\"valid-from\" [readonly]=\"readonlyValidFrom\"\n                     name=\"valid-from\" [(ngModel)]=\"detailValue.VALID_FROM\">\n            </div>\n            <div class=\"form-group col-6\">\n              <label for=\"valid-to\" class=\"col-form-label form-control-sm\">Valid To:</label>\n              <input type=\"text\" class=\"form-control form-control-sm\" id=\"valid-to\" [readonly]=\"readonlyValidTo\"\n                     name=\"valid-to\" [(ngModel)]=\"detailValue.VALID_TO\">\n            </div>\n          </div>\n\n          <table class=\"table table-bordered table-sm\">\n            <thead class=\"thead-light\">\n            <tr>\n              <th scope=\"col\">Partner Role</th>\n              <th scope=\"col\">Partner Entity</th>\n              <th scope=\"col\">Instance GUID</th>\n            </tr>\n            </thead>\n\n            <tbody>\n            <tr *ngFor=\"let partnerInstance of detailValue.PARTNER_INSTANCES\">\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_role_id\"\n                       readonly [(ngModel)]=\"partnerInstance.ROLE_ID\">\n              </td>\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_entity_id\"\n                       required [(ngModel)]=\"partnerInstance.ENTITY_ID\" [readonly]=\"readonlyPartner\">\n              </td>\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_instance_guid\"\n                       required [(ngModel)]=\"partnerInstance.INSTANCE_GUID\" [readonly]=\"readonlyPartner\">\n              </td>\n            </tr>\n            </tbody>\n          </table>\n\n          <app-attribute-form *ngFor=\"let attributeControl of attributeControls\" [readonly]=\"readonlyAttribute\"\n                              [attributeControl]=\"attributeControl\" [formGroup]=\"relationshipFormGroup\">\n          </app-attribute-form>\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"closeAddModal()\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"confirm()\" [disabled]=\"readonly\">\n          Confirm\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card mt-2\">\n  <div class=\"card-header\">\n    <span class=\"fab fa-connectdevelop\"></span> Relationship: <strong>{{relationship.RELATIONSHIP_ID}}</strong>,\n    Involved Role: <strong>{{relationship.SELF_ROLE_ID}}</strong>\n\n    <div class=\"float-right\">\n      <button class=\"btn btn-sm btn-outline-secondary ml-2\" type=\"button\"\n              [disabled]=\"readonly\" (click)=\"showModalAdd()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n  </div>\n\n  <div class=\"card-body\">\n\n    <table class=\"table table-bordered table-sm mt-2 mb-4\">\n      <thead class=\"thead-light\">\n      <tr>\n        <th scope=\"col\">Action</th>\n        <th scope=\"col\">Relationship GUID</th>\n        <th scope=\"col\">Valid From</th>\n        <th scope=\"col\">Valid To</th>\n        <th scope=\"col\">Validity</th>\n      </tr>\n      </thead>\n\n      <tbody>\n      <tr *ngFor=\"let value of relationship.values; let i = index\">\n        <td class=\"actions\">\n          <button *ngIf=\"readonly || value.action === 'delete' || value.action === 'expire' || currentTime > value.VALID_TO\"\n                  title=\"Display Relationship\" class=\"btn btn-sm\" type=\"button\" (click)=\"showModalForDisplay(i)\">\n            <span  class=\"fas fa-search\"></span>\n          </button>\n          <button *ngIf=\"!readonly && ((value.action !== 'delete' && value.action !== 'expire' && currentTime <= value.VALID_TO)\n                         || (value.action !== 'delete' && !value.VALID_FROM))\"\n                  title=\"Change Relationship\" class=\"btn btn-sm\" type=\"button\" (click)=\"showModalForChange(i)\">\n            <span  class=\"fas fa-pen\"></span>\n          </button>\n          <button *ngIf=\"currentTime >= value.VALID_FROM && currentTime < value.VALID_TO\" title=\"Expire\"\n                  class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"expireRelationship(i)\">\n            <span class=\"far fa-calendar-times\"></span>\n          </button>\n          <button *ngIf=\"currentTime >= value.VALID_FROM && currentTime < value.VALID_TO\" title=\"Extend\"\n                  class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"showModalForExtend(i)\">\n            <span class=\"fas fa-expand-arrows-alt\"></span>\n          </button>\n          <button *ngIf=\"value.action === 'add' || !value.VALID_FROM || (currentTime < value.VALID_FROM && value.action !== 'delete')\"\n                  title=\"Delete\" class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelationship(i)\">\n            <span class=\"far fa-trash-alt\"></span>\n          </button>\n        </td>\n        <td>\n          <button type=\"button\" class=\"btn btn-sm btn-link\" placement=\"right\" popoverTitle=\"Partner Instance(s)\" triggers=\"manual\"\n                  [ngbPopover]=\"popContent\" popoverClass=\"popoverW\" #p=\"ngbPopover\" (click)=\"popoverPartnerInstances($event)\">\n            {{value.RELATIONSHIP_INSTANCE_GUID}}\n          </button>\n        </td>\n        <td>{{value.VALID_FROM}}</td>\n        <td>{{value.VALID_TO}}</td>\n        <td class=\"dk-relationship-validity\" [ngSwitch]=\"getValidityStatus(value)\">\n          <div *ngSwitchCase=\"'new'\">\n            <span class=\"badge badge-primary\">New</span>\n          </div>\n          <div *ngSwitchCase=\"'delete'\">\n            <span class=\"badge badge-danger\">Deleted</span>\n          </div>\n          <div *ngSwitchCase=\"'current'\">\n            <span class=\"badge badge-success\">Current</span>\n          </div>\n          <div *ngSwitchCase=\"'expired'\">\n            <span class=\"badge badge-danger\">Expired</span>\n          </div>\n          <div *ngSwitchCase=\"'future'\">\n            <span class=\"badge badge-warning\">Future</span>\n          </div>\n        </td>\n\n        <ng-template #popContent>\n          <table class=\"table table-bordered table-sm mt-2 mb-4\">\n            <thead class=\"thead-light\">\n            <tr>\n              <th scope=\"col\">Entity</th>\n              <th scope=\"col\">Role</th>\n              <th scope=\"col\">Instance GUID</th>\n            </tr>\n            </thead>\n\n            <tbody>\n              <tr *ngFor=\"let partnerEntity of value.PARTNER_INSTANCES\">\n                <td>{{partnerEntity.ENTITY_ID}}</td>\n                <td>{{partnerEntity.ROLE_ID}}</td>\n                <td><a [routerLink]=\"['/entity', partnerEntity.INSTANCE_GUID]\">{{partnerEntity.INSTANCE_GUID}}</a></td>\n              </tr>\n            </tbody>\n          </table>\n        </ng-template>\n      </tr>\n      </tbody>\n    </table>\n\n  </div>\n</div>\n\n<div class=\"modal fade\" [ngClass]=\"{'show': isModalShown}\"\n     [ngStyle]=\"{'display': displayModal}\" id=\"addRelationshipInstanceModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"addRelationshipInstance\">Add Relationship Instance</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeAddModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <dk-message></dk-message>\n        <form>\n          <div class=\"form-row\" *ngIf=\"detailValue.VALID_FROM && detailValue.VALID_TO\">\n            <div class=\"form-group col-6\">\n              <label for=\"valid-from\" class=\"col-form-label form-control-sm\">Valid From:</label>\n              <input type=\"text\" class=\"form-control form-control-sm\" id=\"valid-from\" [readonly]=\"readonlyValidFrom\"\n                     name=\"valid-from\" [(ngModel)]=\"detailValue.VALID_FROM\">\n            </div>\n            <div class=\"form-group col-6\">\n              <label for=\"valid-to\" class=\"col-form-label form-control-sm\">Valid To:</label>\n              <input type=\"text\" class=\"form-control form-control-sm\" id=\"valid-to\" [readonly]=\"readonlyValidTo\"\n                     name=\"valid-to\" [(ngModel)]=\"detailValue.VALID_TO\">\n            </div>\n          </div>\n\n          <table class=\"table table-bordered table-sm\">\n            <thead class=\"thead-light\">\n            <tr>\n              <th scope=\"col\">Partner Role</th>\n              <th scope=\"col\">Partner Entity</th>\n              <th scope=\"col\">Instance GUID</th>\n            </tr>\n            </thead>\n\n            <tbody>\n            <tr *ngFor=\"let partnerInstance of detailValue.PARTNER_INSTANCES\">\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_role_id\"\n                       readonly [(ngModel)]=\"partnerInstance.ROLE_ID\">\n              </td>\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_entity_id\"\n                       required [(ngModel)]=\"partnerInstance.ENTITY_ID\" [readonly]=\"readonlyPartner\">\n              </td>\n              <td>\n                <input type=\"text\" class=\"form-control form-control-sm\" name=\"partner_instance_guid\"\n                       required [(ngModel)]=\"partnerInstance.INSTANCE_GUID\" [readonly]=\"readonlyPartner\">\n              </td>\n            </tr>\n            </tbody>\n          </table>\n\n          <app-attribute-form *ngFor=\"let attributeControl of attributeControls\" [readonly]=\"readonlyAttribute\"\n                              [attributeControl]=\"attributeControl\" [formGroup]=\"relationshipFormGroup\">\n          </app-attribute-form>\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"closeAddModal()\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"confirm()\" [disabled]=\"readonly\">\n          Confirm\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -83517,7 +83517,7 @@ module.exports = "<div class=\"card mt-2\">\n  <div class=\"card-header\">\n    
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityRelationshipComponent", function() { return EntityRelationshipComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _entity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../entity */ "./src/app/entity.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
 /* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
@@ -83558,7 +83558,7 @@ var EntityRelationshipComponent = /** @class */ (function () {
     EntityRelationshipComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.currentTime = EntityRelationshipComponent_1._getFormattedDate();
-        this.detailValue = new _entity__WEBPACK_IMPORTED_MODULE_1__["RelationshipInstance"]();
+        this.detailValue = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationshipInstance"]();
         this.relationshipAttributeMeta.ATTRIBUTES.forEach(function (attribute) {
             if (attribute.ATTR_NAME !== 'VALID_FROM' && attribute.ATTR_NAME !== 'VALID_TO'
                 && attribute.ATTR_NAME.substr(-14, 14) !== '_INSTANCE_GUID'
@@ -83581,15 +83581,17 @@ var EntityRelationshipComponent = /** @class */ (function () {
     EntityRelationshipComponent.prototype.showModalAdd = function () {
         var _this = this;
         this.isModalShown = true;
-        this.detailValue = new _entity__WEBPACK_IMPORTED_MODULE_1__["RelationshipInstance"]();
+        this.detailValue = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationshipInstance"]();
         this.detailValue.action = 'add';
         this.detailValue.RELATIONSHIP_INSTANCE_GUID = this._generateFakeUUID();
-        this.detailValue.VALID_FROM = 'now';
-        this.detailValue.VALID_TO = EntityRelationshipComponent_1._getFormattedDate(this.relationshipMeta.VALID_PERIOD);
+        if (this.relationshipMeta.VALID_PERIOD > 0) {
+            this.detailValue.VALID_FROM = 'now';
+            this.detailValue.VALID_TO = EntityRelationshipComponent_1._getFormattedDate(this.relationshipMeta.VALID_PERIOD);
+        }
         this.detailValue.PARTNER_INSTANCES = [];
         var involves = this.relationshipMeta.INVOLVES.filter(function (involve) { return involve.ROLE_ID !== _this.relationship.SELF_ROLE_ID; });
         involves.forEach(function (involve) {
-            var partnerInstance = new _entity__WEBPACK_IMPORTED_MODULE_1__["PartnerInstance"]();
+            var partnerInstance = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["PartnerInstance"]();
             partnerInstance.ROLE_ID = involve.ROLE_ID;
             _this.detailValue.PARTNER_INSTANCES.push(partnerInstance);
         });
@@ -83714,7 +83716,7 @@ var EntityRelationshipComponent = /** @class */ (function () {
         this.formGroup.markAsDirty();
     };
     EntityRelationshipComponent.prototype.deleteRelationship = function (index) {
-        if (this.relationship.values[index].action = 'add') {
+        if (this.relationship.values[index].action === 'add') {
             this.relationship.values.splice(index, 1);
         }
         else {
@@ -83745,15 +83747,15 @@ var EntityRelationshipComponent = /** @class */ (function () {
     var EntityRelationshipComponent_1;
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _entity__WEBPACK_IMPORTED_MODULE_1__["Relationship"])
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["Relationship"])
     ], EntityRelationshipComponent.prototype, "relationship", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _entity__WEBPACK_IMPORTED_MODULE_1__["RelationshipMeta"])
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationshipMeta"])
     ], EntityRelationshipComponent.prototype, "relationshipMeta", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _entity__WEBPACK_IMPORTED_MODULE_1__["RelationMeta"])
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationMeta"])
     ], EntityRelationshipComponent.prototype, "relationshipAttributeMeta", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -83865,7 +83867,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityComponent", function() { return EntityComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _entity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../entity */ "./src/app/entity.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _attribute_attribute_control_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attribute/attribute-control.service */ "./src/app/entity/attribute/attribute-control.service.ts");
@@ -83916,7 +83918,7 @@ var EntityComponent = /** @class */ (function () {
         this.isEntityJSONModalShown = false;
         this.formGroup = this.fb.group({});
         this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
-        this.toBeAddRelationship = new _entity__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
+        this.toBeAddRelationship = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
     }
     EntityComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -83925,7 +83927,7 @@ var EntityComponent = /** @class */ (function () {
             _this.entityMeta = null;
             if (instanceGUID === 'new') {
                 _this.readonly = false;
-                _this.entity = new _entity__WEBPACK_IMPORTED_MODULE_2__["Entity"]();
+                _this.entity = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["Entity"]();
                 _this.entity.ENTITY_ID = params.get('entityID');
                 _this.entity.relationships = [];
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_this.entity);
@@ -83986,7 +83988,7 @@ var EntityComponent = /** @class */ (function () {
         this.messageService.clearMessages();
         if (!this._composeChangedEntity()) {
             this.readonly = true;
-            this.messageService.reportMessage('ENTITY', 'NO_CHANGE', 'S');
+            this.messageService.reportMessage('ENTITY', 'NO_CHANGE', 'W');
             return;
         }
         if (this.entity.INSTANCE_GUID) {
@@ -84006,7 +84008,7 @@ var EntityComponent = /** @class */ (function () {
     };
     EntityComponent.prototype.openAddRelationshipModal = function () {
         this.messageService.clearMessages();
-        this.toBeAddRelationship = new _entity__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
+        this.toBeAddRelationship = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
         this.isRelationshipModalShown = true;
     };
     EntityComponent.prototype.closeAddRelationshipModal = function () {
@@ -84030,6 +84032,7 @@ var EntityComponent = /** @class */ (function () {
         if (!this.entity.relationships) {
             this.entity.relationships = [];
         }
+        // console.log(this.entity.relationships);
         var index = this.entity.relationships.findIndex(function (relationship) { return relationship.RELATIONSHIP_ID === _this.toBeAddRelationship.RELATIONSHIP_ID; });
         if (index !== -1) {
             this.messageService.reportMessage('RELATIONSHIP', 'RELATIONSHIP_ALREADY_EXISTS', 'E', this.toBeAddRelationship.RELATIONSHIP_ID);
@@ -84041,7 +84044,7 @@ var EntityComponent = /** @class */ (function () {
     };
     EntityComponent.prototype.getRelationshipsMeta = function (roleID) {
         var roleMeta = this.entityMeta.ROLES.find(function (role) { return role.ROLE_ID === roleID; });
-        return roleMeta.RELATIONSHIPS;
+        return roleMeta ? roleMeta.RELATIONSHIPS : [];
     };
     EntityComponent.prototype.getRelationshipMeta = function (relationshipID) {
         var relationshipIndex = -1;
@@ -84062,7 +84065,7 @@ var EntityComponent = /** @class */ (function () {
         if (this.formGroup.dirty === false) {
             return false; // Nothing is changed
         }
-        this.changedEntity = new _entity__WEBPACK_IMPORTED_MODULE_2__["Entity"]();
+        this.changedEntity = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["Entity"]();
         this.changedEntity.ENTITY_ID = this.entity.ENTITY_ID;
         this.changedEntity.INSTANCE_GUID = this.entity.INSTANCE_GUID;
         Object.keys(this.formGroup.controls).forEach(function (key) {
@@ -84087,7 +84090,7 @@ var EntityComponent = /** @class */ (function () {
             if (!relationship.values) {
                 return;
             }
-            var changedRelationship = new _entity__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
+            var changedRelationship = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["Relationship"]();
             changedRelationship.RELATIONSHIP_ID = relationship.RELATIONSHIP_ID;
             changedRelationship.SELF_ROLE_ID = relationship.SELF_ROLE_ID;
             changedRelationship.values = [];
@@ -84286,7 +84289,7 @@ var EntityComponent = /** @class */ (function () {
     EntityComponent.prototype._getEntityRelations = function () {
         var entityRelations = [];
         var entity = this.entity;
-        var entityRelation = new _entity__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"];
+        var entityRelation = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"];
         entityRelation.ROLE_ID = this.entity.ENTITY_ID;
         entityRelation.RELATION_ID = this.entity.ENTITY_ID;
         entityRelation.CARDINALITY = '[1..1]';
@@ -84296,7 +84299,7 @@ var EntityComponent = /** @class */ (function () {
         var relationMetas = this.relationMetas;
         this.entityMeta.ROLES.forEach(function (role) {
             role.RELATIONS.forEach(function (relation) {
-                entityRelation = new _entity__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"];
+                entityRelation = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["EntityRelation"];
                 entityRelation.ROLE_ID = role.ROLE_ID;
                 entityRelation.RELATION_ID = relation.RELATION_ID;
                 entityRelation.CARDINALITY = relation.CARDINALITY;
