@@ -30,13 +30,24 @@
     </div>
     <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm">
       <label for="lockStatus" class="col-form-label dk-form-label">Lock Status:</label>
-      <input id="lockStatus" name="lock" type="text" class="form-control"
-             [value]="userForm.get('LOCK').value ? 'Locked' : 'Unlocked'" readonly>
+      <div id="lockStatus" class="form-control dk-icon">
+        <span *ngIf="userForm.get('LOCK').value" class="fas fa-lock" > Locked</span>
+        <span *ngIf="!userForm.get('LOCK').value" class="fas fa-lock-open"> Unlocked</span>
+      </div>
     </div>
     <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm">
       <label for="passwordStatus" class="col-form-label dk-form-label">Password Status:</label>
-      <input id="passwordStatus" name="lock" type="text" class="form-control"
-             [value]="pwdStatus" readonly>
+      <div id="passwordStatus" class="form-control dk-icon" [ngSwitch]="userForm.get('PWD_STATUS').value">
+        <div *ngSwitchCase="">
+          <span class="badge badge-primary">Initial</span>
+        </div>
+        <div *ngSwitchCase="1">
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div *ngSwitchCase="2">
+          <span class="badge badge-warning">Renew</span>
+        </div>
+      </div>
     </div>
   </div>
 

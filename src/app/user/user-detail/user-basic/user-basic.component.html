@@ -46,18 +46,6 @@
   <div class="card-header">Employee</div>
   <div class="card-body">
     <form [formGroup]="userBasicEmployeeForm" class="mt-2 pl-4 row">
-      <div class="col-md-6 col-lg-4 row form-group mr-2">
-        <label for="title" class="col-form-label dk-form-label">Title:
-        </label>
-        <input type="text" class="form-control" id="title" [readonly]="readonly"
-               name="title" formControlName="TITLE">
-      </div>
-      <div class="col-md-6 col-lg-4 row form-group mr-2">
-        <label for="DepartmentID" class="col-form-label dk-form-label">Department:
-        </label>
-        <input type="text" class="form-control" id="DepartmentID" [readonly]="readonly"
-               name="DepartmentID" formControlName="DEPARTMENT_ID">
-      </div>
       <div class="col-md-6 col-lg-4 row form-group mr-2"
            [class.dk-invalid]="userBasicEmployeeForm.get('COMPANY_ID').invalid && (userBasicEmployeeForm.touched || userBasicEmployeeForm.dirty)">
         <label for="companyID" class="col-form-label dk-form-label">Company:
@@ -65,6 +53,18 @@
         </label>
         <input type="text" class="form-control" id="companyID" [readonly]="readonly"
                name="companyID" formControlName="COMPANY_ID">
+      </div>
+      <div class="col-md-6 col-lg-4 row form-group mr-2">
+        <label for="DepartmentID" class="col-form-label dk-form-label">Department:
+        </label>
+        <input type="text" class="form-control" id="DepartmentID" [readonly]="readonly"
+               name="DepartmentID" formControlName="DEPARTMENT_ID">
+      </div>
+      <div class="col-md-6 col-lg-4 row form-group mr-2">
+        <label for="title" class="col-form-label dk-form-label">Title:
+        </label>
+        <input type="text" class="form-control" id="title" [readonly]="readonly"
+               name="title" formControlName="TITLE">
       </div>
       <div class="col-md-6 col-lg-4 row form-group mr-2">
         <label for="gender" class="col-form-label dk-form-label">Gender:

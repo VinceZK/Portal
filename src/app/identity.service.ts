@@ -190,11 +190,11 @@ export class IdentityService {
     if (user['INSTANCE_GUID']) {
       return this.http.put<Entity | Message[]>(
         this.originalHost + `/api/entity`, user, httpOptions).pipe(
-        catchError(this.handleError<any>('getUserByUserName')));
+        catchError(this.handleError<any>('saveUser')));
     } else {
       return this.http.post<Entity | Message[]>(
         this.originalHost + `/api/entity`, user, httpOptions).pipe(
-        catchError(this.handleError<any>('getUserByUserName')));
+        catchError(this.handleError<any>('saveUser')));
     }
   }
 

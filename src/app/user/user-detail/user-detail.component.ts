@@ -164,6 +164,7 @@ export class UserDetailComponent implements OnInit {
     }));
 
     // Replace the URL from to display
+    if (this.action === 'display') {this.action = 'change'; }
     window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=` + this.action);
   }
 
@@ -354,7 +355,7 @@ export class UserDetailComponent implements OnInit {
 
   save() {
     this.messageService.clearMessages();
-    if (this._composeChangedUser()) {
+    if (this._composeChangesToUser()) {
       this.identityService.saveUser(<Entity>this.changedUser).subscribe( data => {
         this.changedUser = {};
         if ('INSTANCE_GUID' in data) {
@@ -379,7 +380,7 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  _composeChangedUser() {
+  _composeChangesToUser() {
     if (this.userForm.invalid) {
       this.messageService.reportMessage('USER', 'INVALID', 'E');
       return false;
