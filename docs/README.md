@@ -84,6 +84,21 @@ It is just a credential with permissions to access certain system resource.
 So I define “system_user” as a role, rather than an entity. 
 When it is assigned to a person, then the person takes system user role to access the system resource. 
 As you seen, modeling is actually philosopher thinking, metaphysics, especially.
+
+## Draw UI
+A CRUD App, from architecture point of view, usually has 3 layers: DB, server-side logic, and UI-side logic. 
+The whole business logic is spread among them. It is hardly to eliminate anyone of them. 
+The server-side logic is used to glue DB and UI. 
+Without this middle layer, UI may have to load the whole data from the DB. 
+Just like you open an Office document on your desktop. 
+But bear in mind, **a CRUD App is used by multiple users for concurrency accessing**. 
+That is the fundamental difference comparing with personal Apps. So next, I will draw the UI.
+
+Depends on how you are familiar with the UI technologies, you can either draw the UI with a pencil and paper, 
+or leverage some UI mockup tools, or directly using the formal UI development tools. 
+Since I already have the UI in mind during modeling, and I can freely draw it using HTML and CSS, 
+then I can save some time to convert UI mockups to the real UIs. My UI has 2 pages: Search&List page and Detail page.
+
 ![Search&List Page](SearchListPage.png)  
 
 The Search&List page allows you to do search and list of users. 
@@ -105,22 +120,6 @@ I can only say: for all my known products and experienced projects,
 I’ve never seen a real successful one that follows the approach. 
 Maybe, a lot of demos, PoCs, toys, and preachers are using such technologies, 
 like either model generates UI or UI generates model.
-
-
-
-## Draw UI
-A CRUD App, from architecture point of view, usually has 3 layers: DB, server-side logic, and UI-side logic. 
-The whole business logic is spread among them. It is hardly to eliminate anyone of them. 
-The server-side logic is used to glue DB and UI. 
-Without this middle layer, UI may have to load the whole data from the DB. 
-Just like you open an Office document on your desktop. 
-But bear in mind, **a CRUD App is used by multiple users for concurrency accessing**. 
-That is the fundamental difference comparing with personal Apps. So next, I will draw the UI.
-
-Depends on how you are familiar with the UI technologies, you can either draw the UI with a pencil and paper, 
-or leverage some UI mockup tools, or directly using the formal UI development tools. 
-Since I already have the UI in mind during modeling, and I can freely draw it using HTML and CSS, 
-then I can save some time to convert UI mockups to the real UIs. My UI has 2 pages: Search&List page and Detail page.
 
 As I said on the 3 layers, you can hardly eliminate one. This rule also applies to design time. 
 Each layer has its own modeling languages to describe the same entity. 
@@ -225,7 +224,7 @@ I want to show them in a more initiative way by giving them human readable descr
 I have some attributes grouped in multiple tuples, like “emails”, “addresses”, and “userRole”. 
 They can be constructed in Angular FormArray. But in UI, they can be represented in various ways. 
 You can choose LIST or TABLE controls, each again has a lot of choices in detail. 
-Based on the nature of the data object, and then considering the “Add” & “Remove” operations, 
+Based on the nature of the data object, and also considering the “Add” & “Remove” operations, 
 you may find it is sometimes a hard decision.
 ![Email Representation](EmailRepresentation.png)
 
@@ -254,7 +253,7 @@ This is because the 2 are both object model. If I can recall you, we first desig
 then we draw the UI mockup, during when we form the FormGroup object. 
 As long as the concept is consistent, we can easily map and connect objects from different layers.
 
-Thanks to JSON-On-Relation, I don’t need to write any server-side code to get the JSON object. 
+Thanks to JSON-On-Relations, I don’t need to write any server-side code to get the JSON object. 
 I just simply write a service call in the client-side.
 ```typescript
 getUserDetail(userID: string): Observable<Entity | Message[]> {
@@ -279,7 +278,7 @@ If you check the grammar of “pieceObject”,
 it is not difficult to understand that it asks for the data from relations 
 “r_user”, “r_employee”, “r_email”, “r_address”, “r_personalization”, 
 as well as the relationship “rs_user_role”. 
-The service call returns the JSON response with the same schema like my initially modeling.
+The service call returns the JSON response with the same schema like the JSON model at the begining.
 
 The next thing is to map the returned JSON object(data) to the FromGroup object(userForm). 
 Which is quite straight forward. Only to be noticed is the array objects like “email”, “address”, 
@@ -367,7 +366,7 @@ The flow can be described as below:
 
 ***DB(relations) →JSON-On-Relation(server-side JS)→FormGroup(client-side JS) →UI(HTML).***
 
-Thanks to JSON-On-Relation, I save a lot of efforts on the DB and server layer. 
+Thanks to JSON-On-Relation, I saved a lot of efforts on the DB and server layer. 
 Instead, I focused much on modeling and UI. The next step I will do the letter “U”, which is updating a user object.
 
 ## UI to Object Mapping
@@ -381,7 +380,7 @@ which includes data validation, error handling, concurrency control, and work pr
 
 But before touching the updating flow, one thing must be done first is the switch between edit mode and display mode. 
 If you think it is a piece of cake, well, I would argue a lot. 
-Usually, in those CRUD demos you won’t see the edit/display switch feature. 
+Usually, in those CRUD demos you won’t see the edit/display switch. 
 This is because those demos will never be used in productive. 
 As I said, a CRUD App is used by multiple concurrency users. 
 Differentiating the edit and display mode helps to understand 
@@ -457,9 +456,9 @@ You can find I set the “timer(500)” in the validation function,
 which means it waits for half second(500ms) when I stop typing. 
 As a user, he can get the error feedback earlier without additional actions.
 
-The user is happy now, the only problem is the cost. To implement such kind of validation, 
+The user is happy now, the only problem is the cost. To implement such kind of validations, 
 one needs a dedicate service. Fortunately, in my example, 
-I can directly leverage JSON-On-Relation without any server-side coding. 
+I can directly leverage JSON-On-Relations without any server-side coding. 
 But I can also anticipate a lot of cases that special server-side coding is unavoidable. 
 And such kinds of services may be only dedicate to the UI.
 
@@ -498,14 +497,14 @@ I need to call the change entity RESTful API of JSON-On-Relation.
 The API asks for a JSON object similar to our modeling object, 
 but with each relation tuple a reserved “action” attribute to indicate what is the action made to the tuple. 
 Its value could be one of “add”, “delete”, or “update”. With the “action” attribute, 
-One can tell JSON-On-Relation what changes have been made to an object.
+One can tell JSON-On-Relations what changes have been made to an object.
 
-It’s just amazing that Angular FormGroup knows how many FormControls are changed through the “dirty” attribute. 
+It’s just amazing that Angular FormGroup knows which FormControls are changed through the “dirty” attribute. 
 Thus we can compose what has been changed to the object from the changed FormGroup object. 
 Coding such kind of mapping from the UI object to the server side object and tells the DB 
-what are the changes is usually boring and error prone. This is why existing ORM solutions have their room survive. 
-But what I don’t like is they also add a lot of unnecessary complexities. 
-In fact, we only need some utility methods to help do the mapping.
+what are the changes is usually boring and error prone. This is why existing ORM solutions have their room to survive. 
+But what I don’t like is they also introduce a lot of unnecessary complexities. 
+In fact, we only need some utility methods to help to do the mapping.
 ```typescript
 _composeChangesToUser() {
   this.changedUser['ENTITY_ID'] = 'person';
@@ -543,15 +542,15 @@ _composeChangesToUser() {
   if (relationship) {this.changedUser['relationships'] = [relationship]; }
 }
 ```
-Using the “UiMapperService” provided by JSON-On-Relation, I can easily compose the changes from the FormGroup object. 
+Using the “UiMapperService” provided by JSON-On-Relations, I can easily compose the changes from the FormGroup object. 
 The “UiMapperService” has 3 methods:
 1. **composeChangedRelation**: converts a FormGroup to a changed relation format.
 2. **composeChangedRelationArray**: converts a FormArray to a changed relation array format.
 3. **composeChangedRelationship**: converts a FormArray to a changed relationship assignment format.
 
-Some take an easier way: delete the original one, and then insert again. 
+Some take an easier way: completely delete the original one, and then insert a new one. 
 In this way, developers don’t bother to track the changes. This may work for very simple entities. 
-Despite less elegance, in most cases, it also produces a lot of side effects. 
+Despite less elegance, in most cases, it produces a lot of side effects. 
 For example, an entity may have a lot of relationships with others, 
 operating the entity as a whole rises the concurrency conflicts.
 
@@ -573,7 +572,7 @@ saveUser(user: Entity): Observable<Entity | Message[]> {
 }
 ```
 
-It seems I have conquered the most difficult letter “U” in CRUD. 
+It seems I have conquered the most difficult path, the letter “U” in CRUD. 
 Maybe there is still one thing left, the work protection. 
 Imagine, when you changed something on an object, then you accidentally click the “Back” button of your Browser, 
 what are you expecting? You hope the App block the navigation by popping up a dialog 
@@ -773,11 +772,11 @@ it seems I only need to pay attention on the UI layer.
 By reading the [Angular’s testing manual](https://angular.io/guide/testing#testing), 
 I played around its testing tools.
 
-I don’t think I should write any [Service tests](https://angular.io/guide/testing#service-tests). 
+First, I don’t think I should write any [Service tests](https://angular.io/guide/testing#service-tests). 
 All my services are quite simple. 
 It is not worth to invest any more time after their first successful call.
 
-I wrote some [Component Class tests](https://angular.io/guide/testing#component-class-testing), 
+Then, I wrote some [Component Class tests](https://angular.io/guide/testing#component-class-testing), 
 and found it just cannot help to gain any confidence. 
 Although most of my codes reside in the component class, 
 but I don’t see any necessity to write additional codes to test those data mapping and conversion logic. 
@@ -785,7 +784,7 @@ I mean look at those simple “if else” and “loop” statements, are you rea
 they are doing wrong or right? What I really care is whether the UI behaves correctly together 
 with the logic in the component Class.
 
-I checked [Component DOM testing](https://angular.io/guide/testing#component-dom-testing). 
+I also checked [Component DOM testing](https://angular.io/guide/testing#component-dom-testing). 
 At a first glance, it seems I should invest it. 
 However, after some testing, I found it is not worth to continue. 
 It is just not easy to use and the learning curve is steep. 
@@ -794,7 +793,7 @@ I just don’t want to waste time on mocking some very technique stuff, like the
 Also in my case, I don’t have very complex interactions with DOM, like animations. 
 And my component doesn’t require any reusability.
 
-So the best test tool fits my case is the end-to-end(E2E) testing. 
+Finally, I found the best test tool fits my case is the end-to-end(E2E) testing. 
 Although the Angular team seems more recommending the Component DOM testing, 
 I am quite happy with the E2E testing framework based on [Protractor](https://www.protractortest.org/#/).
 
@@ -841,7 +840,7 @@ describe('Search&List Page', () => {
     });
  }
 ```
-Unlike what I heard from others who tell that e2e testing is difficult and expensive, 
+Unlike what I heard from others who told that e2e testing is difficult and expensive, 
 I got the opposite feelings. As you may find it is actually intuitive and easy maintain. 
 Some may be worry about the brittle of e2e scripts. But in my case, it is actually quite strong. 
 I use the scripts during my development and seldom do I need to adjust them. I think there could be following reasons:
@@ -854,11 +853,11 @@ Based on what you are developing, test methodologies and tools should be careful
 For CRUD Apps, I believe E2E testing is the best fit. It is unlike building a framework, 
 a library, or an algorithm, the main value you added are the mappings and the UI skins.
 
-I am not a paranoid to achieve high coverage, and I still do a lot of manual tests. 
-But the e2e scripts really save my time when, for example, 
-I want to do a small validation test of deleting a role from an existing user. 
-Then I just use my e2e scripts to first create a user, then do the manual tests. 
-I don’t need to automate these small manual tests as I am confident they should be always OK from now on.
+I am not a paranoid to achieve high coverage, so I still do a lot of manual tests. 
+The e2e scripts really save my time when, for example, 
+I want to do a small validation test on deleting a role from an existing user. 
+Then I just use the scripts to help to create a user, then do the manual tests. 
+I don’t need to automate these small manual tests as I am confident they should be once OK always OK.
 
 Again, the most important thing is my confidence.
 
@@ -873,26 +872,27 @@ We thus need a strong session management framework to hold these hot objects.
 Now, with the modern web technologies, the objects live in the client-side. 
 However, the thing never changed is the mappings between relational sets and singleton objects.
 
-Although in this blog, I leveraged JSON-On-Relation for the object relational mapping, 
+Although in this blog, I leveraged JSON-On-Relations for the object relational mapping, 
 I can also imagine there will be cases that its provided RESTful APIs cannot fulfill, 
 for example, permission checks. Thus, it is almost unavoidable to write server-side logic. 
-Mainly because **an object is not isolated in a system**. It must have relationships with others to make the system organic.
+Mainly because **an object is not isolated in a system**. 
+It must have relationships with others to make the system organic.
 
 My tiny App is still far from complete. If I want it to be an enterprise quality CRUD App, it still needs:
 1. Value helps whenever possible. For example, the field “Company” should better be a dropdown box. Then the field “Department” should be also a dropdown box with values depends on the selected company. The field “Role” should popup a search help box to allow user search and choose.
 2. Permission checks. The CRUD operations on the “user” object should be securely differentiated to different users.
-3. Concurrency lock. When a user is editing an object, then another user who is attempting to edit the same object should be blocked, and only displaying is allowed. Another approach is to use optimistic lock with ETAG.
+3. Concurrency locks. When a user is editing an object, then another user who is attempting to edit the same object should be blocked, and only displaying is allowed. Another approach is to use optimistic lock with ETAG.
 4. Multi-language support. Labels, titles, and button texts should be translated into different languages. And display them in the logon languages.
 
 Just name a few, maybe still a lot of others not mentioned, like the responsive web design. 
-Nevertheless, I think good frameworks do help a lot. Like in this example, 
-I used Angular, Bootstrap, JSON-On-Relations, and UI-Message. 
-They are all open sources that are easy to obtain and learn by personal.
+Nevertheless, I think good frameworks do help a lot. Like what I used in this example: 
+Angular, Bootstrap, JSON-On-Relations, and UI-Message. 
+They are all open sources, and are easy to obtain and learn by personal.
 
 The other thing that can help is the pattern. For mature proprietary platforms, 
-it has all the frameworks, services, and libraries, together with a lot of patterns and examples you can reference. 
-With those patterns, you can build your CRUD App very quickly without cutting corners. 
-And I believe my second CRUD App with the same approach will be much faster.
+besides the frameworks, services, and librarie, it also provides a lot of patterns or examples for reference. 
+With those patterns, you can build CRUD Apps more efficiently, with no corner cuttings. 
+So I believe when I build the second CRUD App on the same stack, it will be much faster.
 
-This is also the purpose of this blog. I hope it can also give you a pattern, 
+This is also the purpose of this blog. I hope it can also give you a pattern you can refer, 
 as well as some standards and costs in building **Real** CRUD Apps.
