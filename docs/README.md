@@ -125,8 +125,8 @@ As I said on the 3 layers, you can hardly eliminate one. This rule also applies 
 Each layer has its own modeling languages to describe the same entity. 
 DB uses the relational algebra to achieve full path access on physical storage; 
 Server-side usually uses the Object-Oriented programming to operate the data in the memory; 
-UI tries to speak human languages to be more user-friendly. With those different appeals, 
-we can hardly generate one from another using some fixed patterns. 
+UI tries to speak human languages to be more user-friendly. With those different appealing, 
+we can hardly generate one from another using some fixed rules. 
 What we can do is to map and translate the 3 modeling languages. From DB to the server-side, 
 we say Object-Relational mapping; and from server-side to UI, we say UI-Object mapping.
 
@@ -136,7 +136,7 @@ if you have the right building blocks and can immediately see the changed effect
 Here, I use [Bootstrap](https://getbootstrap.com/docs/4.3/layout/overview/) for typographic, 
 and [Angular Server](https://angular.io/guide/quickstart#step-3-serve-the-application) for real-time rendering. 
 When the UI looks good to you, it’s time to bind the data and logic. 
-With Angular’s Reactive Form, it is also quite straight forward.
+With Angular’s Reactive Form, it is quite straight forward.
 
 No matter how the UI looks like, behind the sense, there is a coherent object. 
 And what I say “object” here means a nested structure. Like a header structure with different item structures, 
@@ -364,15 +364,15 @@ Until now, I just finished one complete data flow from DB to UI.
 That is the letter “R” in the CRUD abbreviation, which is reading a user object. 
 The flow can be described as below:
 
-***DB(relations) →JSON-On-Relation(server-side JS)→FormGroup(client-side JS) →UI(HTML).***
+***DB(relations) →JSON-On-Relations(server-side JS)→FormGroup(client-side JS) →UI(HTML).***
 
-Thanks to JSON-On-Relation, I saved a lot of efforts on the DB and server layer. 
+Thanks to JSON-On-Relations, I saved a lot of efforts on the DB and server layer. 
 Instead, I focused much on modeling and UI. The next step I will do the letter “U”, which is updating a user object.
 
 ## UI to Object Mapping
 So it is the opposite direction:
 
-***UI(HTML) →FormGroup(client-side JS) →JSON-On-Relation(server-side JS) →DB(relations).***
+***UI(HTML) →FormGroup(client-side JS) →JSON-On-Relations(server-side JS) →DB(relations).***
 
 We know in mathematics, usually calculation from one direction is easy, but the opposite direction is extremely hard. 
 So do the “Read” and “Update”. Compare to “Read”, “Update” needs more attentions, 
@@ -493,7 +493,7 @@ And finally you find you need a message framework to cover all those requirement
 This is why I created the [UI-Message](https://github.com/VinceZK/ui-message).
 
 With all the validations passed, the data can be saved to the DB now. 
-I need to call the change entity RESTful API of JSON-On-Relation. 
+I need to call the change entity RESTful API of JSON-On-Relations. 
 The API asks for a JSON object similar to our modeling object, 
 but with each relation tuple a reserved “action” attribute to indicate what is the action made to the tuple. 
 Its value could be one of “add”, “delete”, or “update”. With the “action” attribute, 
@@ -554,7 +554,7 @@ Despite less elegance, in most cases, it produces a lot of side effects.
 For example, an entity may have a lot of relationships with others, 
 operating the entity as a whole rises the concurrency conflicts.
 
-The final shot is easy, just call the RESTful API, let JSON-On-Relation help you to forward the changes to DB. 
+The final shot is easy, just call the RESTful API, let JSON-On-Relations help you to forward the changes to DB. 
 It returns either the successfully saved object or error messages. 
 In below excerpt, the “saveUser” method differentiate “update” and “new” mode 
 by checking whether the user object has “INSTANCE_GUID”. If it has, then use “put”, otherwise, use “post”.
@@ -890,9 +890,9 @@ Angular, Bootstrap, JSON-On-Relations, and UI-Message.
 They are all open sources, and are easy to obtain and learn by personal.
 
 The other thing that can help is the pattern. For mature proprietary platforms, 
-besides the frameworks, services, and librarie, it also provides a lot of patterns or examples for reference. 
+besides the frameworks, services, and libraries, it also provides a lot of patterns or examples for reference. 
 With those patterns, you can build CRUD Apps more efficiently, with no corner cuttings. 
 So I believe when I build the second CRUD App on the same stack, it will be much faster.
 
-This is also the purpose of this blog. I hope it can also give you a pattern you can refer, 
-as well as some standards and costs in building **Real** CRUD Apps.
+This is also the purpose of this blog. I hope it can also give you a pattern reference, 
+as well as some standards and costs in building such kind of **Real** CRUD Apps.
