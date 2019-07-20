@@ -16,7 +16,9 @@
 }
 .dk-content-area{
   width: -webkit-fill-available;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
   padding-left: 1rem;
   padding-top: 1rem;
 }

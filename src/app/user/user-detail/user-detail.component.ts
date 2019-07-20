@@ -137,7 +137,7 @@ export class UserDetailComponent implements OnInit {
     }
 
     this.userForm.markAsPristine();
-    // Replace the URL from to display
+    // Replace the URL from change to display
     window.history.replaceState({}, '', `/users/${userIDCtrl.value};action=display`);
   }
 
@@ -393,6 +393,9 @@ export class UserDetailComponent implements OnInit {
 
     this.changedUser['ENTITY_ID'] = 'person';
     this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
+    if (this.isNewMode) {
+      this.changedUser['person'] = {action: 'add'};
+    }
 
     const userBasicFormGroup = this.userForm.get('userBasic');
     const userID = this.userForm.get('USER_ID').value;

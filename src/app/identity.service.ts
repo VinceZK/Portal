@@ -113,8 +113,7 @@ export class IdentityService {
     queryObject.PROJECTION = ['USER_ID', 'USER_NAME', 'DISPLAY_NAME', 'LOCK', 'PWD_STATE'];
     queryObject.FILTER = [];
     if (userID) {
-      if (userID.includes('*')) {
-        userID = userID.replace(/\*/gi, '%');
+      if (userID.includes('*') || userID.includes('%')) {
         queryObject.FILTER.push({FIELD_NAME: 'USER_ID', OPERATOR: 'CN', LOW: userID});
       } else {
         queryObject.FILTER.push({FIELD_NAME: 'USER_ID', OPERATOR: 'EQ', LOW: userID});

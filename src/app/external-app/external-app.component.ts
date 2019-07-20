@@ -26,10 +26,10 @@ export class ExternalAppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.shareService.isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
-    this.shareService.isCollapsed$.subscribe( isCollapsed => {
-      isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
-    });
+    // this.shareService.isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
+    // this.shareService.isCollapsed$.subscribe( isCollapsed => {
+    //   isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
+    // });
 
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {

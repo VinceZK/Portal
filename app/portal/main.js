@@ -103,7 +103,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex;\n  flex-direction: column;\n  min-width: 768px;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.dk-frame-content {\n  display: flex;\n  position: static;\n  height: 100%;\n  width: auto;\n}\n.dk-content-area{\n  width: -webkit-fill-available;\n  overflow: auto;\n  padding-left: 1rem;\n  padding-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsMkJBQTJCO0FBQzNCO0VBQ0UsY0FBYztFQUNkLHVCQUF1QjtFQUN2QixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixhQUFhO0VBQ2IsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixZQUFZO0NBQ2I7QUFDRDtFQUNFLDhCQUE4QjtFQUM5QixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogbmF2aWdhdGlvbiBGcmFtZSB3b3JrICovXG4uZGstZnJhbWUtdmlldyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1pbi13aWR0aDogNzY4cHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbi5kay1mcmFtZS1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgcG9zaXRpb246IHN0YXRpYztcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogYXV0bztcbn1cbi5kay1jb250ZW50LWFyZWF7XG4gIHdpZHRoOiAtd2Via2l0LWZpbGwtYXZhaWxhYmxlO1xuICBvdmVyZmxvdzogYXV0bztcbiAgcGFkZGluZy1sZWZ0OiAxcmVtO1xuICBwYWRkaW5nLXRvcDogMXJlbTtcbn1cbiJdfQ== */"
+module.exports = "/* navigation Frame work */\n.dk-frame-view {\n  display: flex;\n  flex-direction: column;\n  min-width: 768px;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.dk-frame-content {\n  display: flex;\n  position: static;\n  height: 100%;\n  width: auto;\n}\n.dk-content-area{\n  width: -webkit-fill-available;\n  overflow-x: hidden;\n  overflow-y: auto;\n  height: 100%;\n  padding-left: 1rem;\n  padding-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsMkJBQTJCO0FBQzNCO0VBQ0UsY0FBYztFQUNkLHVCQUF1QjtFQUN2QixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixhQUFhO0VBQ2IsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixZQUFZO0NBQ2I7QUFDRDtFQUNFLDhCQUE4QjtFQUM5QixtQkFBbUI7RUFDbkIsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBuYXZpZ2F0aW9uIEZyYW1lIHdvcmsgKi9cbi5kay1mcmFtZS12aWV3IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWluLXdpZHRoOiA3NjhweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuLmRrLWZyYW1lLWNvbnRlbnQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBwb3NpdGlvbjogc3RhdGljO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiBhdXRvO1xufVxuLmRrLWNvbnRlbnQtYXJlYXtcbiAgd2lkdGg6IC13ZWJraXQtZmlsbC1hdmFpbGFibGU7XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgb3ZlcmZsb3cteTogYXV0bztcbiAgaGVpZ2h0OiAxMDAlO1xuICBwYWRkaW5nLWxlZnQ6IDFyZW07XG4gIHBhZGRpbmctdG9wOiAxcmVtO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -549,7 +549,7 @@ var ExternalAppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".nav-content-iframe{\n  position: fixed;\n  height: 100%;\n  border-width: 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXh0ZXJuYWwtYXBwL2V4dGVybmFsLWFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixnQkFBZ0I7Q0FDakIiLCJmaWxlIjoic3JjL2FwcC9leHRlcm5hbC1hcHAvZXh0ZXJuYWwtYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmF2LWNvbnRlbnQtaWZyYW1le1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyLXdpZHRoOiAwO1xufVxuIl19 */"
+module.exports = ".nav-content-iframe{\n  position: relative;\n  width: 100%;\n  height: 100%;\n  border-width: 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXh0ZXJuYWwtYXBwL2V4dGVybmFsLWFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixhQUFhO0VBQ2IsZ0JBQWdCO0NBQ2pCIiwiZmlsZSI6InNyYy9hcHAvZXh0ZXJuYWwtYXBwL2V4dGVybmFsLWFwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdi1jb250ZW50LWlmcmFtZXtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBib3JkZXItd2lkdGg6IDA7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -560,7 +560,7 @@ module.exports = ".nav-content-iframe{\n  position: fixed;\n  height: 100%;\n  b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<iframe [src]=\"appUrl\" class=\"nav-content-iframe\" [style.width]=\"iFrameWidth\">\n</iframe>\n"
+module.exports = "<!--<iframe [src]=\"appUrl\" class=\"nav-content-iframe\" [style.width]=\"iFrameWidth\">-->\n<!--</iframe>-->\n\n<iframe [src]=\"appUrl\" class=\"nav-content-iframe\">\n</iframe>\n"
 
 /***/ }),
 
@@ -607,11 +607,11 @@ var ExternalAppComponent = /** @class */ (function () {
         this.apps = [];
     }
     ExternalAppComponent.prototype.ngOnInit = function () {
+        // this.shareService.isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
+        // this.shareService.isCollapsed$.subscribe( isCollapsed => {
+        //   isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
+        // });
         var _this = this;
-        this.shareService.isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
-        this.shareService.isCollapsed$.subscribe(function (isCollapsed) {
-            isCollapsed ? _this.iFrameWidth = '95%' : _this.iFrameWidth = '80%';
-        });
         this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (params) {
             var appID = params.get('appID');
             if (_this.shareService.apps.length === 0) {
@@ -1010,8 +1010,7 @@ var IdentityService = /** @class */ (function () {
         queryObject.PROJECTION = ['USER_ID', 'USER_NAME', 'DISPLAY_NAME', 'LOCK', 'PWD_STATE'];
         queryObject.FILTER = [];
         if (userID) {
-            if (userID.includes('*')) {
-                userID = userID.replace(/\*/gi, '%');
+            if (userID.includes('*') || userID.includes('%')) {
                 queryObject.FILTER.push({ FIELD_NAME: 'USER_ID', OPERATOR: 'CN', LOW: userID });
             }
             else {
@@ -2320,7 +2319,7 @@ var UserDetailComponent = /** @class */ (function () {
             lastIndex--;
         }
         this.userForm.markAsPristine();
-        // Replace the URL from to display
+        // Replace the URL from change to display
         window.history.replaceState({}, '', "/users/" + userIDCtrl.value + ";action=display");
     };
     UserDetailComponent.prototype._switch2EditMode = function () {
@@ -2549,6 +2548,9 @@ var UserDetailComponent = /** @class */ (function () {
         }
         this.changedUser['ENTITY_ID'] = 'person';
         this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
+        if (this.isNewMode) {
+            this.changedUser['person'] = { action: 'add' };
+        }
         var userBasicFormGroup = this.userForm.get('userBasic');
         var userID = this.userForm.get('USER_ID').value;
         if (userBasicFormGroup.dirty) {
@@ -2922,7 +2924,7 @@ module.exports = ".dk-lock {\n  width: 5rem;\n  max-width: 5rem;\n  min-width: 5
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mb-3 pt-3\">\n  <div class=\"mt-2 pl-4 row\">\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_id\" class=\"col-sm-3 col-form-label\">User ID:</label>\n      <input id=\"user_id\" name=\"user_id\" [(ngModel)]=\"userID\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\" autofocus>\n    </div>\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_name\" class=\"col-sm-3 col-form-label\">User Name:</label>\n      <input id=\"user_name\" name=\"user_name\" [(ngModel)]=\"userName\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\">\n    </div>\n  </div>\n\n  <div class=\"mb-4\">\n    <button type=\"button\" id=\"search\" class=\"btn btn-primary float-right mr-4\" (click)=\"search()\">Search</button>\n  </div>\n</div>\n\n<div class=\"mt-2 mb-4 mx-4\">\n  <dk-message></dk-message>\n  <div class=\"btn-toolbar justify-content-end my-2\" role=\"toolbar\">\n    <button type=\"button\" id=\"new\" class=\"btn btn-light\" (click)=\"newUser()\"><span class=\"fas fa-plus\"></span> New</button>\n  </div>\n  <table class=\"table table-bordered table-sm\">\n    <thead class=\"thead-light\">\n    <tr>\n      <th scope=\"col\">User ID</th>\n      <th scope=\"col\">User Name</th>\n      <th scope=\"col\">Display Name</th>\n      <th scope=\"col\">Locked?</th>\n      <th scope=\"col\">Password State</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n    </thead>\n\n    <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td><a [routerLink]=\"['/users', user.USER_ID, {action: 'display'}]\">{{user.USER_ID}}</a></td>\n      <td>{{user.USER_NAME}}</td>\n      <td>{{user.DISPLAY_NAME}}</td>\n      <td class=\"dk-lock\">\n        <span *ngIf=\"user.LOCK\" class=\"fas fa-lock\" title=\"Locked\"></span>\n        <span *ngIf=\"!user.LOCK\" class=\"fas fa-lock-open\" title=\"Unlocked\"></span>\n      </td>\n      <td class=\"dk-password-state\" [ngSwitch]=\"user.PWD_STATE\">\n        <div *ngSwitchCase=\"\">\n          <span class=\"badge badge-primary\">Initial</span>\n        </div>\n        <div *ngSwitchCase=\"1\">\n          <span class=\"badge badge-success\">Active</span>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <span class=\"badge badge-warning\">Renew</span>\n        </div>\n      </td>\n      <td class=\"dk-actions\">\n        <button title=\"Display\" id=\"display\" class=\"btn\" type=\"button\" (click)=\"displayUser(user.USER_ID)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n        <button title=\"Change\" id=\"change\" class=\"btn\" type=\"button\" (click)=\"changeUser(user.USER_ID)\">\n          <span class=\"fas fa-pen\"></span>\n        </button>\n        <button title=\"Delete\" id=\"delete\" class=\"btn\" type=\"button\" (click)=\"deleteUser(user.USER_ID)\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"modal fade dk-modal-open\" [class.show]=\"showDeletionConfirmation\"\n       [ngStyle]=\"{'display': displayDeletionConfirmation}\" id=\"deletionConfirmation\" tabindex=\"-1\" role=\"dialog\">\n    <div class=\"modal-dialog modal-sm modal-dialog-centered\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"entityMeta\">Confirm Deletion</h5>\n          <button type=\"button\" class=\"close\" (click)=\"cancelDeletion()\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <p>Are you sure to delete the user '{{toBeDeletedUser}}'?</p>\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" id=\"cancel\" class=\"btn btn-secondary\" (click)=\"cancelDeletion()\">Cancel</button>\n          <button type=\"button\" id=\"confirm\" class=\"btn btn-primary\" (click)=\"confirmDeletion()\">Confirm</button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"card mb-3 pt-3\">\n  <div class=\"mt-2 pl-4 row\">\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_id\" class=\"col-sm-3 col-form-label\">User ID:</label>\n      <input id=\"user_id\" name=\"user_id\" [(ngModel)]=\"userID\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\" autofocus>\n    </div>\n    <div class=\"col-6 form-group row\">\n      <label for=\"user_name\" class=\"col-sm-3 col-form-label\">User Name:</label>\n      <input id=\"user_name\" name=\"user_name\" [(ngModel)]=\"userName\" type=\"text\" class=\"col-sm-6 form-control\" (keyup)=\"enterSearch($event)\">\n    </div>\n  </div>\n\n  <div class=\"mb-4\">\n    <button type=\"button\" id=\"search\" class=\"btn btn-primary float-right mr-4\" (click)=\"search()\">Search</button>\n  </div>\n</div>\n\n<div class=\"mt-2 mb-4 mx-4\">\n  <dk-message></dk-message>\n  <div class=\"btn-toolbar justify-content-end my-2\" role=\"toolbar\">\n    <button type=\"button\" id=\"new\" class=\"btn btn-light\" (click)=\"newUser()\"><span class=\"fas fa-plus\"></span> New</button>\n  </div>\n  <table class=\"table table-bordered table-sm\">\n    <thead class=\"thead-light\">\n    <tr>\n      <th scope=\"col\">User ID</th>\n      <th scope=\"col\">User Name</th>\n      <th scope=\"col\">Display Name</th>\n      <th scope=\"col\">Locked?</th>\n      <th scope=\"col\">Password State</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n    </thead>\n\n    <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td><a [routerLink]=\"['/users', user.USER_ID, {action: 'display'}]\">{{user.USER_ID}}</a></td>\n      <td>{{user.USER_NAME}}</td>\n      <td>{{user.DISPLAY_NAME}}</td>\n      <td class=\"dk-lock\">\n        <span *ngIf=\"user.LOCK\" class=\"fas fa-lock\" title=\"Locked\"></span>\n        <span *ngIf=\"!user.LOCK\" class=\"fas fa-lock-open\" title=\"Unlocked\"></span>\n      </td>\n      <td class=\"dk-password-state\" [ngSwitch]=\"user.PWD_STATE\">\n        <div *ngSwitchCase=\"\">\n          <span class=\"badge badge-primary\">Initial</span>\n        </div>\n        <div *ngSwitchCase=\"1\">\n          <span class=\"badge badge-success\">Active</span>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <span class=\"badge badge-warning\">Renew</span>\n        </div>\n      </td>\n      <td class=\"dk-actions\">\n        <button title=\"Display\" id=\"display\" class=\"btn\" type=\"button\" (click)=\"displayUser(user.USER_ID)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n        <button title=\"Change\" id=\"change\" class=\"btn\" type=\"button\" (click)=\"changeUser(user.USER_ID)\">\n          <span class=\"fas fa-pen\"></span>\n        </button>\n        <button title=\"Delete\" id=\"delete\" class=\"btn\" type=\"button\" (click)=\"deleteUser(user.USER_ID)\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"modal fade dk-modal-open\" [class.show]=\"showDeletionConfirmation\"\n       [ngStyle]=\"{'display': displayDeletionConfirmation}\" id=\"deletionConfirmation\" tabindex=\"-1\" role=\"dialog\">\n    <div class=\"modal-dialog modal-sm modal-dialog-centered\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"confirmDeletion\">Confirm Deletion</h5>\n          <button type=\"button\" class=\"close\" (click)=\"cancelDeletion()\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <p>Are you sure to delete the user '{{toBeDeletedUser}}'?</p>\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" id=\"cancel\" class=\"btn btn-secondary\" (click)=\"cancelDeletion()\">Cancel</button>\n          <button type=\"button\" id=\"confirm\" class=\"btn btn-primary\" (click)=\"confirmDeletion()\">Confirm</button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 

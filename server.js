@@ -11,13 +11,13 @@ app.get('/logon', (req, res) => { // Open the logon page
 
 // Register express-session middle ware with redis
 const session = require('express-session');
-// const redisStore = require('connect-redis')(session);
+const redisStore = require('connect-redis')(session);
 app.use(session({
   name: 'sessionID',
   secret:'secretPortal',
   rolling: true,
   saveUninitialized: false,
-  // store: new redisStore(),
+  store: new redisStore(),
   unset: 'destroy',
   resave: false,
   cookie: {httpOnly: false, maxAge: 15 * 60 * 1000 }

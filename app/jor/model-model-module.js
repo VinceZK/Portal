@@ -1,48 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["model-model-module"],{
 
-/***/ "./src/app/dialog.service.ts":
-/*!***********************************!*\
-  !*** ./src/app/dialog.service.ts ***!
-  \***********************************/
-/*! exports provided: DialogService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogService", function() { return DialogService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var DialogService = /** @class */ (function () {
-    function DialogService() {
-    }
-    /**
-     * Ask user to confirm an action. `message` explains the action and choices.
-     * Returns observable resolving to `true`=confirm or `false`=cancel
-     */
-    DialogService.prototype.confirm = function (message) {
-        var confirmation = window.confirm(message || 'Is it OK?');
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(confirmation);
-    };
-    DialogService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        })
-    ], DialogService);
-    return DialogService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/model/attribute-meta/attribute-meta.component.css":
 /*!*******************************************************************!*\
   !*** ./src/app/model/attribute-meta/attribute-meta.component.css ***!
@@ -570,7 +527,7 @@ var DataElementComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-space: nowrap;\n  border: none;\n}\n.dk-actions{\n  width: 3rem;\n  min-width: 3rem;\n  max-width: 3rem;\n}\n.dk-description{\n  width: 20rem;\n  min-width: 20rem;\n  max-width: 20rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kZWwvZW50aXR5LXR5cGUvZW50aXR5LXR5cGUtZGV0YWlsL2VudGl0eS10eXBlLWRldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQixtQkFBbUI7RUFDbkIsWUFBWTtBQUNkO0FBQ0E7RUFDRSxXQUFXO0VBQ1gsZUFBZTtFQUNmLGVBQWU7QUFDakI7QUFDQTtFQUNFLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6InNyYy9hcHAvbW9kZWwvZW50aXR5LXR5cGUvZW50aXR5LXR5cGUtZGV0YWlsL2VudGl0eS10eXBlLWRldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRrLXRhYmxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIGJvcmRlcjogbm9uZTtcbn1cbi5kay1hY3Rpb25ze1xuICB3aWR0aDogM3JlbTtcbiAgbWluLXdpZHRoOiAzcmVtO1xuICBtYXgtd2lkdGg6IDNyZW07XG59XG4uZGstZGVzY3JpcHRpb257XG4gIHdpZHRoOiAyMHJlbTtcbiAgbWluLXdpZHRoOiAyMHJlbTtcbiAgbWF4LXdpZHRoOiAyMHJlbTtcbn1cbiJdfQ== */"
+module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-space: nowrap;\n  border: none;\n}\n.dk-actions{\n  width: 3rem;\n  min-width: 3rem;\n  max-width: 3rem;\n}\n.dk-description{\n  width: 15rem;\n  min-width: 15rem;\n  max-width: 15rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kZWwvZW50aXR5LXR5cGUvZW50aXR5LXR5cGUtZGV0YWlsL2VudGl0eS10eXBlLWRldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQixtQkFBbUI7RUFDbkIsWUFBWTtBQUNkO0FBQ0E7RUFDRSxXQUFXO0VBQ1gsZUFBZTtFQUNmLGVBQWU7QUFDakI7QUFDQTtFQUNFLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6InNyYy9hcHAvbW9kZWwvZW50aXR5LXR5cGUvZW50aXR5LXR5cGUtZGV0YWlsL2VudGl0eS10eXBlLWRldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRrLXRhYmxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIGJvcmRlcjogbm9uZTtcbn1cbi5kay1hY3Rpb25ze1xuICB3aWR0aDogM3JlbTtcbiAgbWluLXdpZHRoOiAzcmVtO1xuICBtYXgtd2lkdGg6IDNyZW07XG59XG4uZGstZGVzY3JpcHRpb257XG4gIHdpZHRoOiAxNXJlbTtcbiAgbWluLXdpZHRoOiAxNXJlbTtcbiAgbWF4LXdpZHRoOiAxNXJlbTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -581,7 +538,7 @@ module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"entityMeta\" [formGroup]=\"entityTypeForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"entityTypeForm.get('ENTITY_ID').invalid && (entityTypeForm.touched || entityTypeForm.dirty)\">\n    <label for=\"entity-type\" class=\"col-form-label form-control-sm\">Entity Type:\n      <span class=\"dk-invalid-feedback\">\n        {{entityTypeForm.get('ENTITY_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"entity-type\" [readonly]=\"readonly || !isNewMode\"\n           name=\"entity-type\" formControlName=\"ENTITY_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"entity-desc\" class=\"col-form-label form-control-sm\">Entity Description:</label>\n    <textarea class=\"form-control\" id=\"entity-desc\" name=\"entity-desc\" rows=\"2\"\n              formControlName=\"ENTITY_DESC\" [readonly]=\"readonly\" (change)=\"onChangeEntityDesc()\"></textarea>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"entityTypeForm\" [attributes]=\"attributes\"\n                      [relationID]=\"entityMeta.ENTITY_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Role</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">Action</th>\n            <th scope=\"col\">Role</th>\n            <th scope=\"col\">Description</th>\n          </tr>\n        </thead>\n\n        <tbody formArrayName=\"ROLES\">\n        <tr *ngFor=\"let roleFormGroup of roleFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"roleFormGroup\"\n              [class.dk-invalid]=\"roleFormGroup.get('ROLE_ID').invalid && (roleFormGroup.touched || roleFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldRole(roleFormGroup) && roleFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{roleFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"roleFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<div class=\"btn-toolbar mb-2\"  role=\"toolbar\"\n     [ngClass]=\"{'justify-content-end': isSearchListShown, 'justify-content-between': !isSearchListShown}\" >\n  <button *ngIf=\"!isSearchListShown\" class=\"btn\" type=\"button\" title=\"Show List\" (click)=\"showSearchList()\">\n    <span class=\"fas fa-arrow-right\"></span>\n  </button>\n\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"entityMeta\" [formGroup]=\"entityTypeForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"entityTypeForm.get('ENTITY_ID').invalid && (entityTypeForm.touched || entityTypeForm.dirty)\">\n    <label for=\"entity-type\" class=\"col-form-label form-control-sm\">Entity Type:\n      <span class=\"dk-invalid-feedback\">\n        {{entityTypeForm.get('ENTITY_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"entity-type\" [readonly]=\"readonly || !isNewMode\"\n           name=\"entity-type\" formControlName=\"ENTITY_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"entity-desc\" class=\"col-form-label form-control-sm\">Entity Description:</label>\n    <textarea class=\"form-control\" id=\"entity-desc\" name=\"entity-desc\" rows=\"2\"\n              formControlName=\"ENTITY_DESC\" [readonly]=\"readonly\" (change)=\"onChangeEntityDesc()\"></textarea>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"entityTypeForm\" [attributes]=\"attributes\"\n                      [relationID]=\"entityMeta.ENTITY_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Role</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">Action</th>\n            <th scope=\"col\">Role</th>\n            <th scope=\"col\">Description</th>\n            <th scope=\"col\">Conditional Attribute</th>\n            <th scope=\"col\">Conditional Value</th>\n          </tr>\n        </thead>\n\n        <tbody formArrayName=\"ROLES\">\n        <tr *ngFor=\"let roleFormGroup of roleFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"roleFormGroup\"\n              [class.dk-invalid]=\"roleFormGroup.get('ROLE_ID').invalid && (roleFormGroup.touched || roleFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldRole(roleFormGroup) && roleFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"invalid-tooltip\">\n                {{roleFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" id=\"button-addon2\"\n                        (click)=\"onSearchHelp('ROLE_ID', roleFormGroup, i)\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"roleFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"roleFormGroup\">\n            <select formControlName=\"CONDITIONAL_ATTR\"  class=\"form-control form-control-sm\">\n              <option *ngFor=\"let opt of attrFormArray.controls\" [value]=\"opt.value.ATTR_NAME\">{{opt.value.ATTR_NAME}}</option>\n            </select>\n          </td>\n          <td [formGroup]=\"roleFormGroup\">\n            <input type=\"text\" formControlName=\"CONDITIONAL_VALUE\" [readonly]=\"readonly\" class=\"form-control form-control-sm\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n\n<dk-app-search-help></dk-app-search-help>\n"
 
 /***/ }),
 
@@ -598,16 +555,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../attribute-meta/attribute-meta.component */ "./src/app/model/attribute-meta/attribute-meta.component.ts");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
-/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../attribute-meta/attribute-meta.component */ "./src/app/model/attribute-meta/attribute-meta.component.ts");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
+/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -617,6 +573,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -644,11 +602,19 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         this.isNewMode = false;
         this.changedEntityType = {};
         this.bypassProtection = false;
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
+        this.isSearchListShown = true;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], 'EN');
     }
     Object.defineProperty(EntityTypeDetailComponent.prototype, "roleFormArray", {
         get: function () {
             return this.entityTypeForm.get('ROLES');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EntityTypeDetailComponent.prototype, "attrFormArray", {
+        get: function () {
+            return this.entityTypeForm.get('ATTRIBUTES');
         },
         enumerable: true,
         configurable: true
@@ -658,19 +624,19 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (params) {
             var entityID = params.get('entityID');
             if (entityID === 'new') {
-                var entityType = new jor_angular__WEBPACK_IMPORTED_MODULE_4__["EntityMeta"]();
+                var entityType = new jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityMeta"]();
                 entityType.ENTITY_ID = '';
                 entityType.ENTITY_DESC = '';
                 entityType.ROLES = [];
                 _this.isNewMode = true;
                 _this.readonly = false;
                 _this.bypassProtection = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(entityType), Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])([]));
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["forkJoin"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(entityType), Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])([]));
             }
             else {
                 _this.readonly = true;
                 _this.isNewMode = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["forkJoin"])(_this.entityService.getEntityMeta(entityID), _this.entityService.getRelationMeta(entityID));
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["forkJoin"])(_this.entityService.getEntityMeta(entityID), _this.entityService.getRelationMeta(entityID));
             }
         })).subscribe(function (data) {
             if ('ENTITY_ID' in data[0]) {
@@ -691,31 +657,59 @@ var EntityTypeDetailComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
+    };
+    EntityTypeDetailComponent.prototype.showSearchList = function () {
+        this.isSearchListShown = true;
+        this.modelService.showSearchList();
+    };
+    EntityTypeDetailComponent.prototype.onSearchHelp = function (fieldName, control, rowID) {
+        var searchHelpMeta = new jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelp"]();
+        searchHelpMeta.OBJECT_NAME = 'Role';
+        searchHelpMeta.METHOD = function (entityService) {
+            return function (searchTerm) { return entityService.listRole(searchTerm); };
+        }(this.entityService);
+        searchHelpMeta.BEHAVIOUR = 'A';
+        searchHelpMeta.MULTI = false;
+        searchHelpMeta.FUZZY_SEARCH = true;
+        searchHelpMeta.FIELDS = [
+            { FIELD_NAME: 'ROLE_ID', FIELD_DESC: 'Role', IMPORT: true, EXPORT: true, LIST_POSITION: 1, FILTER_POSITION: 0 },
+            { FIELD_NAME: 'ROLE_DESC', FIELD_DESC: 'Description', IMPORT: true, EXPORT: true, LIST_POSITION: 2, FILTER_POSITION: 0 }
+        ];
+        searchHelpMeta.READ_ONLY = this.readonly || this.oldRole(control) && control.valid;
+        var afterExportFn = function (context, ruleIdx) {
+            return function () { return context.onChangeRoleID(ruleIdx, true); };
+        }(this, rowID).bind(this);
+        this.searchHelpComponent.openSearchHelpModal(searchHelpMeta, control, afterExportFn);
     };
     EntityTypeDetailComponent.prototype._generateEntityTypeForm = function () {
         var _this = this;
         this.entityTypeForm = this.fb.group({});
-        this.entityTypeForm.addControl('ENTITY_ID', new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControl"](this.entityMeta.ENTITY_ID, { updateOn: 'blur' }));
+        this.entityTypeForm.addControl('ENTITY_ID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.entityMeta.ENTITY_ID, { updateOn: 'blur' }));
         if (this.isNewMode) {
             this.entityTypeForm.get('ENTITY_ID').setValidators(this._validateEntityId);
             this.entityTypeForm.get('ENTITY_ID').setAsyncValidators(this.uniqueEntityTypeValidator.validate.bind(this.uniqueEntityTypeValidator));
         }
-        this.entityTypeForm.addControl('ENTITY_DESC', new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControl"](this.entityMeta.ENTITY_DESC));
+        this.entityTypeForm.addControl('ENTITY_DESC', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.entityMeta.ENTITY_DESC));
         // Compose roles
         var formArray = [];
         this.entityMeta.ROLES.forEach(function (role) {
             formArray.push(_this.fb.group({
                 ROLE_ID: [role.ROLE_ID],
                 ROLE_DESC: [role.ROLE_DESC],
+                CONDITIONAL_ATTR: [{ value: role.CONDITIONAL_ATTR, disabled: _this.readonly }],
+                CONDITIONAL_VALUE: [role.CONDITIONAL_VALUE]
             }));
         });
         if (this.isNewMode) {
             formArray.push(this.fb.group({
                 ROLE_ID: [''],
-                ROLE_DESC: ['']
+                ROLE_DESC: [''],
+                CONDITIONAL_ATTR: [''],
+                CONDITIONAL_VALUE: ['']
             }));
         }
-        this.entityTypeForm.addControl('ROLES', new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormArray"](formArray));
+        this.entityTypeForm.addControl('ROLES', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"](formArray));
     };
     EntityTypeDetailComponent.prototype._validateEntityId = function (c) {
         if (c.value.trim() === '') {
@@ -762,15 +756,21 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         else { // In Display Mode -> Change Mode
             this.readonly = false;
             this.attrComponent.switchEditDisplay(this.readonly);
+            this.roleFormArray.controls.forEach(function (roleFormGroup) { return roleFormGroup.get('CONDITIONAL_ATTR').enable(); });
             this.roleFormArray.push(this.fb.group({
                 ROLE_ID: [''],
-                ROLE_DESC: ['']
+                ROLE_DESC: [''],
+                CONDITIONAL_ATTR: [''],
+                CONDITIONAL_VALUE: ['']
             }));
         }
     };
     EntityTypeDetailComponent.prototype._switch2DisplayMode = function () {
         this.readonly = true;
         this.attrComponent.switchEditDisplay(this.readonly);
+        this.roleFormArray.controls.forEach(function (roleFormGroup) {
+            roleFormGroup.get('CONDITIONAL_ATTR').disable();
+        });
         var lastIndex = this.roleFormArray.length - 1;
         while (lastIndex >= 0 && this.roleFormArray.controls[lastIndex].get('ROLE_ID').value.trim() === '') {
             this.roleFormArray.removeAt(lastIndex);
@@ -789,7 +789,7 @@ var EntityTypeDetailComponent = /** @class */ (function () {
             this.roleFormArray.markAsDirty();
         }
     };
-    EntityTypeDetailComponent.prototype.onChangeRoleID = function (index) {
+    EntityTypeDetailComponent.prototype.onChangeRoleID = function (index, isExportedFromSH) {
         var currentRoleFormGroup = this.roleFormArray.controls[index];
         if (this.roleFormArray.controls.findIndex(function (roleCtrl, i) {
             return i !== index && roleCtrl.get('ROLE_ID').value === currentRoleFormGroup.get('ROLE_ID').value;
@@ -801,17 +801,21 @@ var EntityTypeDetailComponent = /** @class */ (function () {
             // Only work for the last New line
             this.roleFormArray.push(this.fb.group({
                 ROLE_ID: [''],
-                ROLE_DESC: ['']
+                ROLE_DESC: [''],
+                CONDITIONAL_ATTR: [''],
+                CONDITIONAL_VALUE: ['']
             }));
         }
-        this.entityService.getRoleDesc(currentRoleFormGroup.value.ROLE_ID).subscribe(function (data) {
-            if (data['msgCat']) {
-                currentRoleFormGroup.get('ROLE_ID').setErrors({ message: data['msgShortText'] });
-            }
-            else {
-                currentRoleFormGroup.get('ROLE_DESC').setValue(data);
-            }
-        });
+        if (!isExportedFromSH) {
+            this.entityService.getRoleDesc(currentRoleFormGroup.value.ROLE_ID).subscribe(function (data) {
+                if (data['msgCat']) {
+                    currentRoleFormGroup.get('ROLE_ID').setErrors({ message: data['msgShortText'] });
+                }
+                else {
+                    currentRoleFormGroup.get('ROLE_DESC').setValue(data);
+                }
+            });
+        }
     };
     EntityTypeDetailComponent.prototype.oldRole = function (formGroup) {
         return this.entityMeta.ROLES ?
@@ -865,20 +869,29 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         var changedRoles = [];
         if (this.roleFormArray.dirty) {
             this.changedEntityType['ROLES'] = changedRoles;
-            // New Add Case
+            var action_1;
+            // Add/Update Case
             this.roleFormArray.controls.forEach(function (role) {
                 if (role.get('ROLE_ID').value.trim() === '') {
                     return;
                 }
+                var index = _this.entityMeta.ROLES.findIndex(function (existRole) { return role.value.ROLE_ID === existRole.ROLE_ID; });
+                action_1 = index === -1 ? 'add' : 'update';
                 if (role.dirty) {
-                    var newAddedRole = { action: 'add', ROLE_ID: role.value.ROLE_ID };
-                    changedRoles.push(newAddedRole);
+                    var changedRole = { action: action_1, ROLE_ID: role.value.ROLE_ID };
+                    if (role.get('CONDITIONAL_ATTR').dirty) {
+                        changedRole['CONDITIONAL_ATTR'] = role.value.CONDITIONAL_ATTR;
+                    }
+                    if (role.get('CONDITIONAL_VALUE').dirty) {
+                        changedRole['CONDITIONAL_VALUE'] = role.value.CONDITIONAL_VALUE;
+                    }
+                    changedRoles.push(changedRole);
                 }
             });
             // Deletion Case
             this.entityMeta.ROLES.forEach(function (role) {
                 var index = _this.roleFormArray.controls.findIndex(function (roleControl) { return roleControl.get('ROLE_ID').value === role.ROLE_ID; });
-                if (index === -1) { // The attribute must be deleted
+                if (index === -1) {
                     var deletedRole = { action: 'delete', ROLE_ID: role.ROLE_ID };
                     changedRoles.push(deletedRole);
                 }
@@ -912,9 +925,13 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         }
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__["AttributeMetaComponent"]),
-        __metadata("design:type", _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__["AttributeMetaComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__["AttributeMetaComponent"]),
+        __metadata("design:type", _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__["AttributeMetaComponent"])
     ], EntityTypeDetailComponent.prototype, "attrComponent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"]),
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"])
+    ], EntityTypeDetailComponent.prototype, "searchHelpComponent", void 0);
     EntityTypeDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-entity-type-detail',
@@ -923,12 +940,12 @@ var EntityTypeDetailComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
-            _model_validators__WEBPACK_IMPORTED_MODULE_12__["UniqueEntityTypeValidator"],
-            ui_message_angular__WEBPACK_IMPORTED_MODULE_6__["MessageService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_10__["ModelService"],
-            _dialog_service__WEBPACK_IMPORTED_MODULE_11__["DialogService"],
-            _entity_service__WEBPACK_IMPORTED_MODULE_3__["EntityService"]])
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
+            _model_validators__WEBPACK_IMPORTED_MODULE_11__["UniqueEntityTypeValidator"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_9__["ModelService"],
+            _dialog_service__WEBPACK_IMPORTED_MODULE_10__["DialogService"],
+            jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"]])
     ], EntityTypeDetailComponent);
     return EntityTypeDetailComponent;
 }());
@@ -955,7 +972,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-4\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchEntityType(searchBox.value)\" >\n      </div>\n      <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newEntityType()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let entityType of entityTypeList\" routerLink=\"/model/entity-type/{{entityType.ENTITY_ID}}\" routerLinkActive=\"active\"\n        (click)=\"onSelect(entityType)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{entityType.ENTITY_ID}}</h5>\n          <small>version: {{entityType.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{entityType.ENTITY_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{entityType.LAST_CHANGE_BY}} @{{entityType.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div class=\"col-8\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div *ngIf=\"isSearchListShown\" class=\"col-3\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchEntityType(searchBox.value)\" >\n      </div>\n      <div class=\"btn-group\" role=\"group\">\n        <button class=\"btn\" type=\"button\" title=\"Hide\" (click)=\"hideSearchList()\" [disabled]=\"!theSelectedEntityType\">\n          <span class=\"fas fa-arrow-left\"></span>\n        </button>\n        <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newEntityType()\">\n          <span class=\"fas fa-plus\"></span>\n        </button>\n      </div>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let entityType of entityTypeList\" routerLink=\"/model/entity-type/{{entityType.ENTITY_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(entityType)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{entityType.ENTITY_ID}}</h5>\n          <small>version: {{entityType.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{entityType.ENTITY_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{entityType.LAST_CHANGE_BY}} @{{entityType.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div [ngClass]=\"{'col-9': isSearchListShown, 'col-12': !isSearchListShown}\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -970,14 +987,13 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-4\">\n    <div class=\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntityTypeComponent", function() { return EntityTypeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1003,12 +1019,13 @@ var EntityTypeComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.route = route;
         this.router = router;
-        this.searchTerms = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_8__["msgStore"], 'EN');
+        this.isSearchListShown = true;
+        this.searchTerms = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
     }
     EntityTypeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (term) { return _this.entityService.listEntityType(term); })).subscribe(function (data) {
+        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (term) { return _this.entityService.listEntityType(term); })).subscribe(function (data) {
             _this.entityTypeList = data;
             var entityID;
             if (_this.route.snapshot.firstChild) {
@@ -1030,6 +1047,7 @@ var EntityTypeComponent = /** @class */ (function () {
                 _this.theSelectedEntityType.ENTITY_DESC = data.ENTITY_DESC;
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
         this.modelService.dialogAnswer$.subscribe(function (answer) {
             if (answer === 'OK' && !_this.entityTypeList[0].CREATE_TIME) {
                 _this.entityTypeList.splice(0, 1); // Remove the first one.
@@ -1056,6 +1074,10 @@ var EntityTypeComponent = /** @class */ (function () {
     EntityTypeComponent.prototype.searchEntityType = function (term) {
         this.searchTerms.next(term);
     };
+    EntityTypeComponent.prototype.hideSearchList = function () {
+        this.isSearchListShown = false;
+        this.modelService.hideSearchList();
+    };
     EntityTypeComponent.prototype.newEntityType = function () {
         if (this.route.snapshot.firstChild && this.route.snapshot.firstChild.paramMap.get('entityID') === 'new') {
             this.messageService.reportMessage('MODEL', 'UNSAVED_NEW', 'E');
@@ -1066,7 +1088,7 @@ var EntityTypeComponent = /** @class */ (function () {
         }
     };
     EntityTypeComponent.prototype._newEntityType = function () {
-        this.theSelectedEntityType = new jor_angular__WEBPACK_IMPORTED_MODULE_2__["EntityType"]();
+        this.theSelectedEntityType = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityType"]();
         this.theSelectedEntityType.ENTITY_ID = 'new';
         this.theSelectedEntityType.ENTITY_DESC = 'description';
         this.theSelectedEntityType.VERSION_NO = 1;
@@ -1081,11 +1103,11 @@ var EntityTypeComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./entity-type.component.html */ "./src/app/model/entity-type/entity-type.component.html"),
             styles: [__webpack_require__(/*! ./entity-type.component.css */ "./src/app/model/entity-type/entity-type.component.css")]
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_6__["ModelService"],
-            ui_message_angular__WEBPACK_IMPORTED_MODULE_7__["MessageService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_5__["ModelService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_6__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], EntityTypeComponent);
     return EntityTypeComponent;
 }());
@@ -1111,7 +1133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entity_type_entity_type_detail_entity_type_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./entity-type/entity-type-detail/entity-type-detail.component */ "./src/app/model/entity-type/entity-type-detail/entity-type-detail.component.ts");
 /* harmony import */ var _relation_relation_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./relation/relation.component */ "./src/app/model/relation/relation.component.ts");
 /* harmony import */ var _relation_relation_detail_relation_detail_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./relation/relation-detail/relation-detail.component */ "./src/app/model/relation/relation-detail/relation-detail.component.ts");
-/* harmony import */ var _work_protection_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./work-protection.guard */ "./src/app/model/work-protection.guard.ts");
+/* harmony import */ var _work_protection_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../work-protection.guard */ "./src/app/work-protection.guard.ts");
 /* harmony import */ var _relationship_relationship_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./relationship/relationship.component */ "./src/app/model/relationship/relationship.component.ts");
 /* harmony import */ var _relationship_relationship_detail_relationship_detail_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./relationship/relationship-detail/relationship-detail.component */ "./src/app/model/relationship/relationship-detail/relationship-detail.component.ts");
 /* harmony import */ var _role_role_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./role/role.component */ "./src/app/model/role/role.component.ts");
@@ -1194,7 +1216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueRelationshipValidator", function() { return UniqueRelationshipValidator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueEntityTypeValidator", function() { return UniqueEntityTypeValidator; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../entity.service */ "./src/app/entity.service.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./model.service */ "./src/app/model/model.service.ts");
@@ -1234,7 +1256,7 @@ var UniqueRoleValidator = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
             _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"]])
     ], UniqueRoleValidator);
     return UniqueRoleValidator;
@@ -1265,7 +1287,7 @@ var UniqueRelationValidator = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
             _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"]])
     ], UniqueRelationValidator);
     return UniqueRelationValidator;
@@ -1296,7 +1318,7 @@ var UniqueRelationshipValidator = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
             _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"]])
     ], UniqueRelationshipValidator);
     return UniqueRelationshipValidator;
@@ -1324,7 +1346,7 @@ var UniqueEntityTypeValidator = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
             _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"]])
     ], UniqueEntityTypeValidator);
     return UniqueEntityTypeValidator;
@@ -1428,12 +1450,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_domain_data_domain_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./data-domain/data-domain.component */ "./src/app/model/data-domain/data-domain.component.ts");
 /* harmony import */ var _data_domain_data_domain_detail_data_domain_detail_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./data-domain/data-domain-detail/data-domain-detail.component */ "./src/app/model/data-domain/data-domain-detail/data-domain-detail.component.ts");
 /* harmony import */ var _data_element_data_element_detail_data_element_detail_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./data-element/data-element-detail/data-element-detail.component */ "./src/app/model/data-element/data-element-detail/data-element-detail.component.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1467,7 +1491,8 @@ var ModelModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
                 _model_routing_module__WEBPACK_IMPORTED_MODULE_3__["ModelRoutingModule"],
                 ui_message_angular__WEBPACK_IMPORTED_MODULE_10__["MessageModule"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModule"]
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModule"],
+                jor_angular__WEBPACK_IMPORTED_MODULE_21__["JorAngularModule"]
             ],
             declarations: [
                 _model_component__WEBPACK_IMPORTED_MODULE_2__["ModelComponent"],
@@ -1518,6 +1543,8 @@ var ModelService = /** @class */ (function () {
     function ModelService() {
         this.dialogAnswer = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.dialogAnswer$ = this.dialogAnswer.asObservable();
+        this.isSearchListShown = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.isSearchListShown$ = this.isSearchListShown.asObservable();
         this.selectedEntityTypeSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.theSelectedEntityType$ = this.selectedEntityTypeSource.asObservable();
         this.selectedRelationSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
@@ -1527,6 +1554,12 @@ var ModelService = /** @class */ (function () {
         this.selectedRoleSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.theSelectedRole$ = this.selectedRoleSource.asObservable();
     }
+    ModelService.prototype.showSearchList = function () {
+        this.isSearchListShown.next(true);
+    };
+    ModelService.prototype.hideSearchList = function () {
+        this.isSearchListShown.next(false);
+    };
     ModelService.prototype.updateEntityID = function (entityID) {
         this.theSelectedEntityType.ENTITY_ID = entityID;
         this.selectedEntityTypeSource.next(this.theSelectedEntityType);
@@ -1604,7 +1637,7 @@ module.exports = ".dk-actions{\n  width: 5rem;\n  min-width: 5rem;\n  max-width:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationMeta\" [formGroup]=\"relationForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"relationForm.get('RELATION_ID').invalid && (relationForm.touched || relationForm.dirty)\">\n    <label for=\"relation\" class=\"col-form-label form-control-sm\">Relation:\n      <span class=\"dk-invalid-feedback\">\n        {{relationForm.get('RELATION_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relation\" [readonly]=\"readonly || !isNewMode\"\n          name=\"relation\" formControlName=\"RELATION_ID\" >\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relation-desc\" class=\"col-form-label form-control-sm\">Relation Description:</label>\n    <textarea class=\"form-control\" id=\"relation-desc\" name=\"relation-desc\" rows=\"2\"\n              (change)=\"onChangeRelationDesc()\" formControlName=\"RELATION_DESC\" [readonly]=\"readonly\"></textarea>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationForm\" [attributes]=\"relationMeta.ATTRIBUTES\"\n                      [relationID]=\"relationMeta.RELATION_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-atlas\"></span> Association</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Right Relation</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\" title=\"Foreign Key Check\">FC</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"ASSOCIATIONS\">\n        <tr *ngFor=\"let associationFormGroup of associationFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteAssociation(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n            <button class=\"btn btn-sm\" type=\"button\" (click)=\"openFieldMapModal(i)\" title=\"Fields Mapping\">\n              <span class=\"fas fa-map-signs\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"associationFormGroup\"\n              [class.dk-invalid]=\"associationFormGroup.get('RIGHT_RELATION_ID').invalid && (associationFormGroup.touched || associationFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RIGHT_RELATION_ID\"\n                     [readonly]=\"readonly || oldRightRelation(associationFormGroup) && associationFormGroup.valid\" (change)=\"onChangeRightRelationID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{associationFormGroup.get('RIGHT_RELATION_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"associationFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[0..1]</option>\n              <option>[1..1]</option>\n              <option>[0..n]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"associationFormGroup\">\n            <input type=\"checkbox\" formControlName=\"FOREIGN_KEY_CHECK\">\n          </td>\n        </tr>\n\n        <div *ngIf=\"currentAssociationForm\" class=\"modal fade dk-modal-open\" [ngClass]=\"{'show': isFieldMapShown}\"\n             [ngStyle]=\"{'display': displayFieldMapModal}\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\">\n          <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <h5 class=\"modal-title\" id=\"detail\">Fields Mapping</h5>\n                <button type=\"button\" class=\"close\" (click)=\"closeFieldMapModal()\">\n                  <span aria-hidden=\"true\">&times;</span>\n                </button>\n              </div>\n              <div class=\"modal-body\">\n                <table class=\"table table-bordered table-sm dk-table\" [formGroup]=\"currentAssociationForm\">\n                  <thead class=\"thead-light\">\n                  <tr>\n                    <th scope=\"col\">Action</th>\n                    <th scope=\"col\">Left Table Field</th>\n                    <th scope=\"col\">Right Table Field</th>\n                  </tr>\n                  </thead>\n\n                  <tbody formArrayName=\"FIELDS_MAPPING\">\n                    <tr *ngFor=\"let fieldMapFormGroup of fieldMapFormArray.controls; let i = index\">\n                      <td class=\"dk-actions\">\n                        <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteFieldMap(i)\" title=\"Delete\">\n                          <span class=\"far fa-trash-alt\"></span>\n                        </button>\n                      </td>\n                      <td [formGroup]=\"fieldMapFormGroup\"\n                          [class.dk-invalid]=\"fieldMapFormGroup.get('LEFT_FIELD').invalid && (fieldMapFormGroup.touched || fieldMapFormGroup.dirty)\">\n                        <div class=\"input-group\">\n                          <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"LEFT_FIELD\"\n                                 [readonly]=\"readonly || oldFieldMap(fieldMapFormGroup) && fieldMapFormGroup.valid\" (change)=\"onChangeLeftField(i)\">\n                          <div class=\"invalid-tooltip\">\n                            {{fieldMapFormGroup.get('LEFT_FIELD').errors?.message}}\n                          </div>\n                        </div>\n                      </td>\n                      <td [formGroup]=\"fieldMapFormGroup\"\n                          [class.dk-invalid]=\"fieldMapFormGroup.get('RIGHT_FIELD').invalid && (fieldMapFormGroup.touched || fieldMapFormGroup.dirty)\">\n                        <div class=\"input-group\">\n                          <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RIGHT_FIELD\"\n                                 [readonly]=\"readonly || oldFieldMap(fieldMapFormGroup) && fieldMapFormGroup.valid\" (change)=\"onChangeRightField(i)\">\n                          <div class=\"invalid-tooltip\">\n                            {{fieldMapFormGroup.get('RIGHT_FIELD').errors?.message}}\n                          </div>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"closeFieldMapModal()\">OK</button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n\n\n"
+module.exports = "<div class=\"btn-toolbar mb-2\"  role=\"toolbar\"\n     [ngClass]=\"{'justify-content-end': isSearchListShown, 'justify-content-between': !isSearchListShown}\" >\n  <button *ngIf=\"!isSearchListShown\" class=\"btn\" type=\"button\" title=\"Show List\" (click)=\"showSearchList()\">\n    <span class=\"fas fa-arrow-right\"></span>\n  </button>\n\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationMeta\" [formGroup]=\"relationForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"relationForm.get('RELATION_ID').invalid && (relationForm.touched || relationForm.dirty)\">\n    <label for=\"relation\" class=\"col-form-label form-control-sm\">Relation:\n      <span class=\"dk-invalid-feedback\">\n        {{relationForm.get('RELATION_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relation\" [readonly]=\"readonly || !isNewMode\"\n          name=\"relation\" formControlName=\"RELATION_ID\" >\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relation-desc\" class=\"col-form-label form-control-sm\">Relation Description:</label>\n    <textarea class=\"form-control\" id=\"relation-desc\" name=\"relation-desc\" rows=\"2\"\n              (change)=\"onChangeRelationDesc()\" formControlName=\"RELATION_DESC\" [readonly]=\"readonly\"></textarea>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationForm\" [attributes]=\"relationMeta.ATTRIBUTES\"\n                      [relationID]=\"relationMeta.RELATION_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-atlas\"></span> Association</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Right Relation</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\" title=\"Foreign Key Check\">FC</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"ASSOCIATIONS\">\n        <tr *ngFor=\"let associationFormGroup of associationFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteAssociation(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n            <button class=\"btn btn-sm\" type=\"button\" (click)=\"openFieldMapModal(i)\" title=\"Fields Mapping\">\n              <span class=\"fas fa-map-signs\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"associationFormGroup\"\n              [class.dk-invalid]=\"associationFormGroup.get('RIGHT_RELATION_ID').invalid && (associationFormGroup.touched || associationFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RIGHT_RELATION_ID\"\n                     [readonly]=\"readonly || oldRightRelation(associationFormGroup) && associationFormGroup.valid\" (change)=\"onChangeRightRelationID(i)\">\n              <div class=\"invalid-tooltip\">\n                {{associationFormGroup.get('RIGHT_RELATION_ID').errors?.message}}\n              </div>\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" id=\"button-addon2\"\n                        (click)=\"onSearchHelp('RELATION_ID', associationFormGroup, i)\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"associationFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[0..1]</option>\n              <option>[1..1]</option>\n              <option>[0..n]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"associationFormGroup\">\n            <input type=\"checkbox\" formControlName=\"FOREIGN_KEY_CHECK\">\n          </td>\n        </tr>\n\n        <div *ngIf=\"currentAssociationForm\" class=\"modal fade dk-modal-open\" [ngClass]=\"{'show': isFieldMapShown}\"\n             [ngStyle]=\"{'display': displayFieldMapModal}\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\">\n          <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <h5 class=\"modal-title\" id=\"detail\">Fields Mapping</h5>\n                <button type=\"button\" class=\"close\" (click)=\"closeFieldMapModal()\">\n                  <span aria-hidden=\"true\">&times;</span>\n                </button>\n              </div>\n              <div class=\"modal-body\">\n                <table class=\"table table-bordered table-sm dk-table\" [formGroup]=\"currentAssociationForm\">\n                  <thead class=\"thead-light\">\n                  <tr>\n                    <th scope=\"col\">Action</th>\n                    <th scope=\"col\">Left Table Field</th>\n                    <th scope=\"col\">Right Table Field</th>\n                  </tr>\n                  </thead>\n\n                  <tbody formArrayName=\"FIELDS_MAPPING\">\n                    <tr *ngFor=\"let fieldMapFormGroup of fieldMapFormArray.controls; let i = index\">\n                      <td class=\"dk-actions\">\n                        <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteFieldMap(i)\" title=\"Delete\">\n                          <span class=\"far fa-trash-alt\"></span>\n                        </button>\n                      </td>\n                      <td [formGroup]=\"fieldMapFormGroup\"\n                          [class.dk-invalid]=\"fieldMapFormGroup.get('LEFT_FIELD').invalid && (fieldMapFormGroup.touched || fieldMapFormGroup.dirty)\">\n                        <div class=\"input-group\">\n                          <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"LEFT_FIELD\"\n                                 [readonly]=\"readonly || oldFieldMap(fieldMapFormGroup) && fieldMapFormGroup.valid\" (change)=\"onChangeLeftField(i)\">\n                          <div class=\"invalid-tooltip\">\n                            {{fieldMapFormGroup.get('LEFT_FIELD').errors?.message}}\n                          </div>\n                        </div>\n                      </td>\n                      <td [formGroup]=\"fieldMapFormGroup\"\n                          [class.dk-invalid]=\"fieldMapFormGroup.get('RIGHT_FIELD').invalid && (fieldMapFormGroup.touched || fieldMapFormGroup.dirty)\">\n                        <div class=\"input-group\">\n                          <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RIGHT_FIELD\"\n                                 [readonly]=\"readonly || oldFieldMap(fieldMapFormGroup) && fieldMapFormGroup.valid\" (change)=\"onChangeRightField(i)\">\n                          <div class=\"invalid-tooltip\">\n                            {{fieldMapFormGroup.get('RIGHT_FIELD').errors?.message}}\n                          </div>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"closeFieldMapModal()\">OK</button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n\n<dk-app-search-help></dk-app-search-help>\n\n"
 
 /***/ }),
 
@@ -1623,14 +1656,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../attribute-meta/attribute-meta.component */ "./src/app/model/attribute-meta/attribute-meta.component.ts");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
-/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../attribute-meta/attribute-meta.component */ "./src/app/model/attribute-meta/attribute-meta.component.ts");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
+/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1640,6 +1672,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -1668,7 +1702,8 @@ var RelationDetailComponent = /** @class */ (function () {
         this.isFieldMapShown = false;
         this.changedRelation = {};
         this.bypassProtection = false;
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], 'EN');
+        this.isSearchListShown = true;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_5__["msgStore"], 'EN');
     }
     Object.defineProperty(RelationDetailComponent.prototype, "associationFormArray", {
         get: function () {
@@ -1698,7 +1733,7 @@ var RelationDetailComponent = /** @class */ (function () {
     });
     RelationDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (params) {
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["switchMap"])(function (params) {
             var relationID = params.get('relationID');
             if (relationID === 'new') {
                 var relation = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationMeta"]();
@@ -1708,7 +1743,7 @@ var RelationDetailComponent = /** @class */ (function () {
                 _this.isNewMode = true;
                 _this.readonly = false;
                 _this.bypassProtection = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(relation);
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(relation);
             }
             else {
                 _this.readonly = true;
@@ -1733,6 +1768,30 @@ var RelationDetailComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
+    };
+    RelationDetailComponent.prototype.showSearchList = function () {
+        this.isSearchListShown = true;
+        this.modelService.showSearchList();
+    };
+    RelationDetailComponent.prototype.onSearchHelp = function (fieldName, control, rowID) {
+        var searchHelpMeta = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelp"]();
+        searchHelpMeta.OBJECT_NAME = 'Relation';
+        searchHelpMeta.METHOD = function (entityService) {
+            return function (searchTerm) { return entityService.listRelation(searchTerm); };
+        }(this.entityService);
+        searchHelpMeta.BEHAVIOUR = 'A';
+        searchHelpMeta.MULTI = false;
+        searchHelpMeta.FUZZY_SEARCH = true;
+        searchHelpMeta.FIELDS = [
+            { FIELD_NAME: 'RELATION_ID', FIELD_DESC: 'Relation', IMPORT: true, EXPORT: true, LIST_POSITION: 1, FILTER_POSITION: 0 },
+            { FIELD_NAME: 'RELATION_DESC', FIELD_DESC: 'Description', IMPORT: true, EXPORT: true, LIST_POSITION: 2, FILTER_POSITION: 0 }
+        ];
+        searchHelpMeta.READ_ONLY = this.readonly || this.oldRightRelation(control) && control.valid;
+        var afterExportFn = function (context, ruleIdx) {
+            return function () { return context.onChangeRightRelationID(ruleIdx, true); };
+        }(this, rowID).bind(this);
+        this.searchHelpComponent.openSearchHelpModal(searchHelpMeta, control, afterExportFn);
     };
     RelationDetailComponent.prototype._generateRelationForm = function () {
         var _this = this;
@@ -1892,7 +1951,7 @@ var RelationDetailComponent = /** @class */ (function () {
             this.fieldMapFormArray.markAsDirty();
         }
     };
-    RelationDetailComponent.prototype.onChangeRightRelationID = function (index) {
+    RelationDetailComponent.prototype.onChangeRightRelationID = function (index, isExportedFromSH) {
         var currentAssocFormGroup = this.associationFormArray.controls[index];
         if (currentAssocFormGroup.get('RIGHT_RELATION_ID').value === this.relationMeta.RELATION_ID) {
             currentAssocFormGroup.get('RIGHT_RELATION_ID').setErrors({ message: 'Self association is not allowed' });
@@ -1913,12 +1972,14 @@ var RelationDetailComponent = /** @class */ (function () {
                 FIELDS_MAPPING: this.fb.array([])
             }));
         }
-        this.entityService.getRelationDesc(currentAssocFormGroup.value.RIGHT_RELATION_ID)
-            .subscribe(function (data) {
-            if (data['msgCat']) {
-                currentAssocFormGroup.get('RIGHT_RELATION_ID').setErrors({ message: data['msgShortText'] });
-            }
-        });
+        if (isExportedFromSH) {
+            this.entityService.getRelationDesc(currentAssocFormGroup.value.RIGHT_RELATION_ID)
+                .subscribe(function (data) {
+                if (data['msgCat']) {
+                    currentAssocFormGroup.get('RIGHT_RELATION_ID').setErrors({ message: data['msgShortText'] });
+                }
+            });
+        }
     };
     RelationDetailComponent.prototype.onChangeLeftField = function (index) {
         var currentFieldMapFormGroup = this.fieldMapFormArray.controls[index];
@@ -2105,9 +2166,13 @@ var RelationDetailComponent = /** @class */ (function () {
         }
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__["AttributeMetaComponent"]),
-        __metadata("design:type", _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_9__["AttributeMetaComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__["AttributeMetaComponent"]),
+        __metadata("design:type", _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_8__["AttributeMetaComponent"])
     ], RelationDetailComponent.prototype, "attrComponent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"]),
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"])
+    ], RelationDetailComponent.prototype, "searchHelpComponent", void 0);
     RelationDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-relation-detail',
@@ -2117,11 +2182,11 @@ var RelationDetailComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _model_validators__WEBPACK_IMPORTED_MODULE_12__["UniqueRelationValidator"],
+            _model_validators__WEBPACK_IMPORTED_MODULE_11__["UniqueRelationValidator"],
             ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_10__["ModelService"],
-            _dialog_service__WEBPACK_IMPORTED_MODULE_11__["DialogService"],
-            _entity_service__WEBPACK_IMPORTED_MODULE_5__["EntityService"]])
+            _model_service__WEBPACK_IMPORTED_MODULE_9__["ModelService"],
+            _dialog_service__WEBPACK_IMPORTED_MODULE_10__["DialogService"],
+            jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"]])
     ], RelationDetailComponent);
     return RelationDetailComponent;
 }());
@@ -2148,7 +2213,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-4\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRelation(searchBox.value)\" >\n      </div>\n      <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRelation()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let relation of relationList\" routerLink=\"/model/relation/{{relation.RELATION_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(relation)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{relation.RELATION_ID}}</h5>\n          <small>version: {{relation.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{relation.RELATION_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{relation.LAST_CHANGE_BY}} @{{relation.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div class=\"col-8\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div *ngIf=\"isSearchListShown\" class=\"col-3\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRelation(searchBox.value)\" >\n      </div>\n\n      <div class=\"btn-group\" role=\"group\">\n        <button class=\"btn\" type=\"button\" title=\"Hide\" (click)=\"hideSearchList()\" [disabled]=\"!theSelectedRelation\">\n          <span class=\"fas fa-arrow-left\"></span>\n        </button>\n        <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRelation()\">\n          <span class=\"fas fa-plus\"></span>\n        </button>\n      </div>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let relation of relationList\" routerLink=\"/model/relation/{{relation.RELATION_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(relation)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{relation.RELATION_ID}}</h5>\n          <small>version: {{relation.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{relation.RELATION_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{relation.LAST_CHANGE_BY}} @{{relation.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div [ngClass]=\"{'col-9': isSearchListShown, 'col-12': !isSearchListShown}\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2165,12 +2230,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2196,12 +2260,13 @@ var RelationComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.route = route;
         this.router = router;
+        this.isSearchListShown = true;
         this.searchTerms = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_8__["msgStore"], 'EN');
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
     }
     RelationComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (term) { return _this.entityService.listRelation(term); })).subscribe(function (data) {
+        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (term) { return _this.entityService.listRelation(term); })).subscribe(function (data) {
             _this.relationList = data;
             var relationID;
             if (_this.route.snapshot.firstChild) {
@@ -2239,9 +2304,14 @@ var RelationComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
     };
     RelationComponent.prototype.searchRelation = function (term) {
         this.searchTerms.next(term);
+    };
+    RelationComponent.prototype.hideSearchList = function () {
+        this.isSearchListShown = false;
+        this.modelService.hideSearchList();
     };
     RelationComponent.prototype.onSelect = function (relation) {
         if (relation) {
@@ -2274,11 +2344,11 @@ var RelationComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./relation.component.html */ "./src/app/model/relation/relation.component.html"),
             styles: [__webpack_require__(/*! ./relation.component.css */ "./src/app/model/relation/relation.component.css")]
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_3__["EntityService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_6__["ModelService"],
-            ui_message_angular__WEBPACK_IMPORTED_MODULE_7__["MessageService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_5__["ModelService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_6__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], RelationComponent);
     return RelationComponent;
 }());
@@ -2305,7 +2375,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationshipMeta\" [formGroup]=\"relationshipForm\">\n  <div class=\"form-group\"\n       [class.dk-invalid]=\"relationshipForm.get('RELATIONSHIP_ID').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n    <label for=\"relationship\" class=\"col-form-label form-control-sm\">Relationship:\n      <span class=\"dk-invalid-feedback\">\n        {{relationshipForm.get('RELATIONSHIP_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relationship\" [readonly]=\"readonly || !isNewMode\"\n           name=\"relationship\" formControlName=\"RELATIONSHIP_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relationship-desc\" class=\"col-form-label form-control-sm\">Relationship Description:</label>\n    <textarea class=\"form-control\" id=\"relationship-desc\" name=\"relationship-desc\" rows=\"2\"\n              formControlName=\"RELATIONSHIP_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRelationshipDesc()\"></textarea>\n  </div>\n  <div class=\"row ml-2\">\n    <div class=\"col-3 form-group row\" >\n      <label for=\"timeDependent\" class=\"col-form-label form-control-sm\">Time Dependent: </label>\n      <input type=\"checkbox\" class=\"form-control ml-2\" id=\"timeDependent\" name=\"timeDependent\"\n             formControlName=\"TIME_DEPENDENT\" (change)=\"onChangeTimeDependency()\">\n    </div>\n    <div class=\"col-4 form-group row ml-3\"\n         [class.dk-invalid]=\"relationshipForm.get('VALID_PERIOD').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n      <label for=\"valid_period\" class=\"col-form-label form-control-sm\">Valid Period(seconds):\n        <span class=\"dk-invalid-feedback\" *ngIf=\"!relationshipForm.get('VALID_PERIOD').valid\">\n        {{relationshipForm.get('VALID_PERIOD').errors?.message}}\n      </span>\n      </label>\n      <input type=\"number\" class=\"form-control form-control-sm\" id=\"valid_period\" [readonly]=\"readonly\"\n             name=\"valid_period\" formControlName=\"VALID_PERIOD\">\n    </div>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationshipForm\" [attributes]=\"attributes\"\n                      [relationID]=\"relationshipMeta.RELATIONSHIP_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Involved Roles</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Role</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\">Direction</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"INVOLVES\">\n        <tr *ngFor=\"let involveFormGroup of involveFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteInvolve(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"involveFormGroup\"\n              [class.dk-invalid]=\"involveFormGroup.get('ROLE_ID').invalid && (involveFormGroup.touched || involveFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldInvolve(involveFormGroup) && involveFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{involveFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[1..1]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"DIRECTION\" [readonly]=\"readonly\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<div class=\"btn-toolbar mb-2\"  role=\"toolbar\"\n     [ngClass]=\"{'justify-content-end': isSearchListShown, 'justify-content-between': !isSearchListShown}\" >\n  <button *ngIf=\"!isSearchListShown\" class=\"btn\" type=\"button\" title=\"Show List\" (click)=\"showSearchList()\">\n    <span class=\"fas fa-arrow-right\"></span>\n  </button>\n\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"relationshipMeta\" [formGroup]=\"relationshipForm\">\n  <div class=\"form-group\"\n       [class.dk-invalid]=\"relationshipForm.get('RELATIONSHIP_ID').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n    <label for=\"relationship\" class=\"col-form-label form-control-sm\">Relationship:\n      <span class=\"dk-invalid-feedback\">\n        {{relationshipForm.get('RELATIONSHIP_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"relationship\" [readonly]=\"readonly || !isNewMode\"\n           name=\"relationship\" formControlName=\"RELATIONSHIP_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"relationship-desc\" class=\"col-form-label form-control-sm\">Relationship Description:</label>\n    <textarea class=\"form-control\" id=\"relationship-desc\" name=\"relationship-desc\" rows=\"2\"\n              formControlName=\"RELATIONSHIP_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRelationshipDesc()\"></textarea>\n  </div>\n  <div class=\"row ml-2\">\n    <div class=\"col-3 form-group row\" >\n      <label for=\"timeDependent\" class=\"col-form-label form-control-sm\">Time Dependent: </label>\n      <input type=\"checkbox\" class=\"form-control ml-2\" id=\"timeDependent\" name=\"timeDependent\"\n             formControlName=\"TIME_DEPENDENT\" (change)=\"onChangeTimeDependency()\">\n    </div>\n    <div class=\"col-4 form-group row ml-3\"\n         [class.dk-invalid]=\"relationshipForm.get('VALID_PERIOD').invalid && (relationshipForm.touched || relationshipForm.dirty)\">\n      <label for=\"valid_period\" class=\"col-form-label form-control-sm\">Valid Period(seconds):\n        <span class=\"dk-invalid-feedback\" *ngIf=\"!relationshipForm.get('VALID_PERIOD').valid\">\n        {{relationshipForm.get('VALID_PERIOD').errors?.message}}\n      </span>\n      </label>\n      <input type=\"number\" class=\"form-control form-control-sm\" id=\"valid_period\" [readonly]=\"readonly\"\n             name=\"valid_period\" formControlName=\"VALID_PERIOD\">\n    </div>\n  </div>\n\n  <app-attribute-meta [readonly]=\"readonly\" [parentForm]=\"relationshipForm\" [attributes]=\"attributes\"\n                      [relationID]=\"relationshipMeta.RELATIONSHIP_ID\" [isNewMode]=\"isNewMode\">\n  </app-attribute-meta>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Involved Roles</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Role</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n          <th scope=\"col\">Direction</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"INVOLVES\">\n        <tr *ngFor=\"let involveFormGroup of involveFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteInvolve(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"involveFormGroup\"\n              [class.dk-invalid]=\"involveFormGroup.get('ROLE_ID').invalid && (involveFormGroup.touched || involveFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"ROLE_ID\"\n                     [readonly]=\"readonly || oldInvolve(involveFormGroup) && involveFormGroup.valid\" (change)=\"onChangeRoleID(i)\">\n              <div class=\"invalid-tooltip\">\n                {{involveFormGroup.get('ROLE_ID').errors?.message}}\n              </div>\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" id=\"button-addon2\"\n                        (click)=\"onSearchHelp('ROLE_ID', involveFormGroup, i)\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input type=\"text\" formControlName=\"ROLE_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[1..1]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n          <td [formGroup]=\"involveFormGroup\">\n            <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"DIRECTION\" [readonly]=\"readonly\">\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n\n<dk-app-search-help></dk-app-search-help>\n"
 
 /***/ }),
 
@@ -2327,11 +2397,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
 /* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2341,6 +2410,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -2368,7 +2439,8 @@ var RelationshipDetailComponent = /** @class */ (function () {
         this.isNewMode = false;
         this.changedRelationship = {};
         this.bypassProtection = false;
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_9__["msgStore"], 'EN');
+        this.isSearchListShown = true;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_8__["msgStore"], 'EN');
     }
     Object.defineProperty(RelationshipDetailComponent.prototype, "involveFormArray", {
         get: function () {
@@ -2379,7 +2451,7 @@ var RelationshipDetailComponent = /** @class */ (function () {
     });
     RelationshipDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["switchMap"])(function (params) {
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["switchMap"])(function (params) {
             var relationshipID = params.get('relationshipID');
             if (relationshipID === 'new') {
                 var relationship = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["RelationshipMeta"]();
@@ -2390,12 +2462,12 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 _this.isNewMode = true;
                 _this.readonly = false;
                 _this.bypassProtection = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["forkJoin"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["of"])(relationship), Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["of"])([]));
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["forkJoin"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(relationship), Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])([]));
             }
             else {
                 _this.readonly = true;
                 _this.isNewMode = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["forkJoin"])(_this.entityService.getRelationship(relationshipID), _this.entityService.getRelationMeta(relationshipID));
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["forkJoin"])(_this.entityService.getRelationship(relationshipID), _this.entityService.getRelationMeta(relationshipID));
             }
         })).subscribe(function (data) {
             if ('msgName' in data[0]) {
@@ -2414,6 +2486,30 @@ var RelationshipDetailComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
+    };
+    RelationshipDetailComponent.prototype.showSearchList = function () {
+        this.isSearchListShown = true;
+        this.modelService.showSearchList();
+    };
+    RelationshipDetailComponent.prototype.onSearchHelp = function (fieldName, control, rowID) {
+        var searchHelpMeta = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelp"]();
+        searchHelpMeta.OBJECT_NAME = 'Role';
+        searchHelpMeta.METHOD = function (entityService) {
+            return function (searchTerm) { return entityService.listRole(searchTerm); };
+        }(this.entityService);
+        searchHelpMeta.BEHAVIOUR = 'A';
+        searchHelpMeta.MULTI = false;
+        searchHelpMeta.FUZZY_SEARCH = true;
+        searchHelpMeta.FIELDS = [
+            { FIELD_NAME: 'ROLE_ID', FIELD_DESC: 'Role', IMPORT: true, EXPORT: true, LIST_POSITION: 1, FILTER_POSITION: 0 },
+            { FIELD_NAME: 'ROLE_DESC', FIELD_DESC: 'Description', IMPORT: true, EXPORT: true, LIST_POSITION: 2, FILTER_POSITION: 0 }
+        ];
+        searchHelpMeta.READ_ONLY = this.readonly || this.oldInvolve(control) && control.valid;
+        var afterExportFn = function (context, ruleIdx) {
+            return function () { return context.onChangeRoleID(ruleIdx, true); };
+        }(this, rowID).bind(this);
+        this.searchHelpComponent.openSearchHelpModal(searchHelpMeta, control, afterExportFn);
     };
     RelationshipDetailComponent.prototype._generateRelationshipForm = function () {
         var _this = this;
@@ -2793,6 +2889,10 @@ var RelationshipDetailComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_3__["AttributeMetaComponent"]),
         __metadata("design:type", _attribute_meta_attribute_meta_component__WEBPACK_IMPORTED_MODULE_3__["AttributeMetaComponent"])
     ], RelationshipDetailComponent.prototype, "attrComponent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"]),
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"])
+    ], RelationshipDetailComponent.prototype, "searchHelpComponent", void 0);
     RelationshipDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-relationship-detail',
@@ -2802,11 +2902,11 @@ var RelationshipDetailComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _model_validators__WEBPACK_IMPORTED_MODULE_12__["UniqueRelationshipValidator"],
+            _model_validators__WEBPACK_IMPORTED_MODULE_11__["UniqueRelationshipValidator"],
             ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"],
             _model_service__WEBPACK_IMPORTED_MODULE_6__["ModelService"],
             _dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"],
-            _entity_service__WEBPACK_IMPORTED_MODULE_8__["EntityService"]])
+            jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"]])
     ], RelationshipDetailComponent);
     return RelationshipDetailComponent;
 }());
@@ -2833,7 +2933,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-4\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRelationship(searchBox.value)\" >\n      </div>\n      <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRelationship()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let relationship of relationshipList\" routerLink=\"/model/relationship/{{relationship.RELATIONSHIP_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(relationship)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{relationship.RELATIONSHIP_ID}}</h5>\n          <small>version: {{relationship.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{relationship.RELATIONSHIP_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{relationship.LAST_CHANGE_BY}} @{{relationship.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div class=\"col-8\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div *ngIf=\"isSearchListShown\" class=\"col-3\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRelationship(searchBox.value)\" >\n      </div>\n\n      <div class=\"btn-group\" role=\"group\">\n        <button class=\"btn\" type=\"button\" title=\"Hide\" (click)=\"hideSearchList()\" [disabled]=\"!theSelectedRelationship\">\n          <span class=\"fas fa-arrow-left\"></span>\n        </button>\n        <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRelationship()\">\n          <span class=\"fas fa-plus\"></span>\n        </button>\n      </div>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let relationship of relationshipList\" routerLink=\"/model/relationship/{{relationship.RELATIONSHIP_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(relationship)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{relationship.RELATIONSHIP_ID}}</h5>\n          <small>version: {{relationship.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{relationship.RELATIONSHIP_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{relationship.LAST_CHANGE_BY}} @{{relationship.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div [ngClass]=\"{'col-9': isSearchListShown, 'col-12': !isSearchListShown}\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2850,12 +2950,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2881,12 +2980,13 @@ var RelationshipComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.route = route;
         this.router = router;
+        this.isSearchListShown = true;
         this.searchTerms = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], 'EN');
     }
     RelationshipComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["switchMap"])(function (term) { return _this.entityService.listRelationship(term); })).subscribe(function (data) {
+        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (term) { return _this.entityService.listRelationship(term); })).subscribe(function (data) {
             _this.relationshipList = data;
             var relationshipID;
             if (_this.route.snapshot.firstChild) {
@@ -2924,6 +3024,11 @@ var RelationshipComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
+    };
+    RelationshipComponent.prototype.hideSearchList = function () {
+        this.isSearchListShown = false;
+        this.modelService.hideSearchList();
     };
     RelationshipComponent.prototype.onSelect = function (relationship) {
         if (relationship) {
@@ -2959,11 +3064,11 @@ var RelationshipComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./relationship.component.html */ "./src/app/model/relationship/relationship.component.html"),
             styles: [__webpack_require__(/*! ./relationship.component.css */ "./src/app/model/relationship/relationship.component.css")]
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_3__["EntityService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"],
-            ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_3__["ModelService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], RelationshipComponent);
     return RelationshipComponent;
 }());
@@ -2990,7 +3095,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-toolbar justify-content-end  mb-2\" role=\"toolbar\">\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"roleMeta\" [formGroup]=\"roleForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"roleForm.get('ROLE_ID').invalid && (roleForm.touched || roleForm.dirty)\" >\n    <label for=\"role\" class=\"col-form-label form-control-sm\">Role:\n      <span class=\"dk-invalid-feedback\">\n        {{roleForm.get('ROLE_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"role\" [readonly]=\"readonly || !isNewMode\"\n           name=\"role\" formControlName=\"ROLE_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"role-desc\" class=\"col-form-label form-control-sm\">Role Description:</label>\n    <textarea class=\"form-control\" id=\"role-desc\" name=\"role-desc\" rows=\"2\"\n              formControlName=\"ROLE_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRoleDesc()\"></textarea>\n  </div>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Relations</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Relation</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"RELATIONS\">\n        <tr *ngFor=\"let relationFormGroup of relationFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelation(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"relationFormGroup\"\n              [class.dk-invalid]=\"relationFormGroup.get('RELATION_ID').invalid && (relationFormGroup.touched || relationFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RELATION_ID\"\n                     [readonly]=\"readonly || oldRelation(relationFormGroup) && relationFormGroup.valid\" (change)=\"onChangeRelationID(i)\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-light btn-sm\" type=\"button\" id=\"button-addon2\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n              <div class=\"invalid-tooltip\">\n                {{relationFormGroup.get('RELATION_ID').errors?.message}}\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"relationFormGroup\">\n            <input type=\"text\" formControlName=\"RELATION_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"relationFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[0..1]</option>\n              <option>[1..1]</option>\n              <option>[0..n]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<div class=\"btn-toolbar mb-2\"  role=\"toolbar\"\n     [ngClass]=\"{'justify-content-end': isSearchListShown, 'justify-content-between': !isSearchListShown}\" >\n  <button *ngIf=\"!isSearchListShown\" class=\"btn\" type=\"button\" title=\"Show List\" (click)=\"showSearchList()\">\n    <span class=\"fas fa-arrow-right\"></span>\n  </button>\n\n  <div class=\"btn-group\" role=\"group\">\n    <button class=\"btn\" type=\"button\" title=\"Edit/Display\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"></span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"></span>\n    </button>\n    <button class=\"btn\" type=\"button\" title=\"Save\" (click)=\"save()\">\n      <span class=\"fas fa-save\"></span>\n    </button>\n  </div>\n</div>\n\n<dk-message></dk-message>\n<form *ngIf=\"roleMeta\" [formGroup]=\"roleForm\">\n  <div class=\"form-group\" [class.dk-invalid]=\"roleForm.get('ROLE_ID').invalid && (roleForm.touched || roleForm.dirty)\" >\n    <label for=\"role\" class=\"col-form-label form-control-sm\">Role:\n      <span class=\"dk-invalid-feedback\">\n        {{roleForm.get('ROLE_ID').errors?.message}}\n      </span>\n    </label>\n    <input type=\"text\" class=\"form-control form-control-sm\" id=\"role\" [readonly]=\"readonly || !isNewMode\"\n           name=\"role\" formControlName=\"ROLE_ID\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"role-desc\" class=\"col-form-label form-control-sm\">Role Description:</label>\n    <textarea class=\"form-control\" id=\"role-desc\" name=\"role-desc\" rows=\"2\"\n              formControlName=\"ROLE_DESC\" [readonly]=\"readonly\" (change)=\"onChangeRoleDesc()\"></textarea>\n  </div>\n\n  <div class=\"card mt-2\">\n    <div class=\"card-header\"><span class=\"fas fa-user-check\"></span> Relations</div>\n    <div class=\"card-body\">\n      <table class=\"table table-bordered table-sm dk-table\">\n        <thead class=\"thead-light\">\n        <tr>\n          <th scope=\"col\">Action</th>\n          <th scope=\"col\">Relation</th>\n          <th scope=\"col\">Description</th>\n          <th scope=\"col\">Cardinality</th>\n        </tr>\n        </thead>\n\n        <tbody formArrayName=\"RELATIONS\">\n        <tr *ngFor=\"let relationFormGroup of relationFormArray.controls; let i = index\">\n          <td class=\"dk-actions\">\n            <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelation(i)\" title=\"Delete\">\n              <span class=\"far fa-trash-alt\"></span>\n            </button>\n          </td>\n          <td [formGroup]=\"relationFormGroup\"\n              [class.dk-invalid]=\"relationFormGroup.get('RELATION_ID').invalid && (relationFormGroup.touched || relationFormGroup.dirty)\">\n            <div class=\"input-group\">\n              <input class=\"form-control form-control-sm\" type=\"text\" formControlName=\"RELATION_ID\"\n                     [readonly]=\"readonly || oldRelation(relationFormGroup) && relationFormGroup.valid\" (change)=\"onChangeRelationID(i)\">\n              <div class=\"invalid-tooltip\">\n                {{relationFormGroup.get('RELATION_ID').errors?.message}}\n              </div>\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" id=\"button-addon2\"\n                        (click)=\"onSearchHelp('RELATION_ID', relationFormGroup, i)\">\n                  <span class=\"fas fa-search\"></span>\n                </button>\n              </div>\n            </div>\n          </td>\n          <td [formGroup]=\"relationFormGroup\">\n            <input type=\"text\" formControlName=\"RELATION_DESC\" readonly class=\"form-control form-control-sm dk-description\">\n          </td>\n          <td [formGroup]=\"relationFormGroup\">\n            <select class=\"form-control form-control-sm\" formControlName=\"CARDINALITY\">\n              <option>[0..1]</option>\n              <option>[1..1]</option>\n              <option>[0..n]</option>\n              <option>[1..n]</option>\n            </select>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</form>\n\n<dk-app-search-help></dk-app-search-help>\n"
 
 /***/ }),
 
@@ -3011,11 +3116,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../model.service */ "./src/app/model/model.service.ts");
 /* harmony import */ var _dialog_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../dialog.service */ "./src/app/dialog.service.ts");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _model_validators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../model-validators */ "./src/app/model/model-validators.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3025,6 +3129,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -3051,7 +3157,8 @@ var RoleDetailComponent = /** @class */ (function () {
         this.isNewMode = false;
         this.changedRole = {};
         this.bypassProtection = false;
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_8__["msgStore"], 'EN');
+        this.isSearchListShown = true;
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
     }
     Object.defineProperty(RoleDetailComponent.prototype, "relationFormArray", {
         get: function () {
@@ -3062,7 +3169,7 @@ var RoleDetailComponent = /** @class */ (function () {
     });
     RoleDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["switchMap"])(function (params) {
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["switchMap"])(function (params) {
             var roleID = params.get('roleID');
             if (roleID === 'new') {
                 var role = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["RoleMeta"]();
@@ -3072,7 +3179,7 @@ var RoleDetailComponent = /** @class */ (function () {
                 _this.isNewMode = true;
                 _this.readonly = false;
                 _this.bypassProtection = false;
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(role);
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_9__["of"])(role);
             }
             else {
                 _this.readonly = true;
@@ -3092,6 +3199,30 @@ var RoleDetailComponent = /** @class */ (function () {
                 _this._generateRoleForm();
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
+    };
+    RoleDetailComponent.prototype.showSearchList = function () {
+        this.isSearchListShown = true;
+        this.modelService.showSearchList();
+    };
+    RoleDetailComponent.prototype.onSearchHelp = function (fieldName, control, rowID) {
+        var searchHelpMeta = new jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelp"]();
+        searchHelpMeta.OBJECT_NAME = 'Relation';
+        searchHelpMeta.METHOD = function (entityService) {
+            return function (searchTerm) { return entityService.listRelation(searchTerm); };
+        }(this.entityService);
+        searchHelpMeta.BEHAVIOUR = 'A';
+        searchHelpMeta.MULTI = false;
+        searchHelpMeta.FUZZY_SEARCH = true;
+        searchHelpMeta.FIELDS = [
+            { FIELD_NAME: 'RELATION_ID', FIELD_DESC: 'Relation', IMPORT: true, EXPORT: true, LIST_POSITION: 1, FILTER_POSITION: 0 },
+            { FIELD_NAME: 'RELATION_DESC', FIELD_DESC: 'Description', IMPORT: true, EXPORT: true, LIST_POSITION: 2, FILTER_POSITION: 0 }
+        ];
+        searchHelpMeta.READ_ONLY = this.readonly || this.oldRelation(control) && control.valid;
+        var afterExportFn = function (context, ruleIdx) {
+            return function () { return context.onChangeRelationID(ruleIdx, true); };
+        }(this, rowID).bind(this);
+        this.searchHelpComponent.openSearchHelpModal(searchHelpMeta, control, afterExportFn);
     };
     RoleDetailComponent.prototype._generateRoleForm = function () {
         var _this = this;
@@ -3193,7 +3324,7 @@ var RoleDetailComponent = /** @class */ (function () {
             this.relationFormArray.markAsDirty();
         }
     };
-    RoleDetailComponent.prototype.onChangeRelationID = function (index) {
+    RoleDetailComponent.prototype.onChangeRelationID = function (index, isExportedFromSH) {
         var currentRelationFormGroup = this.relationFormArray.controls[index];
         if (this.relationFormArray.controls.findIndex(function (relationCtrl, i) {
             return i !== index && relationCtrl.get('RELATION_ID').value === currentRelationFormGroup.get('RELATION_ID').value;
@@ -3209,14 +3340,16 @@ var RoleDetailComponent = /** @class */ (function () {
                 CARDINALITY: ['[0..1]']
             }));
         }
-        this.entityService.getRelationDesc(currentRelationFormGroup.value.RELATION_ID).subscribe(function (data) {
-            if (data['msgCat']) {
-                currentRelationFormGroup.get('RELATION_ID').setErrors({ message: data['msgShortText'] });
-            }
-            else {
-                currentRelationFormGroup.get('RELATION_DESC').setValue(data);
-            }
-        });
+        if (isExportedFromSH) {
+            this.entityService.getRelationDesc(currentRelationFormGroup.value.RELATION_ID).subscribe(function (data) {
+                if (data['msgCat']) {
+                    currentRelationFormGroup.get('RELATION_ID').setErrors({ message: data['msgShortText'] });
+                }
+                else {
+                    currentRelationFormGroup.get('RELATION_DESC').setValue(data);
+                }
+            });
+        }
     };
     RoleDetailComponent.prototype.oldRelation = function (formGroup) {
         return this.roleMeta.RELATIONS ?
@@ -3325,6 +3458,10 @@ var RoleDetailComponent = /** @class */ (function () {
             }
         }
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"]),
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_1__["SearchHelpComponent"])
+    ], RoleDetailComponent.prototype, "searchHelpComponent", void 0);
     RoleDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-role-detail',
@@ -3334,11 +3471,11 @@ var RoleDetailComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _model_validators__WEBPACK_IMPORTED_MODULE_11__["UniqueRoleValidator"],
+            _model_validators__WEBPACK_IMPORTED_MODULE_10__["UniqueRoleValidator"],
             ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"],
             _model_service__WEBPACK_IMPORTED_MODULE_5__["ModelService"],
             _dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"],
-            _entity_service__WEBPACK_IMPORTED_MODULE_7__["EntityService"]])
+            jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"]])
     ], RoleDetailComponent);
     return RoleDetailComponent;
 }());
@@ -3365,7 +3502,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-4\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRole(searchBox.value)\" >\n      </div>\n      <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRole()\">\n        <span class=\"fas fa-plus\"></span>\n      </button>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let role of roleList\" routerLink=\"/model/role/{{role.ROLE_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(role)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{role.ROLE_ID}}</h5>\n          <small>version: {{role.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{role.ROLE_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{role.LAST_CHANGE_BY}} @{{role.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div class=\"col-8\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div *ngIf=\"isSearchListShown\" class=\"col-3\">\n    <div class=\"btn-toolbar justify-content-between mb-2\" role=\"toolbar\">\n      <div class=\"input-group\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchBox (keyup)=\"searchRole(searchBox.value)\" >\n      </div>\n      <div class=\"btn-group\" role=\"group\">\n        <button class=\"btn\" type=\"button\" title=\"Hide\" (click)=\"hideSearchList()\" [disabled]=\"!theSelectedRole\">\n          <span class=\"fas fa-arrow-left\"></span>\n        </button>\n        <button class=\"btn\" type=\"button\" title=\"Add\" (click)=\"newRole()\">\n          <span class=\"fas fa-plus\"></span>\n        </button>\n      </div>\n    </div>\n    <div class=\"list-group\">\n      <a *ngFor=\"let role of roleList\" routerLink=\"/model/role/{{role.ROLE_ID}}\" routerLinkActive=\"active\"\n         (click)=\"onSelect(role)\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n        <div class=\"d-flex w-100 justify-content-between\">\n          <h5 class=\"mb-1\">{{role.ROLE_ID}}</h5>\n          <small>version: {{role.VERSION_NO}}</small>\n        </div>\n        <p class=\"mb-1\">{{role.ROLE_DESC}}</p>\n        <!--<small>created by: {{entityType.CREATE_BY}} @{{entityType.CREATE_TIME}}</small> <br/>-->\n        <small>last changed by: {{role.LAST_CHANGE_BY}} @{{role.LAST_CHANGE_TIME}}</small>\n      </a>\n    </div>\n  </div>\n  <div [ngClass]=\"{'col-9': isSearchListShown, 'col-12': !isSearchListShown}\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -3382,12 +3519,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jor-angular */ "./dist/jor-angular/fesm5/jor-angular.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _entity_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../entity.service */ "./src/app/entity.service.ts");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model.service */ "./src/app/model/model.service.ts");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "./node_modules/ui-message-angular/fesm5/ui-message-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../msgStore */ "./src/app/msgStore.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3413,12 +3549,13 @@ var RoleComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.route = route;
         this.router = router;
+        this.isSearchListShown = true;
         this.searchTerms = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_7__["msgStore"], 'EN');
+        this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], 'EN');
     }
     RoleComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["switchMap"])(function (term) { return _this.entityService.listRole(term); })).subscribe(function (data) {
+        this.searchTerms.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (term) { return _this.entityService.listRole(term); })).subscribe(function (data) {
             _this.roleList = data;
             var roleID;
             if (_this.route.snapshot.firstChild) {
@@ -3456,6 +3593,7 @@ var RoleComponent = /** @class */ (function () {
                 }
             }
         });
+        this.modelService.isSearchListShown$.subscribe(function (data) { return _this.isSearchListShown = data; });
     };
     RoleComponent.prototype.onSelect = function (role) {
         if (role) {
@@ -3465,6 +3603,10 @@ var RoleComponent = /** @class */ (function () {
     };
     RoleComponent.prototype.searchRole = function (term) {
         this.searchTerms.next(term);
+    };
+    RoleComponent.prototype.hideSearchList = function () {
+        this.isSearchListShown = false;
+        this.modelService.hideSearchList();
     };
     RoleComponent.prototype.newRole = function () {
         if (this.route.snapshot.firstChild && this.route.snapshot.firstChild.paramMap.get('roleID') === 'new') {
@@ -3491,49 +3633,13 @@ var RoleComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./role.component.html */ "./src/app/model/role/role.component.html"),
             styles: [__webpack_require__(/*! ./role.component.css */ "./src/app/model/role/role.component.css")]
         }),
-        __metadata("design:paramtypes", [_entity_service__WEBPACK_IMPORTED_MODULE_3__["EntityService"],
-            _model_service__WEBPACK_IMPORTED_MODULE_4__["ModelService"],
-            ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+        __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_1__["EntityService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_3__["ModelService"],
+            ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], RoleComponent);
     return RoleComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/model/work-protection.guard.ts":
-/*!************************************************!*\
-  !*** ./src/app/model/work-protection.guard.ts ***!
-  \************************************************/
-/*! exports provided: WorkProtectionGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkProtectionGuard", function() { return WorkProtectionGuard; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var WorkProtectionGuard = /** @class */ (function () {
-    function WorkProtectionGuard() {
-    }
-    WorkProtectionGuard.prototype.canDeactivate = function (component, currentRoute, currentState, nextState) {
-        return component.canDeactivate ? component.canDeactivate() : true;
-    };
-    WorkProtectionGuard = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        })
-    ], WorkProtectionGuard);
-    return WorkProtectionGuard;
 }());
 
 
