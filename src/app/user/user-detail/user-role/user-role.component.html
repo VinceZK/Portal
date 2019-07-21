@@ -12,15 +12,16 @@
       <td [formGroup]="userRoleForm"
           [class.dk-invalid]="userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)">
         <div class="input-group dk-name">
-            <input class="form-control" type="text" formControlName="NAME"
-                 [readonly]="readonly || oldRole(userRoleForm) && userRoleForm.valid" (change)="onChangeRoleID(i)">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary btn-light" type="button" id="button-addon2">
-              <span class="fas fa-search"></span>
-            </button>
-          </div>
+          <input class="form-control" type="text" formControlName="NAME"
+               [readonly]="readonly || oldRole(userRoleForm) && userRoleForm.valid" (change)="onChangeRoleID(i)">
           <div class="invalid-tooltip">
             {{userRoleForm.get('NAME').errors?.message}}
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary btn-light" type="button" id="searchPermission"
+            (click)="onSearchHelp(i, userRoleForm)">
+              <span class="fas fa-search"></span>
+            </button>
           </div>
         </div>
       </td>
@@ -35,3 +36,5 @@
     </tr>
   </tbody>
 </table>
+
+<dk-app-search-help></dk-app-search-help>

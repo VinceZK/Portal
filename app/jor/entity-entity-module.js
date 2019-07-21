@@ -83639,7 +83639,7 @@ var EntityRelationshipComponent = /** @class */ (function () {
         this.readonlyAttribute = false;
     };
     EntityRelationshipComponent.prototype.onSearchHelp = function (entityID, exportObject) {
-        this.searchHelpComponent.openSearchHelpModalByEntity(entityID, exportObject, this.readonlyPartner);
+        this.searchHelpComponent.openSearchHelpModalByEntity(entityID, entityID, exportObject, this.readonlyPartner);
     };
     EntityRelationshipComponent.prototype.showModalForDisplay = function (index) {
         this._getRelationshipDetailValue(index);

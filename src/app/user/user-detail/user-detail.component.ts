@@ -95,6 +95,7 @@ export class UserDetailComponent implements OnInit {
         this._switch2DisplayMode();
       }
     }
+    this.messageService.clearMessages();
   }
 
   _switch2DisplayMode(): void {

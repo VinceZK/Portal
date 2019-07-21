@@ -136,6 +136,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _identity_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./identity.service */ "./src/app/identity.service.ts");
 /* harmony import */ var _share_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./share.service */ "./src/app/share.service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jor-angular */ "./node_modules/jor-angular/fesm5/jor-angular.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -153,14 +155,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, activatedRoute, identityService, shareService, historyService) {
+    function AppComponent(router, activatedRoute, identityService, shareService, historyService, entityService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.identityService = identityService;
         this.shareService = shareService;
         this.historyService = historyService;
+        this.entityService = entityService;
         this.isCollapsed = false;
+        this.entityService.setOriginalHost(_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].originalHost);
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -206,7 +212,8 @@ var AppComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _identity_service__WEBPACK_IMPORTED_MODULE_5__["IdentityService"],
             _share_service__WEBPACK_IMPORTED_MODULE_6__["ShareService"],
-            _history_service__WEBPACK_IMPORTED_MODULE_3__["HistoryService"]])
+            _history_service__WEBPACK_IMPORTED_MODULE_3__["HistoryService"],
+            jor_angular__WEBPACK_IMPORTED_MODULE_8__["EntityService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -247,12 +254,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_user_detail_user_email_user_email_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/user-detail/user-email/user-email.component */ "./src/app/user/user-detail/user-email/user-email.component.ts");
 /* harmony import */ var _user_user_detail_user_address_user_address_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user-detail/user-address/user-address.component */ "./src/app/user/user-detail/user-address/user-address.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! jor-angular */ "./node_modules/jor-angular/fesm5/jor-angular.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -303,6 +312,7 @@ var AppModule = /** @class */ (function () {
                 _external_app_external_app_module__WEBPACK_IMPORTED_MODULE_8__["ExternalAppModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
+                jor_angular__WEBPACK_IMPORTED_MODULE_22__["JorAngularModule"]
             ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]
@@ -2283,6 +2293,7 @@ var UserDetailComponent = /** @class */ (function () {
                 this._switch2DisplayMode();
             }
         }
+        this.messageService.clearMessages();
     };
     UserDetailComponent.prototype._switch2DisplayMode = function () {
         this.readonly = true;
@@ -2801,7 +2812,7 @@ module.exports = ".dk-table {\n  display: block;\n  overflow-x: auto;\n  white-s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-bordered dk-table ml-3 mt-4\" [formGroup]=\"userForm\">\n  <thead class=\"thead-light dk-form-label\">\n    <tr>\n      <th scope=\"col\">Role</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n  </thead>\n\n  <tbody formArrayName=\"userRole\" class=\"mb-4\">\n    <tr *ngFor=\"let userRoleForm of userRoleFormArray.controls; let i = index\">\n      <td [formGroup]=\"userRoleForm\"\n          [class.dk-invalid]=\"userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)\">\n        <div class=\"input-group dk-name\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"NAME\"\n                 [readonly]=\"readonly || oldRole(userRoleForm) && userRoleForm.valid\" (change)=\"onChangeRoleID(i)\">\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary btn-light\" type=\"button\" id=\"button-addon2\">\n              <span class=\"fas fa-search\"></span>\n            </button>\n          </div>\n          <div class=\"invalid-tooltip\">\n            {{userRoleForm.get('NAME').errors?.message}}\n          </div>\n        </div>\n      </td>\n      <td [formGroup]=\"userRoleForm\" class=\"dk-description\">\n        <input type=\"text\" formControlName=\"DESCRIPTION\" readonly class=\"form-control\">\n      </td>\n      <td class=\"dk-actions\">\n        <button class=\"btn\" type=\"button\" id=\"delete\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n"
+module.exports = "<table class=\"table table-bordered dk-table ml-3 mt-4\" [formGroup]=\"userForm\">\n  <thead class=\"thead-light dk-form-label\">\n    <tr>\n      <th scope=\"col\">Role</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n  </thead>\n\n  <tbody formArrayName=\"userRole\" class=\"mb-4\">\n    <tr *ngFor=\"let userRoleForm of userRoleFormArray.controls; let i = index\">\n      <td [formGroup]=\"userRoleForm\"\n          [class.dk-invalid]=\"userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)\">\n        <div class=\"input-group dk-name\">\n          <input class=\"form-control\" type=\"text\" formControlName=\"NAME\"\n               [readonly]=\"readonly || oldRole(userRoleForm) && userRoleForm.valid\" (change)=\"onChangeRoleID(i)\">\n          <div class=\"invalid-tooltip\">\n            {{userRoleForm.get('NAME').errors?.message}}\n          </div>\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary btn-light\" type=\"button\" id=\"searchPermission\"\n            (click)=\"onSearchHelp(i, userRoleForm)\">\n              <span class=\"fas fa-search\"></span>\n            </button>\n          </div>\n        </div>\n      </td>\n      <td [formGroup]=\"userRoleForm\" class=\"dk-description\">\n        <input type=\"text\" formControlName=\"DESCRIPTION\" readonly class=\"form-control\">\n      </td>\n      <td class=\"dk-actions\">\n        <button class=\"btn\" type=\"button\" id=\"delete\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<dk-app-search-help></dk-app-search-help>\n"
 
 /***/ }),
 
@@ -2818,6 +2829,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _identity_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../identity.service */ "./src/app/identity.service.ts");
+/* harmony import */ var jor_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jor-angular */ "./node_modules/jor-angular/fesm5/jor-angular.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2827,6 +2839,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -2882,6 +2895,12 @@ var UserRoleComponent = /** @class */ (function () {
         var existIndex = this.userRoleFormArray.controls.findIndex(function (role) { return role.value.NAME === userRoleForm.value.NAME && role.pristine && role.value.NAME !== ''; });
         return existIndex !== -1;
     };
+    UserRoleComponent.prototype.onSearchHelp = function (rowID, exportObject) {
+        var afterExportFn = function (context, ruleIdx) {
+            return function () { return context.onChangeRoleID(ruleIdx); };
+        }(this, rowID).bind(this);
+        this.searchHelpComponent.openSearchHelpModalByEntity('permission', 'r_role', exportObject, this.readonly, afterExportFn);
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
@@ -2890,6 +2909,10 @@ var UserRoleComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])
     ], UserRoleComponent.prototype, "userForm", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"]),
+        __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"])
+    ], UserRoleComponent.prototype, "searchHelpComponent", void 0);
     UserRoleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-role',

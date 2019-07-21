@@ -6,6 +6,8 @@ import {filter, map, mergeMap} from "rxjs/operators";
 import {IdentityService} from "./identity.service";
 import {ShareService} from "./share.service";
 import {of} from "rxjs";
+import {EntityService} from "jor-angular";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -21,8 +23,11 @@ export class AppComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private identityService: IdentityService,
               private shareService: ShareService,
-              private historyService: HistoryService
-  ) { }
+              private historyService: HistoryService,
+              private entityService: EntityService
+  ) {
+    this.entityService.setOriginalHost(environment.originalHost);
+  }
 
   ngOnInit() {
     this.router.events.pipe(

@@ -20,6 +20,7 @@ import {UserRoleComponent} from "./user/user-detail/user-role/user-role.componen
 import {UserEmailComponent} from "./user/user-detail/user-email/user-email.component";
 import {UserAddressComponent} from "./user/user-detail/user-address/user-address.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {JorAngularModule, SearchHelpComponent} from "jor-angular";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ExternalAppModule,
     AppRoutingModule,
     HttpClientModule,
+    JorAngularModule
   ],
   bootstrap: [
     AppComponent

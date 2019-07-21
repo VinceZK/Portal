@@ -869,8 +869,12 @@ var SearchHelpComponent = /** @class */ (function () {
         this.filterFields = this.searchHelpMeta.FIELDS.filter(function (fieldMeta) { return fieldMeta.FILTER_POSITION; });
         this.filterFields.sort(function (a, b) { return a.FILTER_POSITION - b.FILTER_POSITION; });
         this.filterFields.forEach(function (fieldMeta) {
-            if (fieldMeta.IMPORT && exportControl.get(fieldMeta.FIELD_NAME)) {
-                fieldMeta.DEFAULT_VALUE = exportControl.get(fieldMeta.FIELD_NAME).value;
+            if (fieldMeta.IMPORT) {
+                /** @type {?} */
+                var ieFieldName = fieldMeta.IE_FIELD_NAME || fieldMeta.FIELD_NAME;
+                if (exportControl.get(ieFieldName)) {
+                    fieldMeta.DEFAULT_VALUE = exportControl.get(fieldMeta.FIELD_NAME).value;
+                }
             }
             _this.filterFieldsFormGroup.addControl(fieldMeta.FIELD_NAME, _this.fb.control(fieldMeta.DEFAULT_VALUE));
         });
@@ -887,6 +891,7 @@ var SearchHelpComponent = /** @class */ (function () {
     };
     /**
      * @param {?} entityID
+     * @param {?} relationID
      * @param {?} exportControl
      * @param {?} readonly
      * @param {?=} afterExportFn
@@ -894,12 +899,13 @@ var SearchHelpComponent = /** @class */ (function () {
      */
     SearchHelpComponent.prototype.openSearchHelpModalByEntity = /**
      * @param {?} entityID
+     * @param {?} relationID
      * @param {?} exportControl
      * @param {?} readonly
      * @param {?=} afterExportFn
      * @return {?}
      */
-    function (entityID, exportControl, readonly, afterExportFn) {
+    function (entityID, relationID, exportControl, readonly, afterExportFn) {
         var _this = this;
         /** @type {?} */
         var searchHelpMeta = new SearchHelp();
@@ -913,8 +919,8 @@ var SearchHelpComponent = /** @class */ (function () {
         searchHelpMeta.FIELDS = [];
         searchHelpMeta.READ_ONLY = readonly;
         searchHelpMeta.ENTITY_ID = entityID;
-        searchHelpMeta.RELATION_ID = entityID;
-        this.entityService.getRelationMeta(entityID)
+        searchHelpMeta.RELATION_ID = relationID;
+        this.entityService.getRelationMeta(relationID)
             .subscribe(function (data) {
             /** @type {?} */
             var relationMeta = (/** @type {?} */ (data));
@@ -922,8 +928,8 @@ var SearchHelpComponent = /** @class */ (function () {
                 return searchHelpMeta.FIELDS.push({
                     FIELD_NAME: attribute.ATTR_NAME,
                     FIELD_DESC: attribute.ATTR_DESC,
-                    IMPORT: false,
-                    EXPORT: false,
+                    IMPORT: attribute.PRIMARY_KEY,
+                    EXPORT: attribute.PRIMARY_KEY,
                     LIST_POSITION: attribute.ORDER,
                     FILTER_POSITION: attribute.ORDER
                 });
@@ -1056,7 +1062,9 @@ var SearchHelpComponent = /** @class */ (function () {
                 /** @type {?} */
                 var exportControl = (/** @type {?} */ (_this.exportControl));
                 /** @type {?} */
-                var exportFieldControl = exportControl.get(listField.FIELD_NAME);
+                var ieFieldName = listField.IE_FIELD_NAME || listField.FIELD_NAME;
+                /** @type {?} */
+                var exportFieldControl = exportControl.get(ieFieldName);
                 if (listField.EXPORT && exportFieldControl) {
                     exportFieldControl.setValue(_this.listData[_this.selectedIndex][listField.FIELD_NAME]);
                     exportFieldControl.markAsDirty();

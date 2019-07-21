@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {IdentityService} from "../../../identity.service";
+import {SearchHelp, SearchHelpComponent, SearchHelpMethod} from "jor-angular";
 
 @Component({
   selector: 'app-user-role',
@@ -14,6 +15,9 @@ export class UserRoleComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private identityService: IdentityService) { }
+
+  @ViewChild(SearchHelpComponent)
+  private searchHelpComponent: SearchHelpComponent;
 
   ngOnInit() {
     this.userRoleFormArray = this.userForm.get('userRole') as FormArray;
@@ -68,4 +72,13 @@ export class UserRoleComponent implements OnInit {
       role => role.value.NAME === userRoleForm.value.NAME && role.pristine && role.value.NAME !== '');
     return existIndex !== -1 ;
   }
+
+  onSearchHelp(rowID: number, exportObject: AbstractControl): void {
+    const afterExportFn = function (context: any, ruleIdx: number) {
+      return () => context.onChangeRoleID(ruleIdx);
+    }(this, rowID).bind(this);
+    this.searchHelpComponent.openSearchHelpModalByEntity('permission', 'r_role',
+      exportObject, this.readonly, afterExportFn);
+  }
+
 }
