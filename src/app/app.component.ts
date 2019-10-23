@@ -8,6 +8,7 @@ import {ShareService} from "./share.service";
 import {of} from "rxjs";
 import {EntityService} from "jor-angular";
 import {environment} from "../environments/environment";
+import {App} from "./role";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import {environment} from "../environments/environment";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(SideMenuComponent)
+  @ViewChild(SideMenuComponent, { static: true })
   private sideMenu: SideMenuComponent;
 
   isCollapsed = false;
@@ -53,9 +54,9 @@ export class AppComponent implements OnInit {
         }
       }))
       .subscribe(app => {
-        if (app && app.routeLink) {
-          this.sideMenu.activateApp(app);
-          this.historyService.addHistory(app);
+        if (app && app['routeLink']) {
+          this.sideMenu.activateApp(<App>app);
+          this.historyService.addHistory(<App>app);
         }
       });
   }

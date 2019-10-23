@@ -11,8 +11,8 @@ const routes: Routes = [
   // { path: 'users', loadChildren: 'app/user/user.module#UserModule'},
   { path: 'users', component: UserListComponent},
   { path: 'users/:userID', component: UserDetailComponent, canDeactivate: [WorkProtectionGuard]},
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
-  { path: 'handsontable', loadChildren: 'app/handsontable/handsontable.module#HandsontableModule'},
+  { path: 'dashboard', loadChildren: () => import('app/dashboard/dashboard.module').then(m => m.DashboardModule)},
+  { path: 'handsontable', loadChildren: () => import('app/handsontable/handsontable.module').then(m => m.HandsontableModule)},
   { path: 'errors', component: ErrorPageComponent },
   { path: 'pageNotFound', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent }

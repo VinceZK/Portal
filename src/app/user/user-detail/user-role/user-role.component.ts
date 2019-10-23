@@ -16,7 +16,7 @@ export class UserRoleComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private identityService: IdentityService) { }
 
-  @ViewChild(SearchHelpComponent)
+  @ViewChild(SearchHelpComponent, { static: true })
   private searchHelpComponent: SearchHelpComponent;
 
   ngOnInit() {

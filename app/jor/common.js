@@ -18,6 +18,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var DialogService = /** @class */ (function () {
@@ -53,6 +56,9 @@ var DialogService = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "msgStore", function() { return msgStore; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var msgStore = [
     { msgCat: 'EXCEPTION',
         msgName: 'GENERIC',
@@ -171,6 +177,12 @@ var msgStore = [
         }
     },
     { msgCat: 'MODEL',
+        msgName: 'MISS_RELATION_ASSOCIATION_FIELD_MAPPING',
+        msgText: {
+            EN: { shortText: 'There are no fields-mappings defined for association \'%s\'', longText: '' }
+        }
+    },
+    { msgCat: 'MODEL',
         msgName: 'RELATION_SAVED',
         msgText: {
             EN: { shortText: 'Relation "%s" is saved', longText: '' }
@@ -186,6 +198,18 @@ var msgStore = [
         msgName: 'RELATIONSHIP_LACK_INVOLVED_ROLES',
         msgText: {
             EN: { shortText: 'A relationship must at least have 2 involved roles', longText: '' }
+        }
+    },
+    { msgCat: 'MODEL',
+        msgName: 'DATA_ELEMENT_SAVED',
+        msgText: {
+            EN: { shortText: 'Data element "%s" is saved', longText: '' }
+        }
+    },
+    { msgCat: 'MODEL',
+        msgName: 'DATA_DOMAIN_SAVED',
+        msgText: {
+            EN: { shortText: 'Data domain "%s" is saved', longText: '' }
         }
     },
     { msgCat: 'MODEL',
@@ -215,6 +239,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 var WorkProtectionGuard = /** @class */ (function () {

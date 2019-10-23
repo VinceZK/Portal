@@ -1,8 +1,8 @@
 # Build a Real CRUD App using Angular
-Well, there are tongs of blogs on how to build a CRUD app. But this blog is trying to focus on the word **“Real”**. 
+Well, there are tons of blogs on how to build a CRUD app. But this blog is trying to focus on the word **“Real”**. 
 Lots of examples show people how easy it is to build a CRUD app. 
 As I never think it is that easy, so I try to tell how difficult it is? 
-What are the hiding or missing pieces in those easy examples? And how we can simplified it without losing qualities.
+What are the hiding or missing pieces in those easy examples? And how we can simplified it without losing qualities?````
 
 I will use the example of user management module, which almost every system needs. 
 It is a good example to dive into the nitty-gritty. 

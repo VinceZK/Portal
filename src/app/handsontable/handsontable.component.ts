@@ -8,13 +8,13 @@ import * as Handsontable from 'handsontable';
 })
 export class HandsontableComponent implements OnInit {
   data: any[];
-  settingsObj: Handsontable.GridSettings;
+  settingsObj: Handsontable.default.GridSettings;
 
   constructor() { }
 
   ngOnInit() {
 
-    function flagRenderer(instance, td, row, col, prop, value, cellProperties) {
+    function flagRenderer(instance, td, row, col, prop, value) {
       const currencyCode = value;
       const currencyCodes = ['EUR', 'JPY', 'GBP', 'CHF', 'CAD', 'AUD', 'NZD', 'SEK', 'NOK', 'BRL', 'CNY', 'RUB',
         'INR', 'TRY', 'THB', 'IDR', 'MYR', 'MXN', 'ARS', 'DKK', 'ILS', 'PHP'];
@@ -93,7 +93,8 @@ export class HandsontableComponent implements OnInit {
         'Units',
         'Date',
         'Change'
-      ]
+      ],
+      licenseKey: 'non-commercial-and-evaluation'
     };
   }
 

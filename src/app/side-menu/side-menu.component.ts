@@ -31,7 +31,7 @@ export class SideMenuComponent implements OnInit {
   apps$: Observable<App[]>;
   searchedApps: App[];
 
-  @ViewChild('sideMenu')
+  @ViewChild('sideMenu', { static: true })
   sideMenu: ElementRef;
 
   constructor(private identityService: IdentityService,
