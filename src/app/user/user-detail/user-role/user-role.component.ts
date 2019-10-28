@@ -78,7 +78,7 @@ export class UserRoleComponent implements OnInit {
       return () => context.onChangeRoleID(ruleIdx);
     }(this, rowID).bind(this);
     this.searchHelpComponent.openSearchHelpModalByEntity('permission', 'r_role',
-      exportObject, this.readonly, afterExportFn);
+      exportObject, this.readonly, null, null, afterExportFn);
   }
 
 }

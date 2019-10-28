@@ -1,3 +1,54 @@
+### Query Entities
+POST https://darkhouse.com.cn/api/query
+Accept: */*
+Cookie: sessionID=s%3A6cmSe-P-NalpyZxbKIJrNCPBG1tKeLuH.Q0gDQ4YHU9Q2RBTWvPUqc6adIepumh7q%2Bex2IT8D7n8
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "ENTITY_ID":"customer",
+  "RELATION_ID":"customer",
+  "PROJECTION":["CUSTOMER_NAME","TYPE","CREATED_BY","CREATE_TIME","CHANGED_BY","CHANGE_TIME"],
+  "FILTER":[{"FIELD_NAME":"CUSTOMER_NAME","OPERATOR":"EQ","LOW":"Candy Lover","HIGH":""}]
+}
+
+### Get an Entity Instance
+GET https://darkhouse.com.cn/api/entity/instance/BDB10BD0F66411E987B477267358BDE8
+Accept: */*
+Cookie: sessionID=s%3A6cmSe-P-NalpyZxbKIJrNCPBG1tKeLuH.Q0gDQ4YHU9Q2RBTWvPUqc6adIepumh7q%2Bex2IT8D7n8
+Cache-Control: no-cache
+Content-Type: application/json
+
+### Change an Entity Instance by adding an new address
+PUT https://darkhouse.com.cn/api/entity
+Accept: */*
+Cookie: sessionID=s%3A6cmSe-P-NalpyZxbKIJrNCPBG1tKeLuH.Q0gDQ4YHU9Q2RBTWvPUqc6adIepumh7q%2Bex2IT8D7n8
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "ENTITY_ID":"customer",
+  "INSTANCE_GUID":"BDB10BD0F66411E987B477267358BDE8",
+  "r_retail_customer":{"action":"update", "CUSTOMER_NO":"C0001","CELL_PHONE":"+8613712394666"},
+  "r_address":[
+    {"action":"add","TYPE":"WORK","ADDRESS_VALUE":"#1001, XXX Road, Shanghai","POSTCODE":"200001","CITY":"Shanghai","COUNTRY":"China"}]
+}
+
+### Get Role Detail 2
+POST http://localhost:3000/api/function/getRoleDetail2
+Accept: */*
+Cookie: sessionID=s%3AXM3xZC3EZ6kc_q9kZ9OXZE0-sDZAoZSh.J3Au%2BQyqk%2FSPNsbjdpzZTVvQhQV86V1HRUEkPOqbJls
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "userID": "DH001"
+}
+
+###
+
+
+
 ### Get pieces of an entity instance through its business ID.
 POST http://localhost:3000/api/function/getRoleDetail
 Accept: */*
