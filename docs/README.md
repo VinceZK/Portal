@@ -2,14 +2,14 @@
 Well, there are tons of blogs on how to build a CRUD app. But this blog is trying to focus on the word **“Real”**. 
 Lots of examples show people how easy it is to build a CRUD app. 
 As I never think it is that easy, so I try to tell how difficult it is? 
-What are the hiding or missing pieces in those easy examples? And how we can simplified it without losing qualities?````
+What are the hiding or missing pieces in those easy examples? And how we can simplified it without losing qualities?
 
 I will use the example of user management module, which almost every system needs. 
 It is a good example to dive into the nitty-gritty. 
-A user is a person who has been granted permissions to access a system’s resource. 
-You will read a lot of thoughts, patterns, and difficulties in developing such kind of Apps.
+A "user" is a person who has been granted permissions to access a system’s resource. 
+You will read a lot of thoughts, patterns, as well as difficulties in developing such kind of Apps.
 
-I use Angular as the UI technology. Because our philosophy agrees, mainly on the bidirectional binding and component structuring. 
+I use Angular as the UI technology, because our philosophy agrees, mainly on the bidirectional binding and component structuring. 
 Of course, a CRUD app involves a lot of other technologies. Some are so essential that we just forget their existences. 
 Besides OS and Database, I build the app on NodeJS stack. 
 You can have a first glance on the [demo](https://darkhouse.com.cn/portal/users) to see if it worth your time to continue reading. 
@@ -17,8 +17,8 @@ The complete code is hosted in [Github](https://github.com/VinceZK/Portal/tree/m
 
 ## Modeling First
 Now the first question, where to start? Some prefer to draw a UI mockup, 
-while others prefer to design the DB tables. Whichever approach, you are actually modeling. 
-You are thinking about what attributes a user should have. So, let’s try in the trendy way, using JSON for modeling.
+while others prefer to design the DB tables. Whichever approach, you are actually doing modeling. 
+You are thinking about what attributes a "user" should have. So, let’s try in the trendy way, using JSON for modeling.
  ```json
 {"r_user": {"USER_ID": "DH001", "USER_NAME": "VINCEZK", "PASSWORD": "Dark1234", "PWD_STATE": 1, "LOCK": null,
 	          "DISPLAY_NAME": "Vincent Zhang", "FAMILY_NAME": "Zhang", "GIVEN_NAME": "Vincent", "MIDDLE_NAME": null},
@@ -45,17 +45,17 @@ For example, “r_user” is a relation which groups some related attributes tog
 In case the relation has multiple tuples, then use array, like “r_email” and “r_address”. 
 If the entity has relationships with other entities, then refer “relationshipWithRole”.  
 
-Now, with this JSON model, we can extend up and down: the UI, and the database. 
-Which one first? Well, if you have stakeholders, please do the UI first. 
+With this JSON model, we can extend up and down: to the UI and to the database. 
+Which one first? Well, if you have stakeholders, please do the UI part first. 
 In my case, since I have no such pressure, I will do the database first.
 
-Here comes the old problem: Object Relational Mapping. The JSON model I did is object-based. 
-Should I store it in the same object fashion? My answer is always “No”. 
-We store data only because we will report them in future. 
+Here comes the old problem: Object Relational Mapping. The JSON model I did is object-oriented. 
+Should I store it using the same object fashion? My answer is always “No”. 
+We store data only because we will report them later. 
 And when reporting data, we are dealing with “Set” more than “Object”. 
 If I invest less during data store, then I will payback when reporting on them. 
 So I choose a Relational Database and I will do the object relational mapping using 
-the framework [JSON-on-Relations](https://github.com/VinceZK/json-on-relations).
+the framework [JSON-On-Relations](https://github.com/VinceZK/json-on-relations).
 
 Since a user is a person, so I create 2 roles “system_user” and “employee”, and assign them to the person entity.
 ![Entity: Person](EntityPerson.png)  
@@ -65,15 +65,15 @@ Each relation has its cardinality setting.
 For example: “[1..1]” for “r_user” means each entity instance must have 1 item in relation “r_user”.
 ![Role: system_user](RoleSystemUser.png)  
 
-With the graphic modeling tool of [JSON-on-Relations](https://github.com/VinceZK/json-on-relations), 
+With the graphic modeling tool of [JSON-On-Relations](https://github.com/VinceZK/json-on-relations), 
 I can easily create the DB tables and make them compose the “user” entity. 
 As you can see, it follows Entity-Relationship Model concept, which sounds outmoded, 
-but actually is more profound than ORM stuff nowadays. 
-Besides, [JSON-on-Relations](https://github.com/VinceZK/json-on-relations)
+but actually is more profound than ORM stuff nowadays who tries to hide database. 
+In addition, [JSON-On-Relations](https://github.com/VinceZK/json-on-relations)
  provides out-of-box RESTful APIs to allow CRUD operations on an entity.
 
-But modeling is not an easy piece. Tools can only help you to create it in DB, but can not help you to design it. 
-The tricky thing in modeling is how to achieve applicability, extensibility, and reusability. 
+But modeling by iteself is not an easy piece. Tools can only help you to draw it, but can not help you to design it. 
+The tricky thing is how to achieve applicability, extensibility, and reusability. 
 People are talking about “growing architecture”, which I don’t believe it works in data modeling. 
 A careful design on data modeling is essential to the life of your software. 
 There is just no “growing” on a poor data model.
@@ -88,16 +88,15 @@ As you seen, modeling is actually philosopher thinking, metaphysics, especially.
 ## Draw UI
 A CRUD App, from architecture point of view, usually has 3 layers: DB, server-side logic, and UI-side logic. 
 The whole business logic is spread among them. It is hardly to eliminate anyone of them. 
-The server-side logic is used to glue DB and UI. 
-Without this middle layer, UI may have to load the whole data from the DB. 
-Just like you open an Office document on your desktop. 
-But bear in mind, **a CRUD App is used by multiple users for concurrency accessing**. 
-That is the fundamental difference comparing with personal Apps. So next, I will draw the UI.
+The server-side logic is used to glue DB and UI. Without this middle layer, the UI layer may have to load the whole data from the DB. 
+However, bear in mind, **a CRUD App is used by multiple users for concurrency accessing**. 
+That is one of the fundamental differences comparing with, for example, using the Office App to access an WORD document. 
 
-Depends on how you are familiar with the UI technologies, you can either draw the UI with a pencil and paper, 
-or leverage some UI mockup tools, or directly using the formal UI development tools. 
+So next, I will draw the UI. Depends on how you are familiar with the UI technologies, 
+you can either draw the UI with a pencil and paper, or leverage some UI mock-up tools, 
+or directly using the formal UI development tools. 
 Since I already have the UI in mind during modeling, and I can freely draw it using HTML and CSS, 
-then I can save some time to convert UI mockups to the real UIs. My UI has 2 pages: Search&List page and Detail page.
+then I can save some time to convert UI mock-ups to the real UIs. My UI has 2 pages: Search&List page and Detail page.
 
 ![Search&List Page](SearchListPage.png)  
 
@@ -115,20 +114,19 @@ I only want to draw it down and to see if it fits my idea.
 In real projects, you need show them to the stakeholders to check if the requirements are met.
 
 People may argue why you manually build the UIs? 
-Aren’t there lots of tools that can generate UIs automatically from the data model? Well, 
-I can only say: for all my known products and experienced projects, 
+Aren’t there lots of tools that can generate UIs automatically based on the data model? 
+Well, I can only say: for all my known products and experienced projects, 
 I’ve never seen a real successful one that follows the approach. 
-Maybe, a lot of demos, PoCs, toys, and preachers are using such technologies, 
-like either model generates UI or UI generates model.
+Maybe, a lot of tech evangelists are preaching such approaches, like low-code or no-code, I never believe that.
 
 As I said on the 3 layers, you can hardly eliminate one. This rule also applies to design time. 
 Each layer has its own modeling languages to describe the same entity. 
 DB uses the relational algebra to achieve full path access on physical storage; 
 Server-side usually uses the Object-Oriented programming to operate the data in the memory; 
 UI tries to speak human languages to be more user-friendly. With those different appealing, 
-we can hardly generate one from another using some fixed rules. 
+we can hardly generate one from another using some fixed protocols. 
 What we can do is to map and translate the 3 modeling languages. From DB to the server-side, 
-we say Object-Relational mapping; and from server-side to UI, we say UI-Object mapping.
+we use Object-Relational Mapping; and from server-side to UI, we use UI-Object Mapping.
 
 ## Object to UI Mapping
 Actually, I am quite enjoying drawing the UI, especially, 
@@ -138,7 +136,7 @@ and [Angular Server](https://angular.io/guide/quickstart#step-3-serve-the-applic
 When the UI looks good to you, it’s time to bind the data and logic. 
 With Angular’s Reactive Form, it is quite straight forward.
 
-No matter how the UI looks like, behind the sense, there is a coherent object. 
+No matter how the UI looks like, behind the scenes, there is a coherent object. 
 And what I say “object” here means a nested structure. Like a header structure with different item structures, 
 and item structures of item, sort of thing. My “user” object, 
 if represented in Angular’s FormGroup, looks like below:
@@ -185,7 +183,7 @@ this.userForm = this.fb.group({
 ```
 
 Angular introduces FormGroup and its builder(this.fb) to construct an object. 
-Not just the structure and the value, you can also add some validators. 
+Not just the structure and the value, you can also add validators. 
 For example, I add “Validators.required” on attribute “USER_ID” to state it is not empty-allowed. 
 Further more, the FormGroup object handles the bi-directional binding between the UI(HTML) and the object(JS). 
 Which means any changes from the UI will be synchronized immediately to the object, and vice-vera.
@@ -219,7 +217,7 @@ Which means any changes from the UI will be synchronized immediately to the obje
 
 From above excerpt, you can find how the FormGroup object is binding to the HTML through the attributes “[formGroup]” and “formControlName”. 
 Sometimes, it is not always to show the value directly, but with some conversions. Like “lockStatus” and “passwordStatus”, 
-I want to show them in a more initiative way by giving them human readable descriptions and icons.
+I want to show them in a more intuitive way by giving them human readable descriptions and icons.
 
 I have some attributes grouped in multiple tuples, like “emails”, “addresses”, and “userRole”. 
 They can be constructed in Angular FormArray. But in UI, they can be represented in various ways. 
@@ -228,29 +226,30 @@ Based on the nature of the data object, and also considering the “Add” & “
 you may find it is sometimes a hard decision.
 ![Email Representation](EmailRepresentation.png)
 
-I choose LIST for “emails” and “addresses”. Mainly because a user may not have so many emails or addresses. 
-Thus, it is more natural to represent them in a form-like way. So when you click the “Add” button, 
-a new empty form is appended to allow to type a new email address. 
+I choose LIST for “emails” and “addresses”, mainly because a user may have multiple emails or addresses, but should not be so many. 
+Thus, it is more natural to represent them in a form-style instead of table-style. 
+So when you click the “Add” button, a new empty form is appended to allow to input a new email address. 
 Click “X” in the up-right corner will remove an email.
 ![Role Assignment Representation](RoleAssignmentRepresentation.png)
 
-With “userRole”, I use TABLE. Not just because a user may have many roles assigned, 
-but more because it is an assignment maintenance. That is, “user” and “role” are 2 different entities. 
-Here, we only maintain the relationships between them. Thus the information can be shown in a dense way.
+With “userRole”, however, I use TABLE. Not only because a user may have many roles assigned, 
+but more because it is an assignment maintenance. 
+That is to day, we only maintain the relationships between “user” entities and “role” entities. 
+And this kind of relationship information is better to be shown in a dense way.
 
 Notice, I only have the “remove” button in the “Action” column. There is no “add” button. 
 When you are typing a role name in the last row, it will automatically append an empty row. 
 This design makes the UI much clean and natural. 
-However, it assumes that the role assignment is only one field input and always one by one. 
+However, it assumes that the role assignment activity is always one by one without sequence. 
 Don’t use this pattern in any other cases.
 
 Now it seems my UI is much more dynamic. 
 At least, the data is feed from an object under the hood, rather than hard-coded in HTML. 
 However, both the FormGroup object and the HTML live in the Browser. 
-So we are still on the UI layer, and we still haven’t connected with the server-side. 
+So we are still on the UI layer, and still haven’t connected with the server-side. 
 But you may find that the structure of the FormGroup object and the JSON data model looks similar. 
-This is because the 2 are both object model. If I can recall you, we first design the JSON data model, 
-then we draw the UI mockup, during when we form the FormGroup object. 
+This is because they both are object model. If I can recall you, we first design the JSON data model, 
+then we draw the UI mock-up, during when we create the FormGroup object. 
 As long as the concept is consistent, we can easily map and connect objects from different layers.
 
 Thanks to JSON-On-Relations, I don’t need to write any server-side code to get the JSON object. 
@@ -274,11 +273,9 @@ getUserDetail(userID: string): Observable<Entity | Message[]> {
 ```
 Above service call gets user detail JSON object by user ID. 
 It composes a request to ask for certain pieces of the entity information. 
-If you check the grammar of “pieceObject”, 
-it is not difficult to understand that it asks for the data from relations 
-“r_user”, “r_employee”, “r_email”, “r_address”, “r_personalization”, 
-as well as the relationship “rs_user_role”. 
-The service call returns the JSON response with the same schema like the JSON model at the begining.
+If you check the grammar of “pieceObject”, it is not difficult to understand that it asks for the data from relations 
+“r_user”, “r_employee”, “r_email”, “r_address”, “r_personalization”, as well as the relationship “rs_user_role”. 
+The service call returns the JSON response with the same schema like the JSON model at the beginning.
 
 The next thing is to map the returned JSON object(data) to the FromGroup object(userForm). 
 Which is quite straight forward. Only to be noticed is the array objects like “email”, “address”, 
@@ -361,10 +358,10 @@ if (userRoleRelationship) {
 ```
 
 Until now, I just finished one complete data flow from DB to UI. 
-That is the letter “R” in the CRUD abbreviation, which is reading a user object. 
+That is the letter “R” in the CRUD abbreviation, which means reading a user object. 
 The flow can be described as below:
 
-***DB(relations) →JSON-On-Relations(server-side JS)→FormGroup(client-side JS) →UI(HTML).***
+***DB(relations) →JSON-On-Relations(server-side JS) →FormGroup(client-side JS) →UI(HTML).***
 
 Thanks to JSON-On-Relations, I saved a lot of efforts on the DB and server layer. 
 Instead, I focused much on modeling and UI. The next step I will do the letter “U”, which is updating a user object.
@@ -378,52 +375,52 @@ We know in mathematics, usually calculation from one direction is easy, but the 
 So do the “Read” and “Update”. Compare to “Read”, “Update” needs more attentions, 
 which includes data validation, error handling, concurrency control, and work protection.
 
-But before touching the updating flow, one thing must be done first is the switch between edit mode and display mode. 
-If you think it is a piece of cake, well, I would argue a lot. 
-Usually, in those CRUD demos you won’t see the edit/display switch. 
-This is because those demos will never be used in productive. 
+But before touching the updating flow, one thing must be done first is the switching between edit mode and display mode. 
+In some simple CRUD demos, you may not see the edit/display switching. 
+However, this is one of the hidden difficulties that those demos avoid to tell. 
+They just want to tell you how easy it is to use their tools, and never say how it would be like in real production.
 As I said, a CRUD App is used by multiple concurrency users. 
 Differentiating the edit and display mode helps to understand 
-whether the object is protected for changing either by permission or by concurrency control.
+whether the object is protected for changing either by permission or by concurrency controls.
 
-Some Apps even use different UI controls or design for their edit and display mode. 
-This is usually to achieve better user experience in displaying, and/or simplify the editing. 
-I will just reuse the same page of the display mode. 
-Therefore, I have to add the “readonly” attribute to all the editable UI controls, and bind it to a variable. 
-The tricky thing is for controls like checkbox and radio-box, they just don’t have the “readonly” attribute. 
-Thus, I have to code special logic to them. Depends on the complexity of your UI, 
+Some Apps even use different UI controls and design for their edit and display mode. 
+This is usually to achieve better user experience in displaying, and simplify the editing. 
+For example, in display mode, the dropdown boxes are replaced with plain inputs to avoid some UI complexity.
+In this example, I will use the same UI controls for display and edit modes. 
+Therefore, I need to add the “readonly” attribute to all the editable UI controls, and bind it to a variable. 
+The tricky thing is for some controls like checkbox and radio-box, they just don’t have the “readonly” attribute. 
+Thus, I have to code special logic for them. Depends on the complexity of your UI, 
 the efforts may vary in implementing the 2 UI states. 
 For example, I also have special logic on the LIST and TABLE controls by 
 either removing the invalid lines or adding the empty lines.
 
-Usually, the switch to edit mode and the switch to display mode are implemented differently. 
-Following logic is applied for the switch to edit mode:
+Besides the 2 different UI states, there are also some server-side logic to take care. 
+Following logic is applied when switching from display mode to edit mode:
 
 1. Check if the user has the permission to change the object;
 2. Check if there is a concurrency user editing the same object;
 3. Change the UI to editable state.
 
-Following logic is applied for the switch to display mode:
+Following logic is applied when switching from edit mode to display mode:
 
-1. Check if the object is changed, if yes, ask for whether saving or ignoring the changes ;
+1. Check if the object is changed, if yes, ask for whether saving or ignoring the changes;
 2. Release the lock on the object;
 3. Change the UI to readonly state.
 
 Once I am comfortable with the switching, I know the next big thing is validation. 
-Because I know validation is endless. 
-One can easily think about dozens of validation rules on the single fields and combinations of fields. 
-It is all about how much would you like to invest on validation. 
+Validation is endless. One can think about dozens of validation rules on single fields and combinations of fields. 
+It seems all about how much would you like to invest on validation. 
 Nevertheless, I can simply conclude that most validations are about data domains, 
 and they can be implemented either in client-side or in server-side.
 
-Client-side validations are cheaper. Use the client-side validations whenever possible. 
+Client-side validations are cheaper. Thus use the client-side validations whenever possible. 
 Angular provides some out-of-box validation functions, like: required, maxLength, minLength, email, and so on. 
 However, client-side validations can only cover a little. 
-Because most of the data context lies in the server-side. Thus, server-side validation is unavoidable.
+Most of the data context lies in the server-side. Thus, server-side validation is unavoidable.
 
 My first validation is on the field “User Name”. 
 Because it is a unique attribute, I have to make sure the user’s input is unique system wide. 
-The main considering is when to trigger the validation? Right after the value is inputted, 
+The main consideration is when to trigger the validation? Right after the value is inputted, 
 or together with the saving request? The answer is aways the earlier the better. 
 So I implemented an asynchronous validation function and assign it to the “USER_NAME” FormControl.
 ```typescript
@@ -451,19 +448,20 @@ export function existingUserNameValidator(identityService: IdentityService,
 }
 ```
 The effect looks good, after the user typing some letters in the “User Name” field, 
-it immediately check with the server to see if the inputted value exists or not. 
+it immediately check with the server end to see if the inputted value exists or not. 
 You can find I set the “timer(500)” in the validation function, 
 which means it waits for half second(500ms) when I stop typing. 
 As a user, he can get the error feedback earlier without additional actions.
 
-The user is happy now, the only problem is the cost. To implement such kind of validations, 
-one needs a dedicate service. Fortunately, in my example, 
-I can directly leverage JSON-On-Relations without any server-side coding. 
+The user is happy now, the only problem is the cost. 
+To implement such kind of validations, one needs a dedicate service. 
+Fortunately, in my example, I can directly leverage JSON-On-Relations without any server-side coding. 
 But I can also anticipate a lot of cases that special server-side coding is unavoidable. 
-And such kinds of services may be only dedicate to the UI.
+And such kinds of services may be only dedicate to the UI validation.
+Here comes to following questions in my mind:
 
 Question 1: should all the validations dedicate to the UI(include client-side validations) 
-be double implemented in the server side? I think the answer is possibly yes. 
+be double implemented in the server side? My answer is yes. 
 Because those validations try to be user-friendly. They are only responsible for the UI, 
 and cannot guarantee the data is input from other channels(for example, API). 
 The same validations should be anyway implemented again in the server side.
@@ -474,8 +472,8 @@ We all know DB provides data consistency functions like unique key checks and fo
 Why not leverage these features? My experience tells me that most of data models are not perfect when born. 
 They require to be adjusted along the lifetime. The more logic you put in the data model, 
 the higher cost you will face in adjusting them. 
-Just think about the data conversion if you adjust the key fields. 
-However, if you split the logic apart from the data model, you gain much more flexibility in adjusting them. 
+Just think about the data conversion if you adjust some key fields. 
+However, if you split the logic apart from the data model, you gain much more flexibility in adjusting the model. 
 That is not to say you should always avoid using them, but just suggest thinking twice.
 
 Accompanied with validation is the error handling. How you report the validation errors to the user gracefully? 
@@ -485,26 +483,26 @@ If the error display is made to the UI control, then it will be very helpful and
 ![Validation Error](ValidationError.png)
 
 Besides displaying the validation errors next to the fields, 
-there are also object level messages which need to shown properly. 
-And it is not only boundary to error messages, but also warning, information, 
-and successful messages. And messages could be both short texts and long texts, 
-they need to support multi-languages. Messages should be maintained in both client-side and server-side. 
+there are also object level validation messages which need to be shown properly. 
+And it is not only boundary to error messages, but also warning, information, and successful messages. 
+Besides, messages could be both short texts and long texts, they need to support multi-languages. 
+Messages should be maintained in both client-side and server-side. 
 And finally you find you need a message framework to cover all those requirements. 
 This is why I created the [UI-Message](https://github.com/VinceZK/ui-message).
 
 With all the validations passed, the data can be saved to the DB now. 
 I need to call the change entity RESTful API of JSON-On-Relations. 
 The API asks for a JSON object similar to our modeling object, 
-but with each relation tuple a reserved “action” attribute to indicate what is the action made to the tuple. 
-Its value could be one of “add”, “delete”, or “update”. With the “action” attribute, 
-One can tell JSON-On-Relations what changes have been made to an object.
+with an additional “action” attribute on each relation tuple to indicate what is the action made to the tuple. 
+Its value could be one of “add”, “delete”, or “update”. 
+With the reserved “action” attribute, one can tell JSON-On-Relations what changes have been made to an object.
 
 It’s just amazing that Angular FormGroup knows which FormControls are changed through the “dirty” attribute. 
 Thus we can compose what has been changed to the object from the changed FormGroup object. 
-Coding such kind of mapping from the UI object to the server side object and tells the DB 
-what are the changes is usually boring and error prone. This is why existing ORM solutions have their room to survive. 
+Coding such kind of mapping from the UI object to the server side object and and finally to the DB is usually boring and error prone. 
+This is why existing ORM solutions have their room to survive. 
 But what I don’t like is they also introduce a lot of unnecessary complexities. 
-In fact, we only need some utility methods to help to do the mapping.
+In fact, we only need some utility methods to help to do the mappings.
 ```typescript
 _composeChangesToUser() {
   this.changedUser['ENTITY_ID'] = 'person';
@@ -556,8 +554,8 @@ operating the entity as a whole rises the concurrency conflicts.
 
 The final shot is easy, just call the RESTful API, let JSON-On-Relations help you to forward the changes to DB. 
 It returns either the successfully saved object or error messages. 
-In below excerpt, the “saveUser” method differentiate “update” and “new” mode 
-by checking whether the user object has “INSTANCE_GUID”. If it has, then use “put”, otherwise, use “post”.
+In below excerpt, the “saveUser” method differentiates “update” and “new” mode by checking whether the user object has “INSTANCE_GUID”. 
+If it has, then use “put”, otherwise, use “post”.
 ```typescript
 saveUser(user: Entity): Observable<Entity | Message[]> {
   if (user['INSTANCE_GUID']) {
@@ -573,10 +571,10 @@ saveUser(user: Entity): Observable<Entity | Message[]> {
 ```
 
 It seems I have conquered the most difficult path, the letter “U” in CRUD. 
-Maybe there is still one thing left, the work protection. 
+However, there is still one thing left, the work protection. 
 Imagine, when you changed something on an object, then you accidentally click the “Back” button of your Browser, 
-what are you expecting? You hope the App block the navigation by popping up a dialog 
-to ask confirmation of leaving current page. This makes me to jump to the next issue: navigation.
+what are you expecting? You hope the App block the navigation by popping up a dialog to ask confirmation of leaving current page. 
+This makes me to jump to the next big issue: navigation.
 
 ## Navigation
 Navigation is a difficult topic. Fortunately, [Angular](https://angular.io/guide/router) helps a lot. 
