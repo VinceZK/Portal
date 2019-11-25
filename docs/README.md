@@ -578,12 +578,12 @@ This makes me to jump to the next big issue: navigation.
 
 ## Navigation
 Navigation is a difficult topic. Fortunately, [Angular](https://angular.io/guide/router) helps a lot. 
-In my case, there are only 2 pages. Even though, I still spent some mind.
+In my case, there are only 2 pages. Even though, I still spent some time.
 
 Before start thinking navigation, I need build the search&list page. 
 It is much easier than the detail page, since there is no “U” letter. 
-And more fortunately, I still don’t need any server-side coding, as JSON-On-Relations already provides me 
-a [generic query API](https://github.com/VinceZK/json-on-relations#generic-query-request).
+And more fortunately, I still don’t need any server-side coding, as JSON-On-Relations already provides me a 
+[generic query API](https://github.com/VinceZK/json-on-relations#generic-query-request).
 ```typescript
 searchUsers(userID: string, userName: string): Observable<UserList[] | Message[]> {
   const queryObject = new QueryObject();
@@ -620,7 +620,7 @@ If user want to make wildcard “*” search, then I replace the “*” to “%
 since my DB only recognizes “%” as the wildcard.
 ![Search&List Page with Navigation](SearchListPageNavigation.png)
 
-The Search&List page has 3 navigations:
+The Search&List page has 3 navigation paths:
 1. Click “User ID” and “Display” action will navigate to the detail page in display mode;
 2. Click “Change” action will navigate to the detail page in edit mode;
 3. Click “New” button will navigate to the detail page in new mode.
@@ -684,16 +684,15 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
 }
 ```
 The main idea of the custom route strategy is to cache the Search&List page (/users). 
-However, behind the problem, the more generic question is whether a page should be reloaded 
-or not when navigating back to it? Well, it depends your requirements. 
-And such answer is also one reason makes navigation so difficult.
+However, behind the problem, the more generic question is whether a page should be reloaded or not when navigating back to it? 
+Well, it depends on your requirements. And such answer is also one reason makes navigation so difficult.
 
 In my case, for example, if I want changes(display name changed) from the Detail page also affect the Search&List page, 
 then I should reload the page when navigating back. In this attempt, 
 what I should do is not simply cache the whole page, but only to cache the search criteria, 
 and make an auto re-search when come back. Then, think about even more complex scenarios, 
-not only the search criteria, but also the column width, positions, and such sort of things. 
-It will just make you mad if there is no support from the framework.
+not only the search criteria, but also the column width, positions, sort fields, and so on. 
+It will make you mad if there is no support from the framework.
 
 It is the time to cope with the last 2 letters “C” and “D”. 
 I just leverage navigation feature to realize the creation of a new user. 
@@ -756,9 +755,9 @@ Thanks again to JSON-On-Relations, I don’t need to code any server-side logic.
 ![Delete User](DeleteUser.png)
 
 Up to now, it seems the CRUD is completed. But am I confident with my tiny App? The answer is “No”. 
-Because I haven’t tested it carefully yet. Although during development, I had some fragmental tests,
+Because I haven’t tested it carefully yet. Although during development, I had some fragment tests,
  but I know it is far more enough. Just think about the number of buttons, fields, navigation routes, 
- and the combination of them in different orders. You just cannot anticipate how others will use your App. 
+ and the combination of them in different orders. You just cannot anticipate how users will use your App. 
  So I must do the tests carefully and efficiently.
 
 ## Testing
@@ -779,13 +778,12 @@ and found it just cannot help to gain any confidence.
 Although most of my codes reside in the component class, 
 but I don’t see any necessity to write additional codes to test those data mapping and conversion logic. 
 I mean look at those simple “if else” and “loop” statements, are you really need them run to know whether 
-they are doing wrong or right? What I really care is whether the UI behaves correctly together 
-with the logic in the component Class.
+they are doing wrong or right? What I really care is whether the UI behaves correctly together with the logic in the component Class.
 
 I also checked [Component DOM testing](https://angular.io/guide/testing#component-dom-testing). 
 At a first glance, it seems I should invest it. 
-However, after some testing, I found it is not worth to continue. 
-It is just not easy to use and the learning curve is steep. 
+However, after some tests, I found it is not worth to continue. 
+It is just not easy to use and the learning curve is too steep. 
 You need deep knowledge of Angular architecture so that you know how to correctly mock the runtime context. 
 I just don’t want to waste time on mocking some very technique stuff, like the HTTP service. 
 Also in my case, I don’t have very complex interactions with DOM, like animations. 
@@ -839,21 +837,24 @@ describe('Search&List Page', () => {
  }
 ```
 Unlike what I heard from others who told that e2e testing is difficult and expensive, 
-I got the opposite feelings. As you may find it is actually intuitive and easy maintain. 
+I got the opposite feelings. As you may find it is actually intuitive and easy to maintain. 
 Some may be worry about the brittle of e2e scripts. But in my case, it is actually quite strong. 
 I use the scripts during my development and seldom do I need to adjust them. I think there could be following reasons:
 
-1. I use “by.id” to locate the HTML elements.
+1. I use “by.id” to locate the HTML elements;
 2. The separation of the page object and e2e spec contributes;
-3. I have a stable model and backend service.
+3. I have a stable model and backend service;
+4. And I do the model and UI together.
 
 Based on what you are developing, test methodologies and tools should be carefully chosen. 
 For CRUD Apps, I believe E2E testing is the best fit. It is unlike building a framework, 
 a library, or an algorithm, the main value you added are the mappings and the UI skins.
+Some may argue that UI developer and backend developer are usually 2 different people.
+Well, that is not always true. Again, it depends on what you are developing. 
+If it is an enterprise CRUD App, believe me, you should let one developer do the model and UI together. 
 
 I am not a paranoid to achieve high coverage, so I still do a lot of manual tests. 
-The e2e scripts really save my time when, for example, 
-I want to do a small validation test on deleting a role from an existing user. 
+The e2e scripts really save my time when, for example, I want to do a small validation test on deleting a role from an existing user. 
 Then I just use the scripts to help to create a user, then do the manual tests. 
 I don’t need to automate these small manual tests as I am confident they should be once OK always OK.
 
@@ -868,13 +869,12 @@ Every time, when I develop a new CRUD App(even in the same stack), I always get 
 In earlier days, UI is rendered in server-side, so does the objects. 
 We thus need a strong session management framework to hold these hot objects. 
 Now, with the modern web technologies, the objects live in the client-side. 
-However, the thing never changed is the mappings between relational sets and singleton objects.
+However, the thing never changed is the mapping between relational sets and singleton objects.
 
 Although in this blog, I leveraged JSON-On-Relations for the object relational mapping, 
-I can also imagine there will be cases that its provided RESTful APIs cannot fulfill, 
-for example, permission checks. Thus, it is almost unavoidable to write server-side logic. 
-Mainly because **an object is not isolated in a system**. 
-It must have relationships with others to make the system organic.
+I can also imagine there will be cases that its provided RESTful APIs cannot fulfill. 
+Thus, it is almost unavoidable to write server-side logic. 
+This is because **an object is not isolated in a system**. It must have relationships with others to make the system organic.
 
 My tiny App is still far from complete. If I want it to be an enterprise quality CRUD App, it still needs:
 1. Value helps whenever possible. For example, the field “Company” should better be a dropdown box. Then the field “Department” should be also a dropdown box with values depends on the selected company. The field “Role” should popup a search help box to allow user search and choose.
@@ -893,4 +893,4 @@ With those patterns, you can build CRUD Apps more efficiently, with no corner cu
 So I believe when I build the second CRUD App on the same stack, it will be much faster.
 
 This is also the purpose of this blog. I hope it can also give you a pattern reference, 
-as well as some standards and costs in building such kind of **Real** CRUD Apps.
+as well as some standards and costs reference in building such kind of **Real** CRUD Apps.
