@@ -33,7 +33,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Get the default router
-const router = require('ui-logon').Router;
+// const router = require('ui-logon').Router;
+const router = require('express').Router();
 const jor = require('json-on-relations');
 router.use(jor.Routes); // JOR Routes
 router.get('/jor/*', (req, res) => { // Open the jor page

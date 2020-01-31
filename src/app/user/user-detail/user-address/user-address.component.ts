@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AttributeBase, AttributeControlService, RelationMeta} from "jor-angular";
 
 @Component({
   selector: 'app-user-address',
@@ -9,12 +10,21 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class UserAddressComponent implements OnInit {
   @Input() readonly: boolean;
   @Input() userForm: FormGroup;
+  @Input() relationMetas: RelationMeta[];
+  private attrCtrls: AttributeBase[];
   userAddressFormArray: FormArray;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private attributeControlService: AttributeControlService) { }
 
   ngOnInit() {
     this.userAddressFormArray = this.userForm.get('addresses') as FormArray;
+    this.attrCtrls = this.attributeControlService.toAttributeControl(
+      this.relationMetas.find( relationMeta => relationMeta.RELATION_ID === 'r_address').ATTRIBUTES);
+  }
+
+  getAttrCtrlFromID(fieldName: string): AttributeBase {
+    return this.attrCtrls.find( attrCtrl => attrCtrl.name === fieldName);
   }
 
   addAddress() {

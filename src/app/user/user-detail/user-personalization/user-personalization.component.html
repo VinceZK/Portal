@@ -1,26 +1,22 @@
-<form [formGroup]="userPersonalizationForm" class="mt-4 ml-2 pl-4 row">
-  <div class="col-md-6 col-lg-4 row form-group mr-2">
-    <label for="language" class="col-form-label dk-form-label">Language:
-    </label>
-    <input type="text" class="form-control" id="language" [readonly]="readonly"
-           name="language" formControlName="LANGUAGE">
-  </div>
-  <div class="col-md-6 col-lg-4 row form-group mr-2">
-    <label for="timezone" class="col-form-label dk-form-label">Timezone:
-    </label>
-    <input type="text" class="form-control" id="timezone" [readonly]="readonly"
-           name="timezone" formControlName="TIMEZONE">
-  </div>
-  <div class="col-md-6 col-lg-4 row form-group mr-2">
-    <label for="decimalFormat" class="col-form-label dk-form-label">Decimal Format:
-    </label>
-    <input type="text" class="form-control" id="decimalFormat" [readonly]="readonly"
-           name="decimalFormat" formControlName="DECIMAL_FORMAT">
-  </div>
-  <div class="col-md-6 col-lg-4 row form-group mr-2">
-    <label for="datetimeFormat" class="col-form-label dk-form-label">Date and Time Format:
-    </label>
-    <input type="text" class="form-control" id="datetimeFormat" [readonly]="readonly"
-           name="datetimeFormat" formControlName="DATE_FORMAT">
-  </div>
+<form class="mt-4 ml-2 row">
+  <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                          [attributeControl]="getAttrCtrlFromID('LANGUAGE')"
+                          [formGroup]="userPersonalizationForm"
+                          [readonly]="readonly">
+  </dk-app-attribute-form2>
+  <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                          [attributeControl]="getAttrCtrlFromID('TIMEZONE')"
+                          [formGroup]="userPersonalizationForm"
+                          [readonly]="readonly">
+  </dk-app-attribute-form2>
+  <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                          [attributeControl]="getAttrCtrlFromID('DECIMAL_FORMAT')"
+                          [formGroup]="userPersonalizationForm"
+                          [readonly]="readonly">
+  </dk-app-attribute-form2>
+  <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                          [attributeControl]="getAttrCtrlFromID('DATE_FORMAT')"
+                          [formGroup]="userPersonalizationForm"
+                          [readonly]="readonly">
+  </dk-app-attribute-form2>
 </form>

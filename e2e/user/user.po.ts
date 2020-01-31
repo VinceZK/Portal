@@ -70,15 +70,15 @@ export class UserPage {
   fillUserBasic() {
     element.all(by.css('li a')).get(0).click();
     const userBasicTemplate = element(by.tagName('app-user-basic'));
-    const userNameInput = userBasicTemplate.element(by.id('userName'));
-    const displayNameInput = userBasicTemplate.element(by.id('displayName'));
-    const givenNameInput = userBasicTemplate.element(by.id('givenName'));
-    const middleNameInput = userBasicTemplate.element(by.id('middleName'));
-    const familyNameInput = userBasicTemplate.element(by.id('familyName'));
-    const titleInput = userBasicTemplate.element(by.id('title'));
-    const DepartmentIDInput = userBasicTemplate.element(by.id('DepartmentID'));
-    const companyIDInput = userBasicTemplate.element(by.id('companyID'));
-    const genderInput = userBasicTemplate.element(by.id('gender'));
+    const userNameInput = userBasicTemplate.element(by.id('793A63D8DEA43B5BF88EE7BAF02757C4'));
+    const displayNameInput = userBasicTemplate.element(by.id('DB3D668D338E076626061456992F60DB'));
+    const givenNameInput = userBasicTemplate.element(by.id('02C2EE9D3CA229EAD8919007CC3858C'));
+    const middleNameInput = userBasicTemplate.element(by.id('90D418F172B221C71D62598C119E97D5'));
+    const familyNameInput = userBasicTemplate.element(by.id('E0392472ABB6DB7FDB5FFC92B5DC7A29'));
+    const titleInput = userBasicTemplate.element(by.id('E5016EE79DC1B36DAAA9027173674BB4'));
+    const DepartmentIDInput = userBasicTemplate.element(by.id('849D0D50634137D6E9F9D6F153C67627'));
+    const companyIDInput = userBasicTemplate.element(by.id('5EC22219F4E45746BFCDE76256FD6160'));
+    const genderInput = userBasicTemplate.element(by.id('E6FF69F311DCE5E6328029FB932F20E3'));
     userNameInput.clear().then(() => userNameInput.sendKeys('tester03'));
     displayNameInput.clear().then(() => displayNameInput.sendKeys('Tester 03'));
     givenNameInput.clear().then(() => givenNameInput.sendKeys('John'));
@@ -93,7 +93,7 @@ export class UserPage {
   changeTitle() {
     element.all(by.css('li a')).get(0).click();
     const userBasicTemplate = element(by.tagName('app-user-basic'));
-    const titleInput = userBasicTemplate.element(by.id('title'));
+    const titleInput = userBasicTemplate.element(by.id('E5016EE79DC1B36DAAA9027173674BB4'));
     titleInput.clear().then(() => titleInput.sendKeys('architect'));
   }
 

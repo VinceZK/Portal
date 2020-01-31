@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MessageService} from "ui-message-angular";
+import {AttributeBase, AttributeControlService, RelationMeta} from "jor-angular";
 
 @Component({
   selector: 'app-user-email',
@@ -10,16 +11,25 @@ import {MessageService} from "ui-message-angular";
 export class UserEmailComponent implements OnInit {
   @Input() readonly: boolean;
   @Input() userForm: FormGroup;
+  @Input() relationMetas: RelationMeta[];
+  private attrCtrls: AttributeBase[];
   userEmailFormArray: FormArray;
 
   constructor(private fb: FormBuilder,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private attributeControlService: AttributeControlService) { }
 
   ngOnInit() {
     this.userEmailFormArray = this.userForm.get('emails') as FormArray;
+    this.attrCtrls = this.attributeControlService.toAttributeControl(
+      this.relationMetas.find( relationMeta => relationMeta.RELATION_ID === 'r_email').ATTRIBUTES);
     if (!this.readonly && this.userEmailFormArray.length === 0) {
       this.addEmail();
     }
+  }
+
+  getAttrCtrlFromID(fieldName: string): AttributeBase {
+    return this.attrCtrls.find( attrCtrl => attrCtrl.name === fieldName);
   }
 
   addEmail() {

@@ -70,10 +70,10 @@
   </ul>
 
   <div class="mt-2" [ngSwitch]="tabStrip">
-    <app-user-basic *ngSwitchCase="1" [userForm]="userForm" [readonly]="readonly"></app-user-basic>
-    <app-user-email *ngSwitchCase="2" [userForm]="userForm" [readonly]="readonly"></app-user-email>
-    <app-user-address *ngSwitchCase="3" [userForm]="userForm" [readonly]="readonly"></app-user-address>
-    <app-user-personalization *ngSwitchCase="4" [userForm]="userForm" [readonly]="readonly"></app-user-personalization>
+    <app-user-basic *ngSwitchCase="1" [userForm]="userForm" [relationMetas]="relationMetas" [readonly]="readonly"></app-user-basic>
+    <app-user-email *ngSwitchCase="2" [userForm]="userForm" [relationMetas]="relationMetas" [readonly]="readonly"></app-user-email>
+    <app-user-address *ngSwitchCase="3" [userForm]="userForm" [relationMetas]="relationMetas"  [readonly]="readonly"></app-user-address>
+    <app-user-personalization *ngSwitchCase="4" [userForm]="userForm" [relationMetas]="relationMetas" [readonly]="readonly"></app-user-personalization>
     <app-user-role *ngSwitchCase="5" [userForm]="userForm" [readonly]="readonly"></app-user-role>
   </div>
 </div>

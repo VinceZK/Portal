@@ -1,43 +1,33 @@
 <div class="card mt-4">
   <div class="card-header">Name</div>
   <div class="card-body">
-    <form [formGroup]="userBasicNamesForm" class="mt-2 pl-4 row">
-      <div class="col-md-4 row form-group mr-2"
-           [class.dk-invalid]="userBasicNamesForm.get('USER_NAME').invalid && (userBasicNamesForm.touched || userBasicNamesForm.dirty)">
-        <label for="userName" class="col-form-label dk-form-label">User Name:
-          <span class="dk-invalid-feedback">{{userBasicNamesForm.get('USER_NAME').errors?.required ? 'Required': null}}</span>
-          <span class="dk-invalid-feedback">{{userBasicNamesForm.get('USER_NAME').errors?.message}}</span>
-        </label>
-        <input type="text" class="form-control" id="userName" [readonly]="readonly"
-               name="userName" formControlName="USER_NAME">
-      </div>
-      <div class="col-md-4 row form-group mr-2"
-           [class.dk-invalid]="userBasicNamesForm.get('DISPLAY_NAME').invalid && (userBasicNamesForm.touched || userBasicNamesForm.dirty)">
-        <label for="displayName" class="col-form-label dk-form-label">Display Name:
-          <span class="dk-invalid-feedback">{{userBasicNamesForm.get('DISPLAY_NAME').errors?.required ? 'Required': null}}</span>
-        </label>
-        <input type="text" class="form-control" id="displayName" [readonly]="readonly"
-               name="displayName" formControlName="DISPLAY_NAME">
-      </div>
-      <div class="col-md-4 row form-group mr-2"></div>
-      <div class="col-md-4 row form-group mr-2">
-        <label for="givenName" class="col-form-label dk-form-label">Given Name:
-        </label>
-        <input type="text" class="form-control" id="givenName" [readonly]="readonly"
-               name="givenName" formControlName="GIVEN_NAME">
-      </div>
-      <div class="col-md-4 row form-group mr-2 ">
-        <label for="middleName" class="col-form-label dk-form-label">Middle Name:
-        </label>
-        <input type="text" class="form-control" id="middleName" [readonly]="readonly"
-               name="middleName" formControlName="MIDDLE_NAME">
-      </div>
-      <div class="col-md-4 row form-group mr-2">
-        <label for="familyName" class="col-form-label dk-form-label">Family Name:
-        </label>
-        <input type="text" class="form-control" id="familyName" [readonly]="readonly"
-               name="familyName" formControlName="FAMILY_NAME">
-      </div>
+    <form class="mt-2 row">
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('USER_NAME')"
+                              [formGroup]="userBasicNamesForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('DISPLAY_NAME')"
+                              [formGroup]="userBasicNamesForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <div class="col-md-4"></div>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('GIVEN_NAME')"
+                              [formGroup]="userBasicNamesForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('MIDDLE_NAME')"
+                              [formGroup]="userBasicNamesForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('FAMILY_NAME')"
+                              [formGroup]="userBasicNamesForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
     </form>
   </div>
 </div>
@@ -45,33 +35,27 @@
 <div class="card mt-4">
   <div class="card-header">Employee</div>
   <div class="card-body">
-    <form [formGroup]="userBasicEmployeeForm" class="mt-2 pl-4 row">
-      <div class="col-md-6 col-lg-4 row form-group mr-2"
-           [class.dk-invalid]="userBasicEmployeeForm.get('COMPANY_ID').invalid && (userBasicEmployeeForm.touched || userBasicEmployeeForm.dirty)">
-        <label for="companyID" class="col-form-label dk-form-label">Company:
-          <span class="dk-invalid-feedback">{{userBasicEmployeeForm.get('COMPANY_ID').errors?.required ? 'Required': null}}</span>
-        </label>
-        <input type="text" class="form-control" id="companyID" [readonly]="readonly"
-               name="companyID" formControlName="COMPANY_ID">
-      </div>
-      <div class="col-md-6 col-lg-4 row form-group mr-2">
-        <label for="DepartmentID" class="col-form-label dk-form-label">Department:
-        </label>
-        <input type="text" class="form-control" id="DepartmentID" [readonly]="readonly"
-               name="DepartmentID" formControlName="DEPARTMENT_ID">
-      </div>
-      <div class="col-md-6 col-lg-4 row form-group mr-2">
-        <label for="title" class="col-form-label dk-form-label">Title:
-        </label>
-        <input type="text" class="form-control" id="title" [readonly]="readonly"
-               name="title" formControlName="TITLE">
-      </div>
-      <div class="col-md-6 col-lg-4 row form-group mr-2">
-        <label for="gender" class="col-form-label dk-form-label">Gender:
-        </label>
-        <input type="text" class="form-control" id="gender" [readonly]="readonly"
-               name="gender" formControlName="GENDER">
-      </div>
+    <form class="mt-2 row">
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('COMPANY_ID')"
+                              [formGroup]="userBasicEmployeeForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('DEPARTMENT_ID')"
+                              [formGroup]="userBasicEmployeeForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('TITLE')"
+                              [formGroup]="userBasicEmployeeForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
+      <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                              [attributeControl]="getAttrCtrlFromID('GENDER')"
+                              [formGroup]="userBasicEmployeeForm"
+                              [readonly]="readonly">
+      </dk-app-attribute-form2>
     </form>
   </div>
 </div>

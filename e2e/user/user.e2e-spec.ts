@@ -3,7 +3,7 @@ import { UserPage } from './user.po';
 fdescribe('user App', () => {
   const page = new UserPage();
 
-  xdescribe('Search&List Page', () => {
+  describe('Search&List Page', () => {
     beforeAll(() => {
       page.navigateToSearch();
     });

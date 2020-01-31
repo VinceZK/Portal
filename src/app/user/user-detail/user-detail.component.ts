@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Form, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Message, MessageService} from "ui-message-angular";
 import {msgStore} from "../../msgStore";
 import {switchMap} from "rxjs/operators";
 import {IdentityService} from "../../identity.service";
-import {Observable, of} from "rxjs";
-import {Entity, UiMapperService} from "jor-angular";
+import {forkJoin, Observable, of} from "rxjs";
+import {AttributeControlService, Entity, EntityService, RelationMeta, UiMapperService} from "jor-angular";
 import {existingUserIDValidator, existingUserNameValidator} from "./async-validators";
 import {DialogService} from "../../dialog.service";
 
@@ -17,6 +17,7 @@ import {DialogService} from "../../dialog.service";
 })
 export class UserDetailComponent implements OnInit {
   userForm: FormGroup;
+  relationMetas: RelationMeta[];
   readonly = true;
   isNewMode = false;
   action: string;
@@ -43,6 +44,7 @@ export class UserDetailComponent implements OnInit {
               private router: Router,
               private dialogService: DialogService,
               private identityService: IdentityService,
+              private entityService: EntityService,
               private uiMapperService: UiMapperService,
               private messageService: MessageService) {
     this.messageService.setMessageStore(msgStore, 'EN');
@@ -54,23 +56,27 @@ export class UserDetailComponent implements OnInit {
         this.action = params.get('action');
         if (this.action === 'new') {
           this.isNewMode = true;
-          return this._createNewUser();
+          return forkJoin(
+            this.entityService.getRelationMetaOfEntity('person'), this._createNewUser());
         } else {
           this.isNewMode = false;
-          return this.identityService.getUserDetail(params.get('userID'));
+          return forkJoin(
+            this.entityService.getRelationMetaOfEntity('person'),
+            this.identityService.getUserDetail(params.get('userID')));
         }
       })
     ).subscribe( data => {
-      if ('ENTITY_ID' in data) {
-        this.instanceGUID = data['INSTANCE_GUID'];
-        this._generateUserForm(<Entity>data);
+      this.relationMetas = data[0] as RelationMeta[];
+      if ('ENTITY_ID' in data[1]) {
+        this.instanceGUID = data[1]['INSTANCE_GUID'];
+        this._generateUserForm(<Entity>data[1]);
         if (this.isNewMode || this.action === 'change') {
           this._switch2EditMode();
         } else {
           this._switch2DisplayMode();
         }
       } else {
-        const errorMessages = <Message[]>data;
+        const errorMessages = <Message[]>data[1];
         errorMessages.forEach( msg => this.messageService.add(msg));
       }
     });
@@ -345,12 +351,15 @@ export class UserDetailComponent implements OnInit {
   _setCheckBoxState() {
     const userEmailFormArray = this.userForm.get('emails') as FormArray;
     const userAddressFormArray = this.userForm.get('addresses') as FormArray;
+    const userEmployeeForm = this.userForm.get('userBasic').get('employee') as FormGroup;
     if (this.readonly) {
       userEmailFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').disable());
       userAddressFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').disable());
+      userEmployeeForm.get('GENDER').disable();
     } else {
       userEmailFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').enable());
       userAddressFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').enable());
+      userEmployeeForm.get('GENDER').enable();
     }
   }
 

@@ -1,12 +1,13 @@
 # Build a Real CRUD App using Angular
-Well, there are tons of blogs on how to build a CRUD app. But this blog is trying to focus on the word **“Real”**. 
-Lots of examples show people how easy it is to build a CRUD app. 
-As I never think it is that easy, so I try to tell how difficult it is? 
-What are the hiding or missing pieces in those easy examples? And how we can simplified it without losing qualities?
+There are tons of blogs to tell how to build a CRUD app. I try to add one more which focuses on the word **“Real”**. 
+Lots of examples show people how easy it is to build a CRUD App. 
+They either have the purpose to advertise certain tools, or are some beginner's learning experience. 
+I never think building CRUD App is that easy, instead, I will tell how difficult it is? 
+What are the hiding or missing pieces in those easy examples? And how can we simplify it without losing qualities?
 
-I will use the example of user management module, which almost every system needs. 
-It is a good example to dive into the nitty-gritty. 
-A "user" is a person who has been granted permissions to access a system’s resource. 
+I will use the example of user management module, which almost every system has. 
+It is a good example to dive into the nitty-gritty of a real CRUD App. 
+Here, a "user" is a person who has been granted permissions to access a system’s resource. 
 You will read a lot of thoughts, patterns, as well as difficulties in developing such kind of Apps.
 
 I use Angular as the UI technology, because our philosophy agrees, mainly on the bidirectional binding and component structuring. 
@@ -234,7 +235,7 @@ Click “X” in the up-right corner will remove an email.
 
 With “userRole”, however, I use TABLE. Not only because a user may have many roles assigned, 
 but more because it is an assignment maintenance. 
-That is to day, we only maintain the relationships between “user” entities and “role” entities. 
+That is to say, we only maintain the relationships between “user” entities and “role” entities. 
 And this kind of relationship information is better to be shown in a dense way.
 
 Notice, I only have the “remove” button in the “Action” column. There is no “add” button. 

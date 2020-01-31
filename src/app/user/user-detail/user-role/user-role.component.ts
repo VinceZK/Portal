@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {IdentityService} from "../../../identity.service";
-import {SearchHelp, SearchHelpComponent, SearchHelpMethod} from "jor-angular";
+import {SearchHelpComponent} from "jor-angular";
 
 @Component({
   selector: 'app-user-role',
