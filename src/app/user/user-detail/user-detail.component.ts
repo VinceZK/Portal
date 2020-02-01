@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Form, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Message, MessageService} from "ui-message-angular";
 import {msgStore} from "../../msgStore";
 import {switchMap} from "rxjs/operators";
 import {IdentityService} from "../../identity.service";
 import {forkJoin, Observable, of} from "rxjs";
-import {AttributeControlService, Entity, EntityService, RelationMeta, UiMapperService} from "jor-angular";
+import {Entity, EntityService, RelationMeta, UiMapperService} from "jor-angular";
 import {existingUserIDValidator, existingUserNameValidator} from "./async-validators";
 import {DialogService} from "../../dialog.service";
 
@@ -352,14 +352,35 @@ export class UserDetailComponent implements OnInit {
     const userEmailFormArray = this.userForm.get('emails') as FormArray;
     const userAddressFormArray = this.userForm.get('addresses') as FormArray;
     const userEmployeeForm = this.userForm.get('userBasic').get('employee') as FormGroup;
+    const userPersonalizationForm = this.userForm.get('userPersonalization') as FormGroup;
     if (this.readonly) {
-      userEmailFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').disable());
-      userAddressFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').disable());
+      userEmailFormArray.controls.forEach( userEmailForm => {
+        userEmailForm.get('PRIMARY').disable();
+        userEmailForm.get('TYPE').disable();
+      });
+      userAddressFormArray.controls.forEach( userAddressForm => {
+        userAddressForm.get('PRIMARY').disable();
+        userAddressForm.get('TYPE').disable();
+      });
       userEmployeeForm.get('GENDER').disable();
+      userPersonalizationForm.get('LANGUAGE').disable();
+      userPersonalizationForm.get('TIMEZONE').disable();
+      userPersonalizationForm.get('DECIMAL_FORMAT').disable();
+      userPersonalizationForm.get('DATE_FORMAT').disable();
     } else {
-      userEmailFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').enable());
-      userAddressFormArray.controls.forEach( userEmailForm => userEmailForm.get('PRIMARY').enable());
+      userEmailFormArray.controls.forEach( userEmailForm => {
+        userEmailForm.get('PRIMARY').enable();
+        userEmailForm.get('TYPE').enable();
+      });
+      userAddressFormArray.controls.forEach( userAddressForm => {
+        userAddressForm.get('PRIMARY').enable();
+        userAddressForm.get('TYPE').enable();
+      });
       userEmployeeForm.get('GENDER').enable();
+      userPersonalizationForm.get('LANGUAGE').enable();
+      userPersonalizationForm.get('TIMEZONE').enable();
+      userPersonalizationForm.get('DECIMAL_FORMAT').enable();
+      userPersonalizationForm.get('DATE_FORMAT').enable();
     }
   }
 
@@ -404,7 +425,7 @@ export class UserDetailComponent implements OnInit {
     this.changedUser['ENTITY_ID'] = 'person';
     this.changedUser['INSTANCE_GUID'] = this.instanceGUID;
     if (this.isNewMode) {
-      this.changedUser['person'] = {action: 'add'};
+      this.changedUser['person'] = {action: 'add', TYPE: 'employee', SYSTEM_ACCESS: 'PORTAL'};
     }
 
     const userBasicFormGroup = this.userForm.get('userBasic');

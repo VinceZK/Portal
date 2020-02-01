@@ -1,5 +1,9 @@
 import { UserPage } from './user.po';
 
+/**
+ * Execute this test suite with following command line:
+ * > npm run e2e
+ */
 fdescribe('user App', () => {
   const page = new UserPage();
 

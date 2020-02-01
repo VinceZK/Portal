@@ -78,7 +78,7 @@ export class UserPage {
     const titleInput = userBasicTemplate.element(by.id('E5016EE79DC1B36DAAA9027173674BB4'));
     const DepartmentIDInput = userBasicTemplate.element(by.id('849D0D50634137D6E9F9D6F153C67627'));
     const companyIDInput = userBasicTemplate.element(by.id('5EC22219F4E45746BFCDE76256FD6160'));
-    const genderInput = userBasicTemplate.element(by.id('E6FF69F311DCE5E6328029FB932F20E3'));
+    const genderSelect = userBasicTemplate.element(by.id('E6FF69F311DCE5E6328029FB932F20E3'));
     userNameInput.clear().then(() => userNameInput.sendKeys('tester03'));
     displayNameInput.clear().then(() => displayNameInput.sendKeys('Tester 03'));
     givenNameInput.clear().then(() => givenNameInput.sendKeys('John'));
@@ -87,7 +87,7 @@ export class UserPage {
     titleInput.clear().then(() => titleInput.sendKeys('developer'));
     DepartmentIDInput.clear().then(() => DepartmentIDInput.sendKeys('development'));
     companyIDInput.clear().then(() => companyIDInput.sendKeys('darkhouse'));
-    genderInput.clear().then(() => genderInput.sendKeys('Male'));
+    genderSelect.element(by.css('[value="Male"]')).click();
   }
 
   changeTitle() {
@@ -100,19 +100,19 @@ export class UserPage {
   fillUserEmail() {
     element.all(by.css('li a')).get(1).click();
     const userEmailTemplate = element(by.tagName('app-user-email'));
-    const emailTypeInput = userEmailTemplate.all(by.id('emailType')).first();
-    const emailAddressInput = userEmailTemplate.all(by.id('emailAddress')).first();
-    emailTypeInput.clear().then(() => emailTypeInput.sendKeys('private'));
+    const emailTypeSelect = userEmailTemplate.all(by.id('874DE1A0CF38C6C4B740E2B68F1E43F6')).first();
+    const emailAddressInput = userEmailTemplate.all(by.id('8549B2388F8C3E6381CA15043EC4CFAE')).first();
+    emailTypeSelect.element(by.css('[value="PRIVATE"]')).click();
     emailAddressInput.clear().then(() => emailAddressInput.sendKeys('dh003@hotmail.com'));
   }
 
   addUserEmail(isPrimary: boolean) {
     element.all(by.css('li a')).get(1).click();
     const userEmailTemplate = element(by.tagName('app-user-email'));
-    const emailTypeInput = userEmailTemplate.all(by.id('emailType')).last();
-    const emailAddressInput = userEmailTemplate.all(by.id('emailAddress')).last();
+    const emailTypeSelect = userEmailTemplate.all(by.id('874DE1A0CF38C6C4B740E2B68F1E43F6')).last();
+    const emailAddressInput = userEmailTemplate.all(by.id('8549B2388F8C3E6381CA15043EC4CFAE')).last();
     userEmailTemplate.element(by.id('add')).click();
-    emailTypeInput.sendKeys('work');
+    emailTypeSelect.element(by.css('[value="WORK"]')).click();
     emailAddressInput.sendKeys('dh003@darkhouse.com');
     if (isPrimary) {
       userEmailTemplate.all(by.id('primaryEmail')).last().click();
@@ -128,13 +128,13 @@ export class UserPage {
   addUserAddress(isPrimary: boolean) {
     element.all(by.css('li a')).get(2).click();
     const userAddressTemplate = element(by.tagName('app-user-address'));
-    const addressTypeInput = userAddressTemplate.all(by.id('addressType')).last();
-    const addressInput = userAddressTemplate.all(by.id('address')).last();
-    const postcodeInput = userAddressTemplate.all(by.id('postcode')).last();
-    const cityInput = userAddressTemplate.all(by.id('city')).last();
-    const countryInput = userAddressTemplate.all(by.id('country')).last();
+    const addressTypeSelect = userAddressTemplate.all(by.id('929116D53BF779DB2E0AC487971773D4')).last();
+    const addressInput = userAddressTemplate.all(by.id('6FE183B97FC0E7578051EBDB9EF5D5A4')).last();
+    const postcodeInput = userAddressTemplate.all(by.id('7B1EB846E932AD839D4ECE7462AD7F3D')).last();
+    const cityInput = userAddressTemplate.all(by.id('930EF6C283C8679EE43B291EA5C1A76C')).last();
+    const countryInput = userAddressTemplate.all(by.id('93CB473FC2C6D2E32BFE5E60E603934D')).last();
     userAddressTemplate.element(by.id('add')).click();
-    addressTypeInput.sendKeys('work');
+    addressTypeSelect.element(by.css('[value="WORK"]')).click();
     addressInput.sendKeys('Room XXX, Building 39, 373 XXXX Road');
     postcodeInput.sendKeys('201208');
     cityInput.sendKeys('Shanghai');
@@ -153,14 +153,14 @@ export class UserPage {
   fillUserPersonalization() {
     element.all(by.css('li a')).get(3).click();
     const userPersonalizationTemplate = element(by.tagName('app-user-personalization'));
-    const languageInput = userPersonalizationTemplate.element(by.id('language'));
-    const timezoneInput = userPersonalizationTemplate.element(by.id('timezone'));
-    const decimalFormatInput = userPersonalizationTemplate.element(by.id('decimalFormat'));
-    const datetimeFormatInput = userPersonalizationTemplate.element(by.id('datetimeFormat'));
-    languageInput.clear().then(() => languageInput.sendKeys('ZH'));
-    timezoneInput.clear().then(() => timezoneInput.sendKeys('UTC+8'));
-    decimalFormatInput.clear().then(() => decimalFormatInput.sendKeys('000,000.00'));
-    datetimeFormatInput.clear().then(() => datetimeFormatInput.sendKeys('YYYY/MM/DD hh:mm:ss'));
+    const languageSelect = userPersonalizationTemplate.element(by.id('D8CDF1E5208AF30FE47D272DA304DE71'));
+    const timezoneSelect = userPersonalizationTemplate.element(by.id('6EA9A83FA267F82EBE1B381D56A3F312'));
+    const decimalFormatSelect = userPersonalizationTemplate.element(by.id('9718C0E8783C1F86EC212C8436A958C5'));
+    const datetimeFormatSelect = userPersonalizationTemplate.element(by.id('37C7C8C24EBDB3A725FC7D6CF719A06E'));
+    languageSelect.element(by.css('[value="ZH"]')).click();
+    timezoneSelect.element(by.css('[value="UTC+8"]')).click();
+    decimalFormatSelect.element(by.css('[value="1"]')).click();
+    datetimeFormatSelect.element(by.css('[value="2"]')).click();
   }
 
   addUserRole(roleName: string) {

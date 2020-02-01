@@ -4,7 +4,7 @@
 /*!***********************************************!*\
   !*** ./dist/jor-angular/fesm5/jor-angular.js ***!
   \***********************************************/
-/*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, Selection, Sort, UiMapperService, ɵa, ɵb */
+/*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeForm2Component, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, Selection, Sort, UiMapperService, ɵa, ɵb */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeBase", function() { return AttributeBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeComponent", function() { return AttributeComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeControlService", function() { return AttributeControlService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeForm2Component", function() { return AttributeForm2Component; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeFormComponent", function() { return AttributeFormComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeTableComponent", function() { return AttributeTableComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataDomainH", function() { return DataDomainH; });
@@ -610,19 +611,30 @@ var EntityService = /** @class */ (function () {
         this.messageService.setMessageStore(msgStore, language);
     };
     /**
+     * List all entity IDs in the system
+     */
+    /**
+     * List all entity IDs in the system
      * @return {?}
      */
     EntityService.prototype.listEntityID = /**
+     * List all entity IDs in the system
      * @return {?}
      */
     function () {
         return this.http.get(this.originalHost + "/api/entity/EntityIDs").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityID')));
     };
     /**
+     * List entity IDs by a given role ID
+     * @param roleID
+     */
+    /**
+     * List entity IDs by a given role ID
      * @param {?} roleID
      * @return {?}
      */
     EntityService.prototype.listEntityIDbyRole = /**
+     * List entity IDs by a given role ID
      * @param {?} roleID
      * @return {?}
      */
@@ -630,10 +642,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/entity/EntityIDs/" + roleID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityIDbyRole')));
     };
     /**
+     * Return the entity meta for a given entity ID
+     * @param entityID
+     */
+    /**
+     * Return the entity meta for a given entity ID
      * @param {?} entityID
      * @return {?}
      */
     EntityService.prototype.getEntityMeta = /**
+     * Return the entity meta for a given entity ID
      * @param {?} entityID
      * @return {?}
      */
@@ -641,10 +659,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/entity/meta/" + entityID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityMeta')));
     };
     /**
+     * Return a list of entity objects according to the description of a given query object
+     * @param queryObject
+     */
+    /**
+     * Return a list of entity objects according to the description of a given query object
      * @param {?} queryObject
      * @return {?}
      */
     EntityService.prototype.searchEntities = /**
+     * Return a list of entity objects according to the description of a given query object
      * @param {?} queryObject
      * @return {?}
      */
@@ -652,10 +676,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/query", queryObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('searchEntities')));
     };
     /**
+     * Return an entity instance for a given entity instance GUID
+     * @param instanceGUID
+     */
+    /**
+     * Return an entity instance for a given entity instance GUID
      * @param {?} instanceGUID
      * @return {?}
      */
     EntityService.prototype.getEntityInstance = /**
+     * Return an entity instance for a given entity instance GUID
      * @param {?} instanceGUID
      * @return {?}
      */
@@ -663,10 +693,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/entity/instance/" + instanceGUID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityInstance')));
     };
     /**
+     * Return a relation's meta data for a given relation ID
+     * @param relationID
+     */
+    /**
+     * Return a relation's meta data for a given relation ID
      * @param {?} relationID
      * @return {?}
      */
     EntityService.prototype.getRelationMeta = /**
+     * Return a relation's meta data for a given relation ID
      * @param {?} relationID
      * @return {?}
      */
@@ -674,10 +710,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/relation/meta/" + relationID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationMeta')));
     };
     /**
+     * Return all relations' meta data for a given entity ID
+     * @param entityID
+     */
+    /**
+     * Return all relations' meta data for a given entity ID
      * @param {?} entityID
      * @return {?}
      */
     EntityService.prototype.getRelationMetaOfEntity = /**
+     * Return all relations' meta data for a given entity ID
      * @param {?} entityID
      * @return {?}
      */
@@ -685,10 +727,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/relation/meta/entity/" + entityID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationMetaOfEntity')));
     };
     /**
+     * Create a new entity instance
+     * @param instance
+     */
+    /**
+     * Create a new entity instance
      * @param {?} instance
      * @return {?}
      */
     EntityService.prototype.createEntityInstance = /**
+     * Create a new entity instance
      * @param {?} instance
      * @return {?}
      */
@@ -696,10 +744,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/entity", instance, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('createEntityInstance')));
     };
     /**
+     * Change an existing entity instance
+     * @param instance
+     */
+    /**
+     * Change an existing entity instance
      * @param {?} instance
      * @return {?}
      */
     EntityService.prototype.changeEntityInstance = /**
+     * Change an existing entity instance
      * @param {?} instance
      * @return {?}
      */
@@ -707,10 +761,16 @@ var EntityService = /** @class */ (function () {
         return this.http.put(this.originalHost + "/api/entity", instance, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('changeEntityInstance')));
     };
     /**
+     * Delete an entity instance from a given instance GUID
+     * @param instanceGUID
+     */
+    /**
+     * Delete an entity instance from a given instance GUID
      * @param {?} instanceGUID
      * @return {?}
      */
     EntityService.prototype.deleteEntityInstance = /**
+     * Delete an entity instance from a given instance GUID
      * @param {?} instanceGUID
      * @return {?}
      */
@@ -718,10 +778,16 @@ var EntityService = /** @class */ (function () {
         return this.http.delete(this.originalHost + ("/api/entity/instance/" + instanceGUID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteEntityInstance')));
     };
     /**
+     * Return entity types(IDs) for a given search term
+     * @param term
+     */
+    /**
+     * Return entity types(IDs) for a given search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listEntityType = /**
+     * Return entity types(IDs) for a given search term
      * @param {?} term
      * @return {?}
      */
@@ -729,10 +795,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/entity-types?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityType')));
     };
     /**
+     * Return the description of a given entity type(ID)
+     * @param entityID
+     */
+    /**
+     * Return the description of a given entity type(ID)
      * @param {?} entityID
      * @return {?}
      */
     EntityService.prototype.getEntityTypeDesc = /**
+     * Return the description of a given entity type(ID)
      * @param {?} entityID
      * @return {?}
      */
@@ -740,10 +812,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/entity-types/" + entityID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityTypeDesc')));
     };
     /**
+     * Save an entity type after changing or creation
+     * @param entityType
+     */
+    /**
+     * Save an entity type after changing or creation
      * @param {?} entityType
      * @return {?}
      */
     EntityService.prototype.saveEntityType = /**
+     * Save an entity type after changing or creation
      * @param {?} entityType
      * @return {?}
      */
@@ -751,10 +829,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/entity-types", entityType, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveEntityType')));
     };
     /**
+     * Return a list of relations in the system according to the search term
+     * @param term
+     */
+    /**
+     * Return a list of relations in the system according to the search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listRelation = /**
+     * Return a list of relations in the system according to the search term
      * @param {?} term
      * @return {?}
      */
@@ -762,10 +846,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/relations?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRelation')));
     };
     /**
+     * Return the description of a given relation ID
+     * @param relationID
+     */
+    /**
+     * Return the description of a given relation ID
      * @param {?} relationID
      * @return {?}
      */
     EntityService.prototype.getRelationDesc = /**
+     * Return the description of a given relation ID
      * @param {?} relationID
      * @return {?}
      */
@@ -773,10 +863,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/relations/" + relationID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationDesc')));
     };
     /**
+     * Save a relation after changing or creation
+     * @param relation
+     */
+    /**
+     * Save a relation after changing or creation
      * @param {?} relation
      * @return {?}
      */
     EntityService.prototype.saveRelation = /**
+     * Save a relation after changing or creation
      * @param {?} relation
      * @return {?}
      */
@@ -784,10 +880,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/relations", relation, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRelation')));
     };
     /**
+     * Return a list of relationships in the system according to the search term
+     * @param term
+     */
+    /**
+     * Return a list of relationships in the system according to the search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listRelationship = /**
+     * Return a list of relationships in the system according to the search term
      * @param {?} term
      * @return {?}
      */
@@ -795,10 +897,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/relationships?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRelationship')));
     };
     /**
+     * Return a relationship definition from a given relationship ID
+     * @param relationshipID
+     */
+    /**
+     * Return a relationship definition from a given relationship ID
      * @param {?} relationshipID
      * @return {?}
      */
     EntityService.prototype.getRelationship = /**
+     * Return a relationship definition from a given relationship ID
      * @param {?} relationshipID
      * @return {?}
      */
@@ -806,10 +914,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/relationships/" + relationshipID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationship')));
     };
     /**
+     * Return the description of a given relationship ID
+     * @param relationshipID
+     */
+    /**
+     * Return the description of a given relationship ID
      * @param {?} relationshipID
      * @return {?}
      */
     EntityService.prototype.getRelationshipDesc = /**
+     * Return the description of a given relationship ID
      * @param {?} relationshipID
      * @return {?}
      */
@@ -817,10 +931,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/relationships/" + relationshipID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationshipDesc')));
     };
     /**
+     * Save a relationship after changing or creation
+     * @param relationship
+     */
+    /**
+     * Save a relationship after changing or creation
      * @param {?} relationship
      * @return {?}
      */
     EntityService.prototype.saveRelationship = /**
+     * Save a relationship after changing or creation
      * @param {?} relationship
      * @return {?}
      */
@@ -828,10 +948,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/relationships", relationship, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRelationship')));
     };
     /**
+     * Return a list of roles in the system according to the search term
+     * @param term
+     */
+    /**
+     * Return a list of roles in the system according to the search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listRole = /**
+     * Return a list of roles in the system according to the search term
      * @param {?} term
      * @return {?}
      */
@@ -839,10 +965,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/roles?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRole')));
     };
     /**
+     * Return a role definition from a given role ID
+     * @param roleID
+     */
+    /**
+     * Return a role definition from a given role ID
      * @param {?} roleID
      * @return {?}
      */
     EntityService.prototype.getRole = /**
+     * Return a role definition from a given role ID
      * @param {?} roleID
      * @return {?}
      */
@@ -850,10 +982,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/roles/" + roleID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRole')));
     };
     /**
+     * Return the description of a given role ID
+     * @param roleID
+     */
+    /**
+     * Return the description of a given role ID
      * @param {?} roleID
      * @return {?}
      */
     EntityService.prototype.getRoleDesc = /**
+     * Return the description of a given role ID
      * @param {?} roleID
      * @return {?}
      */
@@ -861,10 +999,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/roles/" + roleID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRoleDesc')));
     };
     /**
+     * Save a role after changing or creation
+     * @param role
+     */
+    /**
+     * Save a role after changing or creation
      * @param {?} role
      * @return {?}
      */
     EntityService.prototype.saveRole = /**
+     * Save a role after changing or creation
      * @param {?} role
      * @return {?}
      */
@@ -872,10 +1016,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/roles", role, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRole')));
     };
     /**
+     * Return a list of data elements in the system according to the search term
+     * @param term
+     */
+    /**
+     * Return a list of data elements in the system according to the search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listDataElement = /**
+     * Return a list of data elements in the system according to the search term
      * @param {?} term
      * @return {?}
      */
@@ -883,10 +1033,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-elements?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listDataElement')));
     };
     /**
+     * Return a data element definition from a given element ID
+     * @param elementID
+     */
+    /**
+     * Return a data element definition from a given element ID
      * @param {?} elementID
      * @return {?}
      */
     EntityService.prototype.getDataElement = /**
+     * Return a data element definition from a given element ID
      * @param {?} elementID
      * @return {?}
      */
@@ -894,10 +1050,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-elements/" + elementID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataElement')));
     };
     /**
+     * Return the description of a given data element ID
+     * @param elementID
+     */
+    /**
+     * Return the description of a given data element ID
      * @param {?} elementID
      * @return {?}
      */
     EntityService.prototype.getDataElementDesc = /**
+     * Return the description of a given data element ID
      * @param {?} elementID
      * @return {?}
      */
@@ -905,10 +1067,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-elements/" + elementID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataElementDesc')));
     };
     /**
+     * Save a data element after changing or creation
+     * @param element
+     */
+    /**
+     * Save a data element after changing or creation
      * @param {?} element
      * @return {?}
      */
     EntityService.prototype.saveDataElement = /**
+     * Save a data element after changing or creation
      * @param {?} element
      * @return {?}
      */
@@ -916,10 +1084,16 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/data-elements", element, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveDataElement')));
     };
     /**
+     * Return a list of data domains in the system according to the search term
+     * @param term
+     */
+    /**
+     * Return a list of data domains in the system according to the search term
      * @param {?} term
      * @return {?}
      */
     EntityService.prototype.listDataDomain = /**
+     * Return a list of data domains in the system according to the search term
      * @param {?} term
      * @return {?}
      */
@@ -927,10 +1101,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-domains?term=" + term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listDataDomain')));
     };
     /**
+     * Return a data domain definition from a given domain ID
+     * @param domainID
+     */
+    /**
+     * Return a data domain definition from a given domain ID
      * @param {?} domainID
      * @return {?}
      */
     EntityService.prototype.getDataDomain = /**
+     * Return a data domain definition from a given domain ID
      * @param {?} domainID
      * @return {?}
      */
@@ -938,10 +1118,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-domains/" + domainID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataDomain')));
     };
     /**
+     * Return the description of a given data domain ID
+     * @param domainID
+     */
+    /**
+     * Return the description of a given data domain ID
      * @param {?} domainID
      * @return {?}
      */
     EntityService.prototype.getDataDomainDesc = /**
+     * Return the description of a given data domain ID
      * @param {?} domainID
      * @return {?}
      */
@@ -949,10 +1135,16 @@ var EntityService = /** @class */ (function () {
         return this.http.get(this.originalHost + ("/api/model/data-domains/" + domainID + "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataDomainDesc')));
     };
     /**
+     * Save a data domain after changing or creation
+     * @param domain
+     */
+    /**
+     * Save a data domain after changing or creation
      * @param {?} domain
      * @return {?}
      */
     EntityService.prototype.saveDataDomain = /**
+     * Save a data domain after changing or creation
      * @param {?} domain
      * @return {?}
      */
@@ -960,9 +1152,14 @@ var EntityService = /** @class */ (function () {
         return this.http.post(this.originalHost + "/api/model/data-domains", domain, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveDataDomain')));
     };
     /**
+     * Return a fake relationship ID before saving
+     */
+    /**
+     * Return a fake relationship ID before saving
      * @return {?}
      */
     EntityService.prototype.generateFakeRelationshipUUID = /**
+     * Return a fake relationship ID before saving
      * @return {?}
      */
     function () {
@@ -1621,8 +1818,9 @@ var AttributeControlService = /** @class */ (function () {
         attributeControl.placeholder = '0.' + zeroPadding.substr(0, attribute.DECIMAL - 1) + '0';
         /** @type {?} */
         var integerPlace = attribute.DATA_LENGTH - attribute.DECIMAL;
-        attributeControl.pattern = '^\\d{1,' + integerPlace.toString() +
-            '}(\\.\\d{1,' + attribute.DECIMAL + '})?$';
+        attributeControl.pattern = attribute.UNSIGNED ? '^(' : '^(\\-?';
+        attributeControl.pattern += integerPlace ? '\\d{1,' + integerPlace.toString() + '})' : '0)';
+        attributeControl.pattern += '(\\.\\d{1,' + attribute.DECIMAL + '})?$';
         attributeControl.maxLength = attribute.DATA_LENGTH;
     };
     /**
@@ -1823,7 +2021,7 @@ var AttributeComponent = /** @class */ (function () {
     AttributeComponent.decorators = [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                     selector: 'dk-app-attribute',
-                    template: "<div [formGroup]=\"formGroup\">\n  <div [ngSwitch]=\"attributeControl.controlType\">\n    <div class=\"input-group\">\n      <input *ngSwitchCase=\"'text'\" type=\"text\" class=\"form-control form-control-sm\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'text_capital'\" type=\"text\" class=\"form-control form-control-sm\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             (keyup)=\"onKeyup(attributeControl.name)\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'integer'\" type=\"number\" class=\"form-control form-control-sm\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <div *ngIf=\"attributeControl.searchHelpId || attributeControl.domainRelationId\" class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" (click)=\"onSearchHelp(attributeControl)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n      </div>\n    </div>\n    <input *ngSwitchCase=\"'decimal'\" type=\"number\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [step]=\"attributeControl.step\"\n           [placeholder]=\"attributeControl.placeholder\"\n           [pattern]=\"attributeControl.pattern\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\">\n    <input *ngSwitchCase=\"'textarea'\" type=\"textarea\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'file'\" type=\"file\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'date'\" type=\"date\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'timestamp'\" type=\"text\" class=\"form-control form-control-sm\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <select *ngSwitchCase=\"'dropdown'\" class=\"form-control form-control-sm\"\n            [formControlName]=\"attributeControl.name\"\n            [id]=\"attributeControl.key\">\n      <option *ngFor=\"let opt of attributeControl.dropdownList\" [value]=\"opt.key\">{{opt.value}}</option>\n    </select>\n  </div>\n\n  <div class=\"errorMessage\" *ngIf=\"!isValid\">{{errorMessage}}</div>\n</div>\n\n<dk-app-search-help></dk-app-search-help>\n",
+                    template: "<div [formGroup]=\"formGroup\">\n  <div [ngSwitch]=\"attributeControl.controlType\">\n    <div class=\"input-group\">\n      <input *ngSwitchCase=\"'text'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'text_capital'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             (keyup)=\"onKeyup(attributeControl.name)\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'integer'\" type=\"number\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <div *ngIf=\"attributeControl.searchHelpId || attributeControl.domainRelationId\" class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" (click)=\"onSearchHelp(attributeControl)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n      </div>\n    </div>\n    <input *ngSwitchCase=\"'decimal'\" type=\"number\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [step]=\"attributeControl.step\"\n           [placeholder]=\"attributeControl.placeholder\"\n           [pattern]=\"attributeControl.pattern\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\">\n    <input *ngSwitchCase=\"'textarea'\" type=\"textarea\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'file'\" type=\"file\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'date'\" type=\"date\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'timestamp'\" type=\"text\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <select *ngSwitchCase=\"'dropdown'\" class=\"form-control\"\n            [class.form-control-sm] = \"isSmallSize\"\n            [formControlName]=\"attributeControl.name\"\n            [id]=\"attributeControl.key\">\n      <option *ngFor=\"let opt of attributeControl.dropdownList\" [value]=\"opt.key\">{{opt.value}}</option>\n    </select>\n  </div>\n\n  <div class=\"errorMessage\" *ngIf=\"!noErrorMsg && !isValid\">{{errorMessage}}</div>\n</div>\n\n<dk-app-search-help></dk-app-search-help>\n",
                     styles: [".errorMessage{color:red;font-size:.8rem}"]
                 }] }
     ];
@@ -1833,6 +2031,8 @@ var AttributeComponent = /** @class */ (function () {
         attributeControl: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         formGroup: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         readonly: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        isSmallSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        noErrorMsg: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         searchHelpComponent: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: [SearchHelpComponent, { static: false },] }]
     };
     return AttributeComponent;
@@ -1857,7 +2057,7 @@ var AttributeFormComponent = /** @class */ (function () {
     AttributeFormComponent.decorators = [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                     selector: 'dk-app-attribute-form',
-                    template: "<div class=\"form-group row\" [formGroup]=\"formGroup\">\n  <label class=\"col-4 col-form-label form-control-sm text-right\" [attr.for]=\"attributeControl.key\">\n    {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>:\n  </label>\n\n  <dk-app-attribute class=\"col-8\" [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\"\n                 [readonly]=\"readonly\">\n  </dk-app-attribute>\n\n</div>\n",
+                    template: "<div class=\"form-group row\" [formGroup]=\"formGroup\">\n  <label class=\"col-4 col-form-label text-right\"\n         [class.form-control-sm]=\"isSmallSize\"\n         [attr.for]=\"attributeControl.key\">\n    {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>:\n  </label>\n\n  <dk-app-attribute class=\"col-8\" [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\"\n                 [isSmallSize]=\"isSmallSize\" [readonly]=\"readonly\">\n  </dk-app-attribute>\n\n</div>\n",
                     styles: [".primaryKey{color:red}"]
                 }] }
     ];
@@ -1866,9 +2066,75 @@ var AttributeFormComponent = /** @class */ (function () {
     AttributeFormComponent.propDecorators = {
         attributeControl: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         formGroup: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-        readonly: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+        readonly: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        isSmallSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
     };
     return AttributeFormComponent;
+}());
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AttributeForm2Component = /** @class */ (function () {
+    function AttributeForm2Component() {
+    }
+    /**
+     * @return {?}
+     */
+    AttributeForm2Component.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+    };
+    Object.defineProperty(AttributeForm2Component.prototype, "isValid", {
+        get: /**
+         * @return {?}
+         */
+        function () { return this.formGroup.controls[this.attributeControl.name].valid; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AttributeForm2Component.prototype, "errorMessage", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            /** @type {?} */
+            var fieldCtrl = this.formGroup.get(this.attributeControl.name);
+            if (fieldCtrl.getError('pattern')) {
+                return 'The pattern is not correct';
+            }
+            else if (fieldCtrl.getError('required')) {
+                return 'Required';
+            }
+            else if (fieldCtrl.getError('message')) {
+                return fieldCtrl.getError('message');
+            }
+            else {
+                return null;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AttributeForm2Component.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
+                    selector: 'dk-app-attribute-form2',
+                    template: "<div class=\"form-group\" [formGroup]=\"formGroup\">\n  <label class=\"col-form-label\"\n         [class.form-control-sm]=\"isSmallSize\"\n         [attr.for]=\"attributeControl.key\">\n    {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>:\n    <span class=\"errorMessage\" *ngIf=\"!isValid\">{{errorMessage}}</span>\n  </label>\n\n  <dk-app-attribute [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\"\n                    [isSmallSize]=\"isSmallSize\" [readonly]=\"readonly\" [noErrorMsg]=\"true\">\n  </dk-app-attribute>\n\n</div>\n",
+                    styles: [".primaryKey{color:red}.errorMessage{color:red;font-size:.8rem}"]
+                }] }
+    ];
+    /** @nocollapse */
+    AttributeForm2Component.ctorParameters = function () { return []; };
+    AttributeForm2Component.propDecorators = {
+        attributeControl: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        formGroup: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        readonly: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        isSmallSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    };
+    return AttributeForm2Component;
 }());
 if (false) {}
 
@@ -1984,7 +2250,7 @@ var AttributeTableComponent = /** @class */ (function () {
     AttributeTableComponent.decorators = [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                     selector: 'dk-app-attribute-table',
-                    template: "<table class=\"table table-bordered table-sm relation-table\" [formGroup]=\"parentFormGroup\">\n  <thead class=\"thead-light\">\n  <tr>\n    <th scope=\"col\">\n      Action\n    </th>\n    <th scope=\"col\" *ngFor=\"let attributeControl of attributeControls\">\n      {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>\n    </th>\n  </tr>\n  </thead>\n\n  <tbody [formArrayName]=\"entityRelation.RELATION_ID\">\n    <tr *ngFor=\"let formGroup of formArray.controls; let i = index\">\n      <td class=\"actions\">\n        <button class=\"btn btn-sm\" type=\"button\" (click)=\"openDetailModal(i)\" title=\"Detail\">\n          <span *ngIf=\"readonly\" class=\"fas fa-search\"></span>\n          <span *ngIf=\"!readonly\" class=\"fas fa-pen\"></span>\n        </button>\n        <button class=\"btn btn-sm\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelationInstance(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n      <td *ngFor=\"let attributeControl of attributeControls\">\n        <dk-app-attribute [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\" [readonly]=\"readonly\">\n\n        </dk-app-attribute>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<div *ngIf=\"currentFormGroup\" class=\"modal fade dk-modal-open\" [ngClass]=\"{'show': isDetailModalShown}\"\n     [ngStyle]=\"{'display': displayDetailModal}\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"detail\">Line Detail</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeDetailModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <dk-app-attribute-form *ngFor=\"let attributeControl of attributeControls\" [readonly]=\"readonly\"\n                            [attributeControl]=\"attributeControl\" [formGroup]=\"currentFormGroup\">\n        </dk-app-attribute-form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"closeDetailModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"modal fade\" [ngClass]=\"{'show': isErrorModalShown}\"\n     [ngStyle]=\"{'display': displayErrorModal}\" id=\"errorModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"error\">{{errorTitle}}</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeErrorModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <p>{{errorDescription}}</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"closeErrorModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n",
+                    template: "<table class=\"table table-bordered relation-table\"\n       [class.table-sm]=\"isSmallSize\"\n       [formGroup]=\"parentFormGroup\">\n  <thead class=\"thead-light\">\n  <tr>\n    <th scope=\"col\">\n      Action\n    </th>\n    <th scope=\"col\" *ngFor=\"let attributeControl of attributeControls\">\n      {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>\n    </th>\n  </tr>\n  </thead>\n\n  <tbody [formArrayName]=\"entityRelation.RELATION_ID\">\n    <tr *ngFor=\"let formGroup of formArray.controls; let i = index\">\n      <td class=\"actions\">\n        <button class=\"btn\" [class.btn-sm]=\"isSmallSize\" type=\"button\" (click)=\"openDetailModal(i)\" title=\"Detail\">\n          <span *ngIf=\"readonly\" class=\"fas fa-search\"></span>\n          <span *ngIf=\"!readonly\" class=\"fas fa-pen\"></span>\n        </button>\n        <button class=\"btn\" [class.btn-sm]=\"isSmallSize\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelationInstance(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n      <td *ngFor=\"let attributeControl of attributeControls\">\n        <dk-app-attribute [attributeControl]=\"attributeControl\" [isSmallSize] = \"isSmallSize\"\n                          [formGroup]=\"formGroup\" [readonly]=\"readonly\">\n\n        </dk-app-attribute>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<div *ngIf=\"currentFormGroup\" class=\"modal fade dk-modal-open\" [ngClass]=\"{'show': isDetailModalShown}\"\n     [ngStyle]=\"{'display': displayDetailModal}\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"detail\">Line Detail</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeDetailModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <dk-app-attribute-form *ngFor=\"let attributeControl of attributeControls\"\n                               [readonly]=\"readonly\" [isSmallSize]=\"isSmallSize\"\n                            [attributeControl]=\"attributeControl\" [formGroup]=\"currentFormGroup\">\n        </dk-app-attribute-form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" [class.btn-sm]=\"isSmallSize\" (click)=\"closeDetailModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"modal fade\" [ngClass]=\"{'show': isErrorModalShown}\"\n     [ngStyle]=\"{'display': displayErrorModal}\" id=\"errorModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"error\">{{errorTitle}}</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeErrorModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <p>{{errorDescription}}</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" [class.btn-sm]=\"isSmallSize\" (click)=\"closeErrorModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n",
                     styles: [".primaryKey{color:red}.relation-table{display:block;overflow-x:auto;white-space:nowrap;border:none}.actions{width:5rem;min-width:5rem;max-width:6rem}.dk-modal-open{overflow:auto}"]
                 }] }
     ];
@@ -1995,6 +2261,7 @@ var AttributeTableComponent = /** @class */ (function () {
         formArray: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         parentFormGroup: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         entityRelation: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        isSmallSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         readonly: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
     };
     return AttributeTableComponent;
@@ -2041,7 +2308,8 @@ var JorAngularModule = /** @class */ (function () {
                         SearchHelpComponent,
                         AttributeComponent,
                         AttributeFormComponent,
-                        AttributeTableComponent
+                        AttributeTableComponent,
+                        AttributeForm2Component
                     ],
                     imports: [
                         _angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"],
@@ -2054,6 +2322,7 @@ var JorAngularModule = /** @class */ (function () {
                         SearchHelpComponent,
                         AttributeComponent,
                         AttributeFormComponent,
+                        AttributeForm2Component,
                         AttributeTableComponent
                     ]
                 },] }
