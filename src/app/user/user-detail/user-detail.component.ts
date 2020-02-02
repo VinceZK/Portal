@@ -6,7 +6,14 @@ import {msgStore} from "../../msgStore";
 import {switchMap} from "rxjs/operators";
 import {IdentityService} from "../../identity.service";
 import {forkJoin, Observable, of} from "rxjs";
-import {Entity, EntityService, RelationMeta, UiMapperService} from "jor-angular";
+import {
+  AttributeBase,
+  AttributeControlService,
+  Entity,
+  EntityService,
+  RelationMeta,
+  UiMapperService
+} from "jor-angular";
 import {existingUserIDValidator, existingUserNameValidator} from "./async-validators";
 import {DialogService} from "../../dialog.service";
 
@@ -18,6 +25,7 @@ import {DialogService} from "../../dialog.service";
 export class UserDetailComponent implements OnInit {
   userForm: FormGroup;
   relationMetas: RelationMeta[];
+  attrCtrls: AttributeBase[];
   readonly = true;
   isNewMode = false;
   action: string;
@@ -44,6 +52,7 @@ export class UserDetailComponent implements OnInit {
               private router: Router,
               private dialogService: DialogService,
               private identityService: IdentityService,
+              private attributeControlService: AttributeControlService,
               private entityService: EntityService,
               private uiMapperService: UiMapperService,
               private messageService: MessageService) {
@@ -67,6 +76,8 @@ export class UserDetailComponent implements OnInit {
       })
     ).subscribe( data => {
       this.relationMetas = data[0] as RelationMeta[];
+      this.attrCtrls = this.attributeControlService.toAttributeControl(
+        this.relationMetas.find( relationMeta => relationMeta.RELATION_ID === 'r_user').ATTRIBUTES);
       if ('ENTITY_ID' in data[1]) {
         this.instanceGUID = data[1]['INSTANCE_GUID'];
         this._generateUserForm(<Entity>data[1]);
@@ -80,6 +91,10 @@ export class UserDetailComponent implements OnInit {
         errorMessages.forEach( msg => this.messageService.add(msg));
       }
     });
+  }
+
+  getAttrCtrlFromID(fieldName: string): AttributeBase {
+    return this.attrCtrls.find( attrCtrl => attrCtrl.name === fieldName);
   }
 
   switchTabStrip(tabStripID: number): void {

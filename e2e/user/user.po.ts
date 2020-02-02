@@ -62,7 +62,7 @@ export class UserPage {
   }
 
   fillUserIDinDetailPage(userID: string) {
-    const userIDInput = element(by.id('user_id'));
+    const userIDInput = element(by.id('D84D9A544984A20BCF0BAD59977277E8'));
     userIDInput.clear()
       .then(() => userIDInput.sendKeys(userID));
   }

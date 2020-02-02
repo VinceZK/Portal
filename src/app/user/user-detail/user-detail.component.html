@@ -19,15 +19,12 @@
 </div>
 
 <div *ngIf="userForm" class="ml-2">
-  <div class="mt-2 ml-3 row">
-    <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm"
-         [class.dk-invalid]="userForm.get('USER_ID').invalid && (userForm.touched || userForm.dirty)">
-      <label for="user_id" class="col-form-label dk-form-label">User ID:
-        <span class="dk-invalid-feedback">{{userForm.get('USER_ID').errors?.required ? 'Required': null}}</span>
-        <span class="dk-invalid-feedback">{{userForm.get('USER_ID').errors?.message}}</span>
-      </label>
-      <input id="user_id" name="user_id" formControlName="USER_ID" type="text" class="form-control" [readonly]="!isNewMode">
-    </div>
+  <div class="mt-2 ml-1 row">
+    <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
+                            [attributeControl]="getAttrCtrlFromID('USER_ID')"
+                            [formGroup]="userForm"
+                            [readonly]="!isNewMode">
+    </dk-app-attribute-form2>
     <div class="col-md-6 col-lg-4 row form-group mr-2" [formGroup]="userForm">
       <label for="lockStatus" class="col-form-label dk-form-label">Lock Status:</label>
       <div id="lockStatus" class="form-control dk-icon">

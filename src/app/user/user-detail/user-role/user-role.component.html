@@ -9,8 +9,7 @@
 
   <tbody formArrayName="userRole" class="mb-4">
     <tr *ngFor="let userRoleForm of userRoleFormArray.controls; let i = index">
-      <td [formGroup]="userRoleForm"
-          [class.dk-invalid]="userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)">
+      <td [formGroup]="userRoleForm">
         <div class="input-group dk-name">
           <input class="form-control" type="text" formControlName="NAME"
                [readonly]="readonly || oldRole(userRoleForm) && userRoleForm.valid" (change)="onChangeRoleID(i)">

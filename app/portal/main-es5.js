@@ -181,7 +181,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav class=\"navbar dk-fixed-top navbar-light bg-light\">\n  <div>\n    <span class=\"font-weight-bold mb-0 mx-1\">{{isNewMode? 'New User' : readonly? 'Display User' : 'Change User'}}</span>\n  </div>\n\n  <div class=\"flex-row-reverse\">\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Edit/Display\" id=\"editDisplay\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"> Edit</span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"> Display</span>\n    </button>\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Save\" id=\"save\" (click)=\"save()\" [disabled]=\"readonly\">\n      <span class=\"fas fa-save\"> Save</span>\n    </button>\n  </div>\n</nav>\n\n<div class=\"mt-2 mb-2\">\n  <dk-message></dk-message>\n</div>\n\n<div *ngIf=\"userForm\" class=\"ml-2\">\n  <div class=\"mt-2 ml-3 row\">\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\"\n         [class.dk-invalid]=\"userForm.get('USER_ID').invalid && (userForm.touched || userForm.dirty)\">\n      <label for=\"user_id\" class=\"col-form-label dk-form-label\">User ID:\n        <span class=\"dk-invalid-feedback\">{{userForm.get('USER_ID').errors?.required ? 'Required': null}}</span>\n        <span class=\"dk-invalid-feedback\">{{userForm.get('USER_ID').errors?.message}}</span>\n      </label>\n      <input id=\"user_id\" name=\"user_id\" formControlName=\"USER_ID\" type=\"text\" class=\"form-control\" [readonly]=\"!isNewMode\">\n    </div>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"lockStatus\" class=\"col-form-label dk-form-label\">Lock Status:</label>\n      <div id=\"lockStatus\" class=\"form-control dk-icon\">\n        <span *ngIf=\"userForm.get('LOCK').value\" class=\"fas fa-lock\" > Locked</span>\n        <span *ngIf=\"!userForm.get('LOCK').value\" class=\"fas fa-lock-open\"> Unlocked</span>\n      </div>\n    </div>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"passwordStatus\" class=\"col-form-label dk-form-label\">Password Status:</label>\n      <div id=\"passwordStatus\" class=\"form-control dk-icon\" [ngSwitch]=\"userForm.get('PWD_STATUS').value\">\n        <div *ngSwitchCase=\"\">\n          <span class=\"badge badge-primary\">Initial</span>\n        </div>\n        <div *ngSwitchCase=\"1\">\n          <span class=\"badge badge-success\">Active</span>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <span class=\"badge badge-warning\">Renew</span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <ul class=\"nav nav-tabs mt-1\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===1\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(1)\">Basic</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===2\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(2)\">Email</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===3\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(3)\">Address</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===4\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(4)\">Personalization</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===5\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(5)\">Role</a>\n    </li>\n  </ul>\n\n  <div class=\"mt-2\" [ngSwitch]=\"tabStrip\">\n    <app-user-basic *ngSwitchCase=\"1\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-basic>\n    <app-user-email *ngSwitchCase=\"2\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-email>\n    <app-user-address *ngSwitchCase=\"3\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\"  [readonly]=\"readonly\"></app-user-address>\n    <app-user-personalization *ngSwitchCase=\"4\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-personalization>\n    <app-user-role *ngSwitchCase=\"5\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-role>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<nav class=\"navbar dk-fixed-top navbar-light bg-light\">\n  <div>\n    <span class=\"font-weight-bold mb-0 mx-1\">{{isNewMode? 'New User' : readonly? 'Display User' : 'Change User'}}</span>\n  </div>\n\n  <div class=\"flex-row-reverse\">\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Edit/Display\" id=\"editDisplay\" (click)=\"switchEditDisplay()\">\n      <span *ngIf=\"readonly\" class=\"fas fa-edit\"> Edit</span>\n      <span *ngIf=\"!readonly\" class=\"fas fa-glasses\"> Display</span>\n    </button>\n    <button class=\"btn btn-lg btn-outline-primary mr-2\" type=\"button\" title=\"Save\" id=\"save\" (click)=\"save()\" [disabled]=\"readonly\">\n      <span class=\"fas fa-save\"> Save</span>\n    </button>\n  </div>\n</nav>\n\n<div class=\"mt-2 mb-2\">\n  <dk-message></dk-message>\n</div>\n\n<div *ngIf=\"userForm\" class=\"ml-2\">\n  <div class=\"mt-2 ml-1 row\">\n    <dk-app-attribute-form2 class=\"col-md-6 col-lg-4 dk-form-label\"\n                            [attributeControl]=\"getAttrCtrlFromID('USER_ID')\"\n                            [formGroup]=\"userForm\"\n                            [readonly]=\"!isNewMode\">\n    </dk-app-attribute-form2>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"lockStatus\" class=\"col-form-label dk-form-label\">Lock Status:</label>\n      <div id=\"lockStatus\" class=\"form-control dk-icon\">\n        <span *ngIf=\"userForm.get('LOCK').value\" class=\"fas fa-lock\" > Locked</span>\n        <span *ngIf=\"!userForm.get('LOCK').value\" class=\"fas fa-lock-open\"> Unlocked</span>\n      </div>\n    </div>\n    <div class=\"col-md-6 col-lg-4 row form-group mr-2\" [formGroup]=\"userForm\">\n      <label for=\"passwordStatus\" class=\"col-form-label dk-form-label\">Password Status:</label>\n      <div id=\"passwordStatus\" class=\"form-control dk-icon\" [ngSwitch]=\"userForm.get('PWD_STATUS').value\">\n        <div *ngSwitchCase=\"\">\n          <span class=\"badge badge-primary\">Initial</span>\n        </div>\n        <div *ngSwitchCase=\"1\">\n          <span class=\"badge badge-success\">Active</span>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <span class=\"badge badge-warning\">Renew</span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <ul class=\"nav nav-tabs mt-1\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===1\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(1)\">Basic</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===2\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(2)\">Email</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===3\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(3)\">Address</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===4\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(4)\">Personalization</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [class.active]=\"tabStrip===5\" href=\"javascript:void(0);\" (click)=\"switchTabStrip(5)\">Role</a>\n    </li>\n  </ul>\n\n  <div class=\"mt-2\" [ngSwitch]=\"tabStrip\">\n    <app-user-basic *ngSwitchCase=\"1\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-basic>\n    <app-user-email *ngSwitchCase=\"2\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-email>\n    <app-user-address *ngSwitchCase=\"3\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\"  [readonly]=\"readonly\"></app-user-address>\n    <app-user-personalization *ngSwitchCase=\"4\" [userForm]=\"userForm\" [relationMetas]=\"relationMetas\" [readonly]=\"readonly\"></app-user-personalization>\n    <app-user-role *ngSwitchCase=\"5\" [userForm]=\"userForm\" [readonly]=\"readonly\"></app-user-role>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -201,7 +201,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"card mt-4\">\n  <div class=\"card-body\">\n    <div *ngFor=\"let userEmailForm of userEmailFormArray.controls; let i = index\" class=\"card mb-4\">\n      <button type=\"button\" id=\"remove\" class=\"dk-close-button close d-flex justify-content-end mr-2\" aria-label=\"Close\" (click)=\"deleteEmail(i)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n      <div class=\"card-body row\" [formGroup]=\"userEmailForm\">\n        <!--<div class=\"col-3 row form-group ml-2 mr-2\"-->\n             <!--[class.dk-invalid]=\"userEmailForm.get('TYPE').invalid && (userEmailForm.touched || userEmailForm.dirty)\">-->\n          <!--<label for=\"emailType\" class=\"col-form-label dk-form-label\"> Email Type:-->\n            <!--<span class=\"dk-invalid-feedback\">{{userEmailForm.get('TYPE').errors?.required ? 'Required': null}}</span>-->\n          <!--</label>-->\n          <!--<input type=\"text\" class=\"form-control\" id=\"emailType\" [readonly]=\"readonly\"-->\n                 <!--name=\"emailType\" formControlName=\"TYPE\">-->\n        <!--</div>-->\n        <dk-app-attribute-form2 class=\"col-md-6 col-lg-4 dk-form-label\"\n                                [attributeControl]=\"getAttrCtrlFromID('TYPE')\"\n                                [formGroup]=\"userEmailForm\"\n                                [readonly]=\"readonly\">\n        </dk-app-attribute-form2>\n        <!--<div class=\"col-6 row form-group mr-2\"-->\n             <!--[class.dk-invalid]=\"userEmailForm.get('EMAIL').invalid && (userEmailForm.touched || userEmailForm.dirty)\">-->\n          <!--<label for=\"emailAddress\" class=\"col-form-label dk-form-label\"> Email Address:-->\n            <!--<span class=\"dk-invalid-feedback\">{{userEmailForm.get('EMAIL').errors?.required ? 'Required': null}}</span>-->\n          <!--</label>-->\n          <!--<input type=\"text\" class=\"form-control\" id=\"emailAddress\" [readonly]=\"readonly\"-->\n                 <!--name=\"emailAddress\" formControlName=\"EMAIL\">-->\n        <!--</div>-->\n        <dk-app-attribute-form2 class=\"col-md-6 col-lg-4 dk-form-label\"\n                                [attributeControl]=\"getAttrCtrlFromID('EMAIL')\"\n                                [formGroup]=\"userEmailForm\"\n                                [readonly]=\"readonly\">\n        </dk-app-attribute-form2>\n        <div class=\"col-1 row form-group mr-2\">\n          <label for=\"primaryEmail\" class=\"col-form-label dk-form-label\">Primary</label>\n          <input type=\"radio\" class=\"form-control\" id=\"primaryEmail\" [value]=\"1\" name=\"PRIMARY\" formControlName=\"PRIMARY\">\n        </div>\n      </div>\n    </div>\n    <button type=\"button\" id=\"add\" class=\"btn btn-primary float-right\" [disabled]=\"readonly\" (click)=\"addEmail()\">Add</button>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"card mt-4\">\n  <div class=\"card-body\">\n    <div *ngFor=\"let userEmailForm of userEmailFormArray.controls; let i = index\" class=\"card mb-4\">\n      <button type=\"button\" id=\"remove\" class=\"dk-close-button close d-flex justify-content-end mr-2\" aria-label=\"Close\" (click)=\"deleteEmail(i)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n      <div class=\"card-body row\" [formGroup]=\"userEmailForm\">\n        <dk-app-attribute-form2 class=\"col-md-6 col-lg-4 dk-form-label\"\n                                [attributeControl]=\"getAttrCtrlFromID('TYPE')\"\n                                [formGroup]=\"userEmailForm\"\n                                [readonly]=\"readonly\">\n        </dk-app-attribute-form2>\n        <dk-app-attribute-form2 class=\"col-md-6 col-lg-4 dk-form-label\"\n                                [attributeControl]=\"getAttrCtrlFromID('EMAIL')\"\n                                [formGroup]=\"userEmailForm\"\n                                [readonly]=\"readonly\">\n        </dk-app-attribute-form2>\n        <div class=\"col-1 row form-group mr-2\">\n          <label for=\"primaryEmail\" class=\"col-form-label dk-form-label\">Primary</label>\n          <input type=\"radio\" class=\"form-control\" id=\"primaryEmail\" [value]=\"1\" name=\"PRIMARY\" formControlName=\"PRIMARY\">\n        </div>\n      </div>\n    </div>\n    <button type=\"button\" id=\"add\" class=\"btn btn-primary float-right\" [disabled]=\"readonly\" (click)=\"addEmail()\">Add</button>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -241,7 +241,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<table class=\"table table-bordered dk-table ml-3 mt-4\" [formGroup]=\"userForm\">\n  <thead class=\"thead-light dk-form-label\">\n    <tr>\n      <th scope=\"col\">Role</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n  </thead>\n\n  <tbody formArrayName=\"userRole\" class=\"mb-4\">\n    <tr *ngFor=\"let userRoleForm of userRoleFormArray.controls; let i = index\">\n      <td [formGroup]=\"userRoleForm\"\n          [class.dk-invalid]=\"userRoleForm.get('NAME').invalid && (userRoleForm.touched || userRoleForm.dirty)\">\n        <div class=\"input-group dk-name\">\n          <input class=\"form-control\" type=\"text\" formControlName=\"NAME\"\n               [readonly]=\"readonly || oldRole(userRoleForm) && userRoleForm.valid\" (change)=\"onChangeRoleID(i)\">\n          <div class=\"invalid-tooltip\">\n            {{userRoleForm.get('NAME').errors?.message}}\n          </div>\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary btn-light\" type=\"button\" id=\"searchPermission\"\n            (click)=\"onSearchHelp(i, userRoleForm)\">\n              <span class=\"fas fa-search\"></span>\n            </button>\n          </div>\n        </div>\n      </td>\n      <td [formGroup]=\"userRoleForm\" class=\"dk-description\">\n        <input type=\"text\" formControlName=\"DESCRIPTION\" readonly class=\"form-control\">\n      </td>\n      <td class=\"dk-actions\">\n        <button class=\"btn\" type=\"button\" id=\"delete\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<dk-app-search-help></dk-app-search-help>\n";
+    __webpack_exports__["default"] = "<table class=\"table table-bordered dk-table ml-3 mt-4\" [formGroup]=\"userForm\">\n  <thead class=\"thead-light dk-form-label\">\n    <tr>\n      <th scope=\"col\">Role</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">Action</th>\n    </tr>\n  </thead>\n\n  <tbody formArrayName=\"userRole\" class=\"mb-4\">\n    <tr *ngFor=\"let userRoleForm of userRoleFormArray.controls; let i = index\">\n      <td [formGroup]=\"userRoleForm\">\n        <div class=\"input-group dk-name\">\n          <input class=\"form-control\" type=\"text\" formControlName=\"NAME\"\n               [readonly]=\"readonly || oldRole(userRoleForm) && userRoleForm.valid\" (change)=\"onChangeRoleID(i)\">\n          <div class=\"invalid-tooltip\">\n            {{userRoleForm.get('NAME').errors?.message}}\n          </div>\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary btn-light\" type=\"button\" id=\"searchPermission\"\n            (click)=\"onSearchHelp(i, userRoleForm)\">\n              <span class=\"fas fa-search\"></span>\n            </button>\n          </div>\n        </div>\n      </td>\n      <td [formGroup]=\"userRoleForm\" class=\"dk-description\">\n        <input type=\"text\" formControlName=\"DESCRIPTION\" readonly class=\"form-control\">\n      </td>\n      <td class=\"dk-actions\">\n        <button class=\"btn\" type=\"button\" id=\"delete\" [disabled]=\"readonly\" (click)=\"deleteRole(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<dk-app-search-help></dk-app-search-help>\n";
     /***/
   },
 
@@ -629,17 +629,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_1__["SideMenuComponent"], {
-      static: true
+      "static": true
     }), __metadata("design:type", _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_1__["SideMenuComponent"])], AppComponent.prototype, "sideMenu", void 0);
 
     AppComponent = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
       selector: 'app-root',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./app.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./app.component.css */
-      "./src/app/app.component.css")).default]
+      "./src/app/app.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _identity_service__WEBPACK_IMPORTED_MODULE_5__["IdentityService"], _share_service__WEBPACK_IMPORTED_MODULE_6__["ShareService"], _history_service__WEBPACK_IMPORTED_MODULE_3__["HistoryService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["EntityService"]])], AppComponent);
     /***/
   },
@@ -1103,10 +1103,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-error-page',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./error-page.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./error-page.component.css */
-      "./src/app/error-page/error-page.component.css")).default]
+      "./src/app/error-page/error-page.component.css"))["default"]]
     }), __metadata("design:paramtypes", [])], ErrorPageComponent);
     /***/
   },
@@ -1348,10 +1348,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-external-app',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./external-app.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/external-app/external-app.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/external-app/external-app.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./external-app.component.css */
-      "./src/app/external-app/external-app.component.css")).default]
+      "./src/app/external-app/external-app.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _share_service__WEBPACK_IMPORTED_MODULE_4__["ShareService"], _identity_service__WEBPACK_IMPORTED_MODULE_5__["IdentityService"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])], ExternalAppComponent);
     /***/
   },
@@ -1627,10 +1627,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-head-bar',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./head-bar.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/head-bar/head-bar.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/head-bar/head-bar.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./head-bar.component.css */
-      "./src/app/head-bar/head-bar.component.css")).default]
+      "./src/app/head-bar/head-bar.component.css"))["default"]]
     }), __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"])), __metadata("design:paramtypes", [Object, _history_service__WEBPACK_IMPORTED_MODULE_2__["HistoryService"], _identity_service__WEBPACK_IMPORTED_MODULE_3__["IdentityService"]])], HeadBarComponent);
     /***/
   },
@@ -1866,7 +1866,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(IdentityService, [{
         key: "logout",
         value: function logout() {
-          return this.http.delete(this.originalHost + '/api/logout', httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('Logout')));
+          return this.http["delete"](this.originalHost + '/api/logout', httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('Logout')));
         }
       }, {
         key: "getLogonUser",
@@ -2087,7 +2087,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUser",
         value: function deleteUser(userGUID) {
-          return this.http.delete(this.originalHost + "/api/entity/instance/" + userGUID, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteUser')));
+          return this.http["delete"](this.originalHost + "/api/entity/instance/" + userGUID, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteUser')));
         }
       }, {
         key: "handleError",
@@ -2307,7 +2307,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       template: '<img [src]="mockupUI" style="max-width: 100%">',
       styles: [__importDefault(__webpack_require__(
       /*! ./mockup.component.css */
-      "./src/app/mockup/mockup.component.css")).default]
+      "./src/app/mockup/mockup.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])], MockupComponent);
     /***/
   },
@@ -2588,10 +2588,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-not-found',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./not-found.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/not-found/not-found.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/not-found/not-found.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./not-found.component.css */
-      "./src/app/not-found/not-found.component.css")).default]
+      "./src/app/not-found/not-found.component.css"))["default"]]
     }), __metadata("design:paramtypes", [])], NotFoundComponent);
     /***/
   },
@@ -2987,8 +2987,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _iteratorError = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
+              if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                _iterator["return"]();
               }
             } finally {
               if (_didIteratorError) {
@@ -3338,7 +3338,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sideMenu', {
-      static: true
+      "static": true
     }), __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])], SideMenuComponent.prototype, "sideMenu", void 0);
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('document:mousemove', ['$event', 'mouseLocs']), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Object]), __metadata("design:returntype", void 0)], SideMenuComponent.prototype, "mousemoveDocument", null);
@@ -3347,10 +3347,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-side-menu',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./side-menu.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/side-menu/side-menu.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/side-menu/side-menu.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./side-menu.component.css */
-      "./src/app/side-menu/side-menu.component.css")).default]
+      "./src/app/side-menu/side-menu.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_identity_service__WEBPACK_IMPORTED_MODULE_7__["IdentityService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_8__["MessageService"], _share_service__WEBPACK_IMPORTED_MODULE_9__["ShareService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])], SideMenuComponent);
     /***/
   },
@@ -3592,10 +3592,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-address',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-address.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-address/user-address.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-address/user-address.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-address.component.css */
-      "./src/app/user/user-detail/user-address/user-address.component.css")).default]
+      "./src/app/user/user-detail/user-address/user-address.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], jor_angular__WEBPACK_IMPORTED_MODULE_2__["AttributeControlService"]])], UserAddressComponent);
     /***/
   },
@@ -3727,10 +3727,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-basic',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-basic.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-basic/user-basic.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-basic/user-basic.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-basic.component.css */
-      "./src/app/user/user-detail/user-basic/user-basic.component.css")).default]
+      "./src/app/user/user-detail/user-basic/user-basic.component.css"))["default"]]
     }), __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_2__["AttributeControlService"]])], UserBasicComponent);
     /***/
   },
@@ -3864,7 +3864,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var UserDetailComponent =
     /*#__PURE__*/
     function () {
-      function UserDetailComponent(fb, route, router, dialogService, identityService, entityService, uiMapperService, messageService) {
+      function UserDetailComponent(fb, route, router, dialogService, identityService, attributeControlService, entityService, uiMapperService, messageService) {
         _classCallCheck(this, UserDetailComponent);
 
         this.fb = fb;
@@ -3872,6 +3872,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.router = router;
         this.dialogService = dialogService;
         this.identityService = identityService;
+        this.attributeControlService = attributeControlService;
         this.entityService = entityService;
         this.uiMapperService = uiMapperService;
         this.messageService = messageService;
@@ -3900,6 +3901,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           })).subscribe(function (data) {
             _this9.relationMetas = data[0];
+            _this9.attrCtrls = _this9.attributeControlService.toAttributeControl(_this9.relationMetas.find(function (relationMeta) {
+              return relationMeta.RELATION_ID === 'r_user';
+            }).ATTRIBUTES);
 
             if ('ENTITY_ID' in data[1]) {
               _this9.instanceGUID = data[1]['INSTANCE_GUID'];
@@ -3917,6 +3921,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return _this9.messageService.add(msg);
               });
             }
+          });
+        }
+      }, {
+        key: "getAttrCtrlFromID",
+        value: function getAttrCtrlFromID(fieldName) {
+          return this.attrCtrls.find(function (attrCtrl) {
+            return attrCtrl.name === fieldName;
           });
         }
       }, {
@@ -4394,6 +4405,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         type: _identity_service__WEBPACK_IMPORTED_MODULE_6__["IdentityService"]
       }, {
+        type: jor_angular__WEBPACK_IMPORTED_MODULE_8__["AttributeControlService"]
+      }, {
         type: jor_angular__WEBPACK_IMPORTED_MODULE_8__["EntityService"]
       }, {
         type: jor_angular__WEBPACK_IMPORTED_MODULE_8__["UiMapperService"]
@@ -4406,11 +4419,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-detail',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-detail.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-detail.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-detail.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-detail.component.css */
-      "./src/app/user/user-detail/user-detail.component.css")).default]
-    }), __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _dialog_service__WEBPACK_IMPORTED_MODULE_10__["DialogService"], _identity_service__WEBPACK_IMPORTED_MODULE_6__["IdentityService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["EntityService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["UiMapperService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])], UserDetailComponent);
+      "./src/app/user/user-detail/user-detail.component.css"))["default"]]
+    }), __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _dialog_service__WEBPACK_IMPORTED_MODULE_10__["DialogService"], _identity_service__WEBPACK_IMPORTED_MODULE_6__["IdentityService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["AttributeControlService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["EntityService"], jor_angular__WEBPACK_IMPORTED_MODULE_8__["UiMapperService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])], UserDetailComponent);
     /***/
   },
 
@@ -4585,10 +4598,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-email',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-email.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-email/user-email.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-email/user-email.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-email.component.css */
-      "./src/app/user/user-detail/user-email/user-email.component.css")).default]
+      "./src/app/user/user-detail/user-email/user-email.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], ui_message_angular__WEBPACK_IMPORTED_MODULE_2__["MessageService"], jor_angular__WEBPACK_IMPORTED_MODULE_3__["AttributeControlService"]])], UserEmailComponent);
     /***/
   },
@@ -4716,10 +4729,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-personalization',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-personalization.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-personalization/user-personalization.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-personalization/user-personalization.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-personalization.component.css */
-      "./src/app/user/user-detail/user-personalization/user-personalization.component.css")).default]
+      "./src/app/user/user-detail/user-personalization/user-personalization.component.css"))["default"]]
     }), __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_2__["AttributeControlService"]])], UserPersonalizationComponent);
     /***/
   },
@@ -4911,17 +4924,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(), __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"])], UserRoleComponent.prototype, "userForm", void 0);
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"], {
-      static: true
+      "static": true
     }), __metadata("design:type", jor_angular__WEBPACK_IMPORTED_MODULE_3__["SearchHelpComponent"])], UserRoleComponent.prototype, "searchHelpComponent", void 0);
 
     UserRoleComponent = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
       selector: 'app-user-role',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-role.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-role/user-role.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-detail/user-role/user-role.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-role.component.css */
-      "./src/app/user/user-detail/user-role/user-role.component.css")).default]
+      "./src/app/user/user-detail/user-role/user-role.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _identity_service__WEBPACK_IMPORTED_MODULE_2__["IdentityService"]])], UserRoleComponent);
     /***/
   },
@@ -5131,10 +5144,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-user-list',
       template: __importDefault(__webpack_require__(
       /*! raw-loader!./user-list.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-list/user-list.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/user/user-list/user-list.component.html"))["default"],
       styles: [__importDefault(__webpack_require__(
       /*! ./user-list.component.css */
-      "./src/app/user/user-list/user-list.component.css")).default]
+      "./src/app/user/user-list/user-list.component.css"))["default"]]
     }), __metadata("design:paramtypes", [_identity_service__WEBPACK_IMPORTED_MODULE_3__["IdentityService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_1__["MessageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], UserListComponent);
     /***/
   },
@@ -5289,7 +5302,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"]).catch(function (err) {
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])["catch"](function (err) {
       return console.log(err);
     });
     /***/

@@ -5,27 +5,11 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="card-body row" [formGroup]="userEmailForm">
-        <!--<div class="col-3 row form-group ml-2 mr-2"-->
-             <!--[class.dk-invalid]="userEmailForm.get('TYPE').invalid && (userEmailForm.touched || userEmailForm.dirty)">-->
-          <!--<label for="emailType" class="col-form-label dk-form-label"> Email Type:-->
-            <!--<span class="dk-invalid-feedback">{{userEmailForm.get('TYPE').errors?.required ? 'Required': null}}</span>-->
-          <!--</label>-->
-          <!--<input type="text" class="form-control" id="emailType" [readonly]="readonly"-->
-                 <!--name="emailType" formControlName="TYPE">-->
-        <!--</div>-->
         <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
                                 [attributeControl]="getAttrCtrlFromID('TYPE')"
                                 [formGroup]="userEmailForm"
                                 [readonly]="readonly">
         </dk-app-attribute-form2>
-        <!--<div class="col-6 row form-group mr-2"-->
-             <!--[class.dk-invalid]="userEmailForm.get('EMAIL').invalid && (userEmailForm.touched || userEmailForm.dirty)">-->
-          <!--<label for="emailAddress" class="col-form-label dk-form-label"> Email Address:-->
-            <!--<span class="dk-invalid-feedback">{{userEmailForm.get('EMAIL').errors?.required ? 'Required': null}}</span>-->
-          <!--</label>-->
-          <!--<input type="text" class="form-control" id="emailAddress" [readonly]="readonly"-->
-                 <!--name="emailAddress" formControlName="EMAIL">-->
-        <!--</div>-->
         <dk-app-attribute-form2 class="col-md-6 col-lg-4 dk-form-label"
                                 [attributeControl]="getAttrCtrlFromID('EMAIL')"
                                 [formGroup]="userEmailForm"
