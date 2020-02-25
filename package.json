@@ -35,7 +35,7 @@
     "express-session": "^1.17.0",
     "fuzzysort": "^1.1.4",
     "handsontable": "^7.3.0",
-    "jor-angular": "3.1.2",
+    "jor-angular": "3.1.6",
     "json-on-relations": "3.1.0",
     "mysql": "^2.18.1",
     "node-authorization": "^2.0.2",
