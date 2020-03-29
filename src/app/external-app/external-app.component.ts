@@ -13,8 +13,8 @@ import {of} from "rxjs";
   styleUrls: ['./external-app.component.css']
 })
 export class ExternalAppComponent implements OnInit {
-  appUrl: string;
-  iFrameWidth: string;
+  appUrl;
+  // iFrameWidth: string;
   apps: App[] = [];
 
   constructor(
@@ -26,11 +26,6 @@ export class ExternalAppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.shareService.isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
-    // this.shareService.isCollapsed$.subscribe( isCollapsed => {
-    //   isCollapsed ? this.iFrameWidth = '95%' : this.iFrameWidth = '80%';
-    // });
-
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
           const appID = params.get('appID');
@@ -46,7 +41,7 @@ export class ExternalAppComponent implements OnInit {
         } else {
           const appDangerousUrl = routeLink.substr(0, 4) === 'http' ? routeLink :
             window.location.origin + routeLink;
-          this.appUrl = <string>this.sanitizer.bypassSecurityTrustResourceUrl(appDangerousUrl);
+          this.appUrl = this.sanitizer.bypassSecurityTrustResourceUrl(appDangerousUrl);
         }
     });
   }

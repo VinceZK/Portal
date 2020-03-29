@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {App, Role, UserBasicInfo} from "./role";
+import {App, Role} from "./role";
 import {Entity, QueryObject} from "jor-angular";
 import {Router} from "@angular/router";
 import {environment} from "../environments/environment";
 import {Message, MessageService, messageType} from "ui-message-angular";
-import {msgStore} from "./msgStore";
+import {Session} from 'ui-logon-angular';
 import {UserList} from "./user";
+import {formatDate} from "@angular/common";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,31 +18,27 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class IdentityService {
   private originalHost = environment.originalHost;
+  private session: Session;
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
               private router: Router) {
-    this.messageService.setMessageStore(msgStore, 'EN');
   }
 
-  /**
-   * Logout the system
-   */
-  logout(): Observable<any> {
-    return this.http.delete(this.originalHost + '/api/logout', httpOptions).pipe(
-      catchError(this.handleError<any>('Logout')));
+  setSession( data: any ) {
+    this.session = <Session>data;
   }
 
-  getLogonUser(): Observable<UserBasicInfo> {
-    return this.http.get<UserBasicInfo>(this.originalHost + '/api/session', httpOptions).pipe(
-      map( userSession => {
-        const userInfo = new UserBasicInfo();
-        userInfo.userID = userSession['identity']['userBasic']['USER_ID'];
-        userInfo.userName = userSession['identity']['userBasic']['USER_NAME'];
-        userInfo.displayName = userSession['identity']['userBasic']['DISPLAY_NAME'];
-        return userInfo;
-      }),
-      catchError(this.handleError<any>('getRoleDetail')));
+  get Session(): Session {
+    if (this.session) { return this. session; }
+    const defaultSession = new Session();
+    defaultSession.USER_ID = 'DH001';
+    defaultSession.LANGUAGE = 'EN';
+    return defaultSession;
+  }
+
+  get CurrentTime(): string {
+    return formatDate( new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US' );
   }
 
   /**

@@ -1,8 +1,9 @@
 import {Component, EventEmitter, HostListener, Inject, OnInit, Output} from '@angular/core';
-import {App, UserBasicInfo} from "../role";
+import {App} from "../role";
 import {HistoryService} from "../history.service";
-import {IdentityService} from "../identity.service";
 import {DOCUMENT} from "@angular/common";
+import {LogonService, Session} from "ui-logon-angular";
+import {IdentityService} from "../identity.service";
 
 @Component({
   selector: 'app-head-bar',
@@ -18,17 +19,19 @@ export class HeadBarComponent implements OnInit {
     notificationOpen: false,
     preferenceOpen: false
   };
-  userBasicInfo: UserBasicInfo = new UserBasicInfo();
+  userBasicInfo: Session = new Session();
 
   constructor(@Inject(DOCUMENT)
               private document: any,
               private history: HistoryService,
-              private identity: IdentityService) { }
+              private logonService: LogonService,
+              private identityService: IdentityService) { }
 
   ngOnInit() {
     this.history.currentHistoryObserver.subscribe(history => this.navHistory = history );
     this.history.currentAppObserver.subscribe(currentApp => this.currentApp = currentApp );
-    this.identity.getLogonUser().subscribe( logonUser => this.userBasicInfo = logonUser);
+    this.logonService.session().subscribe( session => this.userBasicInfo = session );
+    this.userBasicInfo = this.identityService.Session;
   }
 
   @HostListener('document:mouseup', ['$event', 'dropdown'])
@@ -63,6 +66,6 @@ export class HeadBarComponent implements OnInit {
   }
 
   logout() {
-    this.identity.logout().subscribe( () => this.document.location.href = window.location.origin);
+    this.logonService.logout().subscribe(() => this.document.location.href = window.location.origin);
   }
 }

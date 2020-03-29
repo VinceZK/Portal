@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Message, MessageService} from "ui-message-angular";
-import {msgStore} from "../../msgStore";
 import {switchMap} from "rxjs/operators";
 import {IdentityService} from "../../identity.service";
 import {forkJoin, Observable, of} from "rxjs";
@@ -56,7 +55,6 @@ export class UserDetailComponent implements OnInit {
               private entityService: EntityService,
               private uiMapperService: UiMapperService,
               private messageService: MessageService) {
-    this.messageService.setMessageStore(msgStore, 'EN');
   }
 
   ngOnInit() {
@@ -66,12 +64,12 @@ export class UserDetailComponent implements OnInit {
         if (this.action === 'new') {
           this.isNewMode = true;
           return forkJoin(
-            this.entityService.getRelationMetaOfEntity('person'), this._createNewUser());
+            [this.entityService.getRelationMetaOfEntity('person'), this._createNewUser()]);
         } else {
           this.isNewMode = false;
           return forkJoin(
-            this.entityService.getRelationMetaOfEntity('person'),
-            this.identityService.getUserDetail(params.get('userID')));
+            [this.entityService.getRelationMetaOfEntity('person'),
+            this.identityService.getUserDetail(params.get('userID'))]);
         }
       })
     ).subscribe( data => {

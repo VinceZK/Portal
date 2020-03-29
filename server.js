@@ -5,8 +5,8 @@ const app = express();
 // Register your Angular built files as static
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'app')));
-app.get('/logon', (req, res) => { // Open the logon page
-  res.sendFile(path.join(__dirname, 'app/logon/index.html'));
+app.get('/', (req, res) => { // Open the logon page
+  res.sendFile(path.join(__dirname, 'app/identification/index.html'));
 });
 
 // Register express-session middle ware with redis
@@ -36,6 +36,9 @@ app.use(passport.session());
 const router = require('ui-logon').Router;
 const jor = require('json-on-relations');
 router.use(jor.Routes); // JOR Routes
+router.get('/identification/*', (req, res) => { // Open the portal page
+  res.sendFile(path.join(__dirname, 'app/identification/index.html'));
+});
 router.get('/jor/*', (req, res) => { // Open the jor page
   res.sendFile(path.join(__dirname, 'app/jor/index.html'));
 });
@@ -51,6 +54,7 @@ app.use('/', router);
 require('ui-logon').Authentication(jor);
 
 require('./server/controller/identity_ctrl');
+require('./server/controller/permission_ctrl');
 // Bootstrap the server
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => console.log('Example app listening on port 3000!'));

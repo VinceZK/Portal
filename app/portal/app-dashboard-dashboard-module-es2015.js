@@ -29286,19 +29286,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/dashboard/dashboard.component.html":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/dashboard/dashboard.component.html ***!
-  \******************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-graph [nodes]=\"nodes\" [links]=\"links\"></app-graph>\n");
-
-/***/ }),
-
 /***/ "./src/app/dashboard/app.config.ts":
 /*!*****************************************!*\
   !*** ./src/app/dashboard/app.config.ts ***!
@@ -29308,9 +29295,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 const CONFIG = {
     N: 200,
     SPECTRUM: [
@@ -29341,29 +29325,19 @@ const CONFIG = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D3Service", function() { return D3Service; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
 /* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models */ "./src/app/dashboard/d3/models/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
-let D3Service = class D3Service {
+
+class D3Service {
     /** This service will provide methods to enable user interaction with elements
      * while maintaining the d3 simulations physics
      */
-    constructor() { }
+    constructor() {
+    }
     /** A method to bind a pan and zoom behaviour to an svg element */
     applyZoomableBehaviour(svgElement, containerElement) {
         let svg, container, zoomed, zoom;
@@ -29408,12 +29382,12 @@ let D3Service = class D3Service {
         const sg = new _models__WEBPACK_IMPORTED_MODULE_2__["ForceDirectedGraph"](nodes, links, options);
         return sg;
     }
-};
-D3Service = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-    __metadata("design:paramtypes", [])
-], D3Service);
-
+}
+D3Service.ɵfac = function D3Service_Factory(t) { return new (t || D3Service)(); };
+D3Service.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: D3Service, factory: D3Service.ɵfac });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](D3Service, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
@@ -29428,25 +29402,15 @@ D3Service = __decorate([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DraggableDirective", function() { return DraggableDirective; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models */ "./src/app/dashboard/d3/models/index.ts");
 /* harmony import */ var _d3_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../d3.service */ "./src/app/dashboard/d3/d3.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
-let DraggableDirective = class DraggableDirective {
+
+
+class DraggableDirective {
     constructor(d3Service, _element) {
         this.d3Service = d3Service;
         this._element = _element;
@@ -29454,26 +29418,19 @@ let DraggableDirective = class DraggableDirective {
     ngOnInit() {
         this.d3Service.applyDraggableBehaviour(this._element.nativeElement, this.appDraggableNode, this.appDraggableInGraph);
     }
-};
-DraggableDirective.ctorParameters = () => [
-    { type: _d3_service__WEBPACK_IMPORTED_MODULE_2__["D3Service"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }
-];
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", _models__WEBPACK_IMPORTED_MODULE_1__["Node"])
-], DraggableDirective.prototype, "appDraggableNode", void 0);
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", _models__WEBPACK_IMPORTED_MODULE_1__["ForceDirectedGraph"])
-], DraggableDirective.prototype, "appDraggableInGraph", void 0);
-DraggableDirective = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-        selector: '[appDraggableNode]'
-    }),
-    __metadata("design:paramtypes", [_d3_service__WEBPACK_IMPORTED_MODULE_2__["D3Service"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
-], DraggableDirective);
-
+}
+DraggableDirective.ɵfac = function DraggableDirective_Factory(t) { return new (t || DraggableDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_d3_service__WEBPACK_IMPORTED_MODULE_2__["D3Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
+DraggableDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: DraggableDirective, selectors: [["", "appDraggableNode", ""]], inputs: { appDraggableNode: "appDraggableNode", appDraggableInGraph: "appDraggableInGraph" } });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DraggableDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[appDraggableNode]'
+            }]
+    }], function () { return [{ type: _d3_service__WEBPACK_IMPORTED_MODULE_2__["D3Service"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, { appDraggableNode: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], appDraggableInGraph: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
 
 
 /***/ }),
@@ -29482,7 +29439,7 @@ DraggableDirective = __decorate([
 /*!**************************************************!*\
   !*** ./src/app/dashboard/d3/directives/index.ts ***!
   \**************************************************/
-/*! exports provided: D3_DIRECTIVES, ZoomableDirective, DraggableDirective */
+/*! exports provided: ZoomableDirective, DraggableDirective, D3_DIRECTIVES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29494,9 +29451,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DraggableDirective", function() { return _draggable_directive__WEBPACK_IMPORTED_MODULE_1__["DraggableDirective"]; });
 
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
@@ -29519,23 +29473,13 @@ const D3_DIRECTIVES = [
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZoomableDirective", function() { return ZoomableDirective; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _d3_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../d3.service */ "./src/app/dashboard/d3/d3.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
-let ZoomableDirective = class ZoomableDirective {
+
+
+class ZoomableDirective {
     constructor(d3Service, _element) {
         this.d3Service = d3Service;
         this._element = _element;
@@ -29543,22 +29487,17 @@ let ZoomableDirective = class ZoomableDirective {
     ngOnInit() {
         this.d3Service.applyZoomableBehaviour(this.appZoomableOf, this._element.nativeElement);
     }
-};
-ZoomableDirective.ctorParameters = () => [
-    { type: _d3_service__WEBPACK_IMPORTED_MODULE_1__["D3Service"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }
-];
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
-], ZoomableDirective.prototype, "appZoomableOf", void 0);
-ZoomableDirective = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-        selector: '[appZoomableOf]'
-    }),
-    __metadata("design:paramtypes", [_d3_service__WEBPACK_IMPORTED_MODULE_1__["D3Service"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
-], ZoomableDirective);
-
+}
+ZoomableDirective.ɵfac = function ZoomableDirective_Factory(t) { return new (t || ZoomableDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_d3_service__WEBPACK_IMPORTED_MODULE_1__["D3Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
+ZoomableDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: ZoomableDirective, selectors: [["", "appZoomableOf", ""]], inputs: { appZoomableOf: "appZoomableOf" } });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ZoomableDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[appZoomableOf]'
+            }]
+    }], function () { return [{ type: _d3_service__WEBPACK_IMPORTED_MODULE_1__["D3Service"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, { appZoomableOf: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
 
 
 /***/ }),
@@ -29567,7 +29506,7 @@ ZoomableDirective = __decorate([
 /*!***************************************!*\
   !*** ./src/app/dashboard/d3/index.ts ***!
   \***************************************/
-/*! exports provided: D3Service, D3_DIRECTIVES, Node, Link, ForceDirectedGraph, ZoomableDirective, DraggableDirective */
+/*! exports provided: D3Service, ZoomableDirective, DraggableDirective, D3_DIRECTIVES, Node, Link, ForceDirectedGraph */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29583,15 +29522,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ForceDirectedGraph", function() { return _models__WEBPACK_IMPORTED_MODULE_1__["ForceDirectedGraph"]; });
 
 /* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./directives */ "./src/app/dashboard/d3/directives/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "D3_DIRECTIVES", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["D3_DIRECTIVES"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZoomableDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["ZoomableDirective"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DraggableDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["DraggableDirective"]; });
 
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "D3_DIRECTIVES", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["D3_DIRECTIVES"]; });
+
 
 
 
@@ -29609,12 +29545,9 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForceDirectedGraph", function() { return ForceDirectedGraph; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./link */ "./src/app/dashboard/d3/models/link.ts");
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
@@ -29705,9 +29638,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _force_directed_graph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./force-directed-graph */ "./src/app/dashboard/d3/models/force-directed-graph.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ForceDirectedGraph", function() { return _force_directed_graph__WEBPACK_IMPORTED_MODULE_2__["ForceDirectedGraph"]; });
 
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
@@ -29725,9 +29655,6 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return Link; });
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 // Implementing SimulationLinkDatum interface into our custom Link class
 class Link {
     constructor(source, target) {
@@ -29750,9 +29677,6 @@ class Link {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Node", function() { return Node; });
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../app.config */ "./src/app/dashboard/app.config.ts");
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 class Node {
     constructor(id) {
@@ -29785,18 +29709,11 @@ class Node {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardRoutingModule", function() { return DashboardRoutingModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+
+
 
 
 
@@ -29804,33 +29721,26 @@ const routes = [
     // Path is set to empty to support lazy loading:
     { path: '', component: _dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"] }
 ];
-let DashboardRoutingModule = class DashboardRoutingModule {
-};
-DashboardRoutingModule = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-        imports: [
+class DashboardRoutingModule {
+}
+DashboardRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: DashboardRoutingModule });
+DashboardRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function DashboardRoutingModule_Factory(t) { return new (t || DashboardRoutingModule)(); }, imports: [[
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)
         ],
-        exports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]
-        ]
-    })
-], DashboardRoutingModule);
+        _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](DashboardRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DashboardRoutingModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)
+                ],
+                exports: [
+                    _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]
+                ]
+            }]
+    }], null, null); })();
 
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard/dashboard.component.css":
-/*!***************************************************!*\
-  !*** ./src/app/dashboard/dashboard.component.css ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("body {\n  background-color: #f1f1f1;\n}\n\n.people-panel {\n  background-color: #00a0e9 !important;\n  color: #ffffff;\n}\n\n.people-panel h1 {\n  font-size: 10.5em;\n  font-weight: bold;\n  text-align: center;\n  padding-top: 20px;\n}\n\n.panel-title h5 {\n  padding-left: 10px;\n  margin-bottom: 0px;\n}\n\n.panel-body {\n  padding-top: 0px;\n}\n\n.panel-card {\n  box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.25);\n  background-color: white;\n}\n\n.container h1 {\n  /*     text-align: center; */\n}\n\n/*START: STYLESHEETS FOR VIS CHARTS*/\n\n/*STYLESHEETS FOR SENSOR MEMORY*/\n\n.axis path,\n.axis line {\n  fill: none;\n  stroke: #f3f3f3;\n  shape-rendering: crispEdges;\n}\n\n.axis text {\n  font-size: .7em;\n  color: #a0a0a0;\n}\n\n.areaM {\n  fill: rgba(0, 160, 233, 0.7);\n}\n\n.memtipPoints {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n  fill: #00a0e9;\n}\n\n.tipDot {\n  stroke: black;\n  stroke-width: 0.5px;\n}\n\n/*STYLESHEETS FOR SENSOR DOCKER ISSUES*/\n\n.panel-checkbox {\n  background-color:#eaf8ff;\n  top:14px;\n  padding-left:15px;\n  padding-right: 0px;\n  padding-top: 4px;\n  margin-bottom: 5px;\n  height:348px;\n  /*max-width: 10em;*/\n}\n\n.panel-checkbox text {\n  font-size: .8em;\n  fill: #000000;\n  margin-left: .5em;\n}\n\n.panel-checkbox p {\n  font-size: .8em;\n  fill: #000000;\n}\n\n.panel-checkbox input {\n  margin-top: 3px;\n  padding-top: 2px;\n}\n\n.panel-checkbox-xs {\n  background-color:#eaf8ff;\n  margin-top: 10px;\n  margin-left: 24px;\n  margin-right: 10px;\n  padding: 4px;\n  /*max-width: 10em;*/\n}\n\n.panel-checkbox-xs text {\n  font-size: .8em;\n  fill: #000000;\n  margin-left: .5em;\n}\n\n.panel-checkbox-xs p {\n  font-size: .8em;\n  fill: #000000;\n}\n\n.panel-checkbox-xs input {\n  margin-top: 2px;\n}\n\n.scatter_checkbox text{\n  font-size: .3em;\n}\n\n.legendRect {\n  stroke: #aaabb1;\n  stroke-width: 1px;\n  fill: none;\n}\n\n.scatter_circle {\n  stroke: none;\n}\n\n/*STYLESHEETS FOR SENSOR CPU*/\n\n.donutCenterText {\n  font-size: 1.5em;\n  font-weight: bold;\n}\n\n/*STYLESHEETS FOR SENSOR NETWORK*/\n\n.areaU {\n  fill: rgba(0, 160, 233, 0.2);\n}\n\n.areaD {\n  fill: rgba(34, 172, 56, 0.2);\n}\n\n.tipPoints {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n}\n\n.tipNetPoints {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n}\n\n.tipDot {\n  stroke: black;\n  stroke-width: 0.5px;\n}\n\n/*STYLESHEETS FOR SENSOR DISK*/\n\n.areaR {\n  fill: rgba(0, 160, 233, 0.2);\n}\n\n.areaW {\n  fill: none;\n  stroke: rgba(0, 160, 233, 1);\n  stroke-width: 2px;\n}\n\n/*STYLESHEETS FOR SENSOR PEOPLE MONITOR*/\n\n.monitorCircle {\n  fill: #222;\n  stroke: #000;\n  stroke-width: 0em;\n}\n\n.moniOutlineArc {\n  fill: none;\n  stroke: gray;\n  stroke-width: 1;\n}\n\n/*STYLESHEETS FOR SENSOR TIMELINE CHART*/\n\n.timeRect {\n  opacity: 1;\n}\n\n.innertimeRect {\n  fill: rgba(0, 160, 233, 0.8);\n}\n\n.outertimeRect {\n  fill: rgba(0, 160, 233, .2);\n}\n\n/*STYLESHEETS FOR SENSOR DETECTION AND LATENCY MONITOR*/\n\n.outlineAsterArc {\n  fill: none;\n  stroke: #f3f3f3;\n}\n\n.solidAsterArc {\n  stroke: none;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n\n.solidAsterArc:hover {\n  fill: orangered ;\n}\n\n.asterCenterText {\n  font-size: .6em;\n  text-anchor: middle;\n}\n\n/*STYLESHEETS FOR DOCKER CPU*/\n\n.dockerCpuText {\n  font-size: 3.8em;\n  font-weight: bold;\n  fill: #7d7d7d;\n}\n\n/*STYLESHEETS FOR DOCKER MEMORY*/\n\n.areaDM {\n  fill: rgba(0, 160, 233, 0.7);\n}\n\n.memtipDPoints {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n  fill: #00a0e9;\n}\n\n/*STYLESHEETS FOR 3D POPULATION GLOBE*/\n\n.panel-globe {\n  background-color: black;\n  color: white;\n}\n\n/*STYLESHEETS FOR SENSOR COUNTING CHART*/\n\n.countRemainPath {\n  fill: none;\n}\n\n.countInBar {\n  fill: none;\n  stroke: rgba(0, 160, 233, 1);\n  stroke-width: 2px;\n}\n\n.countOutBar {\n  fill: none;\n  stroke: rgba(0, 233, 160, 1);\n  stroke-width: 2px;\n}\n\n.tipCountPoints {\n  stroke-width: 2px;\n  opacity: 1;\n  fill: #41DB00;\n  stroke: white;\n}\n\n/*END: STYLESHEETS FOR VIS CHARTS*/\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0Usb0NBQW9DO0VBQ3BDLGNBQWM7QUFDaEI7O0FBQ0E7RUFDRSxpQkFBaUI7RUFDakIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsMkNBQTJDO0VBQzNDLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLDRCQUE0QjtBQUM5Qjs7QUFFQSxvQ0FBb0M7O0FBRXBDLGdDQUFnQzs7QUFDaEM7O0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZiwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsY0FBYztBQUNoQjs7QUFFQTtFQUNFLDRCQUE0QjtBQUM5Qjs7QUFFQTtFQUNFLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsVUFBVTtFQUNWLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGFBQWE7RUFDYixtQkFBbUI7QUFDckI7O0FBRUEsdUNBQXVDOztBQUN2QztFQUNFLHdCQUF3QjtFQUN4QixRQUFRO0VBQ1IsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixtQkFBbUI7QUFDckI7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsYUFBYTtFQUNiLGlCQUFpQjtBQUNuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixhQUFhO0FBQ2Y7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0Usd0JBQXdCO0VBQ3hCLGdCQUFnQjtFQUNoQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixtQkFBbUI7QUFDckI7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsYUFBYTtFQUNiLGlCQUFpQjtBQUNuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixhQUFhO0FBQ2Y7O0FBQ0E7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsVUFBVTtBQUNaOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBLDZCQUE2Qjs7QUFDN0I7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCO0FBQ25COztBQUVBLGlDQUFpQzs7QUFDakM7RUFDRSw0QkFBNEI7QUFDOUI7O0FBRUE7RUFDRSw0QkFBNEI7QUFDOUI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLFVBQVU7QUFDWjs7QUFFQTtFQUNFLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsVUFBVTtBQUNaOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtBQUNyQjs7QUFFQSw4QkFBOEI7O0FBQzlCO0VBQ0UsNEJBQTRCO0FBQzlCOztBQUVBO0VBQ0UsVUFBVTtFQUNWLDRCQUE0QjtFQUM1QixpQkFBaUI7QUFDbkI7O0FBRUEsd0NBQXdDOztBQUN4QztFQUNFLFVBQVU7RUFDVixZQUFZO0VBQ1osaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsVUFBVTtFQUNWLFlBQVk7RUFDWixlQUFlO0FBQ2pCOztBQUVBLHdDQUF3Qzs7QUFDeEM7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRSw0QkFBNEI7QUFDOUI7O0FBQ0E7RUFDRSwyQkFBMkI7QUFDN0I7O0FBRUEsdURBQXVEOztBQUN2RDtFQUNFLFVBQVU7RUFDVixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsWUFBWTtFQUdaLDRCQUE0QjtFQUM1QixvQkFBb0I7QUFDdEI7O0FBQ0E7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBLDZCQUE2Qjs7QUFDN0I7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGFBQWE7QUFDZjs7QUFFQSxnQ0FBZ0M7O0FBQ2hDO0VBQ0UsNEJBQTRCO0FBQzlCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixVQUFVO0VBQ1YsYUFBYTtBQUNmOztBQUVBLHNDQUFzQzs7QUFDdEM7RUFDRSx1QkFBdUI7RUFDdkIsWUFBWTtBQUNkOztBQUVBLHdDQUF3Qzs7QUFDeEM7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRSxVQUFVO0VBQ1YsNEJBQTRCO0VBQzVCLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLFVBQVU7RUFDViw0QkFBNEI7RUFDNUIsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLFVBQVU7RUFDVixhQUFhO0VBQ2IsYUFBYTtBQUNmOztBQUVBLGtDQUFrQyIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xufVxuXG4ucGVvcGxlLXBhbmVsIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwYTBlOSAhaW1wb3J0YW50O1xuICBjb2xvcjogI2ZmZmZmZjtcbn1cbi5wZW9wbGUtcGFuZWwgaDEge1xuICBmb250LXNpemU6IDEwLjVlbTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG59XG5cbi5wYW5lbC10aXRsZSBoNSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xufVxuXG4ucGFuZWwtYm9keSB7XG4gIHBhZGRpbmctdG9wOiAwcHg7XG59XG5cbi5wYW5lbC1jYXJkIHtcbiAgYm94LXNoYWRvdzogMXB4IDBweCAxcHggcmdiYSgwLCAwLCAwLCAwLjI1KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jb250YWluZXIgaDEge1xuICAvKiAgICAgdGV4dC1hbGlnbjogY2VudGVyOyAqL1xufVxuXG4vKlNUQVJUOiBTVFlMRVNIRUVUUyBGT1IgVklTIENIQVJUUyovXG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBNRU1PUlkqL1xuLmF4aXMgcGF0aCxcbi5heGlzIGxpbmUge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6ICNmM2YzZjM7XG4gIHNoYXBlLXJlbmRlcmluZzogY3Jpc3BFZGdlcztcbn1cblxuLmF4aXMgdGV4dCB7XG4gIGZvbnQtc2l6ZTogLjdlbTtcbiAgY29sb3I6ICNhMGEwYTA7XG59XG5cbi5hcmVhTSB7XG4gIGZpbGw6IHJnYmEoMCwgMTYwLCAyMzMsIDAuNyk7XG59XG5cbi5tZW10aXBQb2ludHMge1xuICBzdHJva2U6IHdoaXRlO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbiAgb3BhY2l0eTogMDtcbiAgZmlsbDogIzAwYTBlOTtcbn1cblxuLnRpcERvdCB7XG4gIHN0cm9rZTogYmxhY2s7XG4gIHN0cm9rZS13aWR0aDogMC41cHg7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBET0NLRVIgSVNTVUVTKi9cbi5wYW5lbC1jaGVja2JveCB7XG4gIGJhY2tncm91bmQtY29sb3I6I2VhZjhmZjtcbiAgdG9wOjE0cHg7XG4gIHBhZGRpbmctbGVmdDoxNXB4O1xuICBwYWRkaW5nLXJpZ2h0OiAwcHg7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbiAgaGVpZ2h0OjM0OHB4O1xuICAvKm1heC13aWR0aDogMTBlbTsqL1xufVxuLnBhbmVsLWNoZWNrYm94IHRleHQge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG4gIG1hcmdpbi1sZWZ0OiAuNWVtO1xufVxuLnBhbmVsLWNoZWNrYm94IHAge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG59XG4ucGFuZWwtY2hlY2tib3ggaW5wdXQge1xuICBtYXJnaW4tdG9wOiAzcHg7XG4gIHBhZGRpbmctdG9wOiAycHg7XG59XG5cbi5wYW5lbC1jaGVja2JveC14cyB7XG4gIGJhY2tncm91bmQtY29sb3I6I2VhZjhmZjtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgbWFyZ2luLWxlZnQ6IDI0cHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbiAgcGFkZGluZzogNHB4O1xuICAvKm1heC13aWR0aDogMTBlbTsqL1xufVxuLnBhbmVsLWNoZWNrYm94LXhzIHRleHQge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG4gIG1hcmdpbi1sZWZ0OiAuNWVtO1xufVxuLnBhbmVsLWNoZWNrYm94LXhzIHAge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG59XG4ucGFuZWwtY2hlY2tib3gteHMgaW5wdXQge1xuICBtYXJnaW4tdG9wOiAycHg7XG59XG5cbi5zY2F0dGVyX2NoZWNrYm94IHRleHR7XG4gIGZvbnQtc2l6ZTogLjNlbTtcbn1cblxuLmxlZ2VuZFJlY3Qge1xuICBzdHJva2U6ICNhYWFiYjE7XG4gIHN0cm9rZS13aWR0aDogMXB4O1xuICBmaWxsOiBub25lO1xufVxuXG4uc2NhdHRlcl9jaXJjbGUge1xuICBzdHJva2U6IG5vbmU7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBDUFUqL1xuLmRvbnV0Q2VudGVyVGV4dCB7XG4gIGZvbnQtc2l6ZTogMS41ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgTkVUV09SSyovXG4uYXJlYVUge1xuICBmaWxsOiByZ2JhKDAsIDE2MCwgMjMzLCAwLjIpO1xufVxuXG4uYXJlYUQge1xuICBmaWxsOiByZ2JhKDM0LCAxNzIsIDU2LCAwLjIpO1xufVxuXG4udGlwUG9pbnRzIHtcbiAgc3Ryb2tlOiB3aGl0ZTtcbiAgc3Ryb2tlLXdpZHRoOiAycHg7XG4gIG9wYWNpdHk6IDA7XG59XG5cbi50aXBOZXRQb2ludHMge1xuICBzdHJva2U6IHdoaXRlO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbiAgb3BhY2l0eTogMDtcbn1cblxuLnRpcERvdCB7XG4gIHN0cm9rZTogYmxhY2s7XG4gIHN0cm9rZS13aWR0aDogMC41cHg7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBESVNLKi9cbi5hcmVhUiB7XG4gIGZpbGw6IHJnYmEoMCwgMTYwLCAyMzMsIDAuMik7XG59XG5cbi5hcmVhVyB7XG4gIGZpbGw6IG5vbmU7XG4gIHN0cm9rZTogcmdiYSgwLCAxNjAsIDIzMywgMSk7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgUEVPUExFIE1PTklUT1IqL1xuLm1vbml0b3JDaXJjbGUge1xuICBmaWxsOiAjMjIyO1xuICBzdHJva2U6ICMwMDA7XG4gIHN0cm9rZS13aWR0aDogMGVtO1xufVxuXG4ubW9uaU91dGxpbmVBcmMge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6IGdyYXk7XG4gIHN0cm9rZS13aWR0aDogMTtcbn1cblxuLypTVFlMRVNIRUVUUyBGT1IgU0VOU09SIFRJTUVMSU5FIENIQVJUKi9cbi50aW1lUmVjdCB7XG4gIG9wYWNpdHk6IDE7XG59XG5cbi5pbm5lcnRpbWVSZWN0IHtcbiAgZmlsbDogcmdiYSgwLCAxNjAsIDIzMywgMC44KTtcbn1cbi5vdXRlcnRpbWVSZWN0IHtcbiAgZmlsbDogcmdiYSgwLCAxNjAsIDIzMywgLjIpO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgREVURUNUSU9OIEFORCBMQVRFTkNZIE1PTklUT1IqL1xuLm91dGxpbmVBc3RlckFyYyB7XG4gIGZpbGw6IG5vbmU7XG4gIHN0cm9rZTogI2YzZjNmMztcbn1cblxuLnNvbGlkQXN0ZXJBcmMge1xuICBzdHJva2U6IG5vbmU7XG4gIC1tb3otdHJhbnNpdGlvbjogYWxsIDAuM3M7XG4gIC1vLXRyYW5zaXRpb246IGFsbCAwLjNzO1xuICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAwLjNzO1xuICB0cmFuc2l0aW9uOiBhbGwgMC4zcztcbn1cbi5zb2xpZEFzdGVyQXJjOmhvdmVyIHtcbiAgZmlsbDogb3JhbmdlcmVkIDtcbn1cblxuLmFzdGVyQ2VudGVyVGV4dCB7XG4gIGZvbnQtc2l6ZTogLjZlbTtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLypTVFlMRVNIRUVUUyBGT1IgRE9DS0VSIENQVSovXG4uZG9ja2VyQ3B1VGV4dCB7XG4gIGZvbnQtc2l6ZTogMy44ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmaWxsOiAjN2Q3ZDdkO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBET0NLRVIgTUVNT1JZKi9cbi5hcmVhRE0ge1xuICBmaWxsOiByZ2JhKDAsIDE2MCwgMjMzLCAwLjcpO1xufVxuXG4ubWVtdGlwRFBvaW50cyB7XG4gIHN0cm9rZTogd2hpdGU7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xuICBvcGFjaXR5OiAwO1xuICBmaWxsOiAjMDBhMGU5O1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiAzRCBQT1BVTEFUSU9OIEdMT0JFKi9cbi5wYW5lbC1nbG9iZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBDT1VOVElORyBDSEFSVCovXG4uY291bnRSZW1haW5QYXRoIHtcbiAgZmlsbDogbm9uZTtcbn1cblxuLmNvdW50SW5CYXIge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6IHJnYmEoMCwgMTYwLCAyMzMsIDEpO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbn1cblxuLmNvdW50T3V0QmFyIHtcbiAgZmlsbDogbm9uZTtcbiAgc3Ryb2tlOiByZ2JhKDAsIDIzMywgMTYwLCAxKTtcbiAgc3Ryb2tlLXdpZHRoOiAycHg7XG59XG5cbi50aXBDb3VudFBvaW50cyB7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xuICBvcGFjaXR5OiAxO1xuICBmaWxsOiAjNDFEQjAwO1xuICBzdHJva2U6IHdoaXRlO1xufVxuXG4vKkVORDogU1RZTEVTSEVFVFMgRk9SIFZJUyBDSEFSVFMqL1xuIl19 */");
 
 /***/ }),
 
@@ -29844,25 +29754,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.config */ "./src/app/dashboard/app.config.ts");
 /* harmony import */ var _d3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./d3 */ "./src/app/dashboard/d3/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+/* harmony import */ var _visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./visuals/graph/graph.component */ "./src/app/dashboard/visuals/graph/graph.component.ts");
 
 
 
-let DashboardComponent = class DashboardComponent {
+
+
+class DashboardComponent {
     constructor() {
         this.nodes = [];
         this.links = [];
@@ -29883,16 +29784,21 @@ let DashboardComponent = class DashboardComponent {
     }
     ngOnInit() {
     }
-};
-DashboardComponent = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-        selector: 'app-dashboard',
-        template: __importDefault(__webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/dashboard/dashboard.component.html")).default,
-        styles: [__importDefault(__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")).default]
-    }),
-    __metadata("design:paramtypes", [])
-], DashboardComponent);
-
+}
+DashboardComponent.ɵfac = function DashboardComponent_Factory(t) { return new (t || DashboardComponent)(); };
+DashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DashboardComponent, selectors: [["app-dashboard"]], decls: 1, vars: 2, consts: [[3, "nodes", "links"]], template: function DashboardComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-graph", 0);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("nodes", ctx.nodes)("links", ctx.links);
+    } }, directives: [_visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_3__["GraphComponent"]], styles: ["body[_ngcontent-%COMP%] {\n  background-color: #f1f1f1;\n}\n\n.people-panel[_ngcontent-%COMP%] {\n  background-color: #00a0e9 !important;\n  color: #ffffff;\n}\n\n.people-panel[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-size: 10.5em;\n  font-weight: bold;\n  text-align: center;\n  padding-top: 20px;\n}\n\n.panel-title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%] {\n  padding-left: 10px;\n  margin-bottom: 0px;\n}\n\n.panel-body[_ngcontent-%COMP%] {\n  padding-top: 0px;\n}\n\n.panel-card[_ngcontent-%COMP%] {\n  box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.25);\n  background-color: white;\n}\n\n.container[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  \n}\n\n\n\n\n\n.axis[_ngcontent-%COMP%]   path[_ngcontent-%COMP%], .axis[_ngcontent-%COMP%]   line[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: #f3f3f3;\n  shape-rendering: crispEdges;\n}\n\n.axis[_ngcontent-%COMP%]   text[_ngcontent-%COMP%] {\n  font-size: .7em;\n  color: #a0a0a0;\n}\n\n.areaM[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, 0.7);\n}\n\n.memtipPoints[_ngcontent-%COMP%] {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n  fill: #00a0e9;\n}\n\n.tipDot[_ngcontent-%COMP%] {\n  stroke: black;\n  stroke-width: 0.5px;\n}\n\n\n\n.panel-checkbox[_ngcontent-%COMP%] {\n  background-color:#eaf8ff;\n  top:14px;\n  padding-left:15px;\n  padding-right: 0px;\n  padding-top: 4px;\n  margin-bottom: 5px;\n  height:348px;\n  \n}\n\n.panel-checkbox[_ngcontent-%COMP%]   text[_ngcontent-%COMP%] {\n  font-size: .8em;\n  fill: #000000;\n  margin-left: .5em;\n}\n\n.panel-checkbox[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: .8em;\n  fill: #000000;\n}\n\n.panel-checkbox[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  margin-top: 3px;\n  padding-top: 2px;\n}\n\n.panel-checkbox-xs[_ngcontent-%COMP%] {\n  background-color:#eaf8ff;\n  margin-top: 10px;\n  margin-left: 24px;\n  margin-right: 10px;\n  padding: 4px;\n  \n}\n\n.panel-checkbox-xs[_ngcontent-%COMP%]   text[_ngcontent-%COMP%] {\n  font-size: .8em;\n  fill: #000000;\n  margin-left: .5em;\n}\n\n.panel-checkbox-xs[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: .8em;\n  fill: #000000;\n}\n\n.panel-checkbox-xs[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  margin-top: 2px;\n}\n\n.scatter_checkbox[_ngcontent-%COMP%]   text[_ngcontent-%COMP%]{\n  font-size: .3em;\n}\n\n.legendRect[_ngcontent-%COMP%] {\n  stroke: #aaabb1;\n  stroke-width: 1px;\n  fill: none;\n}\n\n.scatter_circle[_ngcontent-%COMP%] {\n  stroke: none;\n}\n\n\n\n.donutCenterText[_ngcontent-%COMP%] {\n  font-size: 1.5em;\n  font-weight: bold;\n}\n\n\n\n.areaU[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, 0.2);\n}\n\n.areaD[_ngcontent-%COMP%] {\n  fill: rgba(34, 172, 56, 0.2);\n}\n\n.tipPoints[_ngcontent-%COMP%] {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n}\n\n.tipNetPoints[_ngcontent-%COMP%] {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n}\n\n.tipDot[_ngcontent-%COMP%] {\n  stroke: black;\n  stroke-width: 0.5px;\n}\n\n\n\n.areaR[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, 0.2);\n}\n\n.areaW[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: rgba(0, 160, 233, 1);\n  stroke-width: 2px;\n}\n\n\n\n.monitorCircle[_ngcontent-%COMP%] {\n  fill: #222;\n  stroke: #000;\n  stroke-width: 0em;\n}\n\n.moniOutlineArc[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: gray;\n  stroke-width: 1;\n}\n\n\n\n.timeRect[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n\n.innertimeRect[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, 0.8);\n}\n\n.outertimeRect[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, .2);\n}\n\n\n\n.outlineAsterArc[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: #f3f3f3;\n}\n\n.solidAsterArc[_ngcontent-%COMP%] {\n  stroke: none;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n\n.solidAsterArc[_ngcontent-%COMP%]:hover {\n  fill: orangered ;\n}\n\n.asterCenterText[_ngcontent-%COMP%] {\n  font-size: .6em;\n  text-anchor: middle;\n}\n\n\n\n.dockerCpuText[_ngcontent-%COMP%] {\n  font-size: 3.8em;\n  font-weight: bold;\n  fill: #7d7d7d;\n}\n\n\n\n.areaDM[_ngcontent-%COMP%] {\n  fill: rgba(0, 160, 233, 0.7);\n}\n\n.memtipDPoints[_ngcontent-%COMP%] {\n  stroke: white;\n  stroke-width: 2px;\n  opacity: 0;\n  fill: #00a0e9;\n}\n\n\n\n.panel-globe[_ngcontent-%COMP%] {\n  background-color: black;\n  color: white;\n}\n\n\n\n.countRemainPath[_ngcontent-%COMP%] {\n  fill: none;\n}\n\n.countInBar[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: rgba(0, 160, 233, 1);\n  stroke-width: 2px;\n}\n\n.countOutBar[_ngcontent-%COMP%] {\n  fill: none;\n  stroke: rgba(0, 233, 160, 1);\n  stroke-width: 2px;\n}\n\n.tipCountPoints[_ngcontent-%COMP%] {\n  stroke-width: 2px;\n  opacity: 1;\n  fill: #41DB00;\n  stroke: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0Usb0NBQW9DO0VBQ3BDLGNBQWM7QUFDaEI7O0FBQ0E7RUFDRSxpQkFBaUI7RUFDakIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsMkNBQTJDO0VBQzNDLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLDRCQUE0QjtBQUM5Qjs7QUFFQSxvQ0FBb0M7O0FBRXBDLGdDQUFnQzs7QUFDaEM7O0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZiwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsY0FBYztBQUNoQjs7QUFFQTtFQUNFLDRCQUE0QjtBQUM5Qjs7QUFFQTtFQUNFLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsVUFBVTtFQUNWLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGFBQWE7RUFDYixtQkFBbUI7QUFDckI7O0FBRUEsdUNBQXVDOztBQUN2QztFQUNFLHdCQUF3QjtFQUN4QixRQUFRO0VBQ1IsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixtQkFBbUI7QUFDckI7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsYUFBYTtFQUNiLGlCQUFpQjtBQUNuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixhQUFhO0FBQ2Y7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0Usd0JBQXdCO0VBQ3hCLGdCQUFnQjtFQUNoQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixtQkFBbUI7QUFDckI7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsYUFBYTtFQUNiLGlCQUFpQjtBQUNuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixhQUFhO0FBQ2Y7O0FBQ0E7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsVUFBVTtBQUNaOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBLDZCQUE2Qjs7QUFDN0I7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCO0FBQ25COztBQUVBLGlDQUFpQzs7QUFDakM7RUFDRSw0QkFBNEI7QUFDOUI7O0FBRUE7RUFDRSw0QkFBNEI7QUFDOUI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLFVBQVU7QUFDWjs7QUFFQTtFQUNFLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsVUFBVTtBQUNaOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtBQUNyQjs7QUFFQSw4QkFBOEI7O0FBQzlCO0VBQ0UsNEJBQTRCO0FBQzlCOztBQUVBO0VBQ0UsVUFBVTtFQUNWLDRCQUE0QjtFQUM1QixpQkFBaUI7QUFDbkI7O0FBRUEsd0NBQXdDOztBQUN4QztFQUNFLFVBQVU7RUFDVixZQUFZO0VBQ1osaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsVUFBVTtFQUNWLFlBQVk7RUFDWixlQUFlO0FBQ2pCOztBQUVBLHdDQUF3Qzs7QUFDeEM7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRSw0QkFBNEI7QUFDOUI7O0FBQ0E7RUFDRSwyQkFBMkI7QUFDN0I7O0FBRUEsdURBQXVEOztBQUN2RDtFQUNFLFVBQVU7RUFDVixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsWUFBWTtFQUdaLDRCQUE0QjtFQUM1QixvQkFBb0I7QUFDdEI7O0FBQ0E7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBLDZCQUE2Qjs7QUFDN0I7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGFBQWE7QUFDZjs7QUFFQSxnQ0FBZ0M7O0FBQ2hDO0VBQ0UsNEJBQTRCO0FBQzlCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixVQUFVO0VBQ1YsYUFBYTtBQUNmOztBQUVBLHNDQUFzQzs7QUFDdEM7RUFDRSx1QkFBdUI7RUFDdkIsWUFBWTtBQUNkOztBQUVBLHdDQUF3Qzs7QUFDeEM7RUFDRSxVQUFVO0FBQ1o7O0FBRUE7RUFDRSxVQUFVO0VBQ1YsNEJBQTRCO0VBQzVCLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLFVBQVU7RUFDViw0QkFBNEI7RUFDNUIsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLFVBQVU7RUFDVixhQUFhO0VBQ2IsYUFBYTtBQUNmOztBQUVBLGtDQUFrQyIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xufVxuXG4ucGVvcGxlLXBhbmVsIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwYTBlOSAhaW1wb3J0YW50O1xuICBjb2xvcjogI2ZmZmZmZjtcbn1cbi5wZW9wbGUtcGFuZWwgaDEge1xuICBmb250LXNpemU6IDEwLjVlbTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG59XG5cbi5wYW5lbC10aXRsZSBoNSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xufVxuXG4ucGFuZWwtYm9keSB7XG4gIHBhZGRpbmctdG9wOiAwcHg7XG59XG5cbi5wYW5lbC1jYXJkIHtcbiAgYm94LXNoYWRvdzogMXB4IDBweCAxcHggcmdiYSgwLCAwLCAwLCAwLjI1KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jb250YWluZXIgaDEge1xuICAvKiAgICAgdGV4dC1hbGlnbjogY2VudGVyOyAqL1xufVxuXG4vKlNUQVJUOiBTVFlMRVNIRUVUUyBGT1IgVklTIENIQVJUUyovXG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBNRU1PUlkqL1xuLmF4aXMgcGF0aCxcbi5heGlzIGxpbmUge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6ICNmM2YzZjM7XG4gIHNoYXBlLXJlbmRlcmluZzogY3Jpc3BFZGdlcztcbn1cblxuLmF4aXMgdGV4dCB7XG4gIGZvbnQtc2l6ZTogLjdlbTtcbiAgY29sb3I6ICNhMGEwYTA7XG59XG5cbi5hcmVhTSB7XG4gIGZpbGw6IHJnYmEoMCwgMTYwLCAyMzMsIDAuNyk7XG59XG5cbi5tZW10aXBQb2ludHMge1xuICBzdHJva2U6IHdoaXRlO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbiAgb3BhY2l0eTogMDtcbiAgZmlsbDogIzAwYTBlOTtcbn1cblxuLnRpcERvdCB7XG4gIHN0cm9rZTogYmxhY2s7XG4gIHN0cm9rZS13aWR0aDogMC41cHg7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBET0NLRVIgSVNTVUVTKi9cbi5wYW5lbC1jaGVja2JveCB7XG4gIGJhY2tncm91bmQtY29sb3I6I2VhZjhmZjtcbiAgdG9wOjE0cHg7XG4gIHBhZGRpbmctbGVmdDoxNXB4O1xuICBwYWRkaW5nLXJpZ2h0OiAwcHg7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbiAgaGVpZ2h0OjM0OHB4O1xuICAvKm1heC13aWR0aDogMTBlbTsqL1xufVxuLnBhbmVsLWNoZWNrYm94IHRleHQge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG4gIG1hcmdpbi1sZWZ0OiAuNWVtO1xufVxuLnBhbmVsLWNoZWNrYm94IHAge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG59XG4ucGFuZWwtY2hlY2tib3ggaW5wdXQge1xuICBtYXJnaW4tdG9wOiAzcHg7XG4gIHBhZGRpbmctdG9wOiAycHg7XG59XG5cbi5wYW5lbC1jaGVja2JveC14cyB7XG4gIGJhY2tncm91bmQtY29sb3I6I2VhZjhmZjtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgbWFyZ2luLWxlZnQ6IDI0cHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbiAgcGFkZGluZzogNHB4O1xuICAvKm1heC13aWR0aDogMTBlbTsqL1xufVxuLnBhbmVsLWNoZWNrYm94LXhzIHRleHQge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG4gIG1hcmdpbi1sZWZ0OiAuNWVtO1xufVxuLnBhbmVsLWNoZWNrYm94LXhzIHAge1xuICBmb250LXNpemU6IC44ZW07XG4gIGZpbGw6ICMwMDAwMDA7XG59XG4ucGFuZWwtY2hlY2tib3gteHMgaW5wdXQge1xuICBtYXJnaW4tdG9wOiAycHg7XG59XG5cbi5zY2F0dGVyX2NoZWNrYm94IHRleHR7XG4gIGZvbnQtc2l6ZTogLjNlbTtcbn1cblxuLmxlZ2VuZFJlY3Qge1xuICBzdHJva2U6ICNhYWFiYjE7XG4gIHN0cm9rZS13aWR0aDogMXB4O1xuICBmaWxsOiBub25lO1xufVxuXG4uc2NhdHRlcl9jaXJjbGUge1xuICBzdHJva2U6IG5vbmU7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBDUFUqL1xuLmRvbnV0Q2VudGVyVGV4dCB7XG4gIGZvbnQtc2l6ZTogMS41ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgTkVUV09SSyovXG4uYXJlYVUge1xuICBmaWxsOiByZ2JhKDAsIDE2MCwgMjMzLCAwLjIpO1xufVxuXG4uYXJlYUQge1xuICBmaWxsOiByZ2JhKDM0LCAxNzIsIDU2LCAwLjIpO1xufVxuXG4udGlwUG9pbnRzIHtcbiAgc3Ryb2tlOiB3aGl0ZTtcbiAgc3Ryb2tlLXdpZHRoOiAycHg7XG4gIG9wYWNpdHk6IDA7XG59XG5cbi50aXBOZXRQb2ludHMge1xuICBzdHJva2U6IHdoaXRlO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbiAgb3BhY2l0eTogMDtcbn1cblxuLnRpcERvdCB7XG4gIHN0cm9rZTogYmxhY2s7XG4gIHN0cm9rZS13aWR0aDogMC41cHg7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBESVNLKi9cbi5hcmVhUiB7XG4gIGZpbGw6IHJnYmEoMCwgMTYwLCAyMzMsIDAuMik7XG59XG5cbi5hcmVhVyB7XG4gIGZpbGw6IG5vbmU7XG4gIHN0cm9rZTogcmdiYSgwLCAxNjAsIDIzMywgMSk7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgUEVPUExFIE1PTklUT1IqL1xuLm1vbml0b3JDaXJjbGUge1xuICBmaWxsOiAjMjIyO1xuICBzdHJva2U6ICMwMDA7XG4gIHN0cm9rZS13aWR0aDogMGVtO1xufVxuXG4ubW9uaU91dGxpbmVBcmMge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6IGdyYXk7XG4gIHN0cm9rZS13aWR0aDogMTtcbn1cblxuLypTVFlMRVNIRUVUUyBGT1IgU0VOU09SIFRJTUVMSU5FIENIQVJUKi9cbi50aW1lUmVjdCB7XG4gIG9wYWNpdHk6IDE7XG59XG5cbi5pbm5lcnRpbWVSZWN0IHtcbiAgZmlsbDogcmdiYSgwLCAxNjAsIDIzMywgMC44KTtcbn1cbi5vdXRlcnRpbWVSZWN0IHtcbiAgZmlsbDogcmdiYSgwLCAxNjAsIDIzMywgLjIpO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBTRU5TT1IgREVURUNUSU9OIEFORCBMQVRFTkNZIE1PTklUT1IqL1xuLm91dGxpbmVBc3RlckFyYyB7XG4gIGZpbGw6IG5vbmU7XG4gIHN0cm9rZTogI2YzZjNmMztcbn1cblxuLnNvbGlkQXN0ZXJBcmMge1xuICBzdHJva2U6IG5vbmU7XG4gIC1tb3otdHJhbnNpdGlvbjogYWxsIDAuM3M7XG4gIC1vLXRyYW5zaXRpb246IGFsbCAwLjNzO1xuICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAwLjNzO1xuICB0cmFuc2l0aW9uOiBhbGwgMC4zcztcbn1cbi5zb2xpZEFzdGVyQXJjOmhvdmVyIHtcbiAgZmlsbDogb3JhbmdlcmVkIDtcbn1cblxuLmFzdGVyQ2VudGVyVGV4dCB7XG4gIGZvbnQtc2l6ZTogLjZlbTtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLypTVFlMRVNIRUVUUyBGT1IgRE9DS0VSIENQVSovXG4uZG9ja2VyQ3B1VGV4dCB7XG4gIGZvbnQtc2l6ZTogMy44ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmaWxsOiAjN2Q3ZDdkO1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiBET0NLRVIgTUVNT1JZKi9cbi5hcmVhRE0ge1xuICBmaWxsOiByZ2JhKDAsIDE2MCwgMjMzLCAwLjcpO1xufVxuXG4ubWVtdGlwRFBvaW50cyB7XG4gIHN0cm9rZTogd2hpdGU7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xuICBvcGFjaXR5OiAwO1xuICBmaWxsOiAjMDBhMGU5O1xufVxuXG4vKlNUWUxFU0hFRVRTIEZPUiAzRCBQT1BVTEFUSU9OIEdMT0JFKi9cbi5wYW5lbC1nbG9iZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi8qU1RZTEVTSEVFVFMgRk9SIFNFTlNPUiBDT1VOVElORyBDSEFSVCovXG4uY291bnRSZW1haW5QYXRoIHtcbiAgZmlsbDogbm9uZTtcbn1cblxuLmNvdW50SW5CYXIge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6IHJnYmEoMCwgMTYwLCAyMzMsIDEpO1xuICBzdHJva2Utd2lkdGg6IDJweDtcbn1cblxuLmNvdW50T3V0QmFyIHtcbiAgZmlsbDogbm9uZTtcbiAgc3Ryb2tlOiByZ2JhKDAsIDIzMywgMTYwLCAxKTtcbiAgc3Ryb2tlLXdpZHRoOiAycHg7XG59XG5cbi50aXBDb3VudFBvaW50cyB7XG4gIHN0cm9rZS13aWR0aDogMnB4O1xuICBvcGFjaXR5OiAxO1xuICBmaWxsOiAjNDFEQjAwO1xuICBzdHJva2U6IHdoaXRlO1xufVxuXG4vKkVORDogU1RZTEVTSEVFVFMgRk9SIFZJUyBDSEFSVFMqL1xuIl19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DashboardComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-dashboard',
+                templateUrl: './dashboard.component.html',
+                styleUrls: ['./dashboard.component.css']
+            }]
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
@@ -29907,22 +29813,17 @@ DashboardComponent = __decorate([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardModule", function() { return DashboardModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard-routing.module */ "./src/app/dashboard/dashboard-routing.module.ts");
 /* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./visuals/graph/graph.component */ "./src/app/dashboard/visuals/graph/graph.component.ts");
 /* harmony import */ var _visuals_shared__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./visuals/shared */ "./src/app/dashboard/visuals/shared/index.ts");
 /* harmony import */ var _d3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./d3 */ "./src/app/dashboard/d3/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+/* harmony import */ var _visuals_shared_node_visual_node_visual_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./visuals/shared/node-visual/node-visual.component */ "./src/app/dashboard/visuals/shared/node-visual/node-visual.component.ts");
+/* harmony import */ var _visuals_shared_link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./visuals/shared/link-visual/link-visual.component */ "./src/app/dashboard/visuals/shared/link-visual/link-visual.component.ts");
+/* harmony import */ var _d3_directives_zoomable_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./d3/directives/zoomable.directive */ "./src/app/dashboard/d3/directives/zoomable.directive.ts");
+/* harmony import */ var _d3_directives_draggable_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./d3/directives/draggable.directive */ "./src/app/dashboard/d3/directives/draggable.directive.ts");
 
 
 
@@ -29930,38 +29831,38 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-let DashboardModule = class DashboardModule {
-};
-DashboardModule = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-        imports: [
+
+
+
+
+
+class DashboardModule {
+}
+DashboardModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: DashboardModule });
+DashboardModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function DashboardModule_Factory(t) { return new (t || DashboardModule)(); }, providers: [_d3__WEBPACK_IMPORTED_MODULE_6__["D3Service"]], imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
             _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_2__["DashboardRoutingModule"]
-        ],
-        declarations: [
-            _dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
-            _visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_4__["GraphComponent"],
-            ..._visuals_shared__WEBPACK_IMPORTED_MODULE_5__["SHARED_VISUALS"],
-            ..._d3__WEBPACK_IMPORTED_MODULE_6__["D3_DIRECTIVES"]
-        ],
-        providers: [_d3__WEBPACK_IMPORTED_MODULE_6__["D3Service"]]
-    })
-], DashboardModule);
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](DashboardModule, { declarations: [_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
+        _visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_4__["GraphComponent"], _visuals_shared_node_visual_node_visual_component__WEBPACK_IMPORTED_MODULE_7__["NodeVisualComponent"], _visuals_shared_link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_8__["LinkVisualComponent"], _d3_directives_zoomable_directive__WEBPACK_IMPORTED_MODULE_9__["ZoomableDirective"], _d3_directives_draggable_directive__WEBPACK_IMPORTED_MODULE_10__["DraggableDirective"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+        _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_2__["DashboardRoutingModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DashboardModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                    _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_2__["DashboardRoutingModule"]
+                ],
+                declarations: [
+                    _dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
+                    _visuals_graph_graph_component__WEBPACK_IMPORTED_MODULE_4__["GraphComponent"],
+                    ..._visuals_shared__WEBPACK_IMPORTED_MODULE_5__["SHARED_VISUALS"],
+                    ..._d3__WEBPACK_IMPORTED_MODULE_6__["D3_DIRECTIVES"]
+                ],
+                providers: [_d3__WEBPACK_IMPORTED_MODULE_6__["D3Service"]]
+            }]
+    }], null, null); })();
 
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard/visuals/graph/graph.component.css":
-/*!*************************************************************!*\
-  !*** ./src/app/dashboard/visuals/graph/graph.component.css ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC92aXN1YWxzL2dyYXBoL2dyYXBoLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -29975,23 +29876,38 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphComponent", function() { return GraphComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../d3 */ "./src/app/dashboard/d3/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+/* harmony import */ var _d3_directives_zoomable_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../d3/directives/zoomable.directive */ "./src/app/dashboard/d3/directives/zoomable.directive.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _shared_link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/link-visual/link-visual.component */ "./src/app/dashboard/visuals/shared/link-visual/link-visual.component.ts");
+/* harmony import */ var _shared_node_visual_node_visual_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/node-visual/node-visual.component */ "./src/app/dashboard/visuals/shared/node-visual/node-visual.component.ts");
+/* harmony import */ var _d3_directives_draggable_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../d3/directives/draggable.directive */ "./src/app/dashboard/d3/directives/draggable.directive.ts");
 
 
-let GraphComponent = class GraphComponent {
+
+
+
+
+
+
+
+function GraphComponent__svg_g_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "g", 4);
+} if (rf & 2) {
+    const link_r104 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("linkVisual", link_r104);
+} }
+function GraphComponent__svg_g_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "g", 5);
+} if (rf & 2) {
+    const node_r105 = ctx.$implicit;
+    const ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("nodeVisual", node_r105)("appDraggableNode", node_r105)("appDraggableInGraph", ctx_r103.graph);
+} }
+class GraphComponent {
     constructor(d3Service, ref) {
         this.d3Service = d3Service;
         this.ref = ref;
@@ -30021,30 +29937,34 @@ let GraphComponent = class GraphComponent {
             height: window.innerHeight
         };
     }
-};
-GraphComponent.ctorParameters = () => [
-    { type: _d3__WEBPACK_IMPORTED_MODULE_1__["D3Service"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }
-];
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", Object)
-], GraphComponent.prototype, "nodes", void 0);
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", Object)
-], GraphComponent.prototype, "links", void 0);
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], GraphComponent.prototype, "onResize", null);
-GraphComponent = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-        selector: 'app-graph',
-        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-        template: `
+}
+GraphComponent.ɵfac = function GraphComponent_Factory(t) { return new (t || GraphComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_d3__WEBPACK_IMPORTED_MODULE_1__["D3Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"])); };
+GraphComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: GraphComponent, selectors: [["app-graph"]], hostBindings: function GraphComponent_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("resize", function GraphComponent_resize_HostBindingHandler($event) { return ctx.onResize($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
+    } }, inputs: { nodes: "nodes", links: "links" }, decls: 5, vars: 5, consts: [["svg", ""], [3, "appZoomableOf"], [3, "linkVisual", 4, "ngFor", "ngForOf"], [3, "nodeVisual", "appDraggableNode", "appDraggableInGraph", 4, "ngFor", "ngForOf"], [3, "linkVisual"], [3, "nodeVisual", "appDraggableNode", "appDraggableInGraph"]], template: function GraphComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "svg", null, 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "g", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, GraphComponent__svg_g_3_Template, 1, 1, "g", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, GraphComponent__svg_g_4_Template, 1, 3, "g", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("width", ctx._options.width)("height", ctx._options.height);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("appZoomableOf", _r101);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.links);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.nodes);
+    } }, directives: [_d3_directives_zoomable_directive__WEBPACK_IMPORTED_MODULE_2__["ZoomableDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _shared_link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_4__["LinkVisualComponent"], _shared_node_visual_node_visual_component__WEBPACK_IMPORTED_MODULE_5__["NodeVisualComponent"], _d3_directives_draggable_directive__WEBPACK_IMPORTED_MODULE_6__["DraggableDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC92aXN1YWxzL2dyYXBoL2dyYXBoLmNvbXBvbmVudC5jc3MifQ== */"], changeDetection: 0 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GraphComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-graph',
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                template: `
     <svg #svg [attr.width]="_options.width" [attr.height]="_options.height">
       <g [appZoomableOf]="svg">
         <g [linkVisual]="link" *ngFor="let link of links"></g>
@@ -30053,11 +29973,16 @@ GraphComponent = __decorate([
       </g>
     </svg>
   `,
-        styles: [__importDefault(__webpack_require__(/*! ./graph.component.css */ "./src/app/dashboard/visuals/graph/graph.component.css")).default]
-    }),
-    __metadata("design:paramtypes", [_d3__WEBPACK_IMPORTED_MODULE_1__["D3Service"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
-], GraphComponent);
-
+                styleUrls: ['./graph.component.css']
+            }]
+    }], function () { return [{ type: _d3__WEBPACK_IMPORTED_MODULE_1__["D3Service"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }]; }, { nodes: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], links: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], onResize: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['window:resize', ['$event']]
+        }] }); })();
 
 
 /***/ }),
@@ -30066,7 +29991,7 @@ GraphComponent = __decorate([
 /*!***************************************************!*\
   !*** ./src/app/dashboard/visuals/shared/index.ts ***!
   \***************************************************/
-/*! exports provided: SHARED_VISUALS, NodeVisualComponent, LinkVisualComponent */
+/*! exports provided: NodeVisualComponent, LinkVisualComponent, SHARED_VISUALS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30078,9 +30003,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./link-visual/link-visual.component */ "./src/app/dashboard/visuals/shared/link-visual/link-visual.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LinkVisualComponent", function() { return _link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_1__["LinkVisualComponent"]; });
 
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
 
@@ -30090,19 +30012,6 @@ const SHARED_VISUALS = [
     _link_visual_link_visual_component__WEBPACK_IMPORTED_MODULE_1__["LinkVisualComponent"]
 ];
 
-
-/***/ }),
-
-/***/ "./src/app/dashboard/visuals/shared/link-visual/link-visual.component.css":
-/*!********************************************************************************!*\
-  !*** ./src/app/dashboard/visuals/shared/link-visual/link-visual.component.css ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".link {\n  stroke-width: 0.25;\n  stroke: rgb(222,237,250);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL2xpbmstdmlzdWFsL2xpbmstdmlzdWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsd0JBQXdCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL2xpbmstdmlzdWFsL2xpbmstdmlzdWFsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGluayB7XG4gIHN0cm9rZS13aWR0aDogMC4yNTtcbiAgc3Ryb2tlOiByZ2IoMjIyLDIzNywyNTApO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -30116,32 +30025,26 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LinkVisualComponent", function() { return LinkVisualComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../d3 */ "./src/app/dashboard/d3/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
-let LinkVisualComponent = class LinkVisualComponent {
-};
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('linkVisual'),
-    __metadata("design:type", _d3__WEBPACK_IMPORTED_MODULE_1__["Link"])
-], LinkVisualComponent.prototype, "link", void 0);
-LinkVisualComponent = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-        selector: '[linkVisual]',
-        template: `
+
+const _c0 = ["linkVisual", ""];
+class LinkVisualComponent {
+}
+LinkVisualComponent.ɵfac = function LinkVisualComponent_Factory(t) { return new (t || LinkVisualComponent)(); };
+LinkVisualComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LinkVisualComponent, selectors: [["", "linkVisual", ""]], inputs: { link: ["linkVisual", "link"] }, attrs: _c0, decls: 1, vars: 4, consts: [[1, "link"]], template: function LinkVisualComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "line", 0);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("x1", ctx.link.source.x)("y1", ctx.link.source.y)("x2", ctx.link.target.x)("y2", ctx.link.target.y);
+    } }, styles: [".link[_ngcontent-%COMP%] {\n  stroke-width: 0.25;\n  stroke: rgb(222,237,250);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL2xpbmstdmlzdWFsL2xpbmstdmlzdWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsd0JBQXdCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL2xpbmstdmlzdWFsL2xpbmstdmlzdWFsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGluayB7XG4gIHN0cm9rZS13aWR0aDogMC4yNTtcbiAgc3Ryb2tlOiByZ2IoMjIyLDIzNywyNTApO1xufVxuIl19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LinkVisualComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: '[linkVisual]',
+                template: `
     <svg:line
         class="link"
         [attr.x1]="link.source.x"
@@ -30150,24 +30053,13 @@ LinkVisualComponent = __decorate([
         [attr.y2]="link.target.y"
     ></svg:line>
   `,
-        styles: [__importDefault(__webpack_require__(/*! ./link-visual.component.css */ "./src/app/dashboard/visuals/shared/link-visual/link-visual.component.css")).default]
-    })
-], LinkVisualComponent);
+                styleUrls: ['./link-visual.component.css']
+            }]
+    }], null, { link: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['linkVisual']
+        }] }); })();
 
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard/visuals/shared/node-visual/node-visual.component.css":
-/*!********************************************************************************!*\
-  !*** ./src/app/dashboard/visuals/shared/node-visual/node-visual.component.css ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".node {\n  cursor: pointer;\n  -webkit-transition: stroke-width 0.1s ease-out,\n  fill 0.1s ease-out,\n  stroke 0.1s ease-out;\n  transition: stroke-width 0.1s ease-out,\n  fill 0.1s ease-out,\n  stroke 0.1s ease-out;\n\n  stroke: white;\n  stroke-width: 0.25;\n}\n\n.node-name {\n  font-family: 'Lato';\n  text-anchor: middle;\n  alignment-baseline: central;\n  font-weight: 300;\n  fill: white;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL25vZGUtdmlzdWFsL25vZGUtdmlzdWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2Y7O3NCQUVvQjtFQUZwQjs7c0JBRW9COztFQUVwQixhQUFhO0VBQ2Isa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLG1CQUFtQjtFQUNuQiwyQkFBMkI7RUFDM0IsZ0JBQWdCO0VBQ2hCLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC92aXN1YWxzL3NoYXJlZC9ub2RlLXZpc3VhbC9ub2RlLXZpc3VhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5vZGUge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRyYW5zaXRpb246IHN0cm9rZS13aWR0aCAwLjFzIGVhc2Utb3V0LFxuICBmaWxsIDAuMXMgZWFzZS1vdXQsXG4gIHN0cm9rZSAwLjFzIGVhc2Utb3V0O1xuXG4gIHN0cm9rZTogd2hpdGU7XG4gIHN0cm9rZS13aWR0aDogMC4yNTtcbn1cblxuLm5vZGUtbmFtZSB7XG4gIGZvbnQtZmFtaWx5OiAnTGF0byc7XG4gIHRleHQtYW5jaG9yOiBtaWRkbGU7XG4gIGFsaWdubWVudC1iYXNlbGluZTogY2VudHJhbDtcbiAgZm9udC13ZWlnaHQ6IDMwMDtcbiAgZmlsbDogd2hpdGU7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -30181,32 +30073,37 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NodeVisualComponent", function() { return NodeVisualComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../d3 */ "./src/app/dashboard/d3/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 
 
-let NodeVisualComponent = class NodeVisualComponent {
-};
-__decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('nodeVisual'),
-    __metadata("design:type", _d3__WEBPACK_IMPORTED_MODULE_1__["Node"])
-], NodeVisualComponent.prototype, "node", void 0);
-NodeVisualComponent = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-        selector: '[nodeVisual]',
-        template: `
+
+const _c0 = ["nodeVisual", ""];
+class NodeVisualComponent {
+}
+NodeVisualComponent.ɵfac = function NodeVisualComponent_Factory(t) { return new (t || NodeVisualComponent)(); };
+NodeVisualComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NodeVisualComponent, selectors: [["", "nodeVisual", ""]], inputs: { node: ["nodeVisual", "node"] }, attrs: _c0, decls: 4, vars: 5, consts: [["cx", "0", "cy", "0", 1, "node"], [1, "node-name"]], template: function NodeVisualComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "g");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "circle", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "text", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("transform", "translate(" + ctx.node.x + "," + ctx.node.y + ")");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("fill", ctx.node.color)("r", ctx.node.r);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("font-size", ctx.node.fontSize);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.node.id, " ");
+    } }, styles: [".node[_ngcontent-%COMP%] {\n  cursor: pointer;\n  -webkit-transition: stroke-width 0.1s ease-out,\n  fill 0.1s ease-out,\n  stroke 0.1s ease-out;\n  transition: stroke-width 0.1s ease-out,\n  fill 0.1s ease-out,\n  stroke 0.1s ease-out;\n\n  stroke: white;\n  stroke-width: 0.25;\n}\n\n.node-name[_ngcontent-%COMP%] {\n  font-family: 'Lato';\n  text-anchor: middle;\n  alignment-baseline: central;\n  font-weight: 300;\n  fill: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Zpc3VhbHMvc2hhcmVkL25vZGUtdmlzdWFsL25vZGUtdmlzdWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2Y7O3NCQUVvQjtFQUZwQjs7c0JBRW9COztFQUVwQixhQUFhO0VBQ2Isa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLG1CQUFtQjtFQUNuQiwyQkFBMkI7RUFDM0IsZ0JBQWdCO0VBQ2hCLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC92aXN1YWxzL3NoYXJlZC9ub2RlLXZpc3VhbC9ub2RlLXZpc3VhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5vZGUge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRyYW5zaXRpb246IHN0cm9rZS13aWR0aCAwLjFzIGVhc2Utb3V0LFxuICBmaWxsIDAuMXMgZWFzZS1vdXQsXG4gIHN0cm9rZSAwLjFzIGVhc2Utb3V0O1xuXG4gIHN0cm9rZTogd2hpdGU7XG4gIHN0cm9rZS13aWR0aDogMC4yNTtcbn1cblxuLm5vZGUtbmFtZSB7XG4gIGZvbnQtZmFtaWx5OiAnTGF0byc7XG4gIHRleHQtYW5jaG9yOiBtaWRkbGU7XG4gIGFsaWdubWVudC1iYXNlbGluZTogY2VudHJhbDtcbiAgZm9udC13ZWlnaHQ6IDMwMDtcbiAgZmlsbDogd2hpdGU7XG59XG4iXX0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NodeVisualComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: '[nodeVisual]',
+                template: `
     <svg:g [attr.transform]="'translate(' + node.x + ',' + node.y + ')'">
       <svg:circle
           class="node"
@@ -30222,10 +30119,12 @@ NodeVisualComponent = __decorate([
       </svg:text>
     </svg:g>
   `,
-        styles: [__importDefault(__webpack_require__(/*! ./node-visual.component.css */ "./src/app/dashboard/visuals/shared/node-visual/node-visual.component.css")).default]
-    })
-], NodeVisualComponent);
-
+                styleUrls: ['./node-visual.component.css']
+            }]
+    }], null, { node: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['nodeVisual']
+        }] }); })();
 
 
 /***/ })

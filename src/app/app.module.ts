@@ -21,6 +21,7 @@ import {UserEmailComponent} from "./user/user-detail/user-email/user-email.compo
 import {UserAddressComponent} from "./user/user-detail/user-address/user-address.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JorAngularModule} from "jor-angular";
+import {LogonModule} from "ui-logon-angular";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {JorAngularModule} from "jor-angular";
     ExternalAppModule,
     AppRoutingModule,
     HttpClientModule,
-    JorAngularModule
+    JorAngularModule,
+    LogonModule
   ],
   bootstrap: [
     AppComponent

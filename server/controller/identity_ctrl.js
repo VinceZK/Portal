@@ -9,7 +9,6 @@ const entity = require('json-on-relations').Entity;
 userFunction.register('getRoleDetail', function (input, user, callback) {
   entity.getInstancePieceByID(
     {RELATION_ID: 'r_user', USER_ID: user['identity']['userBasic']['USER_ID']},
-
     {RELATIONSHIPS: [
       {
         RELATIONSHIP_ID: 'rs_user_role',
@@ -17,18 +16,12 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
           RELATIONS: ['r_role'],
           RELATIONSHIPS: [
             {
-              RELATIONSHIP_ID: 'rs_system_role_category',
-              PARTNER_ENTITY_PIECES: {
-                RELATIONS: ['r_app_category'],
-                RELATIONSHIPS: [
-                  {
-                    RELATIONSHIP_ID: 'rs_app_category',
-                    PARTNER_ENTITY_PIECES: {
-                      RELATIONS: ['app']
-                    }
-                  }
-                ]
-              }
+              RELATIONSHIP_ID: 'rs_role_category_profile',
+              PARTNER_ENTITY_PIECES: [{
+                ENTITY_ID: 'category',
+                piece: { RELATIONS: ['r_app_category'],
+                  RELATIONSHIPS: [{RELATIONSHIP_ID: 'rs_app_category',
+                    PARTNER_ENTITY_PIECES: { RELATIONS: ['app'] } }]}}]
             }
           ]
         }}
@@ -48,11 +41,12 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
           categories: []
         };
         results.push(roleInstance);
-        const rs_system_role_category = userRoleInstance.relationships[0];
-        if (!rs_system_role_category) return;
+        const rs_role_category_profile = userRoleInstance.relationships[0];
+        if (!rs_role_category_profile) return;
 
-        rs_system_role_category.values.forEach( roleCategoryValue => {
-          const roleCategoryInstance = roleCategoryValue.PARTNER_INSTANCES[0];
+        rs_role_category_profile.values.forEach( roleCategoryValue => {
+          const roleCategoryInstance =
+            roleCategoryValue.PARTNER_INSTANCES.find(partner => partner.ENTITY_ID === 'category');
           const categoryInstance = {
             order: roleCategoryValue['ORDER'],
             name: roleCategoryInstance['r_app_category'][0]['NAME'],

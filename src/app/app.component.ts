@@ -9,6 +9,9 @@ import {of} from "rxjs";
 import {EntityService} from "jor-angular";
 import {environment} from "../environments/environment";
 import {App} from "./role";
+import {MessageService} from "ui-message-angular";
+import {LogonService} from "ui-logon-angular";
+import {msgStore} from './msgStore';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +28,16 @@ export class AppComponent implements OnInit {
               private identityService: IdentityService,
               private shareService: ShareService,
               private historyService: HistoryService,
-              private entityService: EntityService
+              private entityService: EntityService,
+              private messageService: MessageService,
+              private logonService: LogonService
   ) {
     this.entityService.setOriginalHost(environment.originalHost);
+    this.logonService.setHost(environment.originalHost);
+    this.logonService.session().subscribe( data => {
+      this.identityService.setSession( data );
+      this.messageService.setMessageStore(msgStore, this.identityService.Session.LANGUAGE);
+    });
   }
 
   ngOnInit() {

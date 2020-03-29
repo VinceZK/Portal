@@ -1,0 +1,32 @@
+[
+  { "msgCat": "PERMISSION",
+    "msgName": "QUERY_PERMISSION",
+    "msgText": {
+      "EN": {"shortText": "You don't have permission on querying entity '%s' and its relation '%s'"}
+    }
+  },
+  { "msgCat": "PERMISSION",
+    "msgName": "READ_PERMISSION",
+    "msgText": {
+      "EN": {"shortText": "You don't have permission on reading entity '%s'"}
+    }
+  },
+  { "msgCat": "PERMISSION",
+    "msgName": "CREATE_PERMISSION",
+    "msgText": {
+      "EN": {"shortText": "You don't have permission on creating entity '%s'"}
+    }
+  },
+  { "msgCat": "PERMISSION",
+    "msgName": "CHANGE_PERMISSION",
+    "msgText": {
+      "EN": {"shortText": "You don't have permission on changing entity '%s'"}
+    }
+  },
+  { "msgCat": "PERMISSION",
+    "msgName": "DELETE_PERMISSION",
+    "msgText": {
+      "EN": {"shortText": "You don't have permission on deleting this type of entity"}
+    }
+  }
+]
