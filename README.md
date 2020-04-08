@@ -13,7 +13,7 @@ Portal provides following features:
 4. Hover submenu.
 5. APP lazy loading  
 
-![Portal Demo](Portal.gif)
+![Portal Demo](docs/Portal.gif)
 
 You can also experience yourself in this [DEMO](http://darkhouse.com.cn/logon). 
 Please logon with user **DH001** and password **Dark1234**.
@@ -24,14 +24,14 @@ Please logon with user **DH001** and password **Dark1234**.
    $ git clone https://github.com/VinceZK/Portal.git
    $ npm install
    ```
-2. Create the database in MySQL(So far, only MySQL):
+2. Create the database in MySQL(So far, only for MySQL 5.x):
  
    Copy file "MDB.sql" in the project root to your sql console and execute.
    The script will create database "MDB" which contains all the tables and test data. 
       
    Please also create a DB user 'nodejs' with password 'nodejs'. 
    By default, Portal uses credential 'nodejs/nodejs' to connect MySql at port 3306. 
-   You can of course change the default settings. Please refer <https://github.com/VinceZK/json-on-relations>
+   You can of course change the default settings. Please refer <https://github.com/VinceZK/json-on-relations/wiki/Setup>
   
 3. Start portal
    ```bash
@@ -55,12 +55,12 @@ Usually, you don't need to change either of them. You can however add new js fil
 to encapsulate your own business logic. 
 
 The logon page is apart from Portal. It is another reusable component [ui-logon](https://github.com/VinceZK/Logon).
-You can only find the compiled runtime stuff under `app/logon`. 
+You can only find the compiled runtime stuff under `app/identification`. 
 If you want to change the logon page, please refer [ui-logon](https://github.com/VinceZK/Logon).
 
 ### Change the Theme
-Portal doesn't leverage any existing CSS frameworks(like Bootstrap), which conversely means you 
-can use any of the existing CSS frameworks without introducing much conflicts. 
+Portal doesn't leverage any existing CSS frameworks(like Bootstrap),
+which conversely means you can use any of the existing CSS frameworks without introducing much conflicts. 
 
 The existing CSS resides in 4 places:
 + `./styles.css`: Global styles and other styles used in dependent modules.
@@ -74,31 +74,28 @@ There are 2 options to add your Apps into Portal:
 2. Develop Apps directly into the Portal;
 
 ### Register Apps into Portal
-After logon, you navigate to `Model->Entity Browser`. 
-Choose `app` in the `Entity ID`, and click button `New`.
-![App List](AppList.png)
+After logon, you navigate to `Identification->Define App`. Click button `New`.
+![App List](docs/AppList.png)
 
-Maintain your App name and ID(unique). Since your App is not developed in Portal, 
-so mark `IS_EXTERNAL` to 1(means true). In the `ROUTE_LINK`, maintain the URL of your App.
+Give a unique APP name. Since your App is not developed in Portal, 
+check 'External App'. In the 'Nav Link', maintain the URL of your App.
 The URL supports both absolute and relative path. 
 If your App is deployed in the same server with Portal, then use relative path. 
 The Relationship bellow is to assign the App into an existing category.  
-![App Detail](AppDetail.png)
+![App Detail](docs/AppDetail.png)
 
-You can create a category to group your Apps. Choose `category` in the initial page and click `New`.
-![Category List](CategoryList.png)
+You can create a category to group your Apps. 
+Choose `Identification->Define App Category` in the side navigation bar.
+![Category List](docs/CategoryList.png)
 
-Maintain you category name and ID(unique). You can give the category an ICON which you can choose
-from the site [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free). 
-Also add the relationship `rs_app_categoy` with involved role `app_category`.
-![Category List](CategoryDetail.png)
 
-Assign the App UUID you just created to the relationship. You need to click the `+` button to invoke the dialog.
-![Assign App to Category](CategoryAppAssignment.png)
+Give a unique App Category name. In the 'Category ICON', you can choose an ICON 
+in the site [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free). 
+You can assign as many Apps as you want to this category. 
+![Category List](docs/CategoryDetail.png)
 
-You need also assign your category to the permission entity `administrator`. 
-Please just refer the existing `Demo` category to maintain the relationships.
-After that, refresh the Portal page, you will see your App in the new category.
+You then assign the App Category to a Permission, and assign the permission to a user.
+After you logon with the user, the App will be shown in the side navigation bar.
 
 ### Develop Apps into Portal
 You add your Angular components to the folder `src/app`. It is recommended to use Angular's
@@ -113,7 +110,7 @@ It is also recommended to use [json-on-relations](https://github.com/VinceZK/jso
 to model your business entities, so that you can avoid too much server-side coding.
 
 After that, you follow the same steps to register your App into Portal.
-The only difference is to leave `IS_EXTERNAL` to empty(or 0).
+The only difference is to leave 'External App' unchecked.
  
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)

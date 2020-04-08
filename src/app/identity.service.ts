@@ -103,6 +103,11 @@ export class IdentityService {
       catchError(this.handleError<any>('getAppRouteLink')));
   }
 
+  /**
+   * Search Users by USER_ID and USER_NAME.
+   * Return a list with columns USER_ID, USER_NAME, DISPLAY_NAME, LOCK, and PWD_STATE
+   * Wildcard search is supported using '*' or '%'.
+   **/
   searchUsers(userID: string, userName: string): Observable<UserList[] | Message[]> {
     const queryObject = new QueryObject();
     queryObject.ENTITY_ID = 'person';
@@ -129,6 +134,11 @@ export class IdentityService {
       catchError(this.handleError<any>('searchObjects')));
   }
 
+  /**
+   * Get detail information of a user from USER_ID
+   * Return information in Relations: r_user, r_employee, r_email, r_address, and r_personalization.
+   * The relationship to user role is also inquired with information in Relation: r_role
+   **/
   getUserDetail(userID: string): Observable<Entity | Message[]> {
     const pieceObject = {
       ID: { RELATION_ID: 'r_user', USER_ID: userID},
@@ -145,6 +155,10 @@ export class IdentityService {
       catchError(this.handleError<any>('getUserDetail')));
   }
 
+  /**
+   * Get user by User ID, only return information in Relations: r_user
+   * This service call is mainly used to check whether the given USER_ID already exists
+   **/
   getUserByUserID(userID: string): Observable<Entity | Message[]> {
     const pieceObject = {
       ID: { RELATION_ID: 'r_user', USER_ID: userID},
@@ -182,6 +196,10 @@ export class IdentityService {
        catchError(this.handleError<any>('getRoleDesc')));
   }
 
+  /**
+   * Save an entity to DB
+   * A generic entity in JSON is given. If the JSON has attribute INSTANCE_GUID, it calls PUT, otherwise, POST
+   **/
   saveUser(user: Entity): Observable<Entity | Message[]> {
     if (user['INSTANCE_GUID']) {
       return this.http.put<Entity | Message[]>(
@@ -194,6 +212,10 @@ export class IdentityService {
     }
   }
 
+  /**
+   * Delete an entity from DB
+   * A GUID of entity instance is given. After the call, the instance will be deleted permanently
+   **/
   deleteUser(userGUID: string): Observable<null | Message[]> {
     return this.http.delete<null | Message[]>(this.originalHost + `/api/entity/instance/` + userGUID, httpOptions).pipe(
       catchError(this.handleError<any>('deleteUser'))
