@@ -394,7 +394,9 @@ function _getShadowRoot(element) {
     if (_supportsShadowDom()) {
         /** @type {?} */
         const rootNode = element.getRootNode ? element.getRootNode() : null;
-        if (rootNode instanceof ShadowRoot) {
+        // Note that this should be caught by `_supportsShadowDom`, but some
+        // teams have been able to hit this code path on unsupported browsers.
+        if (typeof ShadowRoot !== 'undefined' && ShadowRoot && rootNode instanceof ShadowRoot) {
             return rootNode;
         }
     }
@@ -660,6 +662,9 @@ class CdkTextareaAutosize {
         this._previousMinRows = -1;
         this._document = document;
         this._textareaElement = (/** @type {?} */ (this._elementRef.nativeElement));
+        this._measuringClass = _platform.FIREFOX ?
+            'cdk-textarea-autosize-measuring-firefox' :
+            'cdk-textarea-autosize-measuring';
     }
     /**
      * Minimum amount of rows in the textarea.
@@ -838,15 +843,15 @@ class CdkTextareaAutosize {
         // Long placeholders that are wider than the textarea width may lead to a bigger scrollHeight
         // value. To ensure that the scrollHeight is not bigger than the content, the placeholders
         // need to be removed temporarily.
-        textarea.classList.add('cdk-textarea-autosize-measuring');
+        textarea.classList.add(this._measuringClass);
         textarea.placeholder = '';
-        // The cdk-textarea-autosize-measuring class includes a 2px padding to workaround an issue with
-        // Chrome, so we account for that extra space here by subtracting 4 (2px top + 2px bottom).
+        // The measuring class includes a 2px padding to workaround an issue with Chrome,
+        // so we account for that extra space here by subtracting 4 (2px top + 2px bottom).
         /** @type {?} */
         const height = textarea.scrollHeight - 4;
         // Use the scrollHeight to know how large the textarea *would* be if fit its entire value.
         textarea.style.height = `${height}px`;
-        textarea.classList.remove('cdk-textarea-autosize-measuring');
+        textarea.classList.remove(this._measuringClass);
         textarea.placeholder = placeholderText;
         this._ngZone.runOutsideAngular((/**
          * @return {?}
@@ -74361,7 +74366,7 @@ return fuzzysortNew()
 /*!***********************************************************************!*\
   !*** ./node_modules/jor-angular/__ivy_ngcc__/fesm2015/jor-angular.js ***!
   \***********************************************************************/
-/*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeForm2Component, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, Selection, Sort, UiMapperService, ɵa, ɵb */
+/*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeForm2Component, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, SearchHelpFieldMeta, SearchHelpH, SearchHelpMeta, Selection, Sort, UiMapperService, ɵa, ɵb */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74404,6 +74409,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelp", function() { return SearchHelp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelpComponent", function() { return SearchHelpComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelpField", function() { return SearchHelpField; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelpFieldMeta", function() { return SearchHelpFieldMeta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelpH", function() { return SearchHelpH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchHelpMeta", function() { return SearchHelpMeta; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Selection", function() { return Selection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sort", function() { return Sort; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UiMapperService", function() { return UiMapperService; });
@@ -74437,8 +74445,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function SearchHelpComponent_div_10_div_1_Template(rf, ctx) { if (rf & 1) {
     const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_div_10_div_1_Template_input_ngModelChange_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r8.fuzzySearchTerm = $event; })("keyup", function SearchHelpComponent_div_10_div_1_Template_input_keyup_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r10.enterSearch($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -74449,11 +74457,11 @@ function SearchHelpComponent_div_10_div_1_Template(rf, ctx) { if (rf & 1) {
 } }
 function SearchHelpComponent_div_10_div_3_Template(rf, ctx) { if (rf & 1) {
     const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keyup", function SearchHelpComponent_div_10_div_3_Template_input_keyup_3_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r12.enterSearch($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -74462,7 +74470,7 @@ function SearchHelpComponent_div_10_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("for", filterField_r11.FIELD_NAME);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", filterField_r11.FIELD_DESC, ":");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", filterField_r11.LABEL_TEXT || filterField_r11.FIELD_NAME, ":");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("id", filterField_r11.FIELD_NAME);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("name", filterField_r11.FIELD_NAME);
@@ -74471,13 +74479,13 @@ function SearchHelpComponent_div_10_div_3_Template(rf, ctx) { if (rf & 1) {
 } }
 function SearchHelpComponent_div_10_Template(rf, ctx) { if (rf & 1) {
     const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SearchHelpComponent_div_10_div_1_Template, 2, 1, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_div_10_div_3_Template, 4, 6, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SearchHelpComponent_div_10_div_1_Template, 2, 1, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_div_10_div_3_Template, 4, 6, "div", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_div_10_Template_button_click_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r14.search(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Search ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -74494,21 +74502,21 @@ function SearchHelpComponent_div_10_Template(rf, ctx) { if (rf & 1) {
 } }
 function SearchHelpComponent_button_11_Template(rf, ctx) { if (rf & 1) {
     const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_button_11_Template_button_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r17); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r16.showFilter(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Show Filter");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function SearchHelpComponent_button_12_Template(rf, ctx) { if (rf & 1) {
     const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_button_12_Template_button_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r18.hideFilter(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Hide Filter");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function SearchHelpComponent_input_17_Template(rf, ctx) { if (rf & 1) {
     const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_input_17_Template_input_ngModelChange_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r20.isSelectAllChecked = $event; })("click", function SearchHelpComponent_input_17_Template_input_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.selectAll(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -74521,12 +74529,13 @@ function SearchHelpComponent_th_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const listField_r23 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("display", listField_r23.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](listField_r23.FIELD_DESC);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", listField_r23.LIST_HEADER_TEXT || listField_r23.FIELD_NAME, " ");
 } }
 function SearchHelpComponent_tr_20_input_2_Template(rf, ctx) { if (rf & 1) {
     const _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_2_Template_input_ngModelChange_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30); const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r29.selectedIndex = $event; })("dblclick", function SearchHelpComponent_tr_20_input_2_Template_input_dblclick_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30); const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r31.confirmSelection(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -74536,7 +74545,7 @@ function SearchHelpComponent_tr_20_input_2_Template(rf, ctx) { if (rf & 1) {
 } }
 function SearchHelpComponent_tr_20_input_3_Template(rf, ctx) { if (rf & 1) {
     const _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_3_Template_input_ngModelChange_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); const item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit; return item_r24.SELECTED = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -74550,16 +74559,17 @@ function SearchHelpComponent_tr_20_td_4_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const listField_r37 = ctx.$implicit;
     const item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("display", listField_r37.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](item_r24[listField_r37.FIELD_NAME]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r24[listField_r37.FIELD_NAME], " ");
 } }
 function SearchHelpComponent_tr_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SearchHelpComponent_tr_20_input_2_Template, 1, 2, "input", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_tr_20_input_3_Template, 1, 1, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SearchHelpComponent_tr_20_input_2_Template, 1, 2, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_tr_20_input_3_Template, 1, 1, "input", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, SearchHelpComponent_tr_20_td_4_Template, 2, 1, "td", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, SearchHelpComponent_tr_20_td_4_Template, 2, 3, "td", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -74880,6 +74890,15 @@ class DataDomainMeta {
 }
 if (false) {}
 class DataDomainValue {
+}
+if (false) {}
+class SearchHelpH {
+}
+if (false) {}
+class SearchHelpMeta {
+}
+if (false) {}
+class SearchHelpFieldMeta {
 }
 if (false) {}
 
@@ -75409,6 +75428,38 @@ class EntityService {
         return this.http.post(this.originalHost + `/api/model/data-domains`, domain, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveDataDomain')));
     }
     /**
+     * Return a list of search helps in the system according to the search term
+     * @param {?} term
+     * @return {?}
+     */
+    listSearchHelp(term) {
+        return this.http.get(this.originalHost + `/api/model/search-helps?term=${term}`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listSearchHelp')));
+    }
+    /**
+     * Return a search help definition from a given domain ID
+     * @param {?} searchHelpID
+     * @return {?}
+     */
+    getSearchHelp(searchHelpID) {
+        return this.http.get(this.originalHost + `/api/model/search-helps/${searchHelpID}`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getSearchHelp')));
+    }
+    /**
+     * Return the description of a given search help ID
+     * @param {?} searchHelpID
+     * @return {?}
+     */
+    getSearchHelpDesc(searchHelpID) {
+        return this.http.get(this.originalHost + `/api/model/search-helps/${searchHelpID}/desc`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getSearchHelpDesc')));
+    }
+    /**
+     * Save a search help after changing or creation
+     * @param {?} searchHelp
+     * @return {?}
+     */
+    saveSearchHelp(searchHelp) {
+        return this.http.post(this.originalHost + `/api/model/search-helps`, searchHelp, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveSearchHelp')));
+    }
+    /**
      * Get data element meta
      * @param {?} elementID
      * @return {?}
@@ -75569,6 +75620,7 @@ class SearchHelpComponent {
         this.isSearchHelpModalShown = true;
     }
     /**
+     * Open a search help dialog based on the given entity and one of its relation
      * @param {?} entityID
      * @param {?} relationID
      * @param {?} exportControl
@@ -75614,8 +75666,9 @@ class SearchHelpComponent {
              */
             attribute => searchHelpMeta.FIELDS.push({
                 FIELD_NAME: attribute.ATTR_NAME,
-                FIELD_DESC: attribute.LIST_HEADER_TEXT,
-                IE_FIELD_NAME: attribute.DOMAIN_ID === domainID ? exportField : null,
+                LABEL_TEXT: attribute.LABEL_TEXT,
+                LIST_HEADER_TEXT: attribute.LIST_HEADER_TEXT,
+                IE_FIELD_NAME: exportField && domainID && domainID === attribute.DOMAIN_ID ? exportField : null,
                 IMPORT: attribute.PRIMARY_KEY || attribute.DOMAIN_ID === domainID,
                 EXPORT: attribute.PRIMARY_KEY || attribute.DOMAIN_ID === domainID,
                 LIST_POSITION: attribute.ORDER,
@@ -75623,13 +75676,70 @@ class SearchHelpComponent {
             })));
             searchHelpMeta.FIELDS.push({
                 FIELD_NAME: 'INSTANCE_GUID',
-                FIELD_DESC: 'Instance GUID',
+                LIST_HEADER_TEXT: 'GUID',
                 IMPORT: false,
                 EXPORT: true,
                 LIST_POSITION: 999,
                 FILTER_POSITION: 0
             });
             this.openSearchHelpModal(searchHelpMeta, exportControl, afterExportFn);
+        }));
+    }
+    /**
+     * @param {?} searchHelpID
+     * @param {?} exportField
+     * @param {?} searchHelpExportField
+     * @param {?} exportControl
+     * @param {?} readonly
+     * @param {?=} afterExportFn
+     * @return {?}
+     */
+    openSearchHelpBySearchHelp(searchHelpID, exportField, searchHelpExportField, exportControl, readonly, afterExportFn) {
+        /** @type {?} */
+        const searchHelp = new SearchHelp();
+        this.entityService.getSearchHelp(searchHelpID)
+            .subscribe((/**
+         * @param {?} searchHelpMeta
+         * @return {?}
+         */
+        (searchHelpMeta) => {
+            searchHelp.OBJECT_NAME = searchHelpMeta.SEARCH_HELP_DESC + '(' + searchHelpMeta.SEARCH_HELP_ID + ')';
+            searchHelp.METHOD = (/**
+             * @param {?} entityService
+             * @return {?}
+             */
+            function (entityService) {
+                return (/**
+                 * @param {?} searchTerm
+                 * @return {?}
+                 */
+                (searchTerm) => entityService.searchEntities(searchTerm));
+            })(this.entityService);
+            searchHelp.BEHAVIOUR = searchHelpMeta.BEHAVIOUR;
+            searchHelp.MULTI = searchHelpMeta.MULTI;
+            searchHelp.FUZZY_SEARCH = searchHelpMeta.FUZZY_SEARCH;
+            searchHelp.READ_ONLY = readonly;
+            searchHelp.ENTITY_ID = searchHelpMeta.ENTITY_ID;
+            searchHelp.RELATION_ID = searchHelpMeta.RELATION_ID;
+            searchHelp.FIELDS = searchHelpMeta.FIELDS;
+            /** @type {?} */
+            const searchHelpField = searchHelp.FIELDS.find((/**
+             * @param {?} field
+             * @return {?}
+             */
+            field => (field.IE_FIELD_NAME || field.FIELD_NAME) === searchHelpExportField));
+            searchHelpField.IE_FIELD_NAME = exportField;
+            searchHelpField.EXPORT = true;
+            searchHelpField.IMPORT = true;
+            searchHelp.FIELDS.push({
+                FIELD_NAME: 'INSTANCE_GUID',
+                LIST_HEADER_TEXT: 'GUID',
+                IMPORT: false,
+                EXPORT: true,
+                LIST_POSITION: 999,
+                FILTER_POSITION: 0
+            });
+            this.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
         }));
     }
     /**
@@ -75655,12 +75765,22 @@ class SearchHelpComponent {
                 const fieldValue = this.filterFieldsFormGroup.get(fieldMeta.FIELD_NAME).value;
                 if (fieldValue) {
                     if (fieldValue.includes('*') || fieldValue.includes('%')) {
-                        searchTerm.FILTER.push({ FIELD_NAME: fieldMeta.FIELD_NAME, OPERATOR: 'CN', LOW: fieldValue });
+                        searchTerm.FILTER.push({ RELATION_ID: fieldMeta.RELATION_ID,
+                            FIELD_NAME: fieldMeta.FIELD_NAME, OPERATOR: 'CN', LOW: fieldValue });
                     }
                     else {
-                        searchTerm.FILTER.push({ FIELD_NAME: fieldMeta.FIELD_NAME, OPERATOR: 'EQ', LOW: fieldValue });
+                        searchTerm.FILTER.push({ RELATION_ID: fieldMeta.RELATION_ID,
+                            FIELD_NAME: fieldMeta.FIELD_NAME, OPERATOR: 'EQ', LOW: fieldValue });
                     }
                 }
+            }));
+            searchTerm.PROJECTION = [];
+            this.listFields.forEach((/**
+             * @param {?} fieldMeta
+             * @return {?}
+             */
+            fieldMeta => {
+                searchTerm.PROJECTION.push({ RELATION_ID: fieldMeta.RELATION_ID, FIELD_NAME: fieldMeta.FIELD_NAME });
             }));
         }
         this.listData = [];
@@ -75775,7 +75895,7 @@ class SearchHelpComponent {
     }
 }
 SearchHelpComponent.ɵfac = function SearchHelpComponent_Factory(t) { return new (t || SearchHelpComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](EntityService)); };
-SearchHelpComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SearchHelpComponent, selectors: [["dk-app-search-help"]], decls: 26, vars: 15, consts: [["id", "searchHelp", "tabindex", "-1", "role", "dialog", 1, "modal", "fade", 3, "ngClass", "ngStyle"], ["role", "document", 1, "modal-dialog", "modal-dialog-centered", "modal-lg"], [1, "modal-content", "dk-search-help-content"], [1, "modal-header", "dk-search-help-header"], ["id", "addRelationship", 1, "modal-title"], ["type", "button", 1, "close", 3, "click"], ["aria-hidden", "true"], [1, "modal-body"], ["class", "card mb-2", 4, "ngIf"], ["type", "button", "class", "btn btn-link float-right", 3, "click", 4, "ngIf"], [1, "table", "table-bordered", "table-sm", "table-hover", "dk-search-table"], [1, "thead-light"], ["scope", "col"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click", 4, "ngIf"], [4, "ngFor", "ngForOf"], [1, "modal-footer", "dk-search-help-footer"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], ["type", "button", 1, "btn", "btn-sm", "btn-primary", 3, "disabled", "click"], [1, "card", "mb-2"], ["class", "mt-2 mx-2 row", 4, "ngIf"], [1, "mt-2", "mx-2", "row", 3, "formGroup"], ["class", "col-6 form-group row", 4, "ngFor", "ngForOf"], [1, "mb-2"], ["type", "button", "id", "search", 1, "btn", "btn-sm", "btn-primary", "float-right", "mr-2", 3, "click"], [1, "mt-2", "mx-2", "row"], ["type", "text", "placeholder", "Search", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup"], [1, "col-6", "form-group", "row"], [1, "col-6", "col-form-label", "col-form-label-sm", "text-right", 3, "for"], ["type", "text", 1, "col-6", "form-control", "form-control-sm", 3, "id", "name", "formControlName", "readonly", "keyup"], ["type", "button", 1, "btn", "btn-link", "float-right", 3, "click"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick", 4, "ngIf"], ["type", "checkbox", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick"], ["type", "checkbox", 3, "ngModel", "ngModelChange"]], template: function SearchHelpComponent_Template(rf, ctx) { if (rf & 1) {
+SearchHelpComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SearchHelpComponent, selectors: [["dk-app-search-help"]], decls: 26, vars: 15, consts: [["id", "searchHelp", "tabindex", "-1", "role", "dialog", 1, "modal", "fade", 3, "ngClass", "ngStyle"], ["role", "document", 1, "modal-dialog", "modal-dialog-centered", "modal-lg"], [1, "modal-content", "dk-search-help-content"], [1, "modal-header", "dk-search-help-header"], ["id", "addRelationship", 1, "modal-title"], ["type", "button", 1, "close", 3, "click"], ["aria-hidden", "true"], [1, "modal-body"], ["class", "card mb-2", 4, "ngIf"], ["type", "button", "class", "btn btn-link float-right", 3, "click", 4, "ngIf"], [1, "table", "table-bordered", "table-sm", "table-hover", "dk-search-table"], [1, "thead-light"], ["scope", "col"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click", 4, "ngIf"], [3, "display", 4, "ngFor", "ngForOf"], [4, "ngFor", "ngForOf"], [1, "modal-footer", "dk-search-help-footer"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], ["type", "button", 1, "btn", "btn-sm", "btn-primary", 3, "disabled", "click"], [1, "card", "mb-2"], ["class", "mt-2 mx-2 row", 4, "ngIf"], [1, "mt-2", "mx-2", "row", 3, "formGroup"], ["class", "col-6 form-group row", 4, "ngFor", "ngForOf"], [1, "mb-2"], ["type", "button", "id", "search", 1, "btn", "btn-sm", "btn-primary", "float-right", "mr-2", 3, "click"], [1, "mt-2", "mx-2", "row"], ["type", "text", "placeholder", "Search", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup"], [1, "col-6", "form-group", "row"], [1, "col-6", "col-form-label", "col-form-label-sm", "text-right", 3, "for"], ["type", "text", 1, "col-6", "form-control", "form-control-sm", 3, "id", "name", "formControlName", "readonly", "keyup"], ["type", "button", 1, "btn", "btn-link", "float-right", 3, "click"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick", 4, "ngIf"], ["type", "checkbox", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick"], ["type", "checkbox", 3, "ngModel", "ngModelChange"]], template: function SearchHelpComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -75800,20 +75920,20 @@ SearchHelpComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "th", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, SearchHelpComponent_input_17_Template, 1, 1, "input", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, SearchHelpComponent_th_18_Template, 2, 1, "th", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, SearchHelpComponent_th_18_Template, 2, 3, "th", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, SearchHelpComponent_tr_20_Template, 5, 3, "tr", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, SearchHelpComponent_tr_20_Template, 5, 3, "tr", 15);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_22_listener($event) { return ctx.closeSearchHelpModal(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Cancel");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_24_listener($event) { return ctx.confirmSelection(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Confirm");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -75849,7 +75969,7 @@ SearchHelpComponent.ctorParameters = () => [
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'dk-app-search-help',
-                template: "<div class=\"modal fade\" id=\"searchHelp\" tabindex=\"-1\" role=\"dialog\"\n     [ngClass]=\"{'show': isSearchHelpModalShown}\" [ngStyle]=\"{'display': displaySearchHelpModal}\">\n  <div class=\"modal-dialog modal-dialog-centered modal-lg\" role=\"document\">\n    <div class=\"modal-content dk-search-help-content\">\n      <div class=\"modal-header dk-search-help-header\">\n        <h6 class=\"modal-title\" id=\"addRelationship\">{{searchHelpMeta?.OBJECT_NAME}} ({{listData.length}})</h6>\n        <button type=\"button\" class=\"close\" (click)=\"closeSearchHelpModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n\n      <div class=\"modal-body\">\n        <div *ngIf=\"isFilterShown\" class=\"card mb-2\">\n          <div *ngIf=\"searchHelpMeta && searchHelpMeta.FUZZY_SEARCH\" class=\"mt-2 mx-2 row\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" [(ngModel)]=\"fuzzySearchTerm\" (keyup)=\"enterSearch($event)\">\n          </div>\n          <div class=\"mt-2 mx-2 row\" [formGroup]=\"filterFieldsFormGroup\">\n            <div *ngFor=\"let filterField of filterFields\" class=\"col-6 form-group row\">\n              <label for=\"{{filterField.FIELD_NAME}}\" class=\"col-6 col-form-label col-form-label-sm text-right\">\n                {{filterField.FIELD_DESC}}:</label>\n              <input id=\"{{filterField.FIELD_NAME}}\" name=\"{{filterField.FIELD_NAME}}\" formControlName=\"{{filterField.FIELD_NAME}}\"\n                     type=\"text\" class=\"col-6 form-control form-control-sm\" [readonly]=\"filterField.FILTER_DISP_ONLY\" (keyup)=\"enterSearch($event)\">\n            </div>\n          </div>\n\n          <div class=\"mb-2\">\n            <button type=\"button\" id=\"search\" class=\"btn btn-sm btn-primary float-right mr-2\" (click)=\"search()\">\n              Search\n            </button>\n          </div>\n        </div>\n\n        <button *ngIf=\"!isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"showFilter()\">Show Filter</button>\n        <button *ngIf=\"isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"hideFilter()\">Hide Filter</button>\n\n        <table class=\"table table-bordered table-sm table-hover dk-search-table\">\n          <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">\n              <input *ngIf=\"searchHelpMeta?.MULTI\" type=\"checkbox\" [(ngModel)]=\"isSelectAllChecked\" (click)=\"selectAll()\">\n            </th>\n            <th *ngFor=\"let listField of listFields\">{{listField.FIELD_DESC}}</th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let item of listData; let i = index\">\n            <td>\n              <input *ngIf=\"!searchHelpMeta.MULTI\" type=\"radio\" name=\"selectedIndex\" [value]=\"i\" [(ngModel)]=\"selectedIndex\" (dblclick)=\"confirmSelection()\">\n              <input *ngIf=\"searchHelpMeta.MULTI\" type=\"checkbox\" [(ngModel)]=\"item.SELECTED\">\n            </td>\n            <td *ngFor=\"let listField of listFields\">{{item[listField.FIELD_NAME]}}</td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <div class=\"modal-footer dk-search-help-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"closeSearchHelpModal()\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"confirmSelection()\" [disabled]=\"searchHelpMeta?.READ_ONLY\">Confirm</button>\n      </div>\n    </div>\n  </div>\n</div>\n",
+                template: "<div class=\"modal fade\" id=\"searchHelp\" tabindex=\"-1\" role=\"dialog\"\n     [ngClass]=\"{'show': isSearchHelpModalShown}\" [ngStyle]=\"{'display': displaySearchHelpModal}\">\n  <div class=\"modal-dialog modal-dialog-centered modal-lg\" role=\"document\">\n    <div class=\"modal-content dk-search-help-content\">\n      <div class=\"modal-header dk-search-help-header\">\n        <h6 class=\"modal-title\" id=\"addRelationship\">{{searchHelpMeta?.OBJECT_NAME}} ({{listData.length}})</h6>\n        <button type=\"button\" class=\"close\" (click)=\"closeSearchHelpModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n\n      <div class=\"modal-body\">\n        <div *ngIf=\"isFilterShown\" class=\"card mb-2\">\n          <div *ngIf=\"searchHelpMeta && searchHelpMeta.FUZZY_SEARCH\" class=\"mt-2 mx-2 row\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" [(ngModel)]=\"fuzzySearchTerm\" (keyup)=\"enterSearch($event)\">\n          </div>\n          <div class=\"mt-2 mx-2 row\" [formGroup]=\"filterFieldsFormGroup\">\n            <div *ngFor=\"let filterField of filterFields\" class=\"col-6 form-group row\">\n              <label for=\"{{filterField.FIELD_NAME}}\" class=\"col-6 col-form-label col-form-label-sm text-right\">\n                {{filterField.LABEL_TEXT || filterField.FIELD_NAME}}:</label>\n              <input id=\"{{filterField.FIELD_NAME}}\" name=\"{{filterField.FIELD_NAME}}\" formControlName=\"{{filterField.FIELD_NAME}}\"\n                     type=\"text\" class=\"col-6 form-control form-control-sm\" [readonly]=\"filterField.FILTER_DISP_ONLY\" (keyup)=\"enterSearch($event)\">\n            </div>\n          </div>\n\n          <div class=\"mb-2\">\n            <button type=\"button\" id=\"search\" class=\"btn btn-sm btn-primary float-right mr-2\" (click)=\"search()\">\n              Search\n            </button>\n          </div>\n        </div>\n\n        <button *ngIf=\"!isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"showFilter()\">Show Filter</button>\n        <button *ngIf=\"isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"hideFilter()\">Hide Filter</button>\n\n        <table class=\"table table-bordered table-sm table-hover dk-search-table\">\n          <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">\n              <input *ngIf=\"searchHelpMeta?.MULTI\" type=\"checkbox\" [(ngModel)]=\"isSelectAllChecked\" (click)=\"selectAll()\">\n            </th>\n            <th *ngFor=\"let listField of listFields\"\n                [style.display]=\"listField.FIELD_NAME === 'INSTANCE_GUID' ? 'none' : 'table-cell'\">\n              {{listField.LIST_HEADER_TEXT || listField.FIELD_NAME}}\n            </th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let item of listData; let i = index\">\n            <td>\n              <input *ngIf=\"!searchHelpMeta.MULTI\" type=\"radio\" name=\"selectedIndex\" [value]=\"i\" [(ngModel)]=\"selectedIndex\" (dblclick)=\"confirmSelection()\">\n              <input *ngIf=\"searchHelpMeta.MULTI\" type=\"checkbox\" [(ngModel)]=\"item.SELECTED\">\n            </td>\n            <td *ngFor=\"let listField of listFields\"\n                [style.display]=\"listField.FIELD_NAME === 'INSTANCE_GUID' ? 'none' : 'table-cell'\">\n              {{item[listField.FIELD_NAME]}}\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <div class=\"modal-footer dk-search-help-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"closeSearchHelpModal()\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"confirmSelection()\" [disabled]=\"searchHelpMeta?.READ_ONLY\">Confirm</button>\n      </div>\n    </div>\n  </div>\n</div>\n",
                 styles: [".dk-search-help-header{padding:.3rem .5rem;background-color:#e9ecef}.dk-search-help-footer{padding:.5rem}.dk-search-table{display:block;overflow:scroll;max-height:40rem;white-space:nowrap;border:none}.dk-search-help-content{border:1px solid rgba(0,0,0,.4);box-shadow:8px 5px 5px rgba(0,0,0,.2)}"]
             }]
     }], function () { return [{ type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] }, { type: EntityService }]; }, null); })();
@@ -76214,7 +76334,12 @@ class AttributeComponent {
      * @return {?}
      */
     onSearchHelp(attributeControl) {
-        this.searchHelpComponent.openSearchHelpModalByEntity(attributeControl.domainEntityId, attributeControl.domainRelationId, this.formGroup, this.readonly, attributeControl.name, attributeControl.domainId);
+        if (attributeControl.searchHelpId) {
+            this.searchHelpComponent.openSearchHelpBySearchHelp(attributeControl.searchHelpId, attributeControl.name, attributeControl.searchHelpExportField, this.formGroup, this.readonly);
+        }
+        else {
+            this.searchHelpComponent.openSearchHelpModalByEntity(attributeControl.domainEntityId, attributeControl.domainRelationId, this.formGroup, this.readonly, attributeControl.name, attributeControl.domainId);
+        }
     }
 }
 AttributeComponent.ɵfac = function AttributeComponent_Factory(t) { return new (t || AttributeComponent)(); };
@@ -76223,7 +76348,7 @@ AttributeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.searchHelpComponent = _t.first);
-    } }, inputs: { attributeControl: "attributeControl", formGroup: "formGroup", readonly: "readonly", isSmallSize: "isSmallSize", noErrorMsg: "noErrorMsg" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]()], decls: 16, vars: 14, consts: [[3, "formGroup"], [3, "ngSwitch"], [1, "input-group"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "readonly", "keyup", 4, "ngSwitchCase"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "pattern", "readonly", 4, "ngSwitchCase"], ["class", "input-group-append", 4, "ngIf"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "step", "placeholder", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "checkbox", "class", "form-control", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["type", "textarea", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "file", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "date", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["class", "form-control", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["class", "dk-invalid-feedback", 3, "ng-invalid", 4, "ngIf"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "pattern", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "readonly", "keyup"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "pattern", "readonly"], [1, "input-group-append"], ["type", "button", 1, "btn", "btn-outline-secondary", "btn-sm", 3, "click"], [1, "fas", "fa-search"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "step", "placeholder", "pattern", "readonly"], ["type", "checkbox", 1, "form-control", 3, "formControlName", "id"], ["type", "textarea", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "file", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "date", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "readonly"], [1, "form-control", 3, "formControlName", "id"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "dk-invalid-feedback"]], template: function AttributeComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { attributeControl: "attributeControl", formGroup: "formGroup", readonly: "readonly", isSmallSize: "isSmallSize", noErrorMsg: "noErrorMsg" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]()], decls: 16, vars: 14, consts: [[3, "formGroup"], [3, "ngSwitch"], [1, "input-group"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "readonly", "keyup", 4, "ngSwitchCase"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "pattern", "readonly", 4, "ngSwitchCase"], ["class", "input-group-append", 4, "ngIf"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "step", "placeholder", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "checkbox", "class", "mb-1 ml-1", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["type", "textarea", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "file", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "date", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["class", "form-control", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["class", "dk-invalid-feedback", 3, "ng-invalid", 4, "ngIf"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "pattern", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "readonly", "keyup"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "pattern", "readonly"], [1, "input-group-append"], ["type", "button", 1, "btn", "btn-outline-secondary", "btn-sm", 3, "click"], [1, "fas", "fa-search"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "step", "placeholder", "pattern", "readonly"], ["type", "checkbox", 1, "mb-1", "ml-1", 3, "formControlName", "id"], ["type", "textarea", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "file", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "date", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "readonly"], [1, "form-control", 3, "formControlName", "id"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "dk-invalid-feedback"]], template: function AttributeComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -76286,7 +76411,7 @@ AttributeComponent.propDecorators = {
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'dk-app-attribute',
-                template: "<div [formGroup]=\"formGroup\">\n  <div [ngSwitch]=\"attributeControl.controlType\">\n    <div class=\"input-group\">\n      <input *ngSwitchCase=\"'text'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'text_capital'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             (keyup)=\"onKeyup(attributeControl.name)\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'integer'\" type=\"number\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <div *ngIf=\"attributeControl.searchHelpId || attributeControl.domainRelationId\" class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" (click)=\"onSearchHelp(attributeControl)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n      </div>\n    </div>\n    <input *ngSwitchCase=\"'decimal'\" type=\"number\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [step]=\"attributeControl.step\"\n           [placeholder]=\"attributeControl.placeholder\"\n           [pattern]=\"attributeControl.pattern\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\">\n    <input *ngSwitchCase=\"'textarea'\" type=\"textarea\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'file'\" type=\"file\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'date'\" type=\"date\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'timestamp'\" type=\"text\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <select *ngSwitchCase=\"'dropdown'\" class=\"form-control\"\n            [class.form-control-sm] = \"isSmallSize\"\n            [formControlName]=\"attributeControl.name\"\n            [id]=\"attributeControl.key\">\n      <option *ngFor=\"let opt of attributeControl.dropdownList\" [value]=\"opt.key\">{{opt.value}}</option>\n    </select>\n  </div>\n\n  <div *ngIf=\"!noErrorMsg\" [class.ng-invalid]=\"invalid\" class=\"dk-invalid-feedback\">\n    {{errorMessage}}\n  </div>\n</div>\n\n<dk-app-search-help></dk-app-search-help>\n",
+                template: "<div [formGroup]=\"formGroup\">\n  <div [ngSwitch]=\"attributeControl.controlType\">\n    <div class=\"input-group\">\n      <input *ngSwitchCase=\"'text'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'text_capital'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             (keyup)=\"onKeyup(attributeControl.name)\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'integer'\" type=\"number\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <div *ngIf=\"attributeControl.searchHelpId || attributeControl.domainRelationId\" class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" (click)=\"onSearchHelp(attributeControl)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n      </div>\n    </div>\n    <input *ngSwitchCase=\"'decimal'\" type=\"number\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [step]=\"attributeControl.step\"\n           [placeholder]=\"attributeControl.placeholder\"\n           [pattern]=\"attributeControl.pattern\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" class=\"mb-1 ml-1\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\">\n    <input *ngSwitchCase=\"'textarea'\" type=\"textarea\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'file'\" type=\"file\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'date'\" type=\"date\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'timestamp'\" type=\"text\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <select *ngSwitchCase=\"'dropdown'\" class=\"form-control\"\n            [class.form-control-sm] = \"isSmallSize\"\n            [formControlName]=\"attributeControl.name\"\n            [id]=\"attributeControl.key\">\n      <option *ngFor=\"let opt of attributeControl.dropdownList\" [value]=\"opt.key\">{{opt.value}}</option>\n    </select>\n  </div>\n\n  <div *ngIf=\"!noErrorMsg\" [class.ng-invalid]=\"invalid\" class=\"dk-invalid-feedback\">\n    {{errorMessage}}\n  </div>\n</div>\n\n<dk-app-search-help></dk-app-search-help>\n",
                 styles: [""]
             }]
     }], function () { return []; }, { attributeControl: [{

@@ -71,6 +71,7 @@ userFunction.register('getRoleDetail', function (input, user, callback) {
         });
       });
       results[0]['categories'].sort((a, b) => a.order - b.order);
+      results[0]['categories'].forEach( category => category.apps.sort((a, b) => a.order - b.order));
       callback(null, results);
     }
   )

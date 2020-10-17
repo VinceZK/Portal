@@ -1062,6 +1062,11 @@ class IdentityService {
             }
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getAppRouteLink')));
     }
+    /**
+     * Search Users by USER_ID and USER_NAME.
+     * Return a list with columns USER_ID, USER_NAME, DISPLAY_NAME, LOCK, and PWD_STATE
+     * Wildcard search is supported using '*' or '%'.
+     **/
     searchUsers(userID, userName) {
         const queryObject = new jor_angular__WEBPACK_IMPORTED_MODULE_5__["QueryObject"]();
         queryObject.ENTITY_ID = 'person';
@@ -1088,6 +1093,11 @@ class IdentityService {
         queryObject.SORT = ['USER_ID'];
         return this.http.post(this.originalHost + `/api/query`, queryObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('searchObjects')));
     }
+    /**
+     * Get detail information of a user from USER_ID
+     * Return information in Relations: r_user, r_employee, r_email, r_address, and r_personalization.
+     * The relationship to user role is also inquired with information in Relation: r_role
+     **/
     getUserDetail(userID) {
         const pieceObject = {
             ID: { RELATION_ID: 'r_user', USER_ID: userID },
@@ -1102,6 +1112,10 @@ class IdentityService {
         };
         return this.http.post(this.originalHost + `/api/entity/instance/piece`, pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserDetail')));
     }
+    /**
+     * Get user by User ID, only return information in Relations: r_user
+     * This service call is mainly used to check whether the given USER_ID already exists
+     **/
     getUserByUserID(userID) {
         const pieceObject = {
             ID: { RELATION_ID: 'r_user', USER_ID: userID },
@@ -1129,6 +1143,10 @@ class IdentityService {
                 } : instance[0];
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRoleDesc')));
     }
+    /**
+     * Save an entity to DB
+     * A generic entity in JSON is given. If the JSON has attribute INSTANCE_GUID, it calls PUT, otherwise, POST
+     **/
     saveUser(user) {
         if (user['INSTANCE_GUID']) {
             return this.http.put(this.originalHost + `/api/entity`, user, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveUser')));
@@ -1137,6 +1155,10 @@ class IdentityService {
             return this.http.post(this.originalHost + `/api/entity`, user, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveUser')));
         }
     }
+    /**
+     * Delete an entity from DB
+     * A GUID of entity instance is given. After the call, the instance will be deleted permanently
+     **/
     deleteUser(userGUID) {
         return this.http.delete(this.originalHost + `/api/entity/instance/` + userGUID, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteUser')));
     }

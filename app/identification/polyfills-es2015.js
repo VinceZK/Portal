@@ -1,6 +1,304 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills"],{
 
-/***/ "./node_modules/zone.js/dist/zone-evergreen.js":
+/***/ 2:
+/*!********************************!*\
+  !*** multi ./src/polyfills.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/VinceZK/workspace/javascript/Logon/src/polyfills.ts */"hN/g");
+
+
+/***/ }),
+
+/***/ "N/DB":
+/*!*********************************************************!*\
+  !*** ./node_modules/@angular/localize/fesm2015/init.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @license Angular v9.1.12
+ * (c) 2010-2020 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const __globalThis = typeof globalThis !== 'undefined' && globalThis;
+const __window = typeof window !== 'undefined' && window;
+const __self = typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' &&
+    self instanceof WorkerGlobalScope && self;
+const __global = typeof global !== 'undefined' && global;
+// Always use __globalThis if available; this is the spec-defined global variable across all
+// environments.
+// Then fallback to __global first; in Node tests both __global and __window may be defined.
+const _global = __globalThis || __global || __window || __self;
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Tag a template literal string for localization.
+ *
+ * For example:
+ *
+ * ```ts
+ * $localize `some string to localize`
+ * ```
+ *
+ * **Providing meaning, description and id**
+ *
+ * You can optionally specify one or more of `meaning`, `description` and `id` for a localized
+ * string by pre-pending it with a colon delimited block of the form:
+ *
+ * ```ts
+ * $localize`:meaning|description@@id:source message text`;
+ *
+ * $localize`:meaning|:source message text`;
+ * $localize`:description:source message text`;
+ * $localize`:@@id:source message text`;
+ * ```
+ *
+ * This format is the same as that used for `i18n` markers in Angular templates. See the
+ * [Angular 18n guide](guide/i18n#template-translations).
+ *
+ * **Naming placeholders**
+ *
+ * If the template literal string contains expressions, then the expressions will be automatically
+ * associated with placeholder names for you.
+ *
+ * For example:
+ *
+ * ```ts
+ * $localize `Hi ${name}! There are ${items.length} items.`;
+ * ```
+ *
+ * will generate a message-source of `Hi {$PH}! There are {$PH_1} items`.
+ *
+ * The recommended practice is to name the placeholder associated with each expression though.
+ *
+ * Do this by providing the placeholder name wrapped in `:` characters directly after the
+ * expression. These placeholder names are stripped out of the rendered localized string.
+ *
+ * For example, to name the `items.length` expression placeholder `itemCount` you write:
+ *
+ * ```ts
+ * $localize `There are ${items.length}:itemCount: items`;
+ * ```
+ *
+ * **Escaping colon markers**
+ *
+ * If you need to use a `:` character directly at the start of a tagged string that has no
+ * metadata block, or directly after a substitution expression that has no name you must escape
+ * the `:` by preceding it with a backslash:
+ *
+ * For example:
+ *
+ * ```ts
+ * // message has a metadata block so no need to escape colon
+ * $localize `:some description::this message starts with a colon (:)`;
+ * // no metadata block so the colon must be escaped
+ * $localize `\:this message starts with a colon (:)`;
+ * ```
+ *
+ * ```ts
+ * // named substitution so no need to escape colon
+ * $localize `${label}:label:: ${}`
+ * // anonymous substitution so colon must be escaped
+ * $localize `${label}\: ${}`
+ * ```
+ *
+ * **Processing localized strings:**
+ *
+ * There are three scenarios:
+ *
+ * * **compile-time inlining**: the `$localize` tag is transformed at compile time by a
+ * transpiler, removing the tag and replacing the template literal string with a translated
+ * literal string from a collection of translations provided to the transpilation tool.
+ *
+ * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
+ * reorders the parts (static strings and expressions) of the template literal string with strings
+ * from a collection of translations loaded at run-time.
+ *
+ * * **pass-through evaluation**: the `$localize` tag is a run-time function that simply evaluates
+ * the original template literal string without applying any translations to the parts. This
+ * version is used during development or where there is no need to translate the localized
+ * template literals.
+ * @param messageParts a collection of the static parts of the template string.
+ * @param expressions a collection of the values of each placeholder in the template string.
+ * @returns the translated string, with the `messageParts` and `expressions` interleaved together.
+ */
+const $localize = function (messageParts, ...expressions) {
+    if ($localize.translate) {
+        // Don't use array expansion here to avoid the compiler adding `__read()` helper unnecessarily.
+        const translation = $localize.translate(messageParts, expressions);
+        messageParts = translation[0];
+        expressions = translation[1];
+    }
+    let message = stripBlock(messageParts[0], messageParts.raw[0]);
+    for (let i = 1; i < messageParts.length; i++) {
+        message += expressions[i - 1] + stripBlock(messageParts[i], messageParts.raw[i]);
+    }
+    return message;
+};
+const BLOCK_MARKER = ':';
+/**
+ * Strip a delimited "block" from the start of the `messagePart`, if it is found.
+ *
+ * If a marker character (:) actually appears in the content at the start of a tagged string or
+ * after a substitution expression, where a block has not been provided the character must be
+ * escaped with a backslash, `\:`. This function checks for this by looking at the `raw`
+ * messagePart, which should still contain the backslash.
+ *
+ * @param messagePart The cooked message part to process.
+ * @param rawMessagePart The raw message part to check.
+ * @returns the message part with the placeholder name stripped, if found.
+ * @throws an error if the block is unterminated
+ */
+function stripBlock(messagePart, rawMessagePart) {
+    return rawMessagePart.charAt(0) === BLOCK_MARKER ?
+        messagePart.substring(findEndOfBlock(messagePart, rawMessagePart) + 1) :
+        messagePart;
+}
+/**
+ * Find the end of a "marked block" indicated by the first non-escaped colon.
+ *
+ * @param cooked The cooked string (where escaped chars have been processed)
+ * @param raw The raw string (where escape sequences are still in place)
+ *
+ * @returns the index of the end of block marker
+ * @throws an error if the block is unterminated
+ */
+function findEndOfBlock(cooked, raw) {
+    /***********************************************************************************************
+     * This function is repeated in `src/utils/messages.ts` and the two should be kept in sync.
+     * The reason is that this file is marked as having side-effects, and if we import `messages.ts`
+     * into it, the whole of `src/utils` will be included in this bundle and none of the functions
+     * will be tree shaken.
+     ***********************************************************************************************/
+    for (let cookedIndex = 1, rawIndex = 1; cookedIndex < cooked.length; cookedIndex++, rawIndex++) {
+        if (raw[rawIndex] === '\\') {
+            rawIndex++;
+        }
+        else if (cooked[cookedIndex] === BLOCK_MARKER) {
+            return cookedIndex;
+        }
+    }
+    throw new Error(`Unterminated $localize metadata block in "${raw}".`);
+}
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+// Attach $localize to the global context, as a side-effect of this module.
+_global.$localize = $localize;
+//# sourceMappingURL=init.js.map
+
+
+/***/ }),
+
+/***/ "hN/g":
+/*!**************************!*\
+  !*** ./src/polyfills.ts ***!
+  \**************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _angular_localize_init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/localize/init */ "N/DB");
+/* harmony import */ var _angular_localize_init__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_localize_init__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! zone.js/dist/zone */ "pDpN");
+/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1__);
+/***************************************************************************************************
+ * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
+ */
+
+/**
+ * This file includes polyfills needed by Angular and is loaded before the app.
+ * You can add your own extra polyfills to this file.
+ *
+ * This file is divided into 2 sections:
+ *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
+ *      file.
+ *
+ * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
+ * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
+ * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+ *
+ * Learn more in https://angular.io/guide/browser-support
+ */
+/***************************************************************************************************
+ * BROWSER POLYFILLS
+ */
+/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+// import 'classlist.js';  // Run `npm install --save classlist.js`.
+/**
+ * Web Animations `@angular/platform-browser/animations`
+ * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
+ * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
+ */
+// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
+/**
+ * By default, zone.js will patch all possible macroTask and DomEvents
+ * user can disable parts of macroTask/DomEvents patch by setting following flags
+ * because those flags need to be set before `zone.js` being loaded, and webpack
+ * will put import in the top of bundle, so user need to create a separate file
+ * in this directory (for example: zone-flags.ts), and put the following flags
+ * into that file, and then add the following code before importing zone.js.
+ * import './zone-flags.ts';
+ *
+ * The flags allowed in zone-flags.ts are listed here.
+ *
+ * The following flags will work for all browsers.
+ *
+ * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
+ * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
+ * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+ *
+ *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
+ *  with the following flag, it will bypass `zone.js` patch for IE/Edge
+ *
+ *  (window as any).__Zone_enable_cross_context_check = true;
+ *
+ */
+/***************************************************************************************************
+ * Zone JS is required by default for Angular itself.
+ */
+ // Included with Angular CLI.
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+
+
+/***/ }),
+
+/***/ "pDpN":
 /*!*****************************************************!*\
   !*** ./node_modules/zone.js/dist/zone-evergreen.js ***!
   \*****************************************************/
@@ -8,11 +306,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
- * @license Angular v0.10.2
- * (c) 2010-2019 Google LLC. https://angular.io/
- * License: MIT
- */
-
+* @license Angular v9.1.0-next.4+61.sha-e552591.with-local-changes
+* (c) 2010-2020 Google LLC. https://angular.io/
+* License: MIT
+*/
 (function (factory) {
      true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
@@ -20,7 +317,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 				__WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) :
     undefined;
-}(function () { 'use strict';
+}((function () { 'use strict';
 
     /**
      * @license
@@ -662,6 +959,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         }
         const __symbol__ = api.symbol;
         const _uncaughtPromiseErrors = [];
+        const isDisableWrappingUncaughtPromiseRejection = global[__symbol__('DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION')] === true;
         const symbolPromise = __symbol__('Promise');
         const symbolThen = __symbol__('then');
         const creationTrace = '__creationTrace__';
@@ -678,14 +976,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         };
         api.microtaskDrainDone = () => {
             while (_uncaughtPromiseErrors.length) {
-                while (_uncaughtPromiseErrors.length) {
-                    const uncaughtPromiseError = _uncaughtPromiseErrors.shift();
-                    try {
-                        uncaughtPromiseError.zone.runGuarded(() => { throw uncaughtPromiseError; });
-                    }
-                    catch (error) {
-                        handleUnhandledRejection(error);
-                    }
+                const uncaughtPromiseError = _uncaughtPromiseErrors.shift();
+                try {
+                    uncaughtPromiseError.zone.runGuarded(() => { throw uncaughtPromiseError; });
+                }
+                catch (error) {
+                    handleUnhandledRejection(error);
                 }
             }
         };
@@ -694,7 +990,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
             api.onUnhandledError(e);
             try {
                 const handler = Zone[UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL];
-                if (handler && typeof handler === 'function') {
+                if (typeof handler === 'function') {
                     handler.call(this, e);
                 }
             }
@@ -801,20 +1097,28 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                     }
                     if (queue.length == 0 && state == REJECTED) {
                         promise[symbolState] = REJECTED_NO_CATCH;
-                        try {
-                            // try to print more readable error log
-                            throw new Error('Uncaught (in promise): ' + readableObjectToString(value) +
-                                (value && value.stack ? '\n' + value.stack : ''));
+                        let uncaughtPromiseError = value;
+                        if (!isDisableWrappingUncaughtPromiseRejection) {
+                            // If disable wrapping uncaught promise reject
+                            // and the rejected value is an Error object,
+                            // use the value instead of wrapping it.
+                            try {
+                                // Here we throws a new Error to print more readable error log
+                                // and if the value is not an error, zone.js builds an `Error`
+                                // Object here to attach the stack information.
+                                throw new Error('Uncaught (in promise): ' + readableObjectToString(value) +
+                                    (value && value.stack ? '\n' + value.stack : ''));
+                            }
+                            catch (err) {
+                                uncaughtPromiseError = err;
+                            }
                         }
-                        catch (err) {
-                            const error = err;
-                            error.rejection = value;
-                            error.promise = promise;
-                            error.zone = Zone.current;
-                            error.task = Zone.currentTask;
-                            _uncaughtPromiseErrors.push(error);
-                            api.scheduleMicroTask(); // to make sure that it is running
-                        }
+                        uncaughtPromiseError.rejection = value;
+                        uncaughtPromiseError.promise = promise;
+                        uncaughtPromiseError.zone = Zone.current;
+                        uncaughtPromiseError.task = Zone.currentTask;
+                        _uncaughtPromiseErrors.push(uncaughtPromiseError);
+                        api.scheduleMicroTask(); // to make sure that it is running
                     }
                 }
             }
@@ -873,21 +1177,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
             }, chainPromise);
         }
         const ZONE_AWARE_PROMISE_TO_STRING = 'function ZoneAwarePromise() { [native code] }';
+        const noop = function () { };
         class ZoneAwarePromise {
-            constructor(executor) {
-                const promise = this;
-                if (!(promise instanceof ZoneAwarePromise)) {
-                    throw new Error('Must be an instanceof Promise.');
-                }
-                promise[symbolState] = UNRESOLVED;
-                promise[symbolValue] = []; // queue;
-                try {
-                    executor && executor(makeResolver(promise, RESOLVED), makeResolver(promise, REJECTED));
-                }
-                catch (error) {
-                    resolvePromise(promise, false, error);
-                }
-            }
             static toString() { return ZONE_AWARE_PROMISE_TO_STRING; }
             static resolve(value) {
                 return resolvePromise(new this(null), RESOLVED, value);
@@ -969,9 +1260,28 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                 }
                 return promise;
             }
+            constructor(executor) {
+                const promise = this;
+                if (!(promise instanceof ZoneAwarePromise)) {
+                    throw new Error('Must be an instanceof Promise.');
+                }
+                promise[symbolState] = UNRESOLVED;
+                promise[symbolValue] = []; // queue;
+                try {
+                    executor && executor(makeResolver(promise, RESOLVED), makeResolver(promise, REJECTED));
+                }
+                catch (error) {
+                    resolvePromise(promise, false, error);
+                }
+            }
             get [Symbol.toStringTag]() { return 'Promise'; }
+            get [Symbol.species]() { return ZoneAwarePromise; }
             then(onFulfilled, onRejected) {
-                const chainPromise = new this.constructor(null);
+                let C = this.constructor[Symbol.species];
+                if (!C || typeof C !== 'function') {
+                    C = this.constructor || ZoneAwarePromise;
+                }
+                const chainPromise = new C(noop);
                 const zone = Zone.current;
                 if (this[symbolState] == UNRESOLVED) {
                     this[symbolValue].push(zone, chainPromise, onFulfilled, onRejected);
@@ -985,7 +1295,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                 return this.then(null, onRejected);
             }
             finally(onFinally) {
-                const chainPromise = new this.constructor(null);
+                let C = this.constructor[Symbol.species];
+                if (!C || typeof C !== 'function') {
+                    C = ZoneAwarePromise;
+                }
+                const chainPromise = new C(noop);
                 chainPromise[symbolFinally] = symbolFinally;
                 const zone = Zone.current;
                 if (this[symbolState] == UNRESOLVED) {
@@ -1584,6 +1898,15 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
     const globalSources = {};
     const EVENT_NAME_SYMBOL_REGX = new RegExp('^' + ZONE_SYMBOL_PREFIX + '(\\w+)(true|false)$');
     const IMMEDIATE_PROPAGATION_SYMBOL = zoneSymbol('propagationStopped');
+    function prepareEventNames(eventName, eventNameToString) {
+        const falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
+        const trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
+        const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
+        const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
+        zoneSymbolEventNames$1[eventName] = {};
+        zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
+        zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
+    }
     function patchEventTarget(_global, apis, patchOptions) {
         const ADD_EVENT_LISTENER = (patchOptions && patchOptions.add) || ADD_EVENT_LISTENER_STR;
         const REMOVE_EVENT_LISTENER = (patchOptions && patchOptions.rm) || REMOVE_EVENT_LISTENER_STR;
@@ -1727,16 +2050,30 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                 nativePrependEventListener = proto[zoneSymbol(patchOptions.prepend)] =
                     proto[patchOptions.prepend];
             }
-            function checkIsPassive(task) {
-                if (!passiveSupported && typeof taskData.options !== 'boolean' &&
-                    typeof taskData.options !== 'undefined' && taskData.options !== null) {
-                    // options is a non-null non-undefined object
-                    // passive is not supported
-                    // don't pass options as object
-                    // just pass capture as a boolean
-                    task.options = !!taskData.options.capture;
-                    taskData.options = task.options;
+            /**
+             * This util function will build an option object with passive option
+             * to handle all possible input from the user.
+             */
+            function buildEventListenerOptions(options, passive) {
+                if (!passiveSupported && typeof options === 'object' && options) {
+                    // doesn't support passive but user want to pass an object as options.
+                    // this will not work on some old browser, so we just pass a boolean
+                    // as useCapture parameter
+                    return !!options.capture;
                 }
+                if (!passiveSupported || !passive) {
+                    return options;
+                }
+                if (typeof options === 'boolean') {
+                    return { capture: options, passive: true };
+                }
+                if (!options) {
+                    return { passive: true };
+                }
+                if (typeof options === 'object' && options.passive !== false) {
+                    return Object.assign(Object.assign({}, options), { passive: true });
+                }
+                return options;
             }
             const customScheduleGlobal = function (task) {
                 // if there is already a task for the eventName + capture,
@@ -1744,7 +2081,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                 if (taskData.isExisting) {
                     return;
                 }
-                checkIsPassive(task);
                 return nativeAddEventListener.call(taskData.target, taskData.eventName, taskData.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, taskData.options);
             };
             const customCancelGlobal = function (task) {
@@ -1785,7 +2121,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                 return nativeRemoveEventListener.call(task.target, task.eventName, task.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, task.options);
             };
             const customScheduleNonGlobal = function (task) {
-                checkIsPassive(task);
                 return nativeAddEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
             };
             const customSchedulePrepend = function (task) {
@@ -1803,6 +2138,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
             };
             const compare = (patchOptions && patchOptions.diff) ? patchOptions.diff : compareTaskCallbackVsDelegate;
             const blackListedEvents = Zone[zoneSymbol('BLACK_LISTED_EVENTS')];
+            const passiveEvents = _global[zoneSymbol('PASSIVE_EVENTS')];
             const makeAddListener = function (nativeListener, addSource, customScheduleFn, customCancelFn, returnTarget = false, prepend = false) {
                 return function () {
                     const target = this || _global;
@@ -1831,47 +2167,30 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                     if (validateHandler && !validateHandler(nativeListener, delegate, target, arguments)) {
                         return;
                     }
-                    const options = arguments[2];
+                    const passive = passiveSupported && !!passiveEvents && passiveEvents.indexOf(eventName) !== -1;
+                    const options = buildEventListenerOptions(arguments[2], passive);
                     if (blackListedEvents) {
                         // check black list
                         for (let i = 0; i < blackListedEvents.length; i++) {
                             if (eventName === blackListedEvents[i]) {
-                                return nativeListener.apply(this, arguments);
+                                if (passive) {
+                                    return nativeListener.call(target, eventName, delegate, options);
+                                }
+                                else {
+                                    return nativeListener.apply(this, arguments);
+                                }
                             }
                         }
                     }
-                    let capture;
-                    let once = false;
-                    if (options === undefined) {
-                        capture = false;
-                    }
-                    else if (options === true) {
-                        capture = true;
-                    }
-                    else if (options === false) {
-                        capture = false;
-                    }
-                    else {
-                        capture = options ? !!options.capture : false;
-                        once = options ? !!options.once : false;
-                    }
+                    const capture = !options ? false : typeof options === 'boolean' ? true : options.capture;
+                    const once = options && typeof options === 'object' ? options.once : false;
                     const zone = Zone.current;
-                    const symbolEventNames = zoneSymbolEventNames$1[eventName];
-                    let symbolEventName;
+                    let symbolEventNames = zoneSymbolEventNames$1[eventName];
                     if (!symbolEventNames) {
-                        // the code is duplicate, but I just want to get some better performance
-                        const falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
-                        const trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
-                        const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
-                        const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
-                        zoneSymbolEventNames$1[eventName] = {};
-                        zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
-                        zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
-                        symbolEventName = capture ? symbolCapture : symbol;
+                        prepareEventNames(eventName, eventNameToString);
+                        symbolEventNames = zoneSymbolEventNames$1[eventName];
                     }
-                    else {
-                        symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
-                    }
+                    const symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
                     let existingTasks = target[symbolEventName];
                     let isExisting = false;
                     if (existingTasks) {
@@ -1964,19 +2283,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                     eventName = patchOptions.transferEventName(eventName);
                 }
                 const options = arguments[2];
-                let capture;
-                if (options === undefined) {
-                    capture = false;
-                }
-                else if (options === true) {
-                    capture = true;
-                }
-                else if (options === false) {
-                    capture = false;
-                }
-                else {
-                    capture = options ? !!options.capture : false;
-                }
+                const capture = !options ? false : typeof options === 'boolean' ? true : options.capture;
                 const delegate = arguments[1];
                 if (!delegate) {
                     return nativeRemoveEventListener.apply(this, arguments);
@@ -2110,20 +2417,36 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         return results;
     }
     function findEventTasks(target, eventName) {
-        const foundTasks = [];
-        for (let prop in target) {
-            const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
-            let evtName = match && match[1];
-            if (evtName && (!eventName || evtName === eventName)) {
-                const tasks = target[prop];
-                if (tasks) {
-                    for (let i = 0; i < tasks.length; i++) {
-                        foundTasks.push(tasks[i]);
+        if (!eventName) {
+            const foundTasks = [];
+            for (let prop in target) {
+                const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
+                let evtName = match && match[1];
+                if (evtName && (!eventName || evtName === eventName)) {
+                    const tasks = target[prop];
+                    if (tasks) {
+                        for (let i = 0; i < tasks.length; i++) {
+                            foundTasks.push(tasks[i]);
+                        }
                     }
                 }
             }
+            return foundTasks;
         }
-        return foundTasks;
+        let symbolEventName = zoneSymbolEventNames$1[eventName];
+        if (!symbolEventName) {
+            prepareEventNames(eventName);
+            symbolEventName = zoneSymbolEventNames$1[eventName];
+        }
+        const captureFalseTasks = target[symbolEventName[FALSE_STR]];
+        const captureTrueTasks = target[symbolEventName[TRUE_STR]];
+        if (!captureFalseTasks) {
+            return captureTrueTasks ? captureTrueTasks.slice() : [];
+        }
+        else {
+            return captureTrueTasks ? captureFalseTasks.concat(captureTrueTasks) :
+                captureFalseTasks.slice();
+        }
     }
     function patchEventPrototype(global, api) {
         const Event = global['Event'];
@@ -2315,7 +2638,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         'unhandledrejection',
         'unload',
         'userproximity',
-        'vrdisplyconnected',
+        'vrdisplayconnected',
         'vrdisplaydisconnected',
         'vrdisplaypresentchange'
     ];
@@ -2518,14 +2841,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         api.getGlobalObjects = () => ({ globalSources, zoneSymbolEventNames: zoneSymbolEventNames$1, eventNames, isBrowser, isMix, isNode, TRUE_STR,
             FALSE_STR, ZONE_SYMBOL_PREFIX, ADD_EVENT_LISTENER_STR, REMOVE_EVENT_LISTENER_STR });
     });
-
-    /**
-     * @license
-     * Copyright Google Inc. All Rights Reserved.
-     *
-     * Use of this source code is governed by an MIT-style license that can be
-     * found in the LICENSE file at https://angular.io/license
-     */
 
     /**
      * @license
@@ -2933,98 +3248,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         }
     });
 
-    /**
-     * @license
-     * Copyright Google Inc. All Rights Reserved.
-     *
-     * Use of this source code is governed by an MIT-style license that can be
-     * found in the LICENSE file at https://angular.io/license
-     */
-
-}));
-
-
-/***/ }),
-
-/***/ "./src/polyfills.ts":
-/*!**************************!*\
-  !*** ./src/polyfills.ts ***!
-  \**************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zone.js/dist/zone */ "./node_modules/zone.js/dist/zone-evergreen.js");
-/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
- *
- * This file is divided into 2 sections:
- *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
- *
- * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
- * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
- * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
- *
- * Learn more in https://angular.io/guide/browser-support
- */
-/***************************************************************************************************
- * BROWSER POLYFILLS
- */
-/** IE10 and IE11 requires the following for NgClass support on SVG elements */
-// import 'classlist.js';  // Run `npm install --save classlist.js`.
-/**
- * Web Animations `@angular/platform-browser/animations`
- * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
- * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
- */
-// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-/**
- * By default, zone.js will patch all possible macroTask and DomEvents
- * user can disable parts of macroTask/DomEvents patch by setting following flags
- * because those flags need to be set before `zone.js` being loaded, and webpack
- * will put import in the top of bundle, so user need to create a separate file
- * in this directory (for example: zone-flags.ts), and put the following flags
- * into that file, and then add the following code before importing zone.js.
- * import './zone-flags.ts';
- *
- * The flags allowed in zone-flags.ts are listed here.
- *
- * The following flags will work for all browsers.
- *
- * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
- * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
- *
- *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
- *  with the following flag, it will bypass `zone.js` patch for IE/Edge
- *
- *  (window as any).__Zone_enable_cross_context_check = true;
- *
- */
-/***************************************************************************************************
- * Zone JS is required by default for Angular itself.
- */
- // Included with Angular CLI.
-/***************************************************************************************************
- * APPLICATION IMPORTS
- */
-
-
-/***/ }),
-
-/***/ 2:
-/*!********************************!*\
-  !*** multi ./src/polyfills.ts ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! /Users/VinceZK/workspace/javascript/Logon/src/polyfills.ts */"./src/polyfills.ts");
+})));
 
 
 /***/ })

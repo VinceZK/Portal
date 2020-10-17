@@ -51,7 +51,8 @@ router.get('*', (req, res) => { // The default index.html
 app.use('/', router);
 
 // Load the authentication logic with JSON-On-Relations
-require('ui-logon').Authentication(jor);
+const identification = require('ui-logon').Identification;
+identification.Authentication(jor);
 
 require('./server/controller/identity_ctrl');
 require('./server/controller/permission_ctrl');

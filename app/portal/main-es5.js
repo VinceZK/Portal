@@ -2033,6 +2033,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getAppRouteLink')));
         }
+        /**
+         * Search Users by USER_ID and USER_NAME.
+         * Return a list with columns USER_ID, USER_NAME, DISPLAY_NAME, LOCK, and PWD_STATE
+         * Wildcard search is supported using '*' or '%'.
+         **/
+
       }, {
         key: "searchUsers",
         value: function searchUsers(userID, userName) {
@@ -2078,6 +2084,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           queryObject.SORT = ['USER_ID'];
           return this.http.post(this.originalHost + "/api/query", queryObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('searchObjects')));
         }
+        /**
+         * Get detail information of a user from USER_ID
+         * Return information in Relations: r_user, r_employee, r_email, r_address, and r_personalization.
+         * The relationship to user role is also inquired with information in Relation: r_role
+         **/
+
       }, {
         key: "getUserDetail",
         value: function getUserDetail(userID) {
@@ -2098,6 +2110,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.post(this.originalHost + "/api/entity/instance/piece", pieceObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getUserDetail')));
         }
+        /**
+         * Get user by User ID, only return information in Relations: r_user
+         * This service call is mainly used to check whether the given USER_ID already exists
+         **/
+
       }, {
         key: "getUserByUserID",
         value: function getUserByUserID(userID) {
@@ -2145,6 +2162,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             } : instance[0];
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRoleDesc')));
         }
+        /**
+         * Save an entity to DB
+         * A generic entity in JSON is given. If the JSON has attribute INSTANCE_GUID, it calls PUT, otherwise, POST
+         **/
+
       }, {
         key: "saveUser",
         value: function saveUser(user) {
@@ -2154,6 +2176,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return this.http.post(this.originalHost + "/api/entity", user, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveUser')));
           }
         }
+        /**
+         * Delete an entity from DB
+         * A GUID of entity instance is given. After the call, the instance will be deleted permanently
+         **/
+
       }, {
         key: "deleteUser",
         value: function deleteUser(userGUID) {
