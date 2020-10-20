@@ -1,21 +1,575 @@
 (function () {
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
     /***/
-    "/2FL":
-    /*!**************************************************!*\
-      !*** ./dist/jor-angular/fesm2015/jor-angular.js ***!
-      \**************************************************/
+    0:
+    /*!***************************!*\
+      !*** multi ./src/main.ts ***!
+      \***************************/
+
+    /*! no static exports found */
+
+    /***/
+    function _(module, exports, __webpack_require__) {
+      module.exports = __webpack_require__(
+      /*! /Users/VinceZK/workspace/javascript/json-on-relations/src/main.ts */
+      "zUnb");
+      /***/
+    },
+
+    /***/
+    "A3xY":
+    /*!***********************************!*\
+      !*** ./src/app/app.component.css ***!
+      \***********************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function A3xY(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */";
+      /***/
+    },
+
+    /***/
+    "AytR":
+    /*!*****************************************!*\
+      !*** ./src/environments/environment.ts ***!
+      \*****************************************/
+
+    /*! exports provided: environment */
+
+    /***/
+    function AytR(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "environment", function () {
+        return environment;
+      }); // This file can be replaced during build by using the `fileReplacements` array.
+      // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
+      // The list of file replacements can be found in `angular.json`.
+
+
+      var environment = {
+        production: false,
+        originalHost: 'http://localhost:3000'
+      };
+      /*
+       * In development mode, to ignore zone related error stack frames such as
+       * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
+       * import the following file, but please comment it out in production mode
+       * because it will have performance impact when throw error
+       */
+      // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+      /***/
+    },
+
+    /***/
+    "F0jV":
+    /*!******************************************!*\
+      !*** ./src/app/custom.reuse.strategy.ts ***!
+      \******************************************/
+
+    /*! exports provided: CustomReuseStrategy */
+
+    /***/
+    function F0jV(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "CustomReuseStrategy", function () {
+        return CustomReuseStrategy;
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      "8Y7J");
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var CustomReuseStrategy = /*#__PURE__*/function () {
+        function CustomReuseStrategy() {
+          _classCallCheck(this, CustomReuseStrategy);
+
+          this.routesToCache = ['list'];
+          this.storedRouteHandles = new Map();
+        }
+        /**
+         * When navigation from a reusable component, and if shouldReuseRoute return false,
+         * this method is invoked to decide whether the current route should be stored.
+         * @param route
+         */
+
+
+        _createClass(CustomReuseStrategy, [{
+          key: "shouldDetach",
+          value: function shouldDetach(route) {
+            // console.log('detaching', route);
+            return this.routesToCache.indexOf(route.routeConfig.path) > -1;
+          }
+          /**
+           * If the current route need to be stored, that is shouldDetach return true,
+           * then on this method, you can implement a way to store routes. Usually in a Map.
+           * @param route
+           * @param handle
+           */
+
+        }, {
+          key: "store",
+          value: function store(route, handle) {
+            // console.log('store', route);
+            this.storedRouteHandles.set(route.routeConfig.path, handle);
+          }
+          /**
+           * When navigation to a reusable component, and if shouldReuseRoute return false,
+           * this method is invoked to decide whether the target component can be get from a reuse buffer.
+           * @param route
+           */
+
+        }, {
+          key: "shouldAttach",
+          value: function shouldAttach(route) {
+            // console.log('shouldAttach', route);
+            return this.storedRouteHandles.has(route.routeConfig.path);
+          }
+          /**
+           * If shouldAttach return true, then this method is invoke to retrieve the component from the buffer.
+           * @param route
+           */
+
+        }, {
+          key: "retrieve",
+          value: function retrieve(route) {
+            return this.storedRouteHandles.get(route.routeConfig.path);
+          }
+          /**
+           * By default, Angular doesn't re-initializing the same component if the navigation is not to
+           * a different one. For example, you switch different entity ID in the same entity type detail page.
+           * In this way, shouldReuseRoute should return true to avoid executing other methods in this Class.
+           * However, if you navigate from search&list component to entity detail component, then the method should return false.
+           * So that other methods can be executed to decide whether the search&list component should be stored for future reuse.
+           * @param future
+           * @param curr
+           */
+
+        }, {
+          key: "shouldReuseRoute",
+          value: function shouldReuseRoute(future, curr) {
+            // console.log('shouldReuseRoute, future:', future, 'current:', curr);
+            return future.routeConfig === curr.routeConfig;
+          }
+        }]);
+
+        return CustomReuseStrategy;
+      }();
+
+      CustomReuseStrategy = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()], CustomReuseStrategy);
+      /***/
+    },
+
+    /***/
+    "H3s1":
+    /*!*************************************!*\
+      !*** ./src/app/identity.service.ts ***!
+      \*************************************/
+
+    /*! exports provided: IdentityService */
+
+    /***/
+    function H3s1(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "IdentityService", function () {
+        return IdentityService;
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      "8Y7J");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/common */
+      "SVse");
+      /* harmony import */
+
+
+      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ui-logon-angular */
+      "fVQ6");
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var __metadata = undefined && undefined.__metadata || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+      };
+
+      var IdentityService = /*#__PURE__*/function () {
+        function IdentityService() {
+          _classCallCheck(this, IdentityService);
+        }
+
+        _createClass(IdentityService, [{
+          key: "setSession",
+          value: function setSession(data) {
+            this.session = data;
+          }
+        }, {
+          key: "Session",
+          get: function get() {
+            if (this.session) {
+              return this.session;
+            }
+
+            var defaultSession = new ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__["Session"]();
+            defaultSession.USER_ID = 'DH001';
+            defaultSession.LANGUAGE = 'EN';
+            return defaultSession;
+          }
+        }, {
+          key: "CurrentTime",
+          get: function get() {
+            return Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["formatDate"])(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
+          }
+        }]);
+
+        return IdentityService;
+      }();
+
+      IdentityService.ctorParameters = function () {
+        return [];
+      };
+
+      IdentityService = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+        providedIn: 'root'
+      }), __metadata("design:paramtypes", [])], IdentityService);
+      /***/
+    },
+
+    /***/
+    "Sy1n":
+    /*!**********************************!*\
+      !*** ./src/app/app.component.ts ***!
+      \**********************************/
+
+    /*! exports provided: AppComponent */
+
+    /***/
+    function Sy1n(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "AppComponent", function () {
+        return AppComponent;
+      });
+      /* harmony import */
+
+
+      var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! raw-loader!./app.component.html */
+      "VzVu");
+      /* harmony import */
+
+
+      var _app_component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./app.component.css */
+      "A3xY");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      "8Y7J");
+      /* harmony import */
+
+
+      var jor_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! jor-angular */
+      "mE60");
+      /* harmony import */
+
+
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ../environments/environment */
+      "AytR");
+      /* harmony import */
+
+
+      var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ui-message-angular */
+      "wNXv");
+      /* harmony import */
+
+
+      var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ./msgStore */
+      "uLAD");
+      /* harmony import */
+
+
+      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ui-logon-angular */
+      "fVQ6");
+      /* harmony import */
+
+
+      var _identity_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! ./identity.service */
+      "H3s1");
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var __metadata = undefined && undefined.__metadata || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+      };
+
+      var AppComponent = function AppComponent(entityService, identityService, messageService, logonService) {
+        var _this = this;
+
+        _classCallCheck(this, AppComponent);
+
+        this.entityService = entityService;
+        this.identityService = identityService;
+        this.messageService = messageService;
+        this.logonService = logonService;
+        this.entityService.setOriginalHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
+        this.logonService.setHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
+        this.logonService.session().subscribe(function (data) {
+          _this.identityService.setSession(data);
+
+          _this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], _this.identityService.Session.LANGUAGE);
+        });
+      };
+
+      AppComponent.ctorParameters = function () {
+        return [{
+          type: jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"]
+        }, {
+          type: _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"]
+        }, {
+          type: ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"]
+        }, {
+          type: ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]
+        }];
+      };
+
+      AppComponent = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-root',
+        template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
+        styles: [_app_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]]
+      }), __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"], _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"], ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]])], AppComponent);
+      /***/
+    },
+
+    /***/
+    "VzVu":
+    /*!**************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
+      \**************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function VzVu(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<div class=\"container-fluid\">\n  <router-outlet></router-outlet>\n</div>\n";
+      /***/
+    },
+
+    /***/
+    "ZAI4":
+    /*!*******************************!*\
+      !*** ./src/app/app.module.ts ***!
+      \*******************************/
+
+    /*! exports provided: AppModule */
+
+    /***/
+    function ZAI4(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "AppModule", function () {
+        return AppModule;
+      });
+      /* harmony import */
+
+
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/platform-browser */
+      "cUpR");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "8Y7J");
+      /* harmony import */
+
+
+      var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./app.component */
+      "Sy1n");
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common/http */
+      "IheW");
+      /* harmony import */
+
+
+      var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ./app-routing.module */
+      "vY5A");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/router */
+      "iInd");
+      /* harmony import */
+
+
+      var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ./custom.reuse.strategy */
+      "F0jV");
+      /* harmony import */
+
+
+      var jor_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! jor-angular */
+      "mE60");
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var AppModule = function AppModule() {
+        _classCallCheck(this, AppModule);
+      };
+
+      AppModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
+        imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], jor_angular__WEBPACK_IMPORTED_MODULE_7__["JorAngularModule"]],
+        providers: [{
+          provide: _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouteReuseStrategy"],
+          useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__["CustomReuseStrategy"]
+        }],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+      })], AppModule);
+      /***/
+    },
+
+    /***/
+    "crnd":
+    /*!**********************************************************!*\
+      !*** ./src/$$_lazy_route_resource lazy namespace object ***!
+      \**********************************************************/
+
+    /*! no static exports found */
+
+    /***/
+    function crnd(module, exports) {
+      function webpackEmptyAsyncContext(req) {
+        // Here Promise.resolve().then() is used instead of new Promise() to prevent
+        // uncaught exception popping up in devtools
+        return Promise.resolve().then(function () {
+          var e = new Error("Cannot find module '" + req + "'");
+          e.code = 'MODULE_NOT_FOUND';
+          throw e;
+        });
+      }
+
+      webpackEmptyAsyncContext.keys = function () {
+        return [];
+      };
+
+      webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+      module.exports = webpackEmptyAsyncContext;
+      webpackEmptyAsyncContext.id = "crnd";
+      /***/
+    },
+
+    /***/
+    "mE60":
+    /*!***************************************************************!*\
+      !*** ./dist/jor-angular/__ivy_ngcc__/fesm2015/jor-angular.js ***!
+      \***************************************************************/
 
     /*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeForm2Component, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, SearchHelpFieldMeta, SearchHelpH, SearchHelpMeta, Selection, Sort, UiMapperService, ɵa, ɵb */
 
     /***/
-    function FL(module, __webpack_exports__, __webpack_require__) {
+    function mE60(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2228,7 +2782,7 @@
         }, {
           key: "handleError",
           value: function handleError() {
-            var _this = this;
+            var _this2 = this;
 
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'operation';
             var result = arguments.length > 1 ? arguments[1] : undefined;
@@ -2242,9 +2796,9 @@
                 console.error(error); // log to console instead
 
                 if (error.status === 401) {
-                  _this.messageService.addMessage('EXCEPTION', 'SESSION_EXPIRED', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception);
+                  _this2.messageService.addMessage('EXCEPTION', 'SESSION_EXPIRED', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception);
                 } else {
-                  _this.messageService.addMessage('EXCEPTION', 'GENERIC', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception, operation, error.message);
+                  _this2.messageService.addMessage('EXCEPTION', 'GENERIC', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception, operation, error.message);
                 } // Let the app keep running by returning an empty result.
 
 
@@ -2369,13 +2923,11 @@
         }, {
           key: "openSearchHelpModal",
           value: function openSearchHelpModal(searchHelp, exportControl, afterExportFn) {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.searchHelp !== searchHelp) {
               this.listData = [];
               this.searchHelp = searchHelp;
-              this.exportControl = exportControl;
-              this.afterExportFn = afterExportFn;
               this.filterFieldsFormGroup = this.fb.group({});
               this.filterFields = this.searchHelp.FIELDS.filter(
               /**
@@ -2409,7 +2961,7 @@
                   }
                 }
 
-                _this2.filterFieldsFormGroup.addControl(fieldMeta.FIELD_NAME, _this2.fb.control(fieldMeta.DEFAULT_VALUE));
+                _this3.filterFieldsFormGroup.addControl(fieldMeta.FIELD_NAME, _this3.fb.control(fieldMeta.DEFAULT_VALUE));
               });
               this.listFields = this.searchHelp.FIELDS.filter(
               /**
@@ -2429,6 +2981,9 @@
                 return a.LIST_POSITION - b.LIST_POSITION;
               });
             }
+
+            this.exportControl = exportControl;
+            this.afterExportFn = afterExportFn;
 
             if (this.searchHelp.BEHAVIOUR === 'A') {
               this.search();
@@ -2454,7 +3009,7 @@
         }, {
           key: "openSearchHelpModalByEntity",
           value: function openSearchHelpModalByEntity(entityID, relationID, exportControl, readonly, exportField, domainID, afterExportFn) {
-            var _this3 = this;
+            var _this4 = this;
 
             /** @type {?} */
             var currentSearchHelpParas = {
@@ -2535,7 +3090,7 @@
                   FILTER_POSITION: 0
                 });
 
-                _this3.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
+                _this4.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
               });
             }
           }
@@ -2553,7 +3108,7 @@
         }, {
           key: "openSearchHelpModalBySearchHelp",
           value: function openSearchHelpModalBySearchHelp(searchHelpID, searchHelpExportField, exportField, exportControl, readonly, afterExportFn) {
-            var _this4 = this;
+            var _this5 = this;
 
             /** @type {?} */
             var currentSearchHelpParas = {
@@ -2594,7 +3149,7 @@
                       return entityService.searchEntities(searchTerm);
                     }
                   );
-                }(_this4.entityService);
+                }(_this5.entityService);
 
                 searchHelp.BEHAVIOUR = searchHelpMeta.BEHAVIOUR;
                 searchHelp.MULTI = searchHelpMeta.MULTI;
@@ -2625,7 +3180,7 @@
                   FILTER_POSITION: 0
                 });
 
-                _this4.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
+                _this5.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
               });
             }
           }
@@ -2646,7 +3201,7 @@
         }, {
           key: "search",
           value: function search() {
-            var _this5 = this;
+            var _this6 = this;
 
             /** @type {?} */
             var searchTerm;
@@ -2665,7 +3220,7 @@
               */
               function (fieldMeta) {
                 /** @type {?} */
-                var fieldValue = _this5.filterFieldsFormGroup.get(fieldMeta.FIELD_NAME).value;
+                var fieldValue = _this6.filterFieldsFormGroup.get(fieldMeta.FIELD_NAME).value;
 
                 if (fieldValue) {
                   if (fieldValue.includes('*') || fieldValue.includes('%')) {
@@ -2713,7 +3268,7 @@
               * @return {?}
               */
               function (data) {
-                return _this5._generateSearchList(data);
+                return _this6._generateSearchList(data);
               });
             } else if (Array.isArray(this.searchHelp.METHOD)) {
               this._generateSearchList(this.searchHelp.METHOD);
@@ -2727,7 +3282,7 @@
         }, {
           key: "_generateSearchList",
           value: function _generateSearchList(data) {
-            var _this6 = this;
+            var _this7 = this;
 
             data.forEach(
             /**
@@ -2740,7 +3295,7 @@
                 SELECTED: ''
               };
 
-              _this6.listFields.forEach(
+              _this7.listFields.forEach(
               /**
               * @param {?} field
               * @return {?}
@@ -2749,7 +3304,7 @@
                 return listItem[field.FIELD_NAME] = item[field.FIELD_NAME];
               });
 
-              _this6.listData.push(listItem);
+              _this7.listData.push(listItem);
             });
           }
           /**
@@ -2806,7 +3361,7 @@
         }, {
           key: "confirmSelection",
           value: function confirmSelection() {
-            var _this7 = this;
+            var _this8 = this;
 
             // TODO: Currently, only single selection is supported. Multiple selection in later time
             if (this.searchHelp.READ_ONLY) {
@@ -2819,11 +3374,11 @@
             * @return {?}
             */
             function (listField) {
-              if (_this7.exportControl instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroup"]) {
+              if (_this8.exportControl instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroup"]) {
                 /** @type {?} */
                 var exportControl =
                 /** @type {?} */
-                _this7.exportControl;
+                _this8.exportControl;
                 /** @type {?} */
 
                 var ieFieldName = listField.IE_FIELD_NAME || listField.FIELD_NAME;
@@ -2832,12 +3387,12 @@
                 var exportFieldControl = exportControl.get(ieFieldName);
 
                 if (listField.EXPORT && exportFieldControl) {
-                  exportFieldControl.setValue(_this7.listData[_this7.selectedIndex][listField.FIELD_NAME]);
+                  exportFieldControl.setValue(_this8.listData[_this8.selectedIndex][listField.FIELD_NAME]);
                   exportFieldControl.markAsDirty();
                 }
               } else {
                 if (listField.EXPORT) {
-                  _this7.exportControl[listField.FIELD_NAME] = _this7.listData[_this7.selectedIndex][listField.FIELD_NAME];
+                  _this8.exportControl[listField.FIELD_NAME] = _this8.listData[_this8.selectedIndex][listField.FIELD_NAME];
                 }
               }
             });
@@ -3193,7 +3748,7 @@
         _createClass(AttributeControlService, [{
           key: "toAttributeControl",
           value: function toAttributeControl(attributes) {
-            var _this8 = this;
+            var _this9 = this;
 
             /** @type {?} */
             var attributeControls = [];
@@ -3208,7 +3763,7 @@
             * @return {?}
             */
             function (attribute) {
-              return attributeControls.push(_this8.toSingleAttributeControl(attribute));
+              return attributeControls.push(_this9.toSingleAttributeControl(attribute));
             });
             return attributeControls;
           }
@@ -3391,7 +3946,7 @@
         }, {
           key: "convertToFormGroup",
           value: function convertToFormGroup(attributes, instance, isDirty) {
-            var _this9 = this;
+            var _this10 = this;
 
             /** @type {?} */
             var group = {};
@@ -3401,7 +3956,7 @@
             * @return {?}
             */
             function (attribute) {
-              group[attribute.ATTR_NAME] = _this9.convertToFormControl(attribute, instance);
+              group[attribute.ATTR_NAME] = _this10.convertToFormControl(attribute, instance);
 
               if (instance[attribute.ATTR_NAME] && isDirty) {
                 group[attribute.ATTR_NAME].markAsDirty();
@@ -4517,543 +5072,6 @@
 
       /***/
 
-    },
-
-    /***/
-    0:
-    /*!***************************!*\
-      !*** multi ./src/main.ts ***!
-      \***************************/
-
-    /*! no static exports found */
-
-    /***/
-    function _(module, exports, __webpack_require__) {
-      module.exports = __webpack_require__(
-      /*! /Users/VinceZK/workspace/javascript/json-on-relations/src/main.ts */
-      "zUnb");
-      /***/
-    },
-
-    /***/
-    "A3xY":
-    /*!***********************************!*\
-      !*** ./src/app/app.component.css ***!
-      \***********************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function A3xY(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */";
-      /***/
-    },
-
-    /***/
-    "AytR":
-    /*!*****************************************!*\
-      !*** ./src/environments/environment.ts ***!
-      \*****************************************/
-
-    /*! exports provided: environment */
-
-    /***/
-    function AytR(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "environment", function () {
-        return environment;
-      }); // This file can be replaced during build by using the `fileReplacements` array.
-      // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
-      // The list of file replacements can be found in `angular.json`.
-
-
-      var environment = {
-        production: false,
-        originalHost: 'http://localhost:3000'
-      };
-      /*
-       * In development mode, to ignore zone related error stack frames such as
-       * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
-       * import the following file, but please comment it out in production mode
-       * because it will have performance impact when throw error
-       */
-      // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-      /***/
-    },
-
-    /***/
-    "F0jV":
-    /*!******************************************!*\
-      !*** ./src/app/custom.reuse.strategy.ts ***!
-      \******************************************/
-
-    /*! exports provided: CustomReuseStrategy */
-
-    /***/
-    function F0jV(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "CustomReuseStrategy", function () {
-        return CustomReuseStrategy;
-      });
-
-      var CustomReuseStrategy = /*#__PURE__*/function () {
-        function CustomReuseStrategy() {
-          _classCallCheck(this, CustomReuseStrategy);
-
-          this.routesToCache = ['list'];
-          this.storedRouteHandles = new Map();
-        }
-        /**
-         * When navigation from a reusable component, and if shouldReuseRoute return false,
-         * this method is invoked to decide whether the current route should be stored.
-         * @param route
-         */
-
-
-        _createClass(CustomReuseStrategy, [{
-          key: "shouldDetach",
-          value: function shouldDetach(route) {
-            // console.log('detaching', route);
-            return this.routesToCache.indexOf(route.routeConfig.path) > -1;
-          }
-          /**
-           * If the current route need to be stored, that is shouldDetach return true,
-           * then on this method, you can implement a way to store routes. Usually in a Map.
-           * @param route
-           * @param handle
-           */
-
-        }, {
-          key: "store",
-          value: function store(route, handle) {
-            // console.log('store', route);
-            this.storedRouteHandles.set(route.routeConfig.path, handle);
-          }
-          /**
-           * When navigation to a reusable component, and if shouldReuseRoute return false,
-           * this method is invoked to decide whether the target component can be get from a reuse buffer.
-           * @param route
-           */
-
-        }, {
-          key: "shouldAttach",
-          value: function shouldAttach(route) {
-            // console.log('shouldAttach', route);
-            return this.storedRouteHandles.has(route.routeConfig.path);
-          }
-          /**
-           * If shouldAttach return true, then this method is invoke to retrieve the component from the buffer.
-           * @param route
-           */
-
-        }, {
-          key: "retrieve",
-          value: function retrieve(route) {
-            return this.storedRouteHandles.get(route.routeConfig.path);
-          }
-          /**
-           * By default, Angular doesn't re-initializing the same component if the navigation is not to
-           * a different one. For example, you switch different entity ID in the same entity type detail page.
-           * In this way, shouldReuseRoute should return true to avoid executing other methods in this Class.
-           * However, if you navigate from search&list component to entity detail component, then the method should return false.
-           * So that other methods can be executed to decide whether the search&list component should be stored for future reuse.
-           * @param future
-           * @param curr
-           */
-
-        }, {
-          key: "shouldReuseRoute",
-          value: function shouldReuseRoute(future, curr) {
-            // console.log('shouldReuseRoute, future:', future, 'current:', curr);
-            return future.routeConfig === curr.routeConfig;
-          }
-        }]);
-
-        return CustomReuseStrategy;
-      }();
-      /***/
-
-    },
-
-    /***/
-    "H3s1":
-    /*!*************************************!*\
-      !*** ./src/app/identity.service.ts ***!
-      \*************************************/
-
-    /*! exports provided: IdentityService */
-
-    /***/
-    function H3s1(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "IdentityService", function () {
-        return IdentityService;
-      });
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/common */
-      "SVse");
-      /* harmony import */
-
-
-      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ui-logon-angular */
-      "fVQ6");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var __metadata = undefined && undefined.__metadata || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-      };
-
-      var IdentityService = /*#__PURE__*/function () {
-        function IdentityService() {
-          _classCallCheck(this, IdentityService);
-        }
-
-        _createClass(IdentityService, [{
-          key: "setSession",
-          value: function setSession(data) {
-            this.session = data;
-          }
-        }, {
-          key: "Session",
-          get: function get() {
-            if (this.session) {
-              return this.session;
-            }
-
-            var defaultSession = new ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__["Session"]();
-            defaultSession.USER_ID = 'DH001';
-            defaultSession.LANGUAGE = 'EN';
-            return defaultSession;
-          }
-        }, {
-          key: "CurrentTime",
-          get: function get() {
-            return Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["formatDate"])(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
-          }
-        }]);
-
-        return IdentityService;
-      }();
-
-      IdentityService.ctorParameters = function () {
-        return [];
-      };
-
-      IdentityService = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-        providedIn: 'root'
-      }), __metadata("design:paramtypes", [])], IdentityService);
-      /***/
-    },
-
-    /***/
-    "Sy1n":
-    /*!**********************************!*\
-      !*** ./src/app/app.component.ts ***!
-      \**********************************/
-
-    /*! exports provided: AppComponent */
-
-    /***/
-    function Sy1n(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AppComponent", function () {
-        return AppComponent;
-      });
-      /* harmony import */
-
-
-      var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! raw-loader!./app.component.html */
-      "VzVu");
-      /* harmony import */
-
-
-      var _app_component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./app.component.css */
-      "A3xY");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var jor_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! jor-angular */
-      "/2FL");
-      /* harmony import */
-
-
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../environments/environment */
-      "AytR");
-      /* harmony import */
-
-
-      var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! ui-message-angular */
-      "wNXv");
-      /* harmony import */
-
-
-      var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! ./msgStore */
-      "uLAD");
-      /* harmony import */
-
-
-      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! ui-logon-angular */
-      "fVQ6");
-      /* harmony import */
-
-
-      var _identity_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-      /*! ./identity.service */
-      "H3s1");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var __metadata = undefined && undefined.__metadata || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-      };
-
-      var AppComponent = function AppComponent(entityService, identityService, messageService, logonService) {
-        var _this10 = this;
-
-        _classCallCheck(this, AppComponent);
-
-        this.entityService = entityService;
-        this.identityService = identityService;
-        this.messageService = messageService;
-        this.logonService = logonService;
-        this.entityService.setOriginalHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
-        this.logonService.setHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
-        this.logonService.session().subscribe(function (data) {
-          _this10.identityService.setSession(data);
-
-          _this10.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], _this10.identityService.Session.LANGUAGE);
-        });
-      };
-
-      AppComponent.ctorParameters = function () {
-        return [{
-          type: jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"]
-        }, {
-          type: _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"]
-        }, {
-          type: ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"]
-        }, {
-          type: ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]
-        }];
-      };
-
-      AppComponent = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
-        selector: 'app-root',
-        template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
-        styles: [_app_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]]
-      }), __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"], _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"], ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]])], AppComponent);
-      /***/
-    },
-
-    /***/
-    "VzVu":
-    /*!**************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
-      \**************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function VzVu(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "<div class=\"container-fluid\">\n  <router-outlet></router-outlet>\n</div>\n";
-      /***/
-    },
-
-    /***/
-    "ZAI4":
-    /*!*******************************!*\
-      !*** ./src/app/app.module.ts ***!
-      \*******************************/
-
-    /*! exports provided: AppModule */
-
-    /***/
-    function ZAI4(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AppModule", function () {
-        return AppModule;
-      });
-      /* harmony import */
-
-
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/platform-browser */
-      "cUpR");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./app.component */
-      "Sy1n");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @angular/common/http */
-      "IheW");
-      /* harmony import */
-
-
-      var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ./app-routing.module */
-      "vY5A");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @angular/router */
-      "iInd");
-      /* harmony import */
-
-
-      var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! ./custom.reuse.strategy */
-      "F0jV");
-      /* harmony import */
-
-
-      var jor_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! jor-angular */
-      "/2FL");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var AppModule = function AppModule() {
-        _classCallCheck(this, AppModule);
-      };
-
-      AppModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
-        imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], jor_angular__WEBPACK_IMPORTED_MODULE_7__["JorAngularModule"]],
-        providers: [{
-          provide: _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouteReuseStrategy"],
-          useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__["CustomReuseStrategy"]
-        }],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
-      })], AppModule);
-      /***/
-    },
-
-    /***/
-    "crnd":
-    /*!**********************************************************!*\
-      !*** ./src/$$_lazy_route_resource lazy namespace object ***!
-      \**********************************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function crnd(module, exports) {
-      function webpackEmptyAsyncContext(req) {
-        // Here Promise.resolve().then() is used instead of new Promise() to prevent
-        // uncaught exception popping up in devtools
-        return Promise.resolve().then(function () {
-          var e = new Error("Cannot find module '" + req + "'");
-          e.code = 'MODULE_NOT_FOUND';
-          throw e;
-        });
-      }
-
-      webpackEmptyAsyncContext.keys = function () {
-        return [];
-      };
-
-      webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-      module.exports = webpackEmptyAsyncContext;
-      webpackEmptyAsyncContext.id = "crnd";
-      /***/
     },
 
     /***/

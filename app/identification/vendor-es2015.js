@@ -11972,453 +11972,6 @@ function publish(selector) {
 
 /***/ }),
 
-/***/ "NlSJ":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/ui-message-angular/__ivy_ngcc__/fesm2015/ui-message-angular.js ***!
-  \*************************************************************************************/
-/*! exports provided: Message, MessageComponent, MessageModule, MessageService, messageType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Message", function() { return Message; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageModule", function() { return MessageModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "messageType", function() { return messageType; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/internal/BehaviorSubject */ "7RJT");
-/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-
-
-
-
-/**
- * @fileoverview added by tsickle
- * Generated from: lib/message.model.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-
-
-const _c0 = function (a0) { return { "show": a0 }; };
-function MessageComponent_div_0_div_8_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const message_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, message_r1.showLongText));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("innerHtml", message_r1.msgLongText, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeHtml"]);
-} }
-function MessageComponent_div_0_Template(rf, ctx) { if (rf & 1) {
-    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessageComponent_div_0_Template_a_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const idx_r2 = ctx.index; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.toggleShowLongText(idx_r2); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessageComponent_div_0_Template_button_click_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const idx_r2 = ctx.index; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.removeMessage(idx_r2); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "\u00D7");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, MessageComponent_div_0_div_8_Template, 2, 4, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const message_r1 = ctx.$implicit;
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.getCardDisplayClass(message_r1.msgType));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.getMessageDisplayClass(message_r1.msgType));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", message_r1.msgShortText, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", message_r1.msgLongText);
-} }
-class Message {
-}
-if (false) {}
-/** @enum {string} */
-const messageType = {
-    Error: "E",
-    Warning: "W",
-    Success: "S",
-    Information: "I",
-    Exception: "X",
-};
-
-/**
- * @fileoverview added by tsickle
- * Generated from: lib/message.service.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class MessageService {
-    constructor() {
-        this.messages = [];
-        this.messageSource = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]([]);
-        this.msgTypePattern = 'SWEIX';
-        this.msgStore = [];
-        this.langu = 'EN';
-    }
-    /**
-     * @return {?}
-     */
-    getObservable() {
-        return this.messageSource.asObservable();
-    }
-    /**
-     * Tell the message service what is the message storage(array) and language
-     * msgStore: an Array that stores all messages in a session
-     * {string} the language preferred in the session
-     * @param {?} msgStore
-     * @param {?} langu
-     * @return {?}
-     */
-    setMessageStore(msgStore, langu) {
-        this.msgStore = msgStore;
-        this.langu = langu;
-    }
-    /**
-     * Add a message object into a message list
-     * {Message} message
-     * @param {?} message
-     * @return {?}
-     */
-    add(message) {
-        if (!message)
-            return;
-        this.messages.push(message);
-        this.messageSource.next(this.messages);
-    }
-    /**
-     * Report only one message at a time
-     * @param {?} message
-     * @return {?}
-     */
-    report(message) {
-        if (!message)
-            return;
-        this.messages = [];
-        this.messages.push(message);
-        this.messageSource.next(this.messages);
-    }
-    /**
-     * Report a message at a time based on msgCat, msgName, msgType
-     * It is usually used for messages generated in client side(Angular)
-     * msgCat
-     * msgName
-     * msgType
-     * {string} args
-     * @param {?} msgCat
-     * @param {?} msgName
-     * @param {?} msgType
-     * @param {...?} args
-     * @return {?}
-     */
-    reportMessage(msgCat, msgName, msgType, ...args) {
-        this.report(this.generateMessage(msgCat, msgName, msgType, ...args));
-    }
-    /**
-     * Add a message to a list based on msgCat, msgName, msgType
-     * It is usually used for messages generated in client side(Angular)
-     * msgCat
-     * msgName
-     * msgType
-     * {string} args
-     * @param {?} msgCat
-     * @param {?} msgName
-     * @param {?} msgType
-     * @param {...?} args
-     * @return {?}
-     */
-    addMessage(msgCat, msgName, msgType, ...args) {
-        this.add(this.generateMessage(msgCat, msgName, msgType, ...args));
-    }
-    /**
-     * Clear all the messages in the container(show in the UI)
-     * @return {?}
-     */
-    clearMessages() {
-        this.messages = [];
-        this.messageSource.next(this.messages);
-    }
-    /**
-     * Remove a message from the list by its index(position)
-     * idx
-     * @param {?} idx
-     * @return {?}
-     */
-    removeMessage(idx) {
-        this.messages.splice(idx, 1);
-    }
-    /**
-     * Generate a message object based on msgCat, msgName, msgType from the message store array
-     * The message store array is generated in client side.
-     * It supports variable parameters for the placeholders' replacement in short and long texts.
-     * @param {?} msgCat
-     * @param {?} msgName
-     * @param {?} msgType
-     * @param {...?} args
-     * @return {?}
-     */
-    generateMessage(msgCat, msgName, msgType, ...args) {
-        this.checkInputParameters(msgCat, msgName, msgType);
-        /** @type {?} */
-        let message = this.msgStore.find((/**
-         * @param {?} message
-         * @return {?}
-         */
-        function (message) {
-            return message.msgCat === msgCat && message.msgName === msgName;
-        }));
-        if (message) {
-            /** @type {?} */
-            let msg = new Message();
-            msg.msgCat = message.msgCat;
-            msg.msgName = message.msgName;
-            msg.msgType = msgType;
-            msg.msgShortText = this.replacePlaceholdersInShortText(message.msgText[this.langu] ? message.msgText[this.langu].shortText : message.msgText['EN'].shortText, args);
-            msg.msgLongText = this.replacePlaceholdersInLongText(message.msgText[this.langu] ? message.msgText[this.langu].longText : message.msgText['EN'].longText, args);
-            return msg;
-        }
-        else {
-            return null;
-        }
-    }
-    /**
-     * @private
-     * @param {?} msgCat
-     * @param {?} msgName
-     * @param {?} msgType
-     * @return {?}
-     */
-    checkInputParameters(msgCat, msgName, msgType) {
-        if (!msgCat)
-            throw new Error('Message Category is missing!');
-        if (!msgName)
-            throw new Error('Message Name is missing');
-        if (this.msgTypePattern.search(msgType) === -1)
-            throw new Error('Message Type is invalid!');
-    }
-    /**
-     * @private
-     * @param {?} text
-     * @param {?} args
-     * @return {?}
-     */
-    replacePlaceholdersInShortText(text, args) {
-        /** @type {?} */
-        let i = -1;
-        return text.replace(/%s/g, (/**
-         * @return {?}
-         */
-        function () {
-            i++;
-            return ((args[i] === undefined) ? '' : args[i]);
-        }));
-    }
-    /**
-     * @private
-     * @param {?} text
-     * @param {?} args
-     * @return {?}
-     */
-    replacePlaceholdersInLongText(text, args) {
-        return text.replace(/(%s)([1-99])/g, (/**
-         * @param {?} match
-         * @param {?} p1
-         * @param {?} p2
-         * @return {?}
-         */
-        function (match, p1, p2) {
-            /** @type {?} */
-            let i = -1 + parseInt(p2);
-            return ((args[i] === undefined) ? '' : args[i]);
-        }));
-    }
-}
-MessageService.ɵfac = function MessageService_Factory(t) { return new (t || MessageService)(); };
-/** @nocollapse */
-MessageService.ctorParameters = () => [];
-/** @nocollapse */ MessageService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MessageService_Factory() { return new MessageService(); }, token: MessageService, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-                providedIn: 'root'
-            }]
-    }], function () { return []; }, null); })();
-if (false) {}
-
-/**
- * @fileoverview added by tsickle
- * Generated from: lib/message.component.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class MessageComponent {
-    /**
-     * @param {?} messageService
-     */
-    constructor(messageService) {
-        this.messageService = messageService;
-    }
-    /**
-     * @return {?}
-     */
-    ngOnInit() {
-        this.messageService.getObservable().subscribe((/**
-         * @param {?} messages
-         * @return {?}
-         */
-        messages => this.messages = messages));
-    }
-    /**
-     * @param {?} msgType
-     * @return {?}
-     */
-    getMessageDisplayClass(msgType) {
-        switch (msgType) {
-            case messageType.Error: {
-                return 'alert-danger';
-            }
-            case messageType.Warning: {
-                return 'alert-warning';
-            }
-            case messageType.Success: {
-                return 'alert-success';
-            }
-            case messageType.Information: {
-                return 'alert-info';
-            }
-            case messageType.Exception: {
-                return 'alert-danger';
-            }
-            default: {
-                return 'alert-secondary';
-            }
-        }
-    }
-    /**
-     * @param {?} msgType
-     * @return {?}
-     */
-    getCardDisplayClass(msgType) {
-        switch (msgType) {
-            case messageType.Error: {
-                return 'card-danger';
-            }
-            case messageType.Warning: {
-                return 'card-warning';
-            }
-            case messageType.Success: {
-                return 'card-success';
-            }
-            case messageType.Information: {
-                return 'card-info';
-            }
-            case messageType.Exception: {
-                return 'card-danger';
-            }
-            default: {
-                return '';
-            }
-        }
-    }
-    /**
-     * @param {?} idx
-     * @return {?}
-     */
-    removeMessage(idx) {
-        this.messageService.removeMessage(idx);
-    }
-    /**
-     * @param {?} idx
-     * @return {?}
-     */
-    toggleShowLongText(idx) {
-        if (this.messages[idx].showLongText) {
-            this.messages[idx].showLongText = false;
-        }
-        else {
-            this.messages.forEach((/**
-             * @param {?} message
-             * @return {?}
-             */
-            message => message.showLongText = false));
-            this.messages[idx].showLongText = true;
-        }
-        return false; // To forbid page refresh when clicking the link
-    }
-}
-MessageComponent.ɵfac = function MessageComponent_Factory(t) { return new (t || MessageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MessageService)); };
-MessageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessageComponent, selectors: [["dk-message"]], decls: 1, vars: 1, consts: [["class", "dk-message", 4, "ngFor", "ngForOf"], [1, "dk-message"], [1, "card", 3, "ngClass"], ["role", "alert", 1, "alert", "card-header", 3, "ngClass"], ["href", "#", 1, "alert-link", 3, "click"], ["type", "button", "data-dismiss", "alert", "aria-label", "Close", 1, "close", 3, "click"], ["aria-hidden", "true"], ["class", "collapse", 3, "ngClass", 4, "ngIf"], [1, "collapse", 3, "ngClass"], [1, "card-body", 3, "innerHtml"]], template: function MessageComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MessageComponent_div_0_Template, 9, 4, "div", 0);
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.messages);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"]], styles: [".card[_ngcontent-%COMP%]{background-clip:border-box;background-color:#fff;border:1px solid rgba(0,0,0,.125);border-radius:.25rem;display:flex;flex-direction:column;min-width:0;position:relative;word-wrap:break-word}.card-header[_ngcontent-%COMP%]{background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125);color:inherit;margin-bottom:0;padding:.75rem 1.25rem}.card-header[_ngcontent-%COMP%]:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.alert-danger[_ngcontent-%COMP%]{background-color:#f8d7da;border-color:#f5c6cb;color:#721c24}.alert-danger[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#491217}.alert-warning[_ngcontent-%COMP%]{background-color:#fff3cd;border-color:#ffeeba;color:#856404}.alert-warning[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#533f03}.alert-success[_ngcontent-%COMP%]{background-color:#d4edda;border-color:#c3e6cb;color:#155724}.alert-success[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#0b2e13}.alert-info[_ngcontent-%COMP%]{background-color:#d1ecf1;border-color:#bee5eb;color:#0c5460}.alert-info[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#062c33}.alert[_ngcontent-%COMP%]{border:1px solid transparent;border-radius:.25rem;margin-bottom:1rem;padding:.75rem 1.25rem;position:relative}.alert-link[_ngcontent-%COMP%]{font-weight:700}.close[_ngcontent-%COMP%]:not(:disabled):not(.disabled){cursor:pointer}.collapse[_ngcontent-%COMP%]:not(.show){display:none}.card-body[_ngcontent-%COMP%]{flex:1 1 auto;padding:1.25rem}.close[_ngcontent-%COMP%]{color:#000;float:right;font-size:1.5rem;font-weight:700;line-height:1;opacity:.5;text-shadow:0 1px 0 #fff}[type=button][_ngcontent-%COMP%], [type=reset][_ngcontent-%COMP%], [type=submit][_ngcontent-%COMP%], button[_ngcontent-%COMP%]{-webkit-appearance:button}button.close[_ngcontent-%COMP%]{-moz-appearance:none;-webkit-appearance:none;appearance:none;border:0;padding:0}a[_ngcontent-%COMP%], button.close[_ngcontent-%COMP%]{background-color:transparent}a[_ngcontent-%COMP%]{color:#007bff}button[_ngcontent-%COMP%], select[_ngcontent-%COMP%]{text-transform:none}button[_ngcontent-%COMP%], input[_ngcontent-%COMP%]{overflow:visible}button[_ngcontent-%COMP%], input[_ngcontent-%COMP%], optgroup[_ngcontent-%COMP%], select[_ngcontent-%COMP%], textarea[_ngcontent-%COMP%]{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button[_ngcontent-%COMP%]{border-radius:0}.alert.card-header[_ngcontent-%COMP%]{margin-bottom:0}.dk-message[_ngcontent-%COMP%]{margin-bottom:.5rem}"] });
-/** @nocollapse */
-MessageComponent.ctorParameters = () => [
-    { type: MessageService }
-];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'dk-message',
-                template: "<div *ngFor=\"let message of messages; index as idx;\" class=\"dk-message\">\n  <div class=\"card\" [ngClass]=\"getCardDisplayClass(message.msgType)\">\n    <div class=\"alert card-header\" [ngClass]=\"getMessageDisplayClass(message.msgType)\" role=\"alert\" >\n      <a class=\"alert-link \" (click)=\"toggleShowLongText(idx)\" href=\"#\" >\n        {{message.msgShortText}}\n      </a>\n      <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" (click)=\"removeMessage(idx)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n\n    <div *ngIf=\"message.msgLongText\" class=\"collapse\" [ngClass]=\"{'show': message.showLongText}\">\n      <div class=\"card-body\" [innerHtml]=\"message.msgLongText\">\n      </div>\n    </div>\n  </div>\n</div>\n\n\n\n\n",
-                styles: [".card{background-clip:border-box;background-color:#fff;border:1px solid rgba(0,0,0,.125);border-radius:.25rem;display:flex;flex-direction:column;min-width:0;position:relative;word-wrap:break-word}.card-header{background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125);color:inherit;margin-bottom:0;padding:.75rem 1.25rem}.card-header:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.alert-danger{background-color:#f8d7da;border-color:#f5c6cb;color:#721c24}.alert-danger .alert-link{color:#491217}.alert-warning{background-color:#fff3cd;border-color:#ffeeba;color:#856404}.alert-warning .alert-link{color:#533f03}.alert-success{background-color:#d4edda;border-color:#c3e6cb;color:#155724}.alert-success .alert-link{color:#0b2e13}.alert-info{background-color:#d1ecf1;border-color:#bee5eb;color:#0c5460}.alert-info .alert-link{color:#062c33}.alert{border:1px solid transparent;border-radius:.25rem;margin-bottom:1rem;padding:.75rem 1.25rem;position:relative}.alert-link{font-weight:700}.close:not(:disabled):not(.disabled){cursor:pointer}.collapse:not(.show){display:none}.card-body{flex:1 1 auto;padding:1.25rem}.close{color:#000;float:right;font-size:1.5rem;font-weight:700;line-height:1;opacity:.5;text-shadow:0 1px 0 #fff}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}button.close{-moz-appearance:none;-webkit-appearance:none;appearance:none;border:0;padding:0}a,button.close{background-color:transparent}a{color:#007bff}button,select{text-transform:none}button,input{overflow:visible}button,input,optgroup,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button{border-radius:0}.alert.card-header{margin-bottom:0}.dk-message{margin-bottom:.5rem}"]
-            }]
-    }], function () { return [{ type: MessageService }]; }, null); })();
-if (false) {}
-
-/**
- * @fileoverview added by tsickle
- * Generated from: lib/message.module.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class MessageModule {
-}
-MessageModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MessageModule });
-MessageModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MessageModule_Factory(t) { return new (t || MessageModule)(); }, imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
-        ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MessageModule, { declarations: function () { return [MessageComponent]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]]; }, exports: function () { return [MessageComponent]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-                imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
-                ],
-                declarations: [MessageComponent],
-                exports: [MessageComponent]
-            }]
-    }], null, null); })();
-
-/**
- * @fileoverview added by tsickle
- * Generated from: public_api.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * Generated from: ui-message-angular.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-
-
-//# sourceMappingURL=ui-message-angular.js.map
-
-/***/ }),
-
 /***/ "Nv8m":
 /*!****************************************************************!*\
   !*** ./node_modules/rxjs/_esm2015/internal/observable/race.js ***!
@@ -52104,7 +51657,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "NlSJ");
+/* harmony import */ var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ui-message-angular */ "wNXv");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
@@ -53275,8 +52828,6 @@ class SearchHelpComponent {
         if (this.searchHelp !== searchHelp) {
             this.listData = [];
             this.searchHelp = searchHelp;
-            this.exportControl = exportControl;
-            this.afterExportFn = afterExportFn;
             this.filterFieldsFormGroup = this.fb.group({});
             this.filterFields = this.searchHelp.FIELDS.filter((/**
              * @param {?} fieldMeta
@@ -53315,6 +52866,8 @@ class SearchHelpComponent {
              */
             (a, b) => a.LIST_POSITION - b.LIST_POSITION));
         }
+        this.exportControl = exportControl;
+        this.afterExportFn = afterExportFn;
         if (this.searchHelp.BEHAVIOUR === 'A') {
             this.search();
             this.isFilterShown = false;
@@ -70503,6 +70056,453 @@ function share() {
     return (source) => Object(_refCount__WEBPACK_IMPORTED_MODULE_1__["refCount"])()(Object(_multicast__WEBPACK_IMPORTED_MODULE_0__["multicast"])(shareSubjectFactory)(source));
 }
 //# sourceMappingURL=share.js.map
+
+/***/ }),
+
+/***/ "wNXv":
+/*!************************************************************************!*\
+  !*** ./node_modules/ui-message-angular/fesm2015/ui-message-angular.js ***!
+  \************************************************************************/
+/*! exports provided: Message, MessageComponent, MessageModule, MessageService, messageType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Message", function() { return Message; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageModule", function() { return MessageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "messageType", function() { return messageType; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/internal/BehaviorSubject */ "7RJT");
+/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: lib/message.model.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+const _c0 = function (a0) { return { "show": a0 }; };
+function MessageComponent_div_0_div_8_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const message_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, message_r1.showLongText));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("innerHtml", message_r1.msgLongText, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeHtml"]);
+} }
+function MessageComponent_div_0_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessageComponent_div_0_Template_a_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const idx_r2 = ctx.index; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.toggleShowLongText(idx_r2); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessageComponent_div_0_Template_button_click_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const idx_r2 = ctx.index; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.removeMessage(idx_r2); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "\u00D7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, MessageComponent_div_0_div_8_Template, 2, 4, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const message_r1 = ctx.$implicit;
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.getCardDisplayClass(message_r1.msgType));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.getMessageDisplayClass(message_r1.msgType));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", message_r1.msgShortText, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", message_r1.msgLongText);
+} }
+class Message {
+}
+if (false) {}
+/** @enum {string} */
+const messageType = {
+    Error: "E",
+    Warning: "W",
+    Success: "S",
+    Information: "I",
+    Exception: "X",
+};
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: lib/message.service.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class MessageService {
+    constructor() {
+        this.messages = [];
+        this.messageSource = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]([]);
+        this.msgTypePattern = 'SWEIX';
+        this.msgStore = [];
+        this.langu = 'EN';
+    }
+    /**
+     * @return {?}
+     */
+    getObservable() {
+        return this.messageSource.asObservable();
+    }
+    /**
+     * Tell the message service what is the message storage(array) and language
+     * msgStore: an Array that stores all messages in a session
+     * {string} the language preferred in the session
+     * @param {?} msgStore
+     * @param {?} langu
+     * @return {?}
+     */
+    setMessageStore(msgStore, langu) {
+        this.msgStore = msgStore;
+        this.langu = langu;
+    }
+    /**
+     * Add a message object into a message list
+     * {Message} message
+     * @param {?} message
+     * @return {?}
+     */
+    add(message) {
+        if (!message)
+            return;
+        this.messages.push(message);
+        this.messageSource.next(this.messages);
+    }
+    /**
+     * Report only one message at a time
+     * @param {?} message
+     * @return {?}
+     */
+    report(message) {
+        if (!message)
+            return;
+        this.messages = [];
+        this.messages.push(message);
+        this.messageSource.next(this.messages);
+    }
+    /**
+     * Report a message at a time based on msgCat, msgName, msgType
+     * It is usually used for messages generated in client side(Angular)
+     * msgCat
+     * msgName
+     * msgType
+     * {string} args
+     * @param {?} msgCat
+     * @param {?} msgName
+     * @param {?} msgType
+     * @param {...?} args
+     * @return {?}
+     */
+    reportMessage(msgCat, msgName, msgType, ...args) {
+        this.report(this.generateMessage(msgCat, msgName, msgType, ...args));
+    }
+    /**
+     * Add a message to a list based on msgCat, msgName, msgType
+     * It is usually used for messages generated in client side(Angular)
+     * msgCat
+     * msgName
+     * msgType
+     * {string} args
+     * @param {?} msgCat
+     * @param {?} msgName
+     * @param {?} msgType
+     * @param {...?} args
+     * @return {?}
+     */
+    addMessage(msgCat, msgName, msgType, ...args) {
+        this.add(this.generateMessage(msgCat, msgName, msgType, ...args));
+    }
+    /**
+     * Clear all the messages in the container(show in the UI)
+     * @return {?}
+     */
+    clearMessages() {
+        this.messages = [];
+        this.messageSource.next(this.messages);
+    }
+    /**
+     * Remove a message from the list by its index(position)
+     * idx
+     * @param {?} idx
+     * @return {?}
+     */
+    removeMessage(idx) {
+        this.messages.splice(idx, 1);
+    }
+    /**
+     * Generate a message object based on msgCat, msgName, msgType from the message store array
+     * The message store array is generated in client side.
+     * It supports variable parameters for the placeholders' replacement in short and long texts.
+     * @param {?} msgCat
+     * @param {?} msgName
+     * @param {?} msgType
+     * @param {...?} args
+     * @return {?}
+     */
+    generateMessage(msgCat, msgName, msgType, ...args) {
+        this.checkInputParameters(msgCat, msgName, msgType);
+        /** @type {?} */
+        let message = this.msgStore.find((/**
+         * @param {?} message
+         * @return {?}
+         */
+        function (message) {
+            return message.msgCat === msgCat && message.msgName === msgName;
+        }));
+        if (message) {
+            /** @type {?} */
+            let msg = new Message();
+            msg.msgCat = message.msgCat;
+            msg.msgName = message.msgName;
+            msg.msgType = msgType;
+            msg.msgShortText = this.replacePlaceholdersInShortText(message.msgText[this.langu] ? message.msgText[this.langu].shortText : message.msgText['EN'].shortText, args);
+            msg.msgLongText = this.replacePlaceholdersInLongText(message.msgText[this.langu] ? message.msgText[this.langu].longText : message.msgText['EN'].longText, args);
+            return msg;
+        }
+        else {
+            return null;
+        }
+    }
+    /**
+     * @private
+     * @param {?} msgCat
+     * @param {?} msgName
+     * @param {?} msgType
+     * @return {?}
+     */
+    checkInputParameters(msgCat, msgName, msgType) {
+        if (!msgCat)
+            throw new Error('Message Category is missing!');
+        if (!msgName)
+            throw new Error('Message Name is missing');
+        if (this.msgTypePattern.search(msgType) === -1)
+            throw new Error('Message Type is invalid!');
+    }
+    /**
+     * @private
+     * @param {?} text
+     * @param {?} args
+     * @return {?}
+     */
+    replacePlaceholdersInShortText(text, args) {
+        /** @type {?} */
+        let i = -1;
+        return text.replace(/%s/g, (/**
+         * @return {?}
+         */
+        function () {
+            i++;
+            return ((args[i] === undefined) ? '' : args[i]);
+        }));
+    }
+    /**
+     * @private
+     * @param {?} text
+     * @param {?} args
+     * @return {?}
+     */
+    replacePlaceholdersInLongText(text, args) {
+        return text.replace(/(%s)([1-99])/g, (/**
+         * @param {?} match
+         * @param {?} p1
+         * @param {?} p2
+         * @return {?}
+         */
+        function (match, p1, p2) {
+            /** @type {?} */
+            let i = -1 + parseInt(p2);
+            return ((args[i] === undefined) ? '' : args[i]);
+        }));
+    }
+}
+MessageService.ɵfac = function MessageService_Factory(t) { return new (t || MessageService)(); };
+/** @nocollapse */
+MessageService.ctorParameters = () => [];
+/** @nocollapse */ MessageService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MessageService_Factory() { return new MessageService(); }, token: MessageService, providedIn: "root" });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], function () { return []; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: lib/message.component.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class MessageComponent {
+    /**
+     * @param {?} messageService
+     */
+    constructor(messageService) {
+        this.messageService = messageService;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.messageService.getObservable().subscribe((/**
+         * @param {?} messages
+         * @return {?}
+         */
+        messages => this.messages = messages));
+    }
+    /**
+     * @param {?} msgType
+     * @return {?}
+     */
+    getMessageDisplayClass(msgType) {
+        switch (msgType) {
+            case messageType.Error: {
+                return 'alert-danger';
+            }
+            case messageType.Warning: {
+                return 'alert-warning';
+            }
+            case messageType.Success: {
+                return 'alert-success';
+            }
+            case messageType.Information: {
+                return 'alert-info';
+            }
+            case messageType.Exception: {
+                return 'alert-danger';
+            }
+            default: {
+                return 'alert-secondary';
+            }
+        }
+    }
+    /**
+     * @param {?} msgType
+     * @return {?}
+     */
+    getCardDisplayClass(msgType) {
+        switch (msgType) {
+            case messageType.Error: {
+                return 'card-danger';
+            }
+            case messageType.Warning: {
+                return 'card-warning';
+            }
+            case messageType.Success: {
+                return 'card-success';
+            }
+            case messageType.Information: {
+                return 'card-info';
+            }
+            case messageType.Exception: {
+                return 'card-danger';
+            }
+            default: {
+                return '';
+            }
+        }
+    }
+    /**
+     * @param {?} idx
+     * @return {?}
+     */
+    removeMessage(idx) {
+        this.messageService.removeMessage(idx);
+    }
+    /**
+     * @param {?} idx
+     * @return {?}
+     */
+    toggleShowLongText(idx) {
+        if (this.messages[idx].showLongText) {
+            this.messages[idx].showLongText = false;
+        }
+        else {
+            this.messages.forEach((/**
+             * @param {?} message
+             * @return {?}
+             */
+            message => message.showLongText = false));
+            this.messages[idx].showLongText = true;
+        }
+        return false; // To forbid page refresh when clicking the link
+    }
+}
+MessageComponent.ɵfac = function MessageComponent_Factory(t) { return new (t || MessageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MessageService)); };
+MessageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessageComponent, selectors: [["dk-message"]], decls: 1, vars: 1, consts: [["class", "dk-message", 4, "ngFor", "ngForOf"], [1, "dk-message"], [1, "card", 3, "ngClass"], ["role", "alert", 1, "alert", "card-header", 3, "ngClass"], ["href", "#", 1, "alert-link", 3, "click"], ["type", "button", "data-dismiss", "alert", "aria-label", "Close", 1, "close", 3, "click"], ["aria-hidden", "true"], ["class", "collapse", 3, "ngClass", 4, "ngIf"], [1, "collapse", 3, "ngClass"], [1, "card-body", 3, "innerHtml"]], template: function MessageComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MessageComponent_div_0_Template, 9, 4, "div", 0);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.messages);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"]], styles: [".card[_ngcontent-%COMP%]{background-clip:border-box;background-color:#fff;border:1px solid rgba(0,0,0,.125);border-radius:.25rem;display:flex;flex-direction:column;min-width:0;position:relative;word-wrap:break-word}.card-header[_ngcontent-%COMP%]{background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125);color:inherit;margin-bottom:0;padding:.75rem 1.25rem}.card-header[_ngcontent-%COMP%]:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.alert-danger[_ngcontent-%COMP%]{background-color:#f8d7da;border-color:#f5c6cb;color:#721c24}.alert-danger[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#491217}.alert-warning[_ngcontent-%COMP%]{background-color:#fff3cd;border-color:#ffeeba;color:#856404}.alert-warning[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#533f03}.alert-success[_ngcontent-%COMP%]{background-color:#d4edda;border-color:#c3e6cb;color:#155724}.alert-success[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#0b2e13}.alert-info[_ngcontent-%COMP%]{background-color:#d1ecf1;border-color:#bee5eb;color:#0c5460}.alert-info[_ngcontent-%COMP%]   .alert-link[_ngcontent-%COMP%]{color:#062c33}.alert[_ngcontent-%COMP%]{border:1px solid transparent;border-radius:.25rem;margin-bottom:1rem;padding:.75rem 1.25rem;position:relative}.alert-link[_ngcontent-%COMP%]{font-weight:700}.close[_ngcontent-%COMP%]:not(:disabled):not(.disabled){cursor:pointer}.collapse[_ngcontent-%COMP%]:not(.show){display:none}.card-body[_ngcontent-%COMP%]{flex:1 1 auto;padding:1.25rem}.close[_ngcontent-%COMP%]{color:#000;float:right;font-size:1.5rem;font-weight:700;line-height:1;opacity:.5;text-shadow:0 1px 0 #fff}[type=button][_ngcontent-%COMP%], [type=reset][_ngcontent-%COMP%], [type=submit][_ngcontent-%COMP%], button[_ngcontent-%COMP%]{-webkit-appearance:button}button.close[_ngcontent-%COMP%]{-moz-appearance:none;-webkit-appearance:none;appearance:none;border:0;padding:0}a[_ngcontent-%COMP%], button.close[_ngcontent-%COMP%]{background-color:transparent}a[_ngcontent-%COMP%]{color:#007bff}button[_ngcontent-%COMP%], select[_ngcontent-%COMP%]{text-transform:none}button[_ngcontent-%COMP%], input[_ngcontent-%COMP%]{overflow:visible}button[_ngcontent-%COMP%], input[_ngcontent-%COMP%], optgroup[_ngcontent-%COMP%], select[_ngcontent-%COMP%], textarea[_ngcontent-%COMP%]{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button[_ngcontent-%COMP%]{border-radius:0}.alert.card-header[_ngcontent-%COMP%]{margin-bottom:0}.dk-message[_ngcontent-%COMP%]{margin-bottom:.5rem}"] });
+/** @nocollapse */
+MessageComponent.ctorParameters = () => [
+    { type: MessageService }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'dk-message',
+                template: "<div *ngFor=\"let message of messages; index as idx;\" class=\"dk-message\">\n  <div class=\"card\" [ngClass]=\"getCardDisplayClass(message.msgType)\">\n    <div class=\"alert card-header\" [ngClass]=\"getMessageDisplayClass(message.msgType)\" role=\"alert\" >\n      <a class=\"alert-link \" (click)=\"toggleShowLongText(idx)\" href=\"#\" >\n        {{message.msgShortText}}\n      </a>\n      <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" (click)=\"removeMessage(idx)\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n\n    <div *ngIf=\"message.msgLongText\" class=\"collapse\" [ngClass]=\"{'show': message.showLongText}\">\n      <div class=\"card-body\" [innerHtml]=\"message.msgLongText\">\n      </div>\n    </div>\n  </div>\n</div>\n\n\n\n\n",
+                styles: [".card{background-clip:border-box;background-color:#fff;border:1px solid rgba(0,0,0,.125);border-radius:.25rem;display:flex;flex-direction:column;min-width:0;position:relative;word-wrap:break-word}.card-header{background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125);color:inherit;margin-bottom:0;padding:.75rem 1.25rem}.card-header:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.alert-danger{background-color:#f8d7da;border-color:#f5c6cb;color:#721c24}.alert-danger .alert-link{color:#491217}.alert-warning{background-color:#fff3cd;border-color:#ffeeba;color:#856404}.alert-warning .alert-link{color:#533f03}.alert-success{background-color:#d4edda;border-color:#c3e6cb;color:#155724}.alert-success .alert-link{color:#0b2e13}.alert-info{background-color:#d1ecf1;border-color:#bee5eb;color:#0c5460}.alert-info .alert-link{color:#062c33}.alert{border:1px solid transparent;border-radius:.25rem;margin-bottom:1rem;padding:.75rem 1.25rem;position:relative}.alert-link{font-weight:700}.close:not(:disabled):not(.disabled){cursor:pointer}.collapse:not(.show){display:none}.card-body{flex:1 1 auto;padding:1.25rem}.close{color:#000;float:right;font-size:1.5rem;font-weight:700;line-height:1;opacity:.5;text-shadow:0 1px 0 #fff}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}button.close{-moz-appearance:none;-webkit-appearance:none;appearance:none;border:0;padding:0}a,button.close{background-color:transparent}a{color:#007bff}button,select{text-transform:none}button,input{overflow:visible}button,input,optgroup,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button{border-radius:0}.alert.card-header{margin-bottom:0}.dk-message{margin-bottom:.5rem}"]
+            }]
+    }], function () { return [{ type: MessageService }]; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: lib/message.module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class MessageModule {
+}
+MessageModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MessageModule });
+MessageModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MessageModule_Factory(t) { return new (t || MessageModule)(); }, imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MessageModule, { declarations: function () { return [MessageComponent]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]]; }, exports: function () { return [MessageComponent]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MessageModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+                ],
+                declarations: [MessageComponent],
+                exports: [MessageComponent]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: public_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: ui-message-angular.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=ui-message-angular.js.map
 
 /***/ }),
 
