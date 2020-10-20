@@ -1,3 +1,16 @@
+/**
+ * This file contains implementation of default user AddIns of JSON-On-Relation.
+ * Within those AddIns, the authorization check logic is performed.
+ * Every request on changing entities will be filtered for authorization checks.
+ * For detail, check https://github.com/VinceZK/json-on-relations/wiki/User-AddIn-and-Function
+ * @type {{
+ * beforeEntityQuery: UserAddIn,
+ * afterEntityReading: UserAddIn,
+ * beforeEntityCreation: UserAddIn,
+ * beforeEntityChanging: UserAddIn,
+ * beforeEntityDeletion: UserAddIn,
+ * }}
+ */
 const defaultUserAddIns = require('json-on-relations').DefaultUserAddIns;
 const path = require('path');
 const Message = require('ui-message').Message;
