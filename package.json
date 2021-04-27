@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e --dev-server-target= --webdriverUpdate=false",
     "redis": "redis-server /etc/redis/6379.conf",
-    "prod": "node server.js"
+    "prod": "node server.mjs"
   },
   "dependencies": {
     "@angular/animations": "10.1.6",
@@ -37,7 +37,8 @@
     "fuzzysort": "^1.1.4",
     "handsontable": "^7.3.0",
     "jor-angular": "3.2.5",
-    "json-on-relations": "3.2.1",
+    "json-on-relations": "3.2.8",
+    "node-background-job": "0.0.7",
     "node-uuid": "^1.4.8",
     "path": "^0.12.7",
     "rxjs": "^6.5.4",
