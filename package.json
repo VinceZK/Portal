@@ -13,14 +13,14 @@
     "prod": "node server.mjs"
   },
   "dependencies": {
-    "@angular/animations": "11.2.14",
-    "@angular/common": "11.2.14",
-    "@angular/compiler": "11.2.14",
-    "@angular/core": "11.2.14",
-    "@angular/forms": "11.2.14",
-    "@angular/platform-browser": "11.2.14",
-    "@angular/platform-browser-dynamic": "11.2.14",
-    "@angular/router": "11.2.14",
+    "@angular/animations": "12.0.2",
+    "@angular/common": "12.0.2",
+    "@angular/compiler": "12.0.2",
+    "@angular/core": "12.0.2",
+    "@angular/forms": "12.0.2",
+    "@angular/platform-browser": "12.0.2",
+    "@angular/platform-browser-dynamic": "12.0.2",
+    "@angular/router": "12.0.2",
     "@handsontable/angular": "^5.1.0",
     "async": "^2.6.3",
     "body-parser": "^1.19.0",
@@ -35,7 +35,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "fuzzysort": "^1.1.4",
-    "handsontable": "^8.4.0",
+    "handsontable": "^7.4.2",
     "jor-angular": "3.2.5",
     "json-on-relations": "3.2.8",
     "node-background-job": "0.0.7",
@@ -47,13 +47,13 @@
     "ui-logon-angular": "^1.5.1",
     "ui-message": "^1.2.0",
     "ui-message-angular": "^1.4.1",
-    "zone.js": "~0.10.3"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.13",
-    "@angular/cli": "11.2.13",
-    "@angular/compiler-cli": "11.2.14",
-    "@angular/language-service": "11.2.14",
+    "@angular-devkit/build-angular": "~12.0.2",
+    "@angular/cli": "12.0.2",
+    "@angular/compiler-cli": "12.0.2",
+    "@angular/language-service": "12.0.2",
     "@types/d3": "^5.7.2",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "^2.0.8",
@@ -73,7 +73,7 @@
     "should": "^13.2.3",
     "ts-node": "~7.0.1",
     "tslint": "~6.1.0",
-    "typescript": "4.0.3"
+    "typescript": "4.2.4"
   },
   "repository": {
     "type": "git",

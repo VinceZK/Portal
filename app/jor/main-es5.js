@@ -1,545 +1,19 @@
 (function () {
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
-    /***/
-    0:
-    /*!***************************!*\
-      !*** multi ./src/main.ts ***!
-      \***************************/
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    /*! no static exports found */
-
+  (self["webpackChunkjson_on_relations"] = self["webpackChunkjson_on_relations"] || []).push([["main"], {
     /***/
-    function _(module, exports, __webpack_require__) {
-      module.exports = __webpack_require__(
-      /*! /Users/VinceZK/workspace/javascript/json-on-relations/src/main.ts */
-      "zUnb");
-      /***/
-    },
+    98255:
+    /*!*******************************************************!*\
+      !*** ./$_lazy_route_resources/ lazy namespace object ***!
+      \*******************************************************/
 
     /***/
-    "A3xY":
-    /*!***********************************!*\
-      !*** ./src/app/app.component.css ***!
-      \***********************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function A3xY(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */";
-      /***/
-    },
-
-    /***/
-    "AytR":
-    /*!*****************************************!*\
-      !*** ./src/environments/environment.ts ***!
-      \*****************************************/
-
-    /*! exports provided: environment */
-
-    /***/
-    function AytR(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "environment", function () {
-        return environment;
-      }); // This file can be replaced during build by using the `fileReplacements` array.
-      // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
-      // The list of file replacements can be found in `angular.json`.
-
-
-      var environment = {
-        production: false,
-        originalHost: 'http://localhost:3000'
-      };
-      /*
-       * In development mode, to ignore zone related error stack frames such as
-       * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
-       * import the following file, but please comment it out in production mode
-       * because it will have performance impact when throw error
-       */
-      // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-      /***/
-    },
-
-    /***/
-    "F0jV":
-    /*!******************************************!*\
-      !*** ./src/app/custom.reuse.strategy.ts ***!
-      \******************************************/
-
-    /*! exports provided: CustomReuseStrategy */
-
-    /***/
-    function F0jV(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "CustomReuseStrategy", function () {
-        return CustomReuseStrategy;
-      });
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var CustomReuseStrategy = /*#__PURE__*/function () {
-        function CustomReuseStrategy() {
-          _classCallCheck(this, CustomReuseStrategy);
-
-          this.routesToCache = ['list'];
-          this.storedRouteHandles = new Map();
-        }
-        /**
-         * When navigation from a reusable component, and if shouldReuseRoute return false,
-         * this method is invoked to decide whether the current route should be stored.
-         * @param route
-         */
-
-
-        _createClass(CustomReuseStrategy, [{
-          key: "shouldDetach",
-          value: function shouldDetach(route) {
-            // console.log('detaching', route);
-            return this.routesToCache.indexOf(route.routeConfig.path) > -1;
-          }
-          /**
-           * If the current route need to be stored, that is shouldDetach return true,
-           * then on this method, you can implement a way to store routes. Usually in a Map.
-           * @param route
-           * @param handle
-           */
-
-        }, {
-          key: "store",
-          value: function store(route, handle) {
-            // console.log('store', route);
-            this.storedRouteHandles.set(route.routeConfig.path, handle);
-          }
-          /**
-           * When navigation to a reusable component, and if shouldReuseRoute return false,
-           * this method is invoked to decide whether the target component can be get from a reuse buffer.
-           * @param route
-           */
-
-        }, {
-          key: "shouldAttach",
-          value: function shouldAttach(route) {
-            // console.log('shouldAttach', route);
-            return this.storedRouteHandles.has(route.routeConfig.path);
-          }
-          /**
-           * If shouldAttach return true, then this method is invoke to retrieve the component from the buffer.
-           * @param route
-           */
-
-        }, {
-          key: "retrieve",
-          value: function retrieve(route) {
-            return this.storedRouteHandles.get(route.routeConfig.path);
-          }
-          /**
-           * By default, Angular doesn't re-initializing the same component if the navigation is not to
-           * a different one. For example, you switch different entity ID in the same entity type detail page.
-           * In this way, shouldReuseRoute should return true to avoid executing other methods in this Class.
-           * However, if you navigate from search&list component to entity detail component, then the method should return false.
-           * So that other methods can be executed to decide whether the search&list component should be stored for future reuse.
-           * @param future
-           * @param curr
-           */
-
-        }, {
-          key: "shouldReuseRoute",
-          value: function shouldReuseRoute(future, curr) {
-            // console.log('shouldReuseRoute, future:', future, 'current:', curr);
-            return future.routeConfig === curr.routeConfig;
-          }
-        }]);
-
-        return CustomReuseStrategy;
-      }();
-
-      CustomReuseStrategy = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()], CustomReuseStrategy);
-      /***/
-    },
-
-    /***/
-    "H3s1":
-    /*!*************************************!*\
-      !*** ./src/app/identity.service.ts ***!
-      \*************************************/
-
-    /*! exports provided: IdentityService */
-
-    /***/
-    function H3s1(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "IdentityService", function () {
-        return IdentityService;
-      });
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/common */
-      "SVse");
-      /* harmony import */
-
-
-      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ui-logon-angular */
-      "fVQ6");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var __metadata = undefined && undefined.__metadata || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-      };
-
-      var IdentityService = /*#__PURE__*/function () {
-        function IdentityService() {
-          _classCallCheck(this, IdentityService);
-        }
-
-        _createClass(IdentityService, [{
-          key: "setSession",
-          value: function setSession(data) {
-            this.session = data;
-          }
-        }, {
-          key: "Session",
-          get: function get() {
-            if (this.session) {
-              return this.session;
-            }
-
-            var defaultSession = new ui_logon_angular__WEBPACK_IMPORTED_MODULE_2__["Session"]();
-            defaultSession.USER_ID = 'DH001';
-            defaultSession.LANGUAGE = 'EN';
-            return defaultSession;
-          }
-        }, {
-          key: "CurrentTime",
-          get: function get() {
-            return Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["formatDate"])(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
-          }
-        }]);
-
-        return IdentityService;
-      }();
-
-      IdentityService.ctorParameters = function () {
-        return [];
-      };
-
-      IdentityService = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-        providedIn: 'root'
-      }), __metadata("design:paramtypes", [])], IdentityService);
-      /***/
-    },
-
-    /***/
-    "Sy1n":
-    /*!**********************************!*\
-      !*** ./src/app/app.component.ts ***!
-      \**********************************/
-
-    /*! exports provided: AppComponent */
-
-    /***/
-    function Sy1n(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AppComponent", function () {
-        return AppComponent;
-      });
-      /* harmony import */
-
-
-      var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! raw-loader!./app.component.html */
-      "VzVu");
-      /* harmony import */
-
-
-      var _app_component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./app.component.css */
-      "A3xY");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var jor_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! jor-angular */
-      "mE60");
-      /* harmony import */
-
-
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../environments/environment */
-      "AytR");
-      /* harmony import */
-
-
-      var ui_message_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! ui-message-angular */
-      "wNXv");
-      /* harmony import */
-
-
-      var _msgStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! ./msgStore */
-      "uLAD");
-      /* harmony import */
-
-
-      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! ui-logon-angular */
-      "fVQ6");
-      /* harmony import */
-
-
-      var _identity_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-      /*! ./identity.service */
-      "H3s1");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var __metadata = undefined && undefined.__metadata || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-      };
-
-      var AppComponent = function AppComponent(entityService, identityService, messageService, logonService) {
-        var _this = this;
-
-        _classCallCheck(this, AppComponent);
-
-        this.entityService = entityService;
-        this.identityService = identityService;
-        this.messageService = messageService;
-        this.logonService = logonService;
-        this.entityService.setOriginalHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
-        this.logonService.setHost(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].originalHost);
-        this.logonService.session().subscribe(function (data) {
-          _this.identityService.setSession(data);
-
-          _this.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_6__["msgStore"], _this.identityService.Session.LANGUAGE);
-        });
-      };
-
-      AppComponent.ctorParameters = function () {
-        return [{
-          type: jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"]
-        }, {
-          type: _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"]
-        }, {
-          type: ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"]
-        }, {
-          type: ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]
-        }];
-      };
-
-      AppComponent = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
-        selector: 'app-root',
-        template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
-        styles: [_app_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]]
-      }), __metadata("design:paramtypes", [jor_angular__WEBPACK_IMPORTED_MODULE_3__["EntityService"], _identity_service__WEBPACK_IMPORTED_MODULE_8__["IdentityService"], ui_message_angular__WEBPACK_IMPORTED_MODULE_5__["MessageService"], ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__["LogonService"]])], AppComponent);
-      /***/
-    },
-
-    /***/
-    "VzVu":
-    /*!**************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
-      \**************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function VzVu(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "<div class=\"container-fluid\">\n  <router-outlet></router-outlet>\n</div>\n";
-      /***/
-    },
-
-    /***/
-    "ZAI4":
-    /*!*******************************!*\
-      !*** ./src/app/app.module.ts ***!
-      \*******************************/
-
-    /*! exports provided: AppModule */
-
-    /***/
-    function ZAI4(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AppModule", function () {
-        return AppModule;
-      });
-      /* harmony import */
-
-
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/platform-browser */
-      "cUpR");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./app.component */
-      "Sy1n");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @angular/common/http */
-      "IheW");
-      /* harmony import */
-
-
-      var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ./app-routing.module */
-      "vY5A");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @angular/router */
-      "iInd");
-      /* harmony import */
-
-
-      var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! ./custom.reuse.strategy */
-      "F0jV");
-      /* harmony import */
-
-
-      var jor_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! jor-angular */
-      "mE60");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-
-      var AppModule = function AppModule() {
-        _classCallCheck(this, AppModule);
-      };
-
-      AppModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
-        imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], jor_angular__WEBPACK_IMPORTED_MODULE_7__["JorAngularModule"]],
-        providers: [{
-          provide: _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouteReuseStrategy"],
-          useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_6__["CustomReuseStrategy"]
-        }],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
-      })], AppModule);
-      /***/
-    },
-
-    /***/
-    "crnd":
-    /*!**********************************************************!*\
-      !*** ./src/$$_lazy_route_resource lazy namespace object ***!
-      \**********************************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function crnd(module, exports) {
+    function _(module) {
       function webpackEmptyAsyncContext(req) {
         // Here Promise.resolve().then() is used instead of new Promise() to prevent
         // uncaught exception popping up in devtools
@@ -555,686 +29,776 @@
       };
 
       webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+      webpackEmptyAsyncContext.id = 98255;
       module.exports = webpackEmptyAsyncContext;
-      webpackEmptyAsyncContext.id = "crnd";
       /***/
     },
 
     /***/
-    "mE60":
-    /*!***************************************************************!*\
-      !*** ./dist/jor-angular/__ivy_ngcc__/fesm2015/jor-angular.js ***!
-      \***************************************************************/
-
-    /*! exports provided: Association, Attribute, AttributeBase, AttributeComponent, AttributeControlService, AttributeForm2Component, AttributeFormComponent, AttributeTableComponent, DataDomainH, DataDomainMeta, DataDomainValue, DataElementH, DataElementMeta, Entity, EntityMeta, EntityRelation, EntityService, EntityType, FieldsMappingPair, Involve, JorAngularModule, PartnerInstance, PartnerRole, Projection, QueryObject, Relation, RelationMeta, Relationship, RelationshipH, RelationshipInstance, RelationshipMeta, Role, RoleH, RoleMeta, RoleRelation, SearchHelp, SearchHelpComponent, SearchHelpField, SearchHelpFieldMeta, SearchHelpH, SearchHelpMeta, Selection, Sort, UiMapperService, ɵa, ɵb */
+    43340:
+    /*!**************************************************!*\
+      !*** ./dist/jor-angular/fesm2015/jor-angular.js ***!
+      \**************************************************/
 
     /***/
-    function mE60(module, __webpack_exports__, __webpack_require__) {
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "Association": function Association() {
+          return (
+            /* binding */
+            _Association
+          );
+        },
+
+        /* harmony export */
+        "Attribute": function Attribute() {
+          return (
+            /* binding */
+            _Attribute
+          );
+        },
+
+        /* harmony export */
+        "AttributeBase": function AttributeBase() {
+          return (
+            /* binding */
+            _AttributeBase
+          );
+        },
+
+        /* harmony export */
+        "AttributeComponent": function AttributeComponent() {
+          return (
+            /* binding */
+            _AttributeComponent
+          );
+        },
+
+        /* harmony export */
+        "AttributeControlService": function AttributeControlService() {
+          return (
+            /* binding */
+            _AttributeControlService
+          );
+        },
+
+        /* harmony export */
+        "AttributeForm2Component": function AttributeForm2Component() {
+          return (
+            /* binding */
+            _AttributeForm2Component
+          );
+        },
+
+        /* harmony export */
+        "AttributeFormComponent": function AttributeFormComponent() {
+          return (
+            /* binding */
+            _AttributeFormComponent
+          );
+        },
+
+        /* harmony export */
+        "AttributeTableComponent": function AttributeTableComponent() {
+          return (
+            /* binding */
+            _AttributeTableComponent
+          );
+        },
+
+        /* harmony export */
+        "DataDomainH": function DataDomainH() {
+          return (
+            /* binding */
+            _DataDomainH
+          );
+        },
+
+        /* harmony export */
+        "DataDomainMeta": function DataDomainMeta() {
+          return (
+            /* binding */
+            _DataDomainMeta
+          );
+        },
+
+        /* harmony export */
+        "DataDomainValue": function DataDomainValue() {
+          return (
+            /* binding */
+            _DataDomainValue
+          );
+        },
+
+        /* harmony export */
+        "DataElementH": function DataElementH() {
+          return (
+            /* binding */
+            _DataElementH
+          );
+        },
+
+        /* harmony export */
+        "DataElementMeta": function DataElementMeta() {
+          return (
+            /* binding */
+            _DataElementMeta
+          );
+        },
+
+        /* harmony export */
+        "Entity": function Entity() {
+          return (
+            /* binding */
+            _Entity
+          );
+        },
+
+        /* harmony export */
+        "EntityMeta": function EntityMeta() {
+          return (
+            /* binding */
+            _EntityMeta
+          );
+        },
+
+        /* harmony export */
+        "EntityRelation": function EntityRelation() {
+          return (
+            /* binding */
+            _EntityRelation
+          );
+        },
+
+        /* harmony export */
+        "EntityService": function EntityService() {
+          return (
+            /* binding */
+            _EntityService
+          );
+        },
+
+        /* harmony export */
+        "EntityType": function EntityType() {
+          return (
+            /* binding */
+            _EntityType
+          );
+        },
+
+        /* harmony export */
+        "FieldsMappingPair": function FieldsMappingPair() {
+          return (
+            /* binding */
+            _FieldsMappingPair
+          );
+        },
+
+        /* harmony export */
+        "Involve": function Involve() {
+          return (
+            /* binding */
+            _Involve
+          );
+        },
+
+        /* harmony export */
+        "JorAngularModule": function JorAngularModule() {
+          return (
+            /* binding */
+            _JorAngularModule
+          );
+        },
+
+        /* harmony export */
+        "PartnerInstance": function PartnerInstance() {
+          return (
+            /* binding */
+            _PartnerInstance
+          );
+        },
+
+        /* harmony export */
+        "PartnerRole": function PartnerRole() {
+          return (
+            /* binding */
+            _PartnerRole
+          );
+        },
+
+        /* harmony export */
+        "Projection": function Projection() {
+          return (
+            /* binding */
+            _Projection
+          );
+        },
+
+        /* harmony export */
+        "QueryObject": function QueryObject() {
+          return (
+            /* binding */
+            _QueryObject
+          );
+        },
+
+        /* harmony export */
+        "Relation": function Relation() {
+          return (
+            /* binding */
+            _Relation
+          );
+        },
+
+        /* harmony export */
+        "RelationMeta": function RelationMeta() {
+          return (
+            /* binding */
+            _RelationMeta
+          );
+        },
+
+        /* harmony export */
+        "Relationship": function Relationship() {
+          return (
+            /* binding */
+            _Relationship
+          );
+        },
+
+        /* harmony export */
+        "RelationshipH": function RelationshipH() {
+          return (
+            /* binding */
+            _RelationshipH
+          );
+        },
+
+        /* harmony export */
+        "RelationshipInstance": function RelationshipInstance() {
+          return (
+            /* binding */
+            _RelationshipInstance
+          );
+        },
+
+        /* harmony export */
+        "RelationshipMeta": function RelationshipMeta() {
+          return (
+            /* binding */
+            _RelationshipMeta
+          );
+        },
+
+        /* harmony export */
+        "Role": function Role() {
+          return (
+            /* binding */
+            _Role
+          );
+        },
+
+        /* harmony export */
+        "RoleH": function RoleH() {
+          return (
+            /* binding */
+            _RoleH
+          );
+        },
+
+        /* harmony export */
+        "RoleMeta": function RoleMeta() {
+          return (
+            /* binding */
+            _RoleMeta
+          );
+        },
+
+        /* harmony export */
+        "RoleRelation": function RoleRelation() {
+          return (
+            /* binding */
+            _RoleRelation
+          );
+        },
+
+        /* harmony export */
+        "SearchHelp": function SearchHelp() {
+          return (
+            /* binding */
+            _SearchHelp
+          );
+        },
+
+        /* harmony export */
+        "SearchHelpComponent": function SearchHelpComponent() {
+          return (
+            /* binding */
+            _SearchHelpComponent
+          );
+        },
+
+        /* harmony export */
+        "SearchHelpField": function SearchHelpField() {
+          return (
+            /* binding */
+            _SearchHelpField
+          );
+        },
+
+        /* harmony export */
+        "SearchHelpFieldMeta": function SearchHelpFieldMeta() {
+          return (
+            /* binding */
+            _SearchHelpFieldMeta
+          );
+        },
+
+        /* harmony export */
+        "SearchHelpH": function SearchHelpH() {
+          return (
+            /* binding */
+            _SearchHelpH
+          );
+        },
+
+        /* harmony export */
+        "SearchHelpMeta": function SearchHelpMeta() {
+          return (
+            /* binding */
+            _SearchHelpMeta
+          );
+        },
+
+        /* harmony export */
+        "Selection": function Selection() {
+          return (
+            /* binding */
+            _Selection
+          );
+        },
+
+        /* harmony export */
+        "Sort": function Sort() {
+          return (
+            /* binding */
+            _Sort
+          );
+        },
+
+        /* harmony export */
+        "UiMapperService": function UiMapperService() {
+          return (
+            /* binding */
+            _UiMapperService
+          );
+        }
+        /* harmony export */
 
-
-      __webpack_require__.d(__webpack_exports__, "Association", function () {
-        return Association;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Attribute", function () {
-        return Attribute;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeBase", function () {
-        return AttributeBase;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeComponent", function () {
-        return AttributeComponent;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeControlService", function () {
-        return AttributeControlService;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeForm2Component", function () {
-        return AttributeForm2Component;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeFormComponent", function () {
-        return AttributeFormComponent;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AttributeTableComponent", function () {
-        return AttributeTableComponent;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataDomainH", function () {
-        return DataDomainH;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataDomainMeta", function () {
-        return DataDomainMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataDomainValue", function () {
-        return DataDomainValue;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataElementH", function () {
-        return DataElementH;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataElementMeta", function () {
-        return DataElementMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Entity", function () {
-        return Entity;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "EntityMeta", function () {
-        return EntityMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "EntityRelation", function () {
-        return EntityRelation;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "EntityService", function () {
-        return EntityService;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "EntityType", function () {
-        return EntityType;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "FieldsMappingPair", function () {
-        return FieldsMappingPair;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Involve", function () {
-        return Involve;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "JorAngularModule", function () {
-        return JorAngularModule;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "PartnerInstance", function () {
-        return PartnerInstance;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "PartnerRole", function () {
-        return PartnerRole;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Projection", function () {
-        return Projection;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "QueryObject", function () {
-        return QueryObject;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Relation", function () {
-        return Relation;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RelationMeta", function () {
-        return RelationMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Relationship", function () {
-        return Relationship;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RelationshipH", function () {
-        return RelationshipH;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RelationshipInstance", function () {
-        return RelationshipInstance;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RelationshipMeta", function () {
-        return RelationshipMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Role", function () {
-        return Role;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RoleH", function () {
-        return RoleH;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RoleMeta", function () {
-        return RoleMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "RoleRelation", function () {
-        return RoleRelation;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelp", function () {
-        return SearchHelp;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelpComponent", function () {
-        return SearchHelpComponent;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelpField", function () {
-        return SearchHelpField;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelpFieldMeta", function () {
-        return SearchHelpFieldMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelpH", function () {
-        return SearchHelpH;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "SearchHelpMeta", function () {
-        return SearchHelpMeta;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Selection", function () {
-        return Selection;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "Sort", function () {
-        return Sort;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "UiMapperService", function () {
-        return UiMapperService;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "ɵa", function () {
-        return DomainValueValidator;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "ɵb", function () {
-        return JorAngularComponent;
       });
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "8Y7J");
+      37716);
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common/http */
-      "IheW");
+      91841);
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! rxjs */
-      "qCKp");
+      25917);
       /* harmony import */
 
 
       var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! rxjs/operators */
-      "kU1M");
+      5304);
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! rxjs/operators */
+      88002);
       /* harmony import */
 
 
       var ui_message_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ui-message-angular */
-      "wNXv");
+      23540);
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/forms */
-      "s7LF");
+      3679);
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/common */
-      "SVse");
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/entity.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
+      38583);
+      /* harmony import */
 
+
+      var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! uuid */
+      91605);
+      /* harmony import */
+
+
+      var uuid__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_0__);
 
       function SearchHelpComponent_div_10_div_1_Template(rf, ctx) {
         if (rf & 1) {
-          var _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 25);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "input", 26);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_div_10_div_1_Template_input_ngModelChange_1_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_div_10_div_1_Template_input_ngModelChange_1_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r9);
 
-            var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
             return ctx_r8.fuzzySearchTerm = $event;
           })("keyup", function SearchHelpComponent_div_10_div_1_Template_input_keyup_1_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r9);
 
-            var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
             return ctx_r10.enterSearch($event);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r6.fuzzySearchTerm);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r6.fuzzySearchTerm);
         }
       }
 
       function SearchHelpComponent_div_10_div_3_Template(rf, ctx) {
         if (rf & 1) {
-          var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 27);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 28);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "input", 29);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keyup", function SearchHelpComponent_div_10_div_3_Template_input_keyup_3_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("keyup", function SearchHelpComponent_div_10_div_3_Template_input_keyup_3_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13);
 
-            var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
             return ctx_r12.enterSearch($event);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
           var filterField_r11 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("for", filterField_r11.FIELD_NAME);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("for", filterField_r11.FIELD_NAME);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", filterField_r11.LABEL_TEXT || filterField_r11.FIELD_NAME, ":");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", filterField_r11.LABEL_TEXT || filterField_r11.FIELD_NAME, ":");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("id", filterField_r11.FIELD_NAME);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("id", filterField_r11.FIELD_NAME);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("name", filterField_r11.FIELD_NAME);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("name", filterField_r11.FIELD_NAME);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("formControlName", filterField_r11.FIELD_NAME);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("formControlName", filterField_r11.FIELD_NAME);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("readonly", filterField_r11.FILTER_DISP_ONLY);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("readonly", filterField_r11.FILTER_DISP_ONLY);
         }
       }
 
       function SearchHelpComponent_div_10_Template(rf, ctx) {
         if (rf & 1) {
-          var _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 19);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SearchHelpComponent_div_10_div_1_Template, 2, 1, "div", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SearchHelpComponent_div_10_div_1_Template, 2, 1, "div", 20);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 21);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_div_10_div_3_Template, 4, 6, "div", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, SearchHelpComponent_div_10_div_3_Template, 4, 6, "div", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 23);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 23);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 24);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_div_10_Template_button_click_5_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_div_10_Template_button_click_5_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15);
 
-            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r14.search();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Search ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " Search ");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.searchHelp && ctx_r0.searchHelp.FUZZY_SEARCH);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.searchHelp && ctx_r0.searchHelp.FUZZY_SEARCH);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx_r0.filterFieldsFormGroup);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx_r0.filterFieldsFormGroup);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.filterFields);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r0.filterFields);
         }
       }
 
       function SearchHelpComponent_button_11_Template(rf, ctx) {
         if (rf & 1) {
-          var _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 30);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_button_11_Template_button_click_0_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_button_11_Template_button_click_0_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r17);
 
-            var ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r16.showFilter();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Show Filter");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Show Filter");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function SearchHelpComponent_button_12_Template(rf, ctx) {
         if (rf & 1) {
-          var _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 30);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_button_12_Template_button_click_0_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_button_12_Template_button_click_0_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r19);
 
-            var ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r18.hideFilter();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Hide Filter");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Hide Filter");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function SearchHelpComponent_input_17_Template(rf, ctx) {
         if (rf & 1) {
-          var _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 31);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 31);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_input_17_Template_input_ngModelChange_0_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_input_17_Template_input_ngModelChange_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r21);
 
-            var ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r20.isSelectAllChecked = $event;
           })("click", function SearchHelpComponent_input_17_Template_input_click_0_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r21);
 
-            var ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r22.selectAll();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r3.isSelectAllChecked);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r3.isSelectAllChecked);
         }
       }
 
       function SearchHelpComponent_th_18_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "th");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
           var listField_r23 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("display", listField_r23.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("display", listField_r23.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", listField_r23.LIST_HEADER_TEXT || listField_r23.FIELD_NAME, " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", listField_r23.LIST_HEADER_TEXT || listField_r23.FIELD_NAME, " ");
         }
       }
 
       function SearchHelpComponent_tr_20_input_2_Template(rf, ctx) {
         if (rf & 1) {
-          var _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 34);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 34);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_2_Template_input_ngModelChange_0_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_2_Template_input_ngModelChange_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r30);
 
-            var ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
             return ctx_r29.selectedIndex = $event;
           })("dblclick", function SearchHelpComponent_tr_20_input_2_Template_input_dblclick_0_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r30);
 
-            var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
             return ctx_r31.confirmSelection();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var i_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index;
+          var i_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().index;
 
-          var ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", i_r25)("ngModel", ctx_r26.selectedIndex);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", i_r25)("ngModel", ctx_r26.selectedIndex);
         }
       }
 
       function SearchHelpComponent_tr_20_input_3_Template(rf, ctx) {
         if (rf & 1) {
-          var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 35);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 35);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_3_Template_input_ngModelChange_0_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function SearchHelpComponent_tr_20_input_3_Template_input_ngModelChange_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r35);
 
-            var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+            var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
             return item_r24.SELECTED = $event;
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", item_r24.SELECTED);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", item_r24.SELECTED);
         }
       }
 
       function SearchHelpComponent_tr_20_td_4_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "td");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
           var listField_r37 = ctx.$implicit;
 
-          var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var item_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("display", listField_r37.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("display", listField_r37.FIELD_NAME === "INSTANCE_GUID" ? "none" : "table-cell");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r24[listField_r37.FIELD_NAME], " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", item_r24[listField_r37.FIELD_NAME], " ");
         }
       }
 
       function SearchHelpComponent_tr_20_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SearchHelpComponent_tr_20_input_2_Template, 1, 2, "input", 32);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, SearchHelpComponent_tr_20_input_2_Template, 1, 2, "input", 32);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SearchHelpComponent_tr_20_input_3_Template, 1, 1, "input", 33);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, SearchHelpComponent_tr_20_input_3_Template, 1, 1, "input", 33);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, SearchHelpComponent_tr_20_td_4_Template, 2, 3, "td", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, SearchHelpComponent_tr_20_td_4_Template, 2, 3, "td", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r5.searchHelp.MULTI);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r5.searchHelp.MULTI);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r5.searchHelp.MULTI);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r5.searchHelp.MULTI);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r5.listFields);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r5.listFields);
         }
       }
 
@@ -1252,738 +816,826 @@
 
       function AttributeComponent_div_2_input_1_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 16);
+          var _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_div_2_input_1_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15);
+
+            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+
+            return ctx_r14.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r9.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r10.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r9.attributeControl.name)("id", ctx_r9.attributeControl.key)("maxlength", ctx_r9.attributeControl.maxLength)("pattern", ctx_r9.attributeControl.pattern)("readonly", ctx_r9.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r10.attributeControl.name)("name", ctx_r10.attributeControl.key)("maxlength", ctx_r10.attributeControl.maxLength)("pattern", ctx_r10.attributeControl.pattern)("readonly", ctx_r10.isReadonly);
         }
       }
 
       function AttributeComponent_div_2_input_2_Template(rf, ctx) {
         if (rf & 1) {
-          var _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keyup", function AttributeComponent_div_2_input_2_Template_input_keyup_0_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("keyup", function AttributeComponent_div_2_input_2_Template_input_keyup_0_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r17);
 
-            var ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-            return ctx_r13.onKeyup(ctx_r13.attributeControl.name);
+            return ctx_r16.onKeyup(ctx_r16.attributeControl.name);
+          })("change", function AttributeComponent_div_2_input_2_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r17);
+
+            var ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+
+            return ctx_r18.onChange($event);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r10.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r11.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r10.attributeControl.name)("id", ctx_r10.attributeControl.key)("maxlength", ctx_r10.attributeControl.maxLength)("readonly", ctx_r10.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r11.attributeControl.name)("name", ctx_r11.attributeControl.key)("maxlength", ctx_r11.attributeControl.maxLength)("readonly", ctx_r11.isReadonly);
         }
       }
 
       function AttributeComponent_div_2_input_3_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 18);
+          var _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_div_2_input_3_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20);
+
+            var ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+
+            return ctx_r19.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r11.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r12.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r11.attributeControl.name)("id", ctx_r11.attributeControl.key)("pattern", ctx_r11.attributeControl.pattern)("readonly", ctx_r11.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r12.attributeControl.name)("name", ctx_r12.attributeControl.key)("pattern", ctx_r12.attributeControl.pattern)("readonly", ctx_r12.isReadonly);
         }
       }
 
       function AttributeComponent_div_2_div_4_Template(rf, ctx) {
         if (rf & 1) {
-          var _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 20);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "button", 21);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeComponent_div_2_div_4_Template_button_click_1_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeComponent_div_2_div_4_Template_button_click_1_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r22);
 
-            var ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+            var ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-            return ctx_r15.onSearchHelp(ctx_r15.attributeControl);
+            return ctx_r21.onSearchHelp(ctx_r21.attributeControl);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "span", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "span", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function AttributeComponent_div_2_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 11);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AttributeComponent_div_2_input_1_Template, 1, 7, "input", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, AttributeComponent_div_2_input_1_Template, 1, 7, "input", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AttributeComponent_div_2_input_2_Template, 1, 6, "input", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, AttributeComponent_div_2_input_2_Template, 1, 6, "input", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AttributeComponent_div_2_input_3_Template, 1, 6, "input", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, AttributeComponent_div_2_input_3_Template, 1, 6, "input", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AttributeComponent_div_2_div_4_Template, 3, 0, "div", 15);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, AttributeComponent_div_2_div_4_Template, 3, 0, "div", 16);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "text");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "text");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "text_capital");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "text_capital");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "integer");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "integer");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.attributeControl.searchHelpId || ctx_r0.attributeControl.domainRelationId);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.attributeControl.searchHelpId || ctx_r0.attributeControl.domainRelationId);
         }
       }
 
       function AttributeComponent_input_3_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 22);
+          var _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 23);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_input_3_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r24);
+
+            var ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r23.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r1.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r1.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r1.attributeControl.name)("id", ctx_r1.attributeControl.key)("step", ctx_r1.attributeControl.step)("placeholder", ctx_r1.attributeControl.placeholder)("pattern", ctx_r1.attributeControl.pattern)("readonly", ctx_r1.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r1.attributeControl.name)("name", ctx_r1.attributeControl.key)("step", ctx_r1.attributeControl.step)("placeholder", ctx_r1.attributeControl.placeholder)("pattern", ctx_r1.attributeControl.pattern)("readonly", ctx_r1.isReadonly);
         }
       }
 
       function AttributeComponent_input_4_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 23);
+          var _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 24);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_input_4_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r26);
+
+            var ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r25.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r2.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r2.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r2.attributeControl.name)("id", ctx_r2.attributeControl.key);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r2.attributeControl.name)("name", ctx_r2.attributeControl.key);
         }
       }
 
-      function AttributeComponent_input_5_Template(rf, ctx) {
+      function AttributeComponent_textarea_5_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 24);
+          var _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "textarea", 25);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_textarea_5_Template_textarea_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28);
+
+            var ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r27.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r3.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r3.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r3.attributeControl.name)("id", ctx_r3.attributeControl.key)("readonly", ctx_r3.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r3.attributeControl.name)("name", ctx_r3.attributeControl.key)("rows", ctx_r3.attributeControl.rows)("readonly", ctx_r3.isReadonly);
         }
       }
 
       function AttributeComponent_input_6_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 25);
+          var _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 26);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_input_6_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r30);
+
+            var ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r29.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r4.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r4.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r4.attributeControl.name)("id", ctx_r4.attributeControl.key)("readonly", ctx_r4.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r4.attributeControl.name)("name", ctx_r4.attributeControl.key)("readonly", ctx_r4.isReadonly);
         }
       }
 
       function AttributeComponent_input_7_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 26);
+          var _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 27);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_input_7_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r32);
+
+            var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r31.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r5.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r5.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r5.attributeControl.name)("id", ctx_r5.attributeControl.key)("readonly", ctx_r5.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r5.attributeControl.name)("name", ctx_r5.attributeControl.key)("readonly", ctx_r5.isReadonly);
         }
       }
 
       function AttributeComponent_input_8_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 27);
+          var _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 28);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("localDatetimeChange", function AttributeComponent_input_8_Template_input_localDatetimeChange_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r34);
+
+            var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r33.localDatetime = $event;
+          })("dateChange", function AttributeComponent_input_8_Template_input_dateChange_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r34);
+
+            var ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r35.onDateChange($event);
+          })("change", function AttributeComponent_input_8_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r34);
+
+            var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r36.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r6.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r6.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r6.attributeControl.name)("id", ctx_r6.attributeControl.key)("readonly", ctx_r6.isReadonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("localDatetime", ctx_r6.localDatetime)("name", ctx_r6.attributeControl.key)("readonly", ctx_r6.isReadonly);
         }
       }
 
-      function AttributeComponent_select_9_option_1_Template(rf, ctx) {
+      function AttributeComponent_input_9_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 30);
+          var _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 29);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_input_9_Template_input_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r38);
+
+            var ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r37.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var opt_r18 = ctx.$implicit;
+          var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", opt_r18.key);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r7.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](opt_r18.value);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r7.attributeControl.name)("name", ctx_r7.attributeControl.key)("readonly", ctx_r7.isReadonly);
         }
       }
 
-      function AttributeComponent_select_9_Template(rf, ctx) {
+      function AttributeComponent_select_10_option_1_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "select", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "option", 32);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AttributeComponent_select_9_option_1_Template, 2, 2, "option", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var opt_r40 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx_r7.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", opt_r40.key);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControlName", ctx_r7.attributeControl.name)("id", ctx_r7.attributeControl.key);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r7.attributeControl.dropdownList);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](opt_r40.value);
         }
       }
 
-      function AttributeComponent_div_10_Template(rf, ctx) {
+      function AttributeComponent_select_10_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
+          var _r42 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "select", 30);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AttributeComponent_select_10_Template_select_change_0_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r42);
+
+            var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+            return ctx_r41.onChange($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, AttributeComponent_select_10_option_1_Template, 2, 2, "option", 31);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("ng-invalid", ctx_r8.invalid);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx_r8.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", ctx_r8.attributeControl.name)("name", ctx_r8.attributeControl.key);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r8.errorMessage, " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r8.attributeControl.dropdownList);
+        }
+      }
+
+      function AttributeComponent_div_11_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("ng-invalid", ctx_r9.invalid);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r9.errorMessage, " ");
         }
       }
 
       function AttributeFormComponent_strong_3_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "strong", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "strong", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "*");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "*");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function AttributeForm2Component_strong_3_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "strong", 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "strong", 5);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "*");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "*");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function AttributeTableComponent_th_5_strong_2_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "strong", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "strong", 18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "*");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "*");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
       }
 
       function AttributeTableComponent_th_5_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "th", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AttributeTableComponent_th_5_strong_2_Template, 2, 0, "strong", 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, AttributeTableComponent_th_5_strong_2_Template, 2, 0, "strong", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
           var attributeControl_r3 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", attributeControl_r3.label, "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", attributeControl_r3.label, "");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", attributeControl_r3.primaryKey);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", attributeControl_r3.primaryKey);
         }
       }
 
       function AttributeTableComponent_tr_7_span_3_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "span", 25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 25);
         }
       }
 
       function AttributeTableComponent_tr_7_span_4_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "span", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 26);
         }
       }
 
       function AttributeTableComponent_tr_7_td_7_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "td");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "dk-app-attribute", 27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "dk-app-attribute", 27);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
           var attributeControl_r10 = ctx.$implicit;
 
-          var formGroup_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var formGroup_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
-          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("attributeControl", attributeControl_r10)("isSmallSize", ctx_r9.isSmallSize)("formGroup", formGroup_r5)("readonly", ctx_r9.readonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("attributeControl", attributeControl_r10)("isSmallSize", ctx_r9.isSmallSize)("formGroup", formGroup_r5)("readonly", ctx_r9.readonly);
         }
       }
 
       function AttributeTableComponent_tr_7_Template(rf, ctx) {
         if (rf & 1) {
-          var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td", 19);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 20);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_tr_7_Template_button_click_2_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_tr_7_Template_button_click_2_listener() {
+            var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13);
 
-            var i_r6 = ctx.index;
+            var i_r6 = restoredCtx.index;
 
-            var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r12.openDetailModal(i_r6);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AttributeTableComponent_tr_7_span_3_Template, 1, 0, "span", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, AttributeTableComponent_tr_7_span_3_Template, 1, 0, "span", 21);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AttributeTableComponent_tr_7_span_4_Template, 1, 0, "span", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, AttributeTableComponent_tr_7_span_4_Template, 1, 0, "span", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 23);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 23);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_tr_7_Template_button_click_5_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_tr_7_Template_button_click_5_listener() {
+            var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13);
 
-            var i_r6 = ctx.index;
+            var i_r6 = restoredCtx.index;
 
-            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r14.deleteRelationInstance(i_r6);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "span", 24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "span", 24);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, AttributeTableComponent_tr_7_td_7_Template, 2, 4, "td", 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, AttributeTableComponent_tr_7_td_7_Template, 2, 4, "td", 5);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-sm", ctx_r1.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("btn-sm", ctx_r1.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.readonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.readonly);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r1.readonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r1.readonly);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-sm", ctx_r1.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("btn-sm", ctx_r1.isSmallSize);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r1.readonly);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r1.readonly);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r1.attributeControls);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r1.attributeControls);
         }
       }
 
       function AttributeTableComponent_div_8_dk_app_attribute_form_10_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "dk-app-attribute-form", 32);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "dk-app-attribute-form", 32);
         }
 
         if (rf & 2) {
           var attributeControl_r16 = ctx.$implicit;
 
-          var ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("readonly", ctx_r15.readonly)("isSmallSize", ctx_r15.isSmallSize)("attributeControl", attributeControl_r16)("formGroup", ctx_r15.currentFormGroup);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("readonly", ctx_r15.readonly)("isSmallSize", ctx_r15.isSmallSize)("attributeControl", attributeControl_r16)("formGroup", ctx_r15.currentFormGroup);
         }
       }
 
       function AttributeTableComponent_div_8_Template(rf, ctx) {
         if (rf & 1) {
-          var _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 28);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 29);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h5", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "h5", 30);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Line Detail");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Line Detail");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "button", 12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_div_8_Template_button_click_6_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_div_8_Template_button_click_6_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18);
 
-            var ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r17.closeDetailModal();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "\xD7");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\xD7");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, AttributeTableComponent_div_8_dk_app_attribute_form_10_Template, 1, 4, "dk-app-attribute-form", 31);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, AttributeTableComponent_div_8_dk_app_attribute_form_10_Template, 1, 4, "dk-app-attribute-form", 31);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 15);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "button", 16);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_div_8_Template_button_click_12_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_div_8_Template_button_click_12_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18);
 
-            var ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+            var ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
             return ctx_r19.closeDetailModal();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "OK");
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "OK");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](5, _c0, ctx_r2.isDetailModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](7, _c1, ctx_r2.displayDetailModal));
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](5, _c0, ctx_r2.isDetailModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](7, _c1, ctx_r2.displayDetailModal));
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.attributeControls);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r2.attributeControls);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-sm", ctx_r2.isSmallSize);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("btn-sm", ctx_r2.isSmallSize);
         }
       }
 
-      var Entity = function Entity() {
-        _classCallCheck(this, Entity);
+      var _Entity = function _Entity() {
+        _classCallCheck(this, _Entity);
       };
 
-      if (false) {}
-
-      var Relationship = function Relationship() {
-        _classCallCheck(this, Relationship);
+      var _Relationship = function _Relationship() {
+        _classCallCheck(this, _Relationship);
       };
 
-      if (false) {}
-
-      var RelationshipInstance = function RelationshipInstance() {
-        _classCallCheck(this, RelationshipInstance);
+      var _RelationshipInstance = function _RelationshipInstance() {
+        _classCallCheck(this, _RelationshipInstance);
       };
 
-      if (false) {}
-
-      var PartnerInstance = function PartnerInstance() {
-        _classCallCheck(this, PartnerInstance);
+      var _PartnerInstance = function _PartnerInstance() {
+        _classCallCheck(this, _PartnerInstance);
       };
 
-      if (false) {}
-
-      var PartnerRole = function PartnerRole() {
-        _classCallCheck(this, PartnerRole);
+      var _PartnerRole = function _PartnerRole() {
+        _classCallCheck(this, _PartnerRole);
       };
 
-      if (false) {}
-
-      var EntityMeta = function EntityMeta() {
-        _classCallCheck(this, EntityMeta);
+      var _EntityMeta = function _EntityMeta() {
+        _classCallCheck(this, _EntityMeta);
       };
 
-      if (false) {}
-
-      var Attribute = function Attribute() {
-        _classCallCheck(this, Attribute);
+      var _Attribute = function _Attribute() {
+        _classCallCheck(this, _Attribute);
       };
 
-      if (false) {}
-
-      var Role = function Role() {
-        _classCallCheck(this, Role);
+      var _Role = function _Role() {
+        _classCallCheck(this, _Role);
       };
 
-      if (false) {}
-
-      var RoleRelation = function RoleRelation() {
-        _classCallCheck(this, RoleRelation);
+      var _RoleRelation = function _RoleRelation() {
+        _classCallCheck(this, _RoleRelation);
       };
 
-      if (false) {}
-
-      var RelationshipMeta = function RelationshipMeta() {
-        _classCallCheck(this, RelationshipMeta);
+      var _RelationshipMeta = function _RelationshipMeta() {
+        _classCallCheck(this, _RelationshipMeta);
       };
 
-      if (false) {}
-
-      var Involve = function Involve() {
-        _classCallCheck(this, Involve);
+      var _Involve = function _Involve() {
+        _classCallCheck(this, _Involve);
       };
 
-      if (false) {}
-
-      var RelationMeta = function RelationMeta() {
-        _classCallCheck(this, RelationMeta);
+      var _RelationMeta = function _RelationMeta() {
+        _classCallCheck(this, _RelationMeta);
       };
 
-      if (false) {}
-
-      var Association = function Association() {
-        _classCallCheck(this, Association);
+      var _Association = function _Association() {
+        _classCallCheck(this, _Association);
       };
 
-      if (false) {}
-
-      var FieldsMappingPair = function FieldsMappingPair() {
-        _classCallCheck(this, FieldsMappingPair);
+      var _FieldsMappingPair = function _FieldsMappingPair() {
+        _classCallCheck(this, _FieldsMappingPair);
       };
 
-      if (false) {}
-
-      var EntityRelation = function EntityRelation() {
-        _classCallCheck(this, EntityRelation);
+      var _EntityRelation = function _EntityRelation() {
+        _classCallCheck(this, _EntityRelation);
       };
 
-      if (false) {}
-
-      var Selection = function Selection() {
-        _classCallCheck(this, Selection);
+      var _Selection = function _Selection() {
+        _classCallCheck(this, _Selection);
       };
 
-      if (false) {}
-
-      var Projection = function Projection() {
-        _classCallCheck(this, Projection);
+      var _Projection = function _Projection() {
+        _classCallCheck(this, _Projection);
       };
 
-      if (false) {}
-
-      var QueryObject = function QueryObject() {
-        _classCallCheck(this, QueryObject);
+      var _QueryObject = function _QueryObject() {
+        _classCallCheck(this, _QueryObject);
       };
 
-      if (false) {}
-
-      var Sort = function Sort() {
-        _classCallCheck(this, Sort);
+      var _Sort = function _Sort() {
+        _classCallCheck(this, _Sort);
       };
 
-      if (false) {}
-
-      var EntityType = function EntityType() {
-        _classCallCheck(this, EntityType);
+      var _EntityType = function _EntityType() {
+        _classCallCheck(this, _EntityType);
       };
 
-      if (false) {}
-
-      var Relation = function Relation() {
-        _classCallCheck(this, Relation);
+      var _Relation = function _Relation() {
+        _classCallCheck(this, _Relation);
       };
 
-      if (false) {}
-
-      var RelationshipH = function RelationshipH() {
-        _classCallCheck(this, RelationshipH);
+      var _RelationshipH = function _RelationshipH() {
+        _classCallCheck(this, _RelationshipH);
       };
 
-      if (false) {}
-
-      var RoleH = function RoleH() {
-        _classCallCheck(this, RoleH);
+      var _RoleH = function _RoleH() {
+        _classCallCheck(this, _RoleH);
       };
 
-      if (false) {}
-
-      var RoleMeta = function RoleMeta() {
-        _classCallCheck(this, RoleMeta);
+      var _RoleMeta = function _RoleMeta() {
+        _classCallCheck(this, _RoleMeta);
       };
 
-      if (false) {}
-
-      var DataElementH = function DataElementH() {
-        _classCallCheck(this, DataElementH);
+      var _DataElementH = function _DataElementH() {
+        _classCallCheck(this, _DataElementH);
       };
 
-      if (false) {}
-
-      var DataElementMeta = function DataElementMeta() {
-        _classCallCheck(this, DataElementMeta);
+      var _DataElementMeta = function _DataElementMeta() {
+        _classCallCheck(this, _DataElementMeta);
       };
 
-      if (false) {}
-
-      var DataDomainH = function DataDomainH() {
-        _classCallCheck(this, DataDomainH);
+      var _DataDomainH = function _DataDomainH() {
+        _classCallCheck(this, _DataDomainH);
       };
 
-      if (false) {}
-
-      var DataDomainMeta = function DataDomainMeta() {
-        _classCallCheck(this, DataDomainMeta);
+      var _DataDomainMeta = function _DataDomainMeta() {
+        _classCallCheck(this, _DataDomainMeta);
       };
 
-      if (false) {}
-
-      var DataDomainValue = function DataDomainValue() {
-        _classCallCheck(this, DataDomainValue);
+      var _DataDomainValue = function _DataDomainValue() {
+        _classCallCheck(this, _DataDomainValue);
       };
 
-      if (false) {}
-
-      var SearchHelpH = function SearchHelpH() {
-        _classCallCheck(this, SearchHelpH);
+      var _SearchHelpH = function _SearchHelpH() {
+        _classCallCheck(this, _SearchHelpH);
       };
 
-      if (false) {}
-
-      var SearchHelpMeta = function SearchHelpMeta() {
-        _classCallCheck(this, SearchHelpMeta);
+      var _SearchHelpMeta = function _SearchHelpMeta() {
+        _classCallCheck(this, _SearchHelpMeta);
       };
 
-      if (false) {}
-
-      var SearchHelpFieldMeta = function SearchHelpFieldMeta() {
-        _classCallCheck(this, SearchHelpFieldMeta);
+      var _SearchHelpFieldMeta = function _SearchHelpFieldMeta() {
+        _classCallCheck(this, _SearchHelpFieldMeta);
       };
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/ui-mapper.service.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var UiMapperService = /*#__PURE__*/function () {
-        function UiMapperService() {
-          _classCallCheck(this, UiMapperService);
+      var _UiMapperService = /*#__PURE__*/function () {
+        function _UiMapperService() {
+          _classCallCheck(this, _UiMapperService);
         }
         /**
          * Map a FormGroup to a JOR relation(with cardinality [0..1] and [1..1]) for adding or updating.
-         * @param {?} formGroup
-         * @param {?} keys
-         * @param {?=} isNew
-         * @return {?}
+         * @param formGroup: It must be a flat Angular FormGroup, which means no deep structure.
+         * @param keys: Business primary keys to identify one row in the relation(DB table).
+         * For example: Given {USER_ID: 'DH001'}, it means the relation has the primary key 'USER_ID'.
+         * And it must be filled with a fix value 'DH001'.
+         * However, if the value of the key can be derived from the formGroup, then assign null value to it.
+         * For example: Given {EMAIL: null}, the value of key EMAIL will be derived from formGroup.value['EMAIL'].
+         * @param isNew: Determine whether to update or add the value.
+         *
+         * The return is an object like:
+         * {
+         *     action: 'update', USER_ID: 'DH001', MIDDLE_NAME: "xxxxxx"
+         * }
          */
 
 
-        _createClass(UiMapperService, [{
+        _createClass(_UiMapperService, [{
           key: "composeChangedRelation",
           value: function composeChangedRelation(formGroup, keys) {
             var isNew = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
@@ -1991,27 +1643,14 @@
             if (!formGroup.dirty || !keys || Object.keys(keys).length === 0) {
               return {};
             }
-            /** @type {?} */
-
 
             var changedRelation = {
               action: isNew ? 'add' : 'update'
             };
-            Object.keys(keys).forEach(
-            /**
-            * @param {?} key
-            * @return {?}
-            */
-            function (key) {
+            Object.keys(keys).forEach(function (key) {
               return changedRelation[key] = keys[key] || formGroup.value[key];
             });
-            Object.keys(formGroup.controls).forEach(
-            /**
-            * @param {?} key
-            * @return {?}
-            */
-            function (key) {
-              /** @type {?} */
+            Object.keys(formGroup.controls).forEach(function (key) {
               var control = formGroup.get(key);
 
               if (control.dirty) {
@@ -2022,10 +1661,24 @@
           }
           /**
            * Map a FormArray to JOR relation(with cardinality [0..n] or [1..n]) for adding, updating, or deletion.
-           * @param {?} formArray
-           * @param {?} originalArray
-           * @param {?} keys
-           * @return {?}
+           * @param formArray: It must be a flat Angular FormArray, which means no deep structure.
+           * @param originalArray: To determine whether an item is for adding, or for updating, or for deletion.
+           * the original array, which shares the same structure with the formArray, is used for comparison.
+           * Tips: You can get the originalArray by calling *FormArray.getRawValue()* right after
+           * the FormArray is constructed from the backend data, usually, in ngOnInit().
+           * @param keys: Business primary keys to identify one row in the formArray and originalArray.
+           * For example: Given {EMAIL: null}, it will use the attribute EMAIL to compare if the same item exists or not.
+           * First it iterates the formArray to whether check EMAIL exists in the originalArray,
+           * if exists, use action 'update', otherwise, use action 'add'.
+           * Then it iterates the originalArray to check EMAIL exists in formArray,
+           * if not exists, then the action is set to 'delete'.
+           *
+           * The return is an array like:
+           * [
+           *   {action: "update", EMAIL: "dh003@hotmail.com", PRIMARY: 1},
+           *   {action: "add", EMAIL: "dh003@gmail.com", TYPE: "work"},
+           *   {action: "delete", EMAIL: "dh003@darkhouse.com"}
+           * ]
            */
 
         }, {
@@ -2038,36 +1691,15 @@
             if (!originalArray) {
               originalArray = [];
             }
-            /** @type {?} */
-
 
             var changedRelationArray = [];
-            formArray.controls.forEach(
-            /**
-            * @param {?} formGroup
-            * @return {?}
-            */
-            function (formGroup) {
+            formArray.controls.forEach(function (formGroup) {
               if (formGroup.dirty) {
-                /** @type {?} */
                 var changedRelation = {};
                 changedRelationArray.push(changedRelation);
-                /** @type {?} */
-
-                var index = originalArray.findIndex(
-                /**
-                * @param {?} element
-                * @return {?}
-                */
-                function (element) {
-                  /** @type {?} */
+                var index = originalArray.findIndex(function (element) {
                   var found = true;
-                  Object.keys(keys).forEach(
-                  /**
-                  * @param {?} key
-                  * @return {?}
-                  */
-                  function (key) {
+                  Object.keys(keys).forEach(function (key) {
                     if (keys[key]) {
                       return;
                     }
@@ -2077,21 +1709,10 @@
                   return found;
                 });
                 changedRelation['action'] = index === -1 ? 'add' : 'update';
-                Object.keys(keys).forEach(
-                /**
-                * @param {?} key
-                * @return {?}
-                */
-                function (key) {
+                Object.keys(keys).forEach(function (key) {
                   return changedRelation[key] = keys[key] || formGroup.value[key];
                 });
-                Object.keys(formGroup['controls']).forEach(
-                /**
-                * @param {?} key
-                * @return {?}
-                */
-                function (key) {
-                  /** @type {?} */
+                Object.keys(formGroup['controls']).forEach(function (key) {
                   var control = formGroup.get(key);
 
                   if (control.dirty) {
@@ -2100,27 +1721,10 @@
                 });
               }
             });
-            originalArray.forEach(
-            /**
-            * @param {?} originalRelation
-            * @return {?}
-            */
-            function (originalRelation) {
-              /** @type {?} */
-              var index = formArray.controls.findIndex(
-              /**
-              * @param {?} element
-              * @return {?}
-              */
-              function (element) {
-                /** @type {?} */
+            originalArray.forEach(function (originalRelation) {
+              var index = formArray.controls.findIndex(function (element) {
                 var found = true;
-                Object.keys(keys).forEach(
-                /**
-                * @param {?} key
-                * @return {?}
-                */
-                function (key) {
+                Object.keys(keys).forEach(function (key) {
                   if (keys[key]) {
                     return;
                   }
@@ -2131,16 +1735,10 @@
               });
 
               if (index === -1) {
-                /** @type {?} */
                 var deletedRelation = {
                   action: 'delete'
                 };
-                Object.keys(keys).forEach(
-                /**
-                * @param {?} key
-                * @return {?}
-                */
-                function (key) {
+                Object.keys(keys).forEach(function (key) {
                   return deletedRelation[key] = keys[key] || originalRelation[key];
                 });
                 changedRelationArray.push(deletedRelation);
@@ -2150,12 +1748,34 @@
           }
           /**
            * Map a FormArray to JOR relationships for adding, updating, or deletion.
-           * @param {?} relationshipID
-           * @param {?} partnerRoles
-           * @param {?} formArray
-           * @param {?} originalArray
-           * @param {?} nonRelationshipAttributes
-           * @return {?}
+           * @param relationshipID: Relationship ID defined in JOR. For example: 'rs_marriage'
+           * @param partnerRoles: Partner roles involved in the relationship.
+           * For example: Given [{ENTITY_ID: 'person', ROLE_ID: 'wife'}], it means the partner is a 'person' with role 'wife'.
+           * In most cases, a relationship only involves 2 roles, like husband and wife.
+           * However, in certain case, there could be more than two. So the partner role is provided as an array.
+           * @param formArray: First, it must be a flat Angular FormArray, which means no deep structure.
+           * Second, it must contain fields: RELATIONSHIP_INSTANCE_GUID and <partner_role_name>_INSTANCE_GUID.
+           * @param originalArray: To determine whether an item is for adding, or for updating, or for deletion.
+           * the original array, which shares the same structure with the formArray, is used for comparison.
+           * Tips: You can get the originalArray by calling *FormArray.getRawValue()* right after
+           * the FormArray is constructed from the backend data, usually, in ngOnInit().
+           * @param nonRelationshipAttributes: Attributes that are not belong to the relationship, but exist in the formArray.
+           * A relationship has its own attributes, for example, rs_marriage has REG_PLACE and COUNTRY.
+           * However, on the UI, you not only want to show the 2 fields, but also the partner's ID, NAME, BIRTHDAY, and so on.
+           * And these attributes should be excluded when adding and changing the relationship.
+           *
+           * The Return will either a null object or a relationship object like:
+           * {
+           *   RELATIONSHIP_ID: "rs_marriage",
+           *   values: [
+           *     {action: "add", REG_PLACE: "Shanghai", COUNTRY: "China",
+           *      PARTNER_INSTANCES: [
+           *       {ENTITY_ID: "person", ROLE_ID: "wife", INSTANCE_GUID: "391E75B02A1811E981F3C33C6FB0A7C1"}
+           *     ]},
+           *     {action: "update", REG_PLACE: "Beijing", RELATIONSHIP_INSTANCE_GUID: "96DF7F706EE011E9B7B5F7E76DA40E87"},
+           *     {action: "delete", RELATIONSHIP_INSTANCE_GUID: "96DF7F706EE011E9B7B5F7E76DA40E87"}
+           *   ]
+           * }
            */
 
         }, {
@@ -2164,21 +1784,13 @@
             if (!formArray.dirty) {
               return null;
             }
-            /** @type {?} */
-
 
             var relationship = {
               RELATIONSHIP_ID: relationshipID,
               values: []
             };
-            formArray.controls.forEach(
-            /**
-            * @param {?} formGroup
-            * @return {?}
-            */
-            function (formGroup) {
+            formArray.controls.forEach(function (formGroup) {
               if (formGroup.dirty) {
-                /** @type {?} */
                 var changedRelationshipValue = {};
                 relationship.values.push(changedRelationshipValue);
 
@@ -2188,12 +1800,7 @@
                 } else {
                   changedRelationshipValue['action'] = 'add';
                   changedRelationshipValue['PARTNER_INSTANCES'] = [];
-                  partnerRoles.forEach(
-                  /**
-                  * @param {?} partnerRole
-                  * @return {?}
-                  */
-                  function (partnerRole) {
+                  partnerRoles.forEach(function (partnerRole) {
                     return changedRelationshipValue['PARTNER_INSTANCES'].push({
                       ENTITY_ID: partnerRole.ENTITY_ID,
                       ROLE_ID: partnerRole.ROLE_ID,
@@ -2202,17 +1809,10 @@
                   });
                 }
 
-                Object.keys(formGroup['controls']).forEach(
-                /**
-                * @param {?} key
-                * @return {?}
-                */
-                function (key) {
+                Object.keys(formGroup['controls']).forEach(function (key) {
                   if (nonRelationshipAttributes.includes(key) || key.substr(-13) === 'INSTANCE_GUID') {
                     return;
                   }
-                  /** @type {?} */
-
 
                   var control = formGroup.get(key);
 
@@ -2222,18 +1822,8 @@
                 });
               }
             });
-            originalArray.forEach(
-            /**
-            * @param {?} original
-            * @return {?}
-            */
-            function (original) {
-              if (formArray.controls.findIndex(
-              /**
-              * @param {?} formGroup
-              * @return {?}
-              */
-              function (formGroup) {
+            originalArray.forEach(function (original) {
+              if (formArray.controls.findIndex(function (formGroup) {
                 return formGroup.value['RELATIONSHIP_INSTANCE_GUID'] === original['RELATIONSHIP_INSTANCE_GUID'];
               }) === -1) {
                 relationship.values.push({
@@ -2246,33 +1836,26 @@
           }
         }]);
 
-        return UiMapperService;
+        return _UiMapperService;
       }();
+      /** @nocollapse */
 
-      UiMapperService.ɵfac = function UiMapperService_Factory(t) {
-        return new (t || UiMapperService)();
+
+      _UiMapperService.ɵfac = function UiMapperService_Factory(t) {
+        return new (t || _UiMapperService)();
       };
       /** @nocollapse */
 
 
-      UiMapperService.ctorParameters = function () {
-        return [];
-      };
-      /** @nocollapse */
-
-
-      UiMapperService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
-        factory: function UiMapperService_Factory() {
-          return new UiMapperService();
-        },
-        token: UiMapperService,
-        providedIn: "root"
+      _UiMapperService.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+        token: _UiMapperService,
+        factory: _UiMapperService.ɵfac,
+        providedIn: 'root'
       });
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UiMapperService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_UiMapperService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable,
           args: [{
             providedIn: 'root'
           }]
@@ -2280,28 +1863,16 @@
           return [];
         }, null);
       })();
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/entity.service.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /** @type {?} */
-
 
       var httpOptions = {
-        headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+        headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
           'Content-Type': 'application/json'
         })
       };
 
-      var EntityService = /*#__PURE__*/function () {
-        /**
-         * @param {?} http
-         * @param {?} messageService
-         */
-        function EntityService(http, messageService) {
-          _classCallCheck(this, EntityService);
+      var _EntityService = /*#__PURE__*/function () {
+        function _EntityService(http, messageService) {
+          _classCallCheck(this, _EntityService);
 
           this.http = http;
           this.messageService = messageService;
@@ -2327,23 +1898,12 @@
             }
           }], 'EN');
         }
-        /**
-         * @param {?} host
-         * @return {?}
-         */
 
-
-        _createClass(EntityService, [{
+        _createClass(_EntityService, [{
           key: "setOriginalHost",
           value: function setOriginalHost(host) {
             this.originalHost = host;
           }
-          /**
-           * @param {?} msgStore
-           * @param {?} language
-           * @return {?}
-           */
-
         }, {
           key: "setMessageStore",
           value: function setMessageStore(msgStore, language) {
@@ -2351,541 +1911,451 @@
           }
           /**
            * List all entity IDs in the system
-           * @return {?}
            */
 
         }, {
           key: "listEntityID",
           value: function listEntityID() {
-            return this.http.get(this.originalHost + "/api/entity/EntityIDs").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityID')));
+            return this.http.get(this.originalHost + "/api/entity/EntityIDs").pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listEntityID')));
           }
           /**
            * List entity IDs by a given role ID
-           * @param {?} roleID
-           * @return {?}
+           * @param roleID
            */
 
         }, {
           key: "listEntityIDbyRole",
           value: function listEntityIDbyRole(roleID) {
-            return this.http.get(this.originalHost + "/api/entity/EntityIDs/".concat(roleID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityIDbyRole')));
+            return this.http.get(this.originalHost + "/api/entity/EntityIDs/".concat(roleID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listEntityIDbyRole')));
           }
           /**
            * Return the entity meta for a given entity ID
-           * @param {?} entityID
-           * @return {?}
+           * @param entityID
            */
 
         }, {
           key: "getEntityMeta",
           value: function getEntityMeta(entityID) {
-            return this.http.get(this.originalHost + "/api/entity/meta/".concat(entityID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityMeta')));
+            return this.http.get(this.originalHost + "/api/entity/meta/".concat(entityID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getEntityMeta')));
           }
           /**
            * Return a list of entity objects according to the description of a given query object
-           * @param {?} queryObject
-           * @return {?}
+           * @param queryObject
            */
 
         }, {
           key: "searchEntities",
           value: function searchEntities(queryObject) {
-            return this.http.post(this.originalHost + "/api/query", queryObject, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('searchEntities')));
+            return this.http.post(this.originalHost + "/api/query", queryObject, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('searchEntities')));
           }
           /**
            * Return an entity instance for a given entity instance GUID
-           * @param {?} instanceGUID
-           * @return {?}
+           * @param instanceGUID
            */
 
         }, {
           key: "getEntityInstance",
           value: function getEntityInstance(instanceGUID) {
-            return this.http.get(this.originalHost + "/api/entity/instance/".concat(instanceGUID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityInstance')));
+            return this.http.get(this.originalHost + "/api/entity/instance/".concat(instanceGUID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getEntityInstance')));
           }
           /**
            * Return a relation's meta data for a given relation ID
-           * @param {?} relationID
-           * @return {?}
+           * @param relationID
            */
 
         }, {
           key: "getRelationMeta",
           value: function getRelationMeta(relationID) {
-            return this.http.get(this.originalHost + "/api/relation/meta/".concat(relationID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationMeta')));
+            return this.http.get(this.originalHost + "/api/relation/meta/".concat(relationID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRelationMeta')));
           }
           /**
            * Return all relations' meta data for a given entity ID
-           * @param {?} entityID
-           * @return {?}
+           * @param entityID
            */
 
         }, {
           key: "getRelationMetaOfEntity",
           value: function getRelationMetaOfEntity(entityID) {
-            return this.http.get(this.originalHost + "/api/relation/meta/entity/".concat(entityID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationMetaOfEntity')));
+            return this.http.get(this.originalHost + "/api/relation/meta/entity/".concat(entityID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRelationMetaOfEntity')));
           }
           /**
            * Create a new entity instance
-           * @param {?} instance
-           * @return {?}
+           * @param instance
            */
 
         }, {
           key: "createEntityInstance",
           value: function createEntityInstance(instance) {
-            return this.http.post(this.originalHost + "/api/entity", instance, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('createEntityInstance')));
+            return this.http.post(this.originalHost + "/api/entity", instance, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('createEntityInstance')));
           }
           /**
            * Change an existing entity instance
-           * @param {?} instance
-           * @return {?}
+           * @param instance
            */
 
         }, {
           key: "changeEntityInstance",
           value: function changeEntityInstance(instance) {
-            return this.http.put(this.originalHost + "/api/entity", instance, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('changeEntityInstance')));
+            return this.http.put(this.originalHost + "/api/entity", instance, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('changeEntityInstance')));
           }
           /**
            * Delete an entity instance from a given instance GUID
-           * @param {?} instanceGUID
-           * @return {?}
+           * @param instanceGUID
            */
 
         }, {
           key: "deleteEntityInstance",
           value: function deleteEntityInstance(instanceGUID) {
-            return this.http["delete"](this.originalHost + "/api/entity/instance/".concat(instanceGUID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('deleteEntityInstance')));
+            return this.http["delete"](this.originalHost + "/api/entity/instance/".concat(instanceGUID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('deleteEntityInstance')));
           }
           /**
            * Return entity types(IDs) for a given search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listEntityType",
           value: function listEntityType(term) {
-            return this.http.get(this.originalHost + "/api/model/entity-types?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listEntityType')));
+            return this.http.get(this.originalHost + "/api/model/entity-types?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listEntityType')));
           }
           /**
            * Return the description of a given entity type(ID)
-           * @param {?} entityID
-           * @return {?}
+           * @param entityID
            */
 
         }, {
           key: "getEntityTypeDesc",
           value: function getEntityTypeDesc(entityID) {
-            return this.http.get(this.originalHost + "/api/model/entity-types/".concat(entityID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getEntityTypeDesc')));
+            return this.http.get(this.originalHost + "/api/model/entity-types/".concat(entityID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getEntityTypeDesc')));
           }
           /**
            * Save an entity type after changing or creation
-           * @param {?} entityType
-           * @return {?}
+           * @param entityType
            */
 
         }, {
           key: "saveEntityType",
           value: function saveEntityType(entityType) {
-            return this.http.post(this.originalHost + "/api/model/entity-types", entityType, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveEntityType')));
+            return this.http.post(this.originalHost + "/api/model/entity-types", entityType, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveEntityType')));
           }
           /**
            * Return a list of relations in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listRelation",
           value: function listRelation(term) {
-            return this.http.get(this.originalHost + "/api/model/relations?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRelation')));
+            return this.http.get(this.originalHost + "/api/model/relations?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listRelation')));
           }
           /**
            * Return the description of a given relation ID
-           * @param {?} relationID
-           * @return {?}
+           * @param relationID
            */
 
         }, {
           key: "getRelationDesc",
           value: function getRelationDesc(relationID) {
-            return this.http.get(this.originalHost + "/api/model/relations/".concat(relationID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationDesc')));
+            return this.http.get(this.originalHost + "/api/model/relations/".concat(relationID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRelationDesc')));
           }
           /**
            * Save a relation after changing or creation
-           * @param {?} relation
-           * @return {?}
+           * @param relation
            */
 
         }, {
           key: "saveRelation",
           value: function saveRelation(relation) {
-            return this.http.post(this.originalHost + "/api/model/relations", relation, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRelation')));
+            return this.http.post(this.originalHost + "/api/model/relations", relation, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveRelation')));
           }
           /**
            * Return a list of relationships in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listRelationship",
           value: function listRelationship(term) {
-            return this.http.get(this.originalHost + "/api/model/relationships?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRelationship')));
+            return this.http.get(this.originalHost + "/api/model/relationships?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listRelationship')));
           }
           /**
            * Return a relationship definition from a given relationship ID
-           * @param {?} relationshipID
-           * @return {?}
+           * @param relationshipID
            */
 
         }, {
           key: "getRelationship",
           value: function getRelationship(relationshipID) {
-            return this.http.get(this.originalHost + "/api/model/relationships/".concat(relationshipID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationship')));
+            return this.http.get(this.originalHost + "/api/model/relationships/".concat(relationshipID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRelationship')));
           }
           /**
            * Return the description of a given relationship ID
-           * @param {?} relationshipID
-           * @return {?}
+           * @param relationshipID
            */
 
         }, {
           key: "getRelationshipDesc",
           value: function getRelationshipDesc(relationshipID) {
-            return this.http.get(this.originalHost + "/api/model/relationships/".concat(relationshipID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRelationshipDesc')));
+            return this.http.get(this.originalHost + "/api/model/relationships/".concat(relationshipID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRelationshipDesc')));
           }
           /**
            * Save a relationship after changing or creation
-           * @param {?} relationship
-           * @return {?}
+           * @param relationship
            */
 
         }, {
           key: "saveRelationship",
           value: function saveRelationship(relationship) {
-            return this.http.post(this.originalHost + "/api/model/relationships", relationship, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRelationship')));
+            return this.http.post(this.originalHost + "/api/model/relationships", relationship, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveRelationship')));
           }
           /**
            * Return a list of roles in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listRole",
           value: function listRole(term) {
-            return this.http.get(this.originalHost + "/api/model/roles?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listRole')));
+            return this.http.get(this.originalHost + "/api/model/roles?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listRole')));
           }
           /**
            * Return a role definition from a given role ID
-           * @param {?} roleID
-           * @return {?}
+           * @param roleID
            */
 
         }, {
           key: "getRole",
           value: function getRole(roleID) {
-            return this.http.get(this.originalHost + "/api/model/roles/".concat(roleID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRole')));
+            return this.http.get(this.originalHost + "/api/model/roles/".concat(roleID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRole')));
           }
           /**
            * Return the description of a given role ID
-           * @param {?} roleID
-           * @return {?}
+           * @param roleID
            */
 
         }, {
           key: "getRoleDesc",
           value: function getRoleDesc(roleID) {
-            return this.http.get(this.originalHost + "/api/model/roles/".concat(roleID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getRoleDesc')));
+            return this.http.get(this.originalHost + "/api/model/roles/".concat(roleID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getRoleDesc')));
           }
           /**
            * Save a role after changing or creation
-           * @param {?} role
-           * @return {?}
+           * @param role
            */
 
         }, {
           key: "saveRole",
           value: function saveRole(role) {
-            return this.http.post(this.originalHost + "/api/model/roles", role, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveRole')));
+            return this.http.post(this.originalHost + "/api/model/roles", role, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveRole')));
           }
           /**
            * Return a list of data elements in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listDataElement",
           value: function listDataElement(term) {
-            return this.http.get(this.originalHost + "/api/model/data-elements?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listDataElement')));
+            return this.http.get(this.originalHost + "/api/model/data-elements?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listDataElement')));
           }
           /**
            * Return a data element definition from a given element ID
-           * @param {?} elementID
-           * @return {?}
+           * @param elementID
            */
 
         }, {
           key: "getDataElement",
           value: function getDataElement(elementID) {
-            return this.http.get(this.originalHost + "/api/model/data-elements/".concat(elementID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataElement')));
+            return this.http.get(this.originalHost + "/api/model/data-elements/".concat(elementID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getDataElement')));
           }
           /**
            * Return the description of a given data element ID
-           * @param {?} elementID
-           * @return {?}
+           * @param elementID
            */
 
         }, {
           key: "getDataElementDesc",
           value: function getDataElementDesc(elementID) {
-            return this.http.get(this.originalHost + "/api/model/data-elements/".concat(elementID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataElementDesc')));
+            return this.http.get(this.originalHost + "/api/model/data-elements/".concat(elementID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getDataElementDesc')));
           }
           /**
            * Save a data element after changing or creation
-           * @param {?} element
-           * @return {?}
+           * @param element
            */
 
         }, {
           key: "saveDataElement",
           value: function saveDataElement(element) {
-            return this.http.post(this.originalHost + "/api/model/data-elements", element, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveDataElement')));
+            return this.http.post(this.originalHost + "/api/model/data-elements", element, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveDataElement')));
           }
           /**
            * Return a list of data domains in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listDataDomain",
           value: function listDataDomain(term) {
-            return this.http.get(this.originalHost + "/api/model/data-domains?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listDataDomain')));
+            return this.http.get(this.originalHost + "/api/model/data-domains?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listDataDomain')));
           }
           /**
            * Return a data domain definition from a given domain ID
-           * @param {?} domainID
-           * @return {?}
+           * @param domainID
            */
 
         }, {
           key: "getDataDomain",
           value: function getDataDomain(domainID) {
-            return this.http.get(this.originalHost + "/api/model/data-domains/".concat(domainID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataDomain')));
+            return this.http.get(this.originalHost + "/api/model/data-domains/".concat(domainID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getDataDomain')));
           }
           /**
            * Return the description of a given data domain ID
-           * @param {?} domainID
-           * @return {?}
+           * @param domainID
            */
 
         }, {
           key: "getDataDomainDesc",
           value: function getDataDomainDesc(domainID) {
-            return this.http.get(this.originalHost + "/api/model/data-domains/".concat(domainID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getDataDomainDesc')));
+            return this.http.get(this.originalHost + "/api/model/data-domains/".concat(domainID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getDataDomainDesc')));
           }
           /**
            * Save a data domain after changing or creation
-           * @param {?} domain
-           * @return {?}
+           * @param domain
            */
 
         }, {
           key: "saveDataDomain",
           value: function saveDataDomain(domain) {
-            return this.http.post(this.originalHost + "/api/model/data-domains", domain, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveDataDomain')));
+            return this.http.post(this.originalHost + "/api/model/data-domains", domain, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveDataDomain')));
           }
           /**
            * Return a list of search helps in the system according to the search term
-           * @param {?} term
-           * @return {?}
+           * @param term
            */
 
         }, {
           key: "listSearchHelp",
           value: function listSearchHelp(term) {
-            return this.http.get(this.originalHost + "/api/model/search-helps?term=".concat(term)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('listSearchHelp')));
+            return this.http.get(this.originalHost + "/api/model/search-helps?term=".concat(term)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('listSearchHelp')));
           }
           /**
            * Return a search help definition from a given domain ID
-           * @param {?} searchHelpID
-           * @return {?}
+           * @param searchHelpID
            */
 
         }, {
           key: "getSearchHelp",
           value: function getSearchHelp(searchHelpID) {
-            return this.http.get(this.originalHost + "/api/model/search-helps/".concat(searchHelpID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getSearchHelp')));
+            return this.http.get(this.originalHost + "/api/model/search-helps/".concat(searchHelpID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getSearchHelp')));
           }
           /**
            * Return the description of a given search help ID
-           * @param {?} searchHelpID
-           * @return {?}
+           * @param searchHelpID
            */
 
         }, {
           key: "getSearchHelpDesc",
           value: function getSearchHelpDesc(searchHelpID) {
-            return this.http.get(this.originalHost + "/api/model/search-helps/".concat(searchHelpID, "/desc")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getSearchHelpDesc')));
+            return this.http.get(this.originalHost + "/api/model/search-helps/".concat(searchHelpID, "/desc")).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getSearchHelpDesc')));
           }
           /**
            * Save a search help after changing or creation
-           * @param {?} searchHelp
-           * @return {?}
+           * @param searchHelp
            */
 
         }, {
           key: "saveSearchHelp",
           value: function saveSearchHelp(searchHelp) {
-            return this.http.post(this.originalHost + "/api/model/search-helps", searchHelp, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('saveSearchHelp')));
+            return this.http.post(this.originalHost + "/api/model/search-helps", searchHelp, httpOptions).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('saveSearchHelp')));
           }
           /**
            * Get data element meta
-           * @param {?} elementID
-           * @return {?}
+           * @param elementID
            */
 
         }, {
           key: "getElementMeta",
           value: function getElementMeta(elementID) {
-            return this.http.get(this.originalHost + "/api/model/element-meta/".concat(elementID)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getElementMeta')));
+            return this.http.get(this.originalHost + "/api/model/element-meta/".concat(elementID)).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(this.handleError('getElementMeta')));
           }
           /**
            * Return a fake relationship ID before saving
-           * @return {?}
            */
 
         }, {
           key: "generateFakeRelationshipUUID",
           value: function generateFakeRelationshipUUID() {
-            /** @type {?} */
             var nextPosition = this.fakeUUIDs.length + 1;
-            /** @type {?} */
-
             var fakeUUID = 'NewRelationship_' + nextPosition;
             this.fakeUUIDs.push(fakeUUID);
             return fakeUUID;
           }
-          /**
-           * @private
-           * @template T
-           * @param {?=} operation
-           * @param {?=} result
-           * @return {?}
-           */
-
         }, {
           key: "handleError",
           value: function handleError() {
-            var _this2 = this;
+            var _this = this;
 
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'operation';
             var result = arguments.length > 1 ? arguments[1] : undefined;
-            return (
-              /**
-              * @param {?} error
-              * @return {?}
-              */
-              function (error) {
-                // TODO: send the error to remote logging infrastructure
-                console.error(error); // log to console instead
+            return function (error) {
+              // TODO: send the error to remote logging infrastructure
+              console.error(error); // log to console instead
 
-                if (error.status === 401) {
-                  _this2.messageService.addMessage('EXCEPTION', 'SESSION_EXPIRED', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception);
-                } else {
-                  _this2.messageService.addMessage('EXCEPTION', 'GENERIC', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["messageType"].Exception, operation, error.message);
-                } // Let the app keep running by returning an empty result.
+              if (error.status === 401) {
+                _this.messageService.addMessage('EXCEPTION', 'SESSION_EXPIRED', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__.messageType.Exception);
+              } else {
+                _this.messageService.addMessage('EXCEPTION', 'GENERIC', ui_message_angular__WEBPACK_IMPORTED_MODULE_4__.messageType.Exception, operation, error.message);
+              } // Let the app keep running by returning an empty result.
 
 
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(
-                /** @type {?} */
-                result);
-              }
-            );
+              return (0, rxjs__WEBPACK_IMPORTED_MODULE_5__.of)(result);
+            };
           }
         }]);
 
-        return EntityService;
+        return _EntityService;
       }();
+      /** @nocollapse */
 
-      EntityService.ɵfac = function EntityService_Factory(t) {
-        return new (t || EntityService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"]));
+
+      _EntityService.ɵfac = function EntityService_Factory(t) {
+        return new (t || _EntityService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](ui_message_angular__WEBPACK_IMPORTED_MODULE_4__.MessageService));
       };
       /** @nocollapse */
 
 
-      EntityService.ctorParameters = function () {
-        return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
-        }, {
-          type: ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"]
-        }];
-      };
-      /** @nocollapse */
-
-
-      EntityService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
-        factory: function EntityService_Factory() {
-          return new EntityService(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"]));
-        },
-        token: EntityService,
-        providedIn: "root"
+      _EntityService.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+        token: _EntityService,
+        factory: _EntityService.ɵfac,
+        providedIn: 'root'
       });
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](EntityService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_EntityService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable,
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
+            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
           }, {
-            type: ui_message_angular__WEBPACK_IMPORTED_MODULE_4__["MessageService"]
+            type: ui_message_angular__WEBPACK_IMPORTED_MODULE_4__.MessageService
           }];
         }, null);
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/search-help/search-help.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var SearchHelp = function SearchHelp() {
-        _classCallCheck(this, SearchHelp);
+      var _SearchHelp = function _SearchHelp() {
+        _classCallCheck(this, _SearchHelp);
       };
 
-      if (false) {}
-
-      var SearchHelpField = function SearchHelpField() {
-        _classCallCheck(this, SearchHelpField);
+      var _SearchHelpField = function _SearchHelpField() {
+        _classCallCheck(this, _SearchHelpField);
       };
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/search-help/search-help.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var SearchHelpComponent = /*#__PURE__*/function () {
-        /**
-         * @param {?} fb
-         * @param {?} entityService
-         */
-        function SearchHelpComponent(fb, entityService) {
-          _classCallCheck(this, SearchHelpComponent);
+      var _SearchHelpComponent = /*#__PURE__*/function () {
+        function _SearchHelpComponent(fb, entityService) {
+          _classCallCheck(this, _SearchHelpComponent);
 
           this.fb = fb;
           this.entityService = entityService;
@@ -2898,62 +2368,41 @@
           this.listData = [];
           this.preSearchHelpParas = {};
         }
-        /**
-         * @return {?}
-         */
 
-
-        _createClass(SearchHelpComponent, [{
+        _createClass(_SearchHelpComponent, [{
+          key: "displaySearchHelpModal",
+          get: function get() {
+            return this.isSearchHelpModalShown ? 'block' : 'none';
+          }
+        }, {
           key: "ngOnInit",
-
-          /**
-           * @return {?}
-           */
           value: function ngOnInit() {
             this.filterFieldsFormGroup = this.fb.group({});
           }
           /**
            * Open an search help dialog with free style
-           * @param {?} searchHelp
-           * @param {?} exportControl
-           * @param {?=} afterExportFn
-           * @return {?}
+           * @param searchHelp
+           * @param exportControl: An Angular form control which is used to receive the Search Help returned value.
+           * @param afterExportFn: Optional. If provided, the function will be executed after the value is returned.
            */
 
         }, {
           key: "openSearchHelpModal",
           value: function openSearchHelpModal(searchHelp, exportControl, afterExportFn) {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.searchHelp !== searchHelp) {
               this.listData = [];
               this.searchHelp = searchHelp;
               this.filterFieldsFormGroup = this.fb.group({});
-              this.filterFields = this.searchHelp.FIELDS.filter(
-              /**
-              * @param {?} fieldMeta
-              * @return {?}
-              */
-              function (fieldMeta) {
+              this.filterFields = this.searchHelp.FIELDS.filter(function (fieldMeta) {
                 return fieldMeta.FILTER_POSITION;
               });
-              this.filterFields.sort(
-              /**
-              * @param {?} a
-              * @param {?} b
-              * @return {?}
-              */
-              function (a, b) {
+              this.filterFields.sort(function (a, b) {
                 return a.FILTER_POSITION - b.FILTER_POSITION;
               });
-              this.filterFields.forEach(
-              /**
-              * @param {?} fieldMeta
-              * @return {?}
-              */
-              function (fieldMeta) {
+              this.filterFields.forEach(function (fieldMeta) {
                 if (fieldMeta.IMPORT) {
-                  /** @type {?} */
                   var ieFieldName = fieldMeta.IE_FIELD_NAME || fieldMeta.FIELD_NAME;
 
                   if (exportControl.get(ieFieldName)) {
@@ -2961,24 +2410,27 @@
                   }
                 }
 
-                _this3.filterFieldsFormGroup.addControl(fieldMeta.FIELD_NAME, _this3.fb.control(fieldMeta.DEFAULT_VALUE));
+                _this2.filterFieldsFormGroup.addControl(fieldMeta.FIELD_NAME, _this2.fb.control(fieldMeta.DEFAULT_VALUE));
               });
-              this.listFields = this.searchHelp.FIELDS.filter(
-              /**
-              * @param {?} fieldMeta
-              * @return {?}
-              */
-              function (fieldMeta) {
+              this.listFields = this.searchHelp.FIELDS.filter(function (fieldMeta) {
                 return fieldMeta.LIST_POSITION;
               });
-              this.listFields.sort(
-              /**
-              * @param {?} a
-              * @param {?} b
-              * @return {?}
-              */
-              function (a, b) {
+              this.listFields.sort(function (a, b) {
                 return a.LIST_POSITION - b.LIST_POSITION;
+              });
+            } // Import the value to fuzzy search field
+
+
+            if (this.searchHelp.FUZZY_SEARCH) {
+              this.fuzzySearchTerm = '';
+              this.searchHelp.FIELDS.forEach(function (fieldMeta) {
+                var ieFieldName = fieldMeta.IE_FIELD_NAME || fieldMeta.FIELD_NAME;
+                var ctrl = exportControl.get(ieFieldName);
+
+                if (!_this2.fuzzySearchTerm && ctrl && ctrl.value) {
+                  _this2.fuzzySearchTerm = ctrl.value;
+                  return;
+                }
               });
             }
 
@@ -2996,22 +2448,22 @@
           }
           /**
            * Open a search help dialog based on the given entity and one of its relation
-           * @param {?} entityID
-           * @param {?} relationID
-           * @param {?} exportControl
-           * @param {?} readonly
-           * @param {?=} exportField
-           * @param {?=} domainID
-           * @param {?=} afterExportFn
-           * @return {?}
+           * @param entityID
+           * @param relationID
+           * @param exportControl: An Angular form control which is used to receive the Search Help returned value.
+           * @param readonly: If readonly, then the Search Help cannot return value.
+           * @param exportField: Provided only if exportField is given. It uses the data domain to find which attribute should return the value(s).
+           For example, attribute "USER" is assigned with Data Domain "USER_ID". When the Search Help dialog pops up on the field 'CREATE_BY',
+           it finds the attribute "USER" using the Data Domain "USER_ID",
+           and the value of its attribute "USER" is then exported to the field "CREATE_BY".
+           * @param afterExportFn: Optional. If provided, the function will be executed after the value is returned.
            */
 
         }, {
           key: "openSearchHelpModalByEntity",
           value: function openSearchHelpModalByEntity(entityID, relationID, exportControl, readonly, exportField, domainID, afterExportFn) {
-            var _this4 = this;
+            var _this3 = this;
 
-            /** @type {?} */
             var currentSearchHelpParas = {
               'entityID': entityID,
               'relationID': relationID,
@@ -3025,26 +2477,13 @@
             } else {
               this.listData = [];
               this.preSearchHelpParas = currentSearchHelpParas;
-              /** @type {?} */
-
-              var searchHelp = new SearchHelp();
+              var searchHelp = new _SearchHelp();
               searchHelp.OBJECT_NAME = entityID;
 
-              searchHelp.METHOD =
-              /**
-              * @param {?} entityService
-              * @return {?}
-              */
-              function (entityService) {
-                return (
-                  /**
-                  * @param {?} searchTerm
-                  * @return {?}
-                  */
-                  function (searchTerm) {
-                    return entityService.searchEntities(searchTerm);
-                  }
-                );
+              searchHelp.METHOD = function (entityService) {
+                return function (searchTerm) {
+                  return entityService.searchEntities(searchTerm);
+                };
               }(this.entityService);
 
               searchHelp.BEHAVIOUR = 'M';
@@ -3054,22 +2493,9 @@
               searchHelp.READ_ONLY = readonly;
               searchHelp.ENTITY_ID = entityID;
               searchHelp.RELATION_ID = relationID;
-              this.entityService.getRelationMeta(relationID).subscribe(
-              /**
-              * @param {?} data
-              * @return {?}
-              */
-              function (data) {
-                /** @type {?} */
-                var relationMeta =
-                /** @type {?} */
-                data;
-                relationMeta.ATTRIBUTES.forEach(
-                /**
-                * @param {?} attribute
-                * @return {?}
-                */
-                function (attribute) {
+              this.entityService.getRelationMeta(relationID).subscribe(function (data) {
+                var relationMeta = data;
+                relationMeta.ATTRIBUTES.forEach(function (attribute) {
                   return searchHelp.FIELDS.push({
                     FIELD_NAME: attribute.ATTR_NAME,
                     LABEL_TEXT: attribute.LABEL_TEXT,
@@ -3090,27 +2516,27 @@
                   FILTER_POSITION: 0
                 });
 
-                _this4.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
+                _this3.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
               });
             }
           }
           /**
            * Open a search help dialog based on the given search help
-           * @param {?} searchHelpID
-           * @param {?} searchHelpExportField
-           * @param {?} exportField
-           * @param {?} exportControl
-           * @param {?} readonly
-           * @param {?=} afterExportFn
-           * @return {?}
+           * @param searchHelpID
+           * @param searchHelpExportField: a field name in the Search Help which is tagged as exported.
+           An Search Help can have multiple exported fields, and the field names may be different with the Angular control names.
+           Thus, you can choose one Search Help export field name to map with one Angular field control name.
+           * @param exportField: An Angular field control name that is to map with the Search Help export field name.
+           * @param exportControl: An Angular form control which is used to receive the Search Help returned value.
+           * @param readonly: If readonly, then the Search Help cannot return value.
+           * @param afterExportFn: Optional. If provided, the function will be executed after the value is returned.
            */
 
         }, {
           key: "openSearchHelpModalBySearchHelp",
           value: function openSearchHelpModalBySearchHelp(searchHelpID, searchHelpExportField, exportField, exportControl, readonly, afterExportFn) {
-            var _this5 = this;
+            var _this4 = this;
 
-            /** @type {?} */
             var currentSearchHelpParas = {
               'searchHelpID': searchHelpID,
               'searchHelpExportField': searchHelpExportField,
@@ -3123,33 +2549,15 @@
             } else {
               this.listData = [];
               this.preSearchHelpParas = currentSearchHelpParas;
-              /** @type {?} */
-
-              var searchHelp = new SearchHelp();
-              this.entityService.getSearchHelp(searchHelpID).subscribe(
-              /**
-              * @param {?} searchHelpMeta
-              * @return {?}
-              */
-              function (searchHelpMeta) {
+              var searchHelp = new _SearchHelp();
+              this.entityService.getSearchHelp(searchHelpID).subscribe(function (searchHelpMeta) {
                 searchHelp.OBJECT_NAME = searchHelpMeta.SEARCH_HELP_DESC + '(' + searchHelpMeta.SEARCH_HELP_ID + ')';
 
-                searchHelp.METHOD =
-                /**
-                * @param {?} entityService
-                * @return {?}
-                */
-                function (entityService) {
-                  return (
-                    /**
-                    * @param {?} searchTerm
-                    * @return {?}
-                    */
-                    function (searchTerm) {
-                      return entityService.searchEntities(searchTerm);
-                    }
-                  );
-                }(_this5.entityService);
+                searchHelp.METHOD = function (entityService) {
+                  return function (searchTerm) {
+                    return entityService.searchEntities(searchTerm);
+                  };
+                }(_this4.entityService);
 
                 searchHelp.BEHAVIOUR = searchHelpMeta.BEHAVIOUR;
                 searchHelp.MULTI = searchHelpMeta.MULTI;
@@ -3158,14 +2566,7 @@
                 searchHelp.ENTITY_ID = searchHelpMeta.ENTITY_ID;
                 searchHelp.RELATION_ID = searchHelpMeta.RELATION_ID;
                 searchHelp.FIELDS = searchHelpMeta.FIELDS;
-                /** @type {?} */
-
-                var searchHelpField = searchHelp.FIELDS.find(
-                /**
-                * @param {?} field
-                * @return {?}
-                */
-                function (field) {
+                var searchHelpField = searchHelp.FIELDS.find(function (field) {
                   return (field.IE_FIELD_NAME || field.FIELD_NAME) === searchHelpExportField;
                 });
                 searchHelpField.IE_FIELD_NAME = exportField;
@@ -3180,47 +2581,31 @@
                   FILTER_POSITION: 0
                 });
 
-                _this5.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
+                _this4.openSearchHelpModal(searchHelp, exportControl, afterExportFn);
               });
             }
           }
-          /**
-           * @param {?} currentSearchHelpParas
-           * @return {?}
-           */
-
         }, {
           key: "_isPreviousSearchHelp",
           value: function _isPreviousSearchHelp(currentSearchHelpParas) {
             return JSON.stringify(this.preSearchHelpParas) === JSON.stringify(currentSearchHelpParas);
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "search",
           value: function search() {
-            var _this6 = this;
+            var _this5 = this;
 
-            /** @type {?} */
             var searchTerm;
 
             if (this.searchHelp.FUZZY_SEARCH) {
               searchTerm = this.fuzzySearchTerm || '';
             } else {
-              searchTerm = new QueryObject();
+              searchTerm = new _QueryObject();
               searchTerm.ENTITY_ID = this.searchHelp.ENTITY_ID;
               searchTerm.RELATION_ID = this.searchHelp.RELATION_ID;
               searchTerm.FILTER = [];
-              this.filterFields.forEach(
-              /**
-              * @param {?} fieldMeta
-              * @return {?}
-              */
-              function (fieldMeta) {
-                /** @type {?} */
-                var fieldValue = _this6.filterFieldsFormGroup.get(fieldMeta.FIELD_NAME).value;
+              this.filterFields.forEach(function (fieldMeta) {
+                var fieldValue = _this5.filterFieldsFormGroup.get(fieldMeta.FIELD_NAME).value;
 
                 if (fieldValue) {
                   if (fieldValue.includes('*') || fieldValue.includes('%')) {
@@ -3241,12 +2626,7 @@
                 }
               });
               searchTerm.PROJECTION = [];
-              this.listFields.forEach(
-              /**
-              * @param {?} fieldMeta
-              * @return {?}
-              */
-              function (fieldMeta) {
+              this.listFields.forEach(function (fieldMeta) {
                 searchTerm.PROJECTION.push({
                   RELATION_ID: fieldMeta.RELATION_ID,
                   FIELD_NAME: fieldMeta.FIELD_NAME
@@ -3258,60 +2638,31 @@
             this.isSelectAllChecked = false;
 
             if (typeof this.searchHelp.METHOD === 'function') {
-              /** @type {?} */
-              var searchHelpMethod =
-              /** @type {?} */
-              this.searchHelp.METHOD;
-              searchHelpMethod(searchTerm).subscribe(
-              /**
-              * @param {?} data
-              * @return {?}
-              */
-              function (data) {
-                return _this6._generateSearchList(data);
+              var searchHelpMethod = this.searchHelp.METHOD;
+              searchHelpMethod(searchTerm).subscribe(function (data) {
+                return _this5._generateSearchList(data);
               });
             } else if (Array.isArray(this.searchHelp.METHOD)) {
               this._generateSearchList(this.searchHelp.METHOD);
             }
           }
-          /**
-           * @param {?} data
-           * @return {?}
-           */
-
         }, {
           key: "_generateSearchList",
           value: function _generateSearchList(data) {
-            var _this7 = this;
+            var _this6 = this;
 
-            data.forEach(
-            /**
-            * @param {?} item
-            * @return {?}
-            */
-            function (item) {
-              /** @type {?} */
+            data.forEach(function (item) {
               var listItem = {
                 SELECTED: ''
               };
 
-              _this7.listFields.forEach(
-              /**
-              * @param {?} field
-              * @return {?}
-              */
-              function (field) {
+              _this6.listFields.forEach(function (field) {
                 return listItem[field.FIELD_NAME] = item[field.FIELD_NAME];
               });
 
-              _this7.listData.push(listItem);
+              _this6.listData.push(listItem);
             });
           }
-          /**
-           * @param {?} $event
-           * @return {?}
-           */
-
         }, {
           key: "enterSearch",
           value: function enterSearch($event) {
@@ -3319,80 +2670,47 @@
               this.search();
             }
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "showFilter",
           value: function showFilter() {
             this.isFilterShown = true;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "hideFilter",
           value: function hideFilter() {
             this.isFilterShown = false;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "selectAll",
           value: function selectAll() {
             this.isSelectAllChecked = !this.isSelectAllChecked;
-            this.listData.forEach(
-            /**
-            * @param {?} data
-            * @return {?}
-            */
-            function (data) {
+            this.listData.forEach(function (data) {
               return data.SELECTED = !data.SELECTED;
             });
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "confirmSelection",
           value: function confirmSelection() {
-            var _this8 = this;
+            var _this7 = this;
 
             // TODO: Currently, only single selection is supported. Multiple selection in later time
             if (this.searchHelp.READ_ONLY) {
               return;
             }
 
-            this.listFields.forEach(
-            /**
-            * @param {?} listField
-            * @return {?}
-            */
-            function (listField) {
-              if (_this8.exportControl instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroup"]) {
-                /** @type {?} */
-                var exportControl =
-                /** @type {?} */
-                _this8.exportControl;
-                /** @type {?} */
-
+            this.listFields.forEach(function (listField) {
+              if (_this7.exportControl instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroup) {
+                var exportControl = _this7.exportControl;
                 var ieFieldName = listField.IE_FIELD_NAME || listField.FIELD_NAME;
-                /** @type {?} */
-
                 var exportFieldControl = exportControl.get(ieFieldName);
 
                 if (listField.EXPORT && exportFieldControl) {
-                  exportFieldControl.setValue(_this8.listData[_this8.selectedIndex][listField.FIELD_NAME]);
+                  exportFieldControl.setValue(_this7.listData[_this7.selectedIndex][listField.FIELD_NAME]);
                   exportFieldControl.markAsDirty();
                 }
               } else {
                 if (listField.EXPORT) {
-                  _this8.exportControl[listField.FIELD_NAME] = _this8.listData[_this8.selectedIndex][listField.FIELD_NAME];
+                  _this7.exportControl[listField.FIELD_NAME] = _this7.listData[_this7.selectedIndex][listField.FIELD_NAME];
                 }
               }
             });
@@ -3404,260 +2722,212 @@
             this.listData = [];
             this.isSearchHelpModalShown = false;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "closeSearchHelpModal",
           value: function closeSearchHelpModal() {
             this.isSearchHelpModalShown = false;
           }
-        }, {
-          key: "displaySearchHelpModal",
-          get: function get() {
-            return this.isSearchHelpModalShown ? 'block' : 'none';
-          }
         }]);
 
-        return SearchHelpComponent;
+        return _SearchHelpComponent;
       }();
+      /** @nocollapse */
 
-      SearchHelpComponent.ɵfac = function SearchHelpComponent_Factory(t) {
-        return new (t || SearchHelpComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](EntityService));
+
+      _SearchHelpComponent.ɵfac = function SearchHelpComponent_Factory(t) {
+        return new (t || _SearchHelpComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_EntityService));
       };
+      /** @nocollapse */
 
-      SearchHelpComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-        type: SearchHelpComponent,
+
+      _SearchHelpComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+        type: _SearchHelpComponent,
         selectors: [["dk-app-search-help"]],
         decls: 26,
         vars: 15,
         consts: [["id", "searchHelp", "tabindex", "-1", "role", "dialog", 1, "modal", "fade", 3, "ngClass", "ngStyle"], ["role", "document", 1, "modal-dialog", "modal-dialog-centered", "modal-lg"], [1, "modal-content", "dk-search-help-content"], [1, "modal-header", "dk-search-help-header"], ["id", "addRelationship", 1, "modal-title"], ["type", "button", 1, "close", 3, "click"], ["aria-hidden", "true"], [1, "modal-body"], ["class", "card mb-2", 4, "ngIf"], ["type", "button", "class", "btn btn-link float-right", 3, "click", 4, "ngIf"], [1, "table", "table-bordered", "table-sm", "table-hover", "dk-search-table"], [1, "thead-light"], ["scope", "col"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click", 4, "ngIf"], [3, "display", 4, "ngFor", "ngForOf"], [4, "ngFor", "ngForOf"], [1, "modal-footer", "dk-search-help-footer"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], ["type", "button", 1, "btn", "btn-sm", "btn-primary", 3, "disabled", "click"], [1, "card", "mb-2"], ["class", "mt-2 mx-2 row", 4, "ngIf"], [1, "mt-2", "mx-2", "row", 3, "formGroup"], ["class", "col-6 form-group row", 4, "ngFor", "ngForOf"], [1, "mb-2"], ["type", "button", "id", "search", 1, "btn", "btn-sm", "btn-primary", "float-right", "mr-2", 3, "click"], [1, "mt-2", "mx-2", "row"], ["type", "text", "placeholder", "Search", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup"], [1, "col-6", "form-group", "row"], [1, "col-6", "col-form-label", "col-form-label-sm", "text-right", 3, "for"], ["type", "text", 1, "col-6", "form-control", "form-control-sm", 3, "id", "name", "formControlName", "readonly", "keyup"], ["type", "button", 1, "btn", "btn-link", "float-right", 3, "click"], ["type", "checkbox", 3, "ngModel", "ngModelChange", "click"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick", 4, "ngIf"], ["type", "checkbox", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["type", "radio", "name", "selectedIndex", 3, "value", "ngModel", "ngModelChange", "dblclick"], ["type", "checkbox", 3, "ngModel", "ngModelChange"]],
         template: function SearchHelpComponent_Template(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h6", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "h6", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "button", 5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_6_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_6_listener() {
               return ctx.closeSearchHelpModal();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span", 6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "\xD7");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\xD7");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 7);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, SearchHelpComponent_div_10_Template, 7, 3, "div", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, SearchHelpComponent_div_10_Template, 7, 3, "div", 8);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, SearchHelpComponent_button_11_Template, 2, 0, "button", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, SearchHelpComponent_button_11_Template, 2, 0, "button", 9);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, SearchHelpComponent_button_12_Template, 2, 0, "button", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](12, SearchHelpComponent_button_12_Template, 2, 0, "button", 9);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "table", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "table", 10);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "thead", 11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "thead", 11);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "tr");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "tr");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "th", 12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "th", 12);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, SearchHelpComponent_input_17_Template, 1, 1, "input", 13);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](17, SearchHelpComponent_input_17_Template, 1, 1, "input", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, SearchHelpComponent_th_18_Template, 2, 3, "th", 14);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](18, SearchHelpComponent_th_18_Template, 2, 3, "th", 14);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "tbody");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "tbody");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, SearchHelpComponent_tr_20_Template, 5, 3, "tr", 15);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](20, SearchHelpComponent_tr_20_Template, 5, 3, "tr", 15);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 16);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "div", 16);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 17);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "button", 17);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_22_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_22_listener() {
               return ctx.closeSearchHelpModal();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Cancel");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "Cancel");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 18);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "button", 18);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_24_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SearchHelpComponent_Template_button_click_24_listener() {
               return ctx.confirmSelection();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Confirm");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "Confirm");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](11, _c0, ctx.isSearchHelpModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](13, _c1, ctx.displaySearchHelpModal));
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](11, _c0, ctx.isSearchHelpModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](13, _c1, ctx.displaySearchHelpModal));
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx.searchHelp == null ? null : ctx.searchHelp.OBJECT_NAME, " (", ctx.listData.length, ")");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("", ctx.searchHelp == null ? null : ctx.searchHelp.OBJECT_NAME, " (", ctx.listData.length, ")");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isFilterShown);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isFilterShown);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isFilterShown);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.isFilterShown);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isFilterShown);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isFilterShown);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.searchHelp == null ? null : ctx.searchHelp.MULTI);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.searchHelp == null ? null : ctx.searchHelp.MULTI);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.listFields);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.listFields);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.listData);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.listData);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.searchHelp == null ? null : ctx.searchHelp.READ_ONLY);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx.searchHelp == null ? null : ctx.searchHelp.READ_ONLY);
           }
         },
-        directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["RadioControlValueAccessor"]],
-        styles: [".dk-search-help-header[_ngcontent-%COMP%]{background-color:#e9ecef;padding:.3rem .5rem}.dk-search-help-footer[_ngcontent-%COMP%]{padding:.5rem}.dk-search-table[_ngcontent-%COMP%]{border:none;display:block;max-height:20rem;overflow:scroll;white-space:nowrap}.dk-search-help-content[_ngcontent-%COMP%]{border:1px solid rgba(0,0,0,.4);box-shadow:8px 5px 5px rgba(0,0,0,.2)}.dk-search-table[_ngcontent-%COMP%]   th[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2}"]
+        directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgStyle, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgModel, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControlName, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.CheckboxControlValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.RadioControlValueAccessor],
+        styles: [".dk-search-help-header[_ngcontent-%COMP%]{padding:.3rem .5rem;background-color:#e9ecef}.dk-search-help-footer[_ngcontent-%COMP%]{padding:.5rem}.dk-search-table[_ngcontent-%COMP%]{display:block;max-height:20rem;overflow:scroll;white-space:nowrap;border:none}.dk-search-help-content[_ngcontent-%COMP%]{border:1px solid rgba(0,0,0,.4);box-shadow:8px 5px 5px rgba(0,0,0,.2)}.dk-search-table[_ngcontent-%COMP%]   th[_ngcontent-%COMP%]{position:sticky;top:0;z-index:2}"]
       });
-      /** @nocollapse */
-
-      SearchHelpComponent.ctorParameters = function () {
-        return [{
-          type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]
-        }, {
-          type: EntityService
-        }];
-      };
-      /*@__PURE__*/
-
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SearchHelpComponent, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_SearchHelpComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-app-search-help',
-            template: "<div class=\"modal fade\" id=\"searchHelp\" tabindex=\"-1\" role=\"dialog\"\n     [ngClass]=\"{'show': isSearchHelpModalShown}\" [ngStyle]=\"{'display': displaySearchHelpModal}\">\n  <div class=\"modal-dialog modal-dialog-centered modal-lg\" role=\"document\">\n    <div class=\"modal-content dk-search-help-content\">\n      <div class=\"modal-header dk-search-help-header\">\n        <h6 class=\"modal-title\" id=\"addRelationship\">{{searchHelp?.OBJECT_NAME}} ({{listData.length}})</h6>\n        <button type=\"button\" class=\"close\" (click)=\"closeSearchHelpModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n\n      <div class=\"modal-body\">\n        <div *ngIf=\"isFilterShown\" class=\"card mb-2\">\n          <div *ngIf=\"searchHelp && searchHelp.FUZZY_SEARCH\" class=\"mt-2 mx-2 row\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" [(ngModel)]=\"fuzzySearchTerm\" (keyup)=\"enterSearch($event)\">\n          </div>\n          <div class=\"mt-2 mx-2 row\" [formGroup]=\"filterFieldsFormGroup\">\n            <div *ngFor=\"let filterField of filterFields\" class=\"col-6 form-group row\">\n              <label for=\"{{filterField.FIELD_NAME}}\" class=\"col-6 col-form-label col-form-label-sm text-right\">\n                {{filterField.LABEL_TEXT || filterField.FIELD_NAME}}:</label>\n              <input id=\"{{filterField.FIELD_NAME}}\" name=\"{{filterField.FIELD_NAME}}\" formControlName=\"{{filterField.FIELD_NAME}}\"\n                     type=\"text\" class=\"col-6 form-control form-control-sm\" [readonly]=\"filterField.FILTER_DISP_ONLY\" (keyup)=\"enterSearch($event)\">\n            </div>\n          </div>\n\n          <div class=\"mb-2\">\n            <button type=\"button\" id=\"search\" class=\"btn btn-sm btn-primary float-right mr-2\" (click)=\"search()\">\n              Search\n            </button>\n          </div>\n        </div>\n\n        <button *ngIf=\"!isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"showFilter()\">Show Filter</button>\n        <button *ngIf=\"isFilterShown\" type=\"button\" class=\"btn btn-link float-right\" (click)=\"hideFilter()\">Hide Filter</button>\n\n        <table class=\"table table-bordered table-sm table-hover dk-search-table\">\n          <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">\n              <input *ngIf=\"searchHelp?.MULTI\" type=\"checkbox\" [(ngModel)]=\"isSelectAllChecked\" (click)=\"selectAll()\">\n            </th>\n            <th *ngFor=\"let listField of listFields\"\n                [style.display]=\"listField.FIELD_NAME === 'INSTANCE_GUID' ? 'none' : 'table-cell'\">\n              {{listField.LIST_HEADER_TEXT || listField.FIELD_NAME}}\n            </th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let item of listData; let i = index\">\n            <td>\n              <input *ngIf=\"!searchHelp.MULTI\" type=\"radio\" name=\"selectedIndex\" [value]=\"i\" [(ngModel)]=\"selectedIndex\" (dblclick)=\"confirmSelection()\">\n              <input *ngIf=\"searchHelp.MULTI\" type=\"checkbox\" [(ngModel)]=\"item.SELECTED\">\n            </td>\n            <td *ngFor=\"let listField of listFields\"\n                [style.display]=\"listField.FIELD_NAME === 'INSTANCE_GUID' ? 'none' : 'table-cell'\">\n              {{item[listField.FIELD_NAME]}}\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <div class=\"modal-footer dk-search-help-footer\">\n        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"closeSearchHelpModal()\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-sm btn-primary\" (click)=\"confirmSelection()\" [disabled]=\"searchHelp?.READ_ONLY\">Confirm</button>\n      </div>\n    </div>\n  </div>\n</div>\n",
-            styles: [".dk-search-help-header{background-color:#e9ecef;padding:.3rem .5rem}.dk-search-help-footer{padding:.5rem}.dk-search-table{border:none;display:block;max-height:20rem;overflow:scroll;white-space:nowrap}.dk-search-help-content{border:1px solid rgba(0,0,0,.4);box-shadow:8px 5px 5px rgba(0,0,0,.2)}.dk-search-table th{position:-webkit-sticky;position:sticky;top:0;z-index:2}"]
+            templateUrl: './search-help.component.html',
+            styleUrls: ['./search-help.component.css']
           }]
         }], function () {
           return [{
-            type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]
+            type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder
           }, {
-            type: EntityService
+            type: _EntityService
           }];
         }, null);
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-base.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var AttributeBase = function AttributeBase() {
-        _classCallCheck(this, AttributeBase);
+      var _AttributeBase = function _AttributeBase() {
+        _classCallCheck(this, _AttributeBase);
 
         this.dropdownList = [];
       };
 
-      if (false) {}
-
       var DropdownList = function DropdownList() {
         _classCallCheck(this, DropdownList);
-      };
-
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-validators.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-      // noinspection JSAnnotator
+      }; // noinspection JSAnnotator
 
 
       var DomainValueValidator = /*#__PURE__*/function () {
-        /**
-         * @param {?} entityService
-         */
         function DomainValueValidator(entityService) {
           _classCallCheck(this, DomainValueValidator);
 
           this.entityService = entityService;
         }
-        /**
-         * @param {?} ctrl
-         * @return {?}
-         */
-
 
         _createClass(DomainValueValidator, [{
           key: "validate",
           value: function validate(ctrl) {
-            /** @type {?} */
-            var queryObject = new QueryObject(); // queryObject.ENTITY_ID = entityID;
+            var queryObject = new _QueryObject(); // queryObject.ENTITY_ID = entityID;
             // queryObject.RELATION_ID = relationID;
             // queryObject.FILTER = [{FIELD_NAME: searchField, OPERATOR: 'EQ', LOW: ctrl.value}];
 
-            return this.entityService.searchEntities(queryObject).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(
-            /**
-            * @param {?} data
-            * @return {?}
-            */
-            function (data) {
+            return this.entityService.searchEntities(queryObject).pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.map)(function (data) {
               if (data['msgName']) {
                 return {
                   message: data['msgName']['msgShortText']
@@ -3671,11 +2941,7 @@
                   return null;
                 }
               }
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(
-            /**
-            * @return {?}
-            */
-            function () {
+            }), (0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.catchError)(function () {
               return null;
             }));
           }
@@ -3683,100 +2949,62 @@
 
         return DomainValueValidator;
       }();
+      /** @nocollapse */
+
 
       DomainValueValidator.ɵfac = function DomainValueValidator_Factory(t) {
-        return new (t || DomainValueValidator)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](EntityService));
+        return new (t || DomainValueValidator)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_EntityService));
       };
       /** @nocollapse */
 
 
-      DomainValueValidator.ctorParameters = function () {
-        return [{
-          type: EntityService
-        }];
-      };
-      /** @nocollapse */
-
-
-      DomainValueValidator.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
-        factory: function DomainValueValidator_Factory() {
-          return new DomainValueValidator(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(EntityService));
-        },
+      DomainValueValidator.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: DomainValueValidator,
-        providedIn: "root"
+        factory: DomainValueValidator.ɵfac,
+        providedIn: 'root'
       });
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DomainValueValidator, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomainValueValidator, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable,
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: EntityService
+            type: _EntityService
           }];
         }, null);
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-control.service.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var AttributeControlService = /*#__PURE__*/function () {
-        /**
-         * @param {?} entityService
-         * @param {?} domainValueValidator
-         */
-        function AttributeControlService(entityService, domainValueValidator) {
-          _classCallCheck(this, AttributeControlService);
+      var _AttributeControlService = /*#__PURE__*/function () {
+        function _AttributeControlService(entityService, domainValueValidator) {
+          _classCallCheck(this, _AttributeControlService);
 
           this.entityService = entityService;
           this.domainValueValidator = domainValueValidator;
         }
-        /**
-         * @param {?} attributes
-         * @return {?}
-         */
 
-
-        _createClass(AttributeControlService, [{
+        _createClass(_AttributeControlService, [{
           key: "toAttributeControl",
           value: function toAttributeControl(attributes) {
-            var _this9 = this;
+            var _this8 = this;
 
-            /** @type {?} */
             var attributeControls = [];
 
             if (!attributes) {
               return attributeControls;
             }
 
-            attributes.forEach(
-            /**
-            * @param {?} attribute
-            * @return {?}
-            */
-            function (attribute) {
-              return attributeControls.push(_this9.toSingleAttributeControl(attribute));
+            attributes.forEach(function (attribute) {
+              return attributeControls.push(_this8.toSingleAttributeControl(attribute));
             });
             return attributeControls;
           }
-          /**
-           * @param {?} attribute
-           * @return {?}
-           */
-
         }, {
           key: "toSingleAttributeControl",
           value: function toSingleAttributeControl(attribute) {
-            /** @type {?} */
-            var attributeControl = new AttributeBase();
+            var attributeControl = new _AttributeBase();
             attributeControl.key = attribute.ATTR_GUID;
             attributeControl.name = attribute.ATTR_NAME;
             attributeControl.label = attribute.LABEL_TEXT;
@@ -3866,27 +3094,11 @@
 
             return attributeControl;
           }
-          /**
-           * @param {?} domainID
-           * @param {?} attributeControl
-           * @return {?}
-           */
-
         }, {
           key: "_generateDropdownList",
           value: function _generateDropdownList(domainID, attributeControl) {
-            this.entityService.getDataDomain(domainID).subscribe(
-            /**
-            * @param {?} dataDomain
-            * @return {?}
-            */
-            function (dataDomain) {
-              return dataDomain['DOMAIN_VALUES'].forEach(
-              /**
-              * @param {?} domainValue
-              * @return {?}
-              */
-              function (domainValue) {
+            this.entityService.getDataDomain(domainID).subscribe(function (dataDomain) {
+              return dataDomain['DOMAIN_VALUES'].forEach(function (domainValue) {
                 attributeControl.dropdownList.push({
                   key: domainValue['LOW_VALUE'],
                   value: domainValue['LOW_VALUE_TEXT'] || domainValue['LOW_VALUE']
@@ -3894,41 +3106,25 @@
               });
             });
           }
-          /**
-           * @param {?} attributeControl
-           * @param {?} attribute
-           * @return {?}
-           */
-
         }, {
           key: "_setDecimalPattern",
           value: function _setDecimalPattern(attributeControl, attribute) {
-            /** @type {?} */
             var zeroPadding = '0000000000000000000000000000000000000';
             attributeControl.step = '0.' + zeroPadding.substr(0, attribute.DECIMAL - 1) + '1';
             attributeControl.placeholder = '0.' + zeroPadding.substr(0, attribute.DECIMAL - 1) + '0';
-            /** @type {?} */
-
             var integerPlace = attribute.DATA_LENGTH - attribute.DECIMAL;
             attributeControl.pattern = attribute.UNSIGNED ? '^(' : '^(\\-?';
             attributeControl.pattern += integerPlace ? '\\d{1,' + integerPlace.toString() + '})' : '0)';
             attributeControl.pattern += '(\\.\\d{1,' + attribute.DECIMAL + '})?$';
             attributeControl.maxLength = attribute.DATA_LENGTH;
           }
-          /**
-           * @param {?} attribute
-           * @param {?} instance
-           * @return {?}
-           */
-
         }, {
           key: "convertToFormControl",
           value: function convertToFormControl(attribute, instance) {
-            /** @type {?} */
-            var formControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControl"](instance[attribute.ATTR_NAME] || '');
+            var formControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl(instance[attribute.ATTR_NAME] || '');
 
             if (attribute.PRIMARY_KEY && !attribute.AUTO_INCREMENT) {
-              formControl.setValidators(_angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required);
+              formControl.setValidators(_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required);
             } // if (attribute.DOMAIN_TYPE === 2 && !attribute.PRIMARY_KEY) {
             //   formControl.setAsyncValidators(this.domainValueValidator.validate.bind(this.domainValueValidator));
             // }
@@ -3936,118 +3132,198 @@
 
             return formControl;
           }
-          /**
-           * @param {?} attributes
-           * @param {?} instance
-           * @param {?=} isDirty
-           * @return {?}
-           */
-
         }, {
           key: "convertToFormGroup",
           value: function convertToFormGroup(attributes, instance, isDirty) {
-            var _this10 = this;
+            var _this9 = this;
 
-            /** @type {?} */
             var group = {};
-            attributes.forEach(
-            /**
-            * @param {?} attribute
-            * @return {?}
-            */
-            function (attribute) {
-              group[attribute.ATTR_NAME] = _this10.convertToFormControl(attribute, instance);
+            attributes.forEach(function (attribute) {
+              group[attribute.ATTR_NAME] = _this9.convertToFormControl(attribute, instance);
 
               if (instance[attribute.ATTR_NAME] && isDirty) {
                 group[attribute.ATTR_NAME].markAsDirty();
               }
             });
-            return new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroup"](group);
+            return new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroup(group);
           }
         }]);
 
-        return AttributeControlService;
+        return _AttributeControlService;
       }();
+      /** @nocollapse */
 
-      AttributeControlService.ɵfac = function AttributeControlService_Factory(t) {
-        return new (t || AttributeControlService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](EntityService), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](DomainValueValidator));
+
+      _AttributeControlService.ɵfac = function AttributeControlService_Factory(t) {
+        return new (t || _AttributeControlService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_EntityService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](DomainValueValidator));
       };
       /** @nocollapse */
 
 
-      AttributeControlService.ctorParameters = function () {
-        return [{
-          type: EntityService
-        }, {
-          type: DomainValueValidator
-        }];
-      };
-      /** @nocollapse */
-
-
-      AttributeControlService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
-        factory: function AttributeControlService_Factory() {
-          return new AttributeControlService(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(EntityService), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(DomainValueValidator));
-        },
-        token: AttributeControlService,
-        providedIn: "root"
+      _AttributeControlService.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+        token: _AttributeControlService,
+        factory: _AttributeControlService.ɵfac,
+        providedIn: 'root'
       });
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AttributeControlService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_AttributeControlService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable,
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: EntityService
+            type: _EntityService
           }, {
             type: DomainValueValidator
           }];
         }, null);
       })();
-
-      if (false) {}
       /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+       * Convert the date object to a string in format "yyyy-MM-ddThh:mm:ss".
        */
 
 
-      var AttributeComponent = /*#__PURE__*/function () {
-        function AttributeComponent() {
-          _classCallCheck(this, AttributeComponent);
+      var DatetimeDirective = /*#__PURE__*/function () {
+        function DatetimeDirective() {
+          _classCallCheck(this, DatetimeDirective);
+
+          this.localString = '';
+          this.dateChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.EventEmitter();
         }
-        /**
-         * @return {?}
-         */
+
+        _createClass(DatetimeDirective, [{
+          key: "localDatetime",
+          set: function set(d) {
+            this.localString = this.toLocalDateString(d);
+          }
+        }, {
+          key: "toLocalDateString",
+          value: function toLocalDateString(timeUTC) {
+            if (!timeUTC) {
+              return '';
+            }
+
+            if (isNaN(timeUTC.getTime())) {
+              return '';
+            } else {
+              return timeUTC.getFullYear().toString() + '-' + ('0' + (timeUTC.getMonth() + 1)).slice(-2) + '-' + ('0' + timeUTC.getDate()).slice(-2) + 'T' + timeUTC.toTimeString().slice(0, 8);
+            }
+          }
+        }, {
+          key: "onDateChange",
+          value: function onDateChange(value) {
+            if (value !== this.localString) {
+              this.localString = value;
+              this.dateChange.emit(new Date(value));
+            }
+          }
+        }]);
+
+        return DatetimeDirective;
+      }();
+      /** @nocollapse */
 
 
-        _createClass(AttributeComponent, [{
+      DatetimeDirective.ɵfac = function DatetimeDirective_Factory(t) {
+        return new (t || DatetimeDirective)();
+      };
+      /** @nocollapse */
+
+
+      DatetimeDirective.ɵdir = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+        type: DatetimeDirective,
+        selectors: [["input", "type", "datetime-local"]],
+        hostVars: 1,
+        hostBindings: function DatetimeDirective_HostBindings(rf, ctx) {
+          if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function DatetimeDirective_change_HostBindingHandler($event) {
+              return ctx.onDateChange($event.target.value);
+            });
+          }
+
+          if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵhostProperty"]("value", ctx.localString);
+          }
+        },
+        inputs: {
+          localDatetime: "localDatetime"
+        },
+        outputs: {
+          dateChange: "dateChange"
+        }
+      });
+
+      (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DatetimeDirective, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Directive,
+          args: [{
+            // tslint:disable-next-line:directive-selector
+            selector: 'input[type=datetime-local]'
+          }]
+        }], function () {
+          return [];
+        }, {
+          localDatetime: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
+          }],
+          dateChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Output
+          }],
+          localString: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.HostBinding,
+            args: ['value']
+          }],
+          onDateChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.HostListener,
+            args: ['change', ['$event.target.value']]
+          }]
+        });
+      })();
+
+      var _AttributeComponent = /*#__PURE__*/function () {
+        function _AttributeComponent() {
+          _classCallCheck(this, _AttributeComponent);
+
+          this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.EventEmitter();
+        }
+
+        _createClass(_AttributeComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            /** @type {?} */
+            var _this10 = this;
+
             var fieldCtrl = this.formGroup.get(this.attributeControl.name);
+
+            if (!fieldCtrl) {
+              return;
+            }
 
             switch (this.attributeControl.controlType) {
               case 'timestamp':
                 if (!this.readonly && !fieldCtrl.value) {
-                  /** @type {?} */
-                  var currentTimestamp = new Date();
-                  fieldCtrl.setValue(currentTimestamp.getFullYear() + '-' + ('0' + (currentTimestamp.getMonth() + 1)).slice(-2) + '-' + ('0' + currentTimestamp.getDate()).slice(-2) + ' ' + ('0' + currentTimestamp.getHours()).slice(-2) + ':' + ('0' + currentTimestamp.getMinutes()).slice(-2) + ':' + ('0' + currentTimestamp.getSeconds()).slice(-2));
+                  this.localDatetime = new Date();
+                  fieldCtrl.setValue(this.localDatetime.toISOString().slice(0, 19).replace('T', ' '));
                   fieldCtrl.markAsDirty();
+                } else if (fieldCtrl.value) {
+                  // to support Safari and Firefox, the dateStr format 'yyyy-MM-dd HH:mm:ss' needs to be converted to 'yyyy/MM/dd HH:mm:ss'
+                  this.localDatetime = new Date(fieldCtrl.value.replace(/-/g, '/') + ' UTC');
                 }
 
+                fieldCtrl.valueChanges.subscribe(function (value) {
+                  if (!value) {
+                    return;
+                  }
+
+                  _this10.localDatetime = new Date(value.replace(/-/g, '/') + ' UTC');
+                });
                 break;
 
               case 'date':
                 if (!this.readonly && !fieldCtrl.value) {
-                  /** @type {?} */
-                  var currentDate = new Date();
-                  fieldCtrl.setValue(currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2));
+                  this.localDatetime = new Date();
+                  fieldCtrl.setValue(this.localDatetime.toISOString().slice(0, 10));
                   fieldCtrl.markAsDirty();
                 }
 
@@ -4055,11 +3331,19 @@
 
               default:
             }
-          }
-          /**
-           * @return {?}
-           */
 
+            if (this.attributeControl.domainId === 'UUID' && !this.readonly && !fieldCtrl.value) {
+              fieldCtrl.setValue((0, uuid__WEBPACK_IMPORTED_MODULE_0__.v4)());
+              fieldCtrl.markAsDirty();
+            }
+
+            if (this.attributeControl.domainId === 'GUID' && !this.readonly && !fieldCtrl.value) {
+              var guid = (0, uuid__WEBPACK_IMPORTED_MODULE_0__.v4)();
+              guid = guid.replace(/-/g, '').toUpperCase();
+              fieldCtrl.setValue(guid);
+              fieldCtrl.markAsDirty();
+            }
+          }
         }, {
           key: "ngOnChanges",
           value: function ngOnChanges() {
@@ -4067,50 +3351,32 @@
               this.readonly ? this.formGroup.get(this.attributeControl.name).disable() : this.formGroup.get(this.attributeControl.name).enable();
             }
           }
-          /**
-           * @return {?}
-           */
-
         }, {
-          key: "onKeyup",
+          key: "onDateChange",
+          value: function onDateChange(newDate) {
+            var UTCDateStr = newDate.toISOString().slice(0, 19).replace('T', ' ');
+            var fieldCtrl = this.formGroup.get(this.attributeControl.name);
 
-          /**
-           * @param {?} attributeName
-           * @return {?}
-           */
-          value: function onKeyup(attributeName) {
-            /** @type {?} */
-            var fieldCtrl = this.formGroup.get(attributeName);
-            fieldCtrl.setValue(fieldCtrl.value.toUpperCase());
-          }
-          /**
-           * @param {?} attributeControl
-           * @return {?}
-           */
-
-        }, {
-          key: "onSearchHelp",
-          value: function onSearchHelp(attributeControl) {
-            if (attributeControl.searchHelpId) {
-              this.searchHelpComponent.openSearchHelpModalBySearchHelp(attributeControl.searchHelpId, attributeControl.searchHelpExportField, attributeControl.name, this.formGroup, this.readonly);
-            } else {
-              this.searchHelpComponent.openSearchHelpModalByEntity(attributeControl.domainEntityId, attributeControl.domainRelationId, this.formGroup, this.readonly, attributeControl.name, attributeControl.domainId);
+            if (fieldCtrl) {
+              fieldCtrl.setValue(UTCDateStr);
+              fieldCtrl.markAsDirty();
             }
           }
         }, {
           key: "invalid",
           get: function get() {
-            return this.formGroup.controls[this.attributeControl.name].invalid;
-          }
-          /**
-           * @return {?}
-           */
+            var _a;
 
+            return (_a = this.formGroup.controls[this.attributeControl.name]) === null || _a === void 0 ? void 0 : _a.invalid;
+          }
         }, {
           key: "errorMessage",
           get: function get() {
-            /** @type {?} */
             var fieldCtrl = this.formGroup.get(this.attributeControl.name);
+
+            if (!fieldCtrl) {
+              return null;
+            }
 
             if (fieldCtrl.getError('pattern')) {
               return 'The pattern is not correct';
@@ -4122,36 +3388,56 @@
               return null;
             }
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "isReadonly",
           get: function get() {
             return this.readonly || this.attributeControl.autoIncrement;
           }
+        }, {
+          key: "onKeyup",
+          value: function onKeyup(attributeName) {
+            var fieldCtrl = this.formGroup.get(attributeName);
+            fieldCtrl.setValue(fieldCtrl.value.toUpperCase());
+          }
+        }, {
+          key: "onSearchHelp",
+          value: function onSearchHelp(attributeControl) {
+            if (attributeControl.searchHelpId) {
+              this.searchHelpComponent.openSearchHelpModalBySearchHelp(attributeControl.searchHelpId, attributeControl.searchHelpExportField, attributeControl.name, this.formGroup, this.readonly);
+            } else {
+              this.searchHelpComponent.openSearchHelpModalByEntity(attributeControl.domainEntityId, attributeControl.domainRelationId, this.formGroup, this.readonly, attributeControl.name, attributeControl.domainId);
+            }
+          }
+        }, {
+          key: "onChange",
+          value: function onChange(event) {
+            this.change.emit(event);
+          }
         }]);
 
-        return AttributeComponent;
+        return _AttributeComponent;
       }();
+      /** @nocollapse */
 
-      AttributeComponent.ɵfac = function AttributeComponent_Factory(t) {
-        return new (t || AttributeComponent)();
+
+      _AttributeComponent.ɵfac = function AttributeComponent_Factory(t) {
+        return new (t || _AttributeComponent)();
       };
+      /** @nocollapse */
 
-      AttributeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-        type: AttributeComponent,
+
+      _AttributeComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+        type: _AttributeComponent,
         selectors: [["dk-app-attribute"]],
         viewQuery: function AttributeComponent_Query(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](SearchHelpComponent, true);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_SearchHelpComponent, 5);
           }
 
           if (rf & 2) {
             var _t;
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.searchHelpComponent = _t.first);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.searchHelpComponent = _t.first);
           }
         },
         inputs: {
@@ -4161,185 +3447,159 @@
           isSmallSize: "isSmallSize",
           noErrorMsg: "noErrorMsg"
         },
-        features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]],
-        decls: 12,
-        vars: 11,
-        consts: [[3, "formGroup"], [3, "ngSwitch"], ["class", "input-group", 4, "ngIf"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "step", "placeholder", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "checkbox", "class", "mb-1 ml-1", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["type", "textarea", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "file", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "date", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "readonly", 4, "ngSwitchCase"], ["class", "form-control", 3, "form-control-sm", "formControlName", "id", 4, "ngSwitchCase"], ["class", "dk-invalid-feedback", 3, "ng-invalid", 4, "ngIf"], [1, "input-group"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "pattern", "readonly", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "maxlength", "readonly", "keyup", 4, "ngSwitchCase"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "id", "pattern", "readonly", 4, "ngSwitchCase"], ["class", "input-group-append", 4, "ngIf"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "pattern", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "maxlength", "readonly", "keyup"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "pattern", "readonly"], [1, "input-group-append"], ["type", "button", 1, "btn", "btn-outline-secondary", "btn-sm", 3, "click"], [1, "fas", "fa-search"], ["type", "number", 1, "form-control", 3, "formControlName", "id", "step", "placeholder", "pattern", "readonly"], ["type", "checkbox", 1, "mb-1", "ml-1", 3, "formControlName", "id"], ["type", "textarea", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "file", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "date", 1, "form-control", 3, "formControlName", "id", "readonly"], ["type", "text", 1, "form-control", 3, "formControlName", "id", "readonly"], [1, "form-control", 3, "formControlName", "id"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "dk-invalid-feedback"]],
+        outputs: {
+          change: "change"
+        },
+        features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]],
+        decls: 13,
+        vars: 12,
+        consts: [[3, "formGroup"], [3, "ngSwitch"], ["class", "input-group", 4, "ngIf"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "step", "placeholder", "pattern", "readonly", "change", 4, "ngSwitchCase"], ["type", "checkbox", "class", "mb-1 ml-1", 3, "form-control-sm", "formControlName", "name", "change", 4, "ngSwitchCase"], ["class", "form-control", 3, "form-control-sm", "formControlName", "name", "rows", "readonly", "change", 4, "ngSwitchCase"], ["type", "file", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "readonly", "change", 4, "ngSwitchCase"], ["type", "date", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "readonly", "change", 4, "ngSwitchCase"], ["type", "datetime-local", "class", "form-control", "step", "1", 3, "form-control-sm", "localDatetime", "name", "readonly", "localDatetimeChange", "dateChange", "change", 4, "ngSwitchCase"], ["type", "password", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "readonly", "change", 4, "ngSwitchCase"], ["class", "form-control", 3, "form-control-sm", "formControlName", "name", "change", 4, "ngSwitchCase"], ["class", "dk-invalid-feedback", 3, "ng-invalid", 4, "ngIf"], [1, "input-group"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "maxlength", "pattern", "readonly", "change", 4, "ngSwitchCase"], ["type", "text", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "maxlength", "readonly", "keyup", "change", 4, "ngSwitchCase"], ["type", "number", "class", "form-control", 3, "form-control-sm", "formControlName", "name", "pattern", "readonly", "change", 4, "ngSwitchCase"], ["class", "input-group-append", 4, "ngIf"], ["type", "text", 1, "form-control", 3, "formControlName", "name", "maxlength", "pattern", "readonly", "change"], ["type", "text", 1, "form-control", 3, "formControlName", "name", "maxlength", "readonly", "keyup", "change"], ["type", "number", 1, "form-control", 3, "formControlName", "name", "pattern", "readonly", "change"], [1, "input-group-append"], ["type", "button", 1, "btn", "btn-outline-secondary", "btn-sm", 3, "click"], [1, "fas", "fa-search"], ["type", "number", 1, "form-control", 3, "formControlName", "name", "step", "placeholder", "pattern", "readonly", "change"], ["type", "checkbox", 1, "mb-1", "ml-1", 3, "formControlName", "name", "change"], [1, "form-control", 3, "formControlName", "name", "rows", "readonly", "change"], ["type", "file", 1, "form-control", 3, "formControlName", "name", "readonly", "change"], ["type", "date", 1, "form-control", 3, "formControlName", "name", "readonly", "change"], ["type", "datetime-local", "step", "1", 1, "form-control", 3, "localDatetime", "name", "readonly", "localDatetimeChange", "dateChange", "change"], ["type", "password", 1, "form-control", 3, "formControlName", "name", "readonly", "change"], [1, "form-control", 3, "formControlName", "name", "change"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "dk-invalid-feedback"]],
         template: function AttributeComponent_Template(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AttributeComponent_div_2_Template, 5, 4, "div", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, AttributeComponent_div_2_Template, 5, 4, "div", 2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AttributeComponent_input_3_Template, 1, 8, "input", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, AttributeComponent_input_3_Template, 1, 8, "input", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AttributeComponent_input_4_Template, 1, 4, "input", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, AttributeComponent_input_4_Template, 1, 4, "input", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AttributeComponent_input_5_Template, 1, 5, "input", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, AttributeComponent_textarea_5_Template, 1, 6, "textarea", 5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, AttributeComponent_input_6_Template, 1, 5, "input", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](6, AttributeComponent_input_6_Template, 1, 5, "input", 6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, AttributeComponent_input_7_Template, 1, 5, "input", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, AttributeComponent_input_7_Template, 1, 5, "input", 7);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, AttributeComponent_input_8_Template, 1, 5, "input", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, AttributeComponent_input_8_Template, 1, 5, "input", 8);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, AttributeComponent_select_9_Template, 2, 5, "select", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, AttributeComponent_input_9_Template, 1, 5, "input", 9);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, AttributeComponent_select_10_Template, 2, 5, "select", 10);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, AttributeComponent_div_10_Template, 2, 3, "div", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, AttributeComponent_div_11_Template, 2, 3, "div", 11);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "dk-app-search-help");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "dk-app-search-help");
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.formGroup);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.formGroup);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", ctx.attributeControl.controlType);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitch", ctx.attributeControl.controlType);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.attributeControl.controlType === "text" || ctx.attributeControl.controlType === "text_capital" || ctx.attributeControl.controlType === "integer");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.attributeControl.controlType === "text" || ctx.attributeControl.controlType === "text_capital" || ctx.attributeControl.controlType === "integer");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "decimal");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "decimal");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "checkbox");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "checkbox");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "textarea");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "textarea");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "file");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "file");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "date");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "date");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "timestamp");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "timestamp");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "dropdown");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "password");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.noErrorMsg);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngSwitchCase", "dropdown");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.noErrorMsg);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgSwitchCase"], SearchHelpComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_5__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["SelectControlValueAccessor"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_forms_forms_x"]],
+        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroupDirective, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgSwitch, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgSwitchCase, _SearchHelpComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControlName, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.MaxLengthValidator, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.PatternValidator, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NumberValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.CheckboxControlValueAccessor, DatetimeDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.SelectControlValueAccessor, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgSelectOption, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ɵNgSelectMultipleOption"]],
         styles: [""]
       });
-      /** @nocollapse */
-
-      AttributeComponent.ctorParameters = function () {
-        return [];
-      };
-
-      AttributeComponent.propDecorators = {
-        attributeControl: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        formGroup: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        readonly: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        isSmallSize: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        noErrorMsg: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        searchHelpComponent: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
-          args: [SearchHelpComponent, {
-            "static": false
-          }]
-        }]
-      };
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AttributeComponent, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_AttributeComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-app-attribute',
-            template: "<div [formGroup]=\"formGroup\">\n  <div [ngSwitch]=\"attributeControl.controlType\">\n    <div *ngIf=\"attributeControl.controlType === 'text' ||\n                attributeControl.controlType === 'text_capital' ||\n                attributeControl.controlType === 'integer'\" class=\"input-group\">\n      <input *ngSwitchCase=\"'text'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'text_capital'\" type=\"text\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [maxlength]=\"attributeControl.maxLength\"\n             (keyup)=\"onKeyup(attributeControl.name)\"\n             [readonly]=\"isReadonly\" >\n      <input *ngSwitchCase=\"'integer'\" type=\"number\" class=\"form-control\"\n             [class.form-control-sm] = \"isSmallSize\"\n             [formControlName]=\"attributeControl.name\"\n             [id]=\"attributeControl.key\"\n             [pattern]=\"attributeControl.pattern\"\n             [readonly]=\"isReadonly\" >\n      <div *ngIf=\"attributeControl.searchHelpId || attributeControl.domainRelationId\" class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary btn-sm\" type=\"button\" (click)=\"onSearchHelp(attributeControl)\">\n          <span class=\"fas fa-search\"></span>\n        </button>\n      </div>\n    </div>\n    <input *ngSwitchCase=\"'decimal'\" type=\"number\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [step]=\"attributeControl.step\"\n           [placeholder]=\"attributeControl.placeholder\"\n           [pattern]=\"attributeControl.pattern\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'checkbox'\" type=\"checkbox\" class=\"mb-1 ml-1\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\">\n    <input *ngSwitchCase=\"'textarea'\" type=\"textarea\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'file'\" type=\"file\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'date'\" type=\"date\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <input *ngSwitchCase=\"'timestamp'\" type=\"text\" class=\"form-control\"\n           [class.form-control-sm] = \"isSmallSize\"\n           [formControlName]=\"attributeControl.name\"\n           [id]=\"attributeControl.key\"\n           [readonly]=\"isReadonly\" >\n    <select *ngSwitchCase=\"'dropdown'\" class=\"form-control\"\n            [class.form-control-sm] = \"isSmallSize\"\n            [formControlName]=\"attributeControl.name\"\n            [id]=\"attributeControl.key\">\n      <option *ngFor=\"let opt of attributeControl.dropdownList\" [value]=\"opt.key\">{{opt.value}}</option>\n    </select>\n  </div>\n\n  <div *ngIf=\"!noErrorMsg\" [class.ng-invalid]=\"invalid\" class=\"dk-invalid-feedback\">\n    {{errorMessage}}\n  </div>\n</div>\n\n<dk-app-search-help></dk-app-search-help>\n",
-            styles: [""]
+            templateUrl: './attribute.component.html',
+            styleUrls: ['./attribute.component.css']
           }]
         }], function () {
           return [];
         }, {
           attributeControl: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           formGroup: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           readonly: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           isSmallSize: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           noErrorMsg: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
+          }],
+          change: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Output
           }],
           searchHelpComponent: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
-            args: [SearchHelpComponent, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewChild,
+            args: [_SearchHelpComponent, {
               "static": false
             }]
           }]
         });
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-form/attribute-form.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var AttributeFormComponent = /*#__PURE__*/function () {
-        function AttributeFormComponent() {
-          _classCallCheck(this, AttributeFormComponent);
+      var _AttributeFormComponent = /*#__PURE__*/function () {
+        function _AttributeFormComponent() {
+          _classCallCheck(this, _AttributeFormComponent);
         }
-        /**
-         * @return {?}
-         */
 
-
-        _createClass(AttributeFormComponent, [{
+        _createClass(_AttributeFormComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
 
-        return AttributeFormComponent;
+        return _AttributeFormComponent;
       }();
+      /** @nocollapse */
 
-      AttributeFormComponent.ɵfac = function AttributeFormComponent_Factory(t) {
-        return new (t || AttributeFormComponent)();
+
+      _AttributeFormComponent.ɵfac = function AttributeFormComponent_Factory(t) {
+        return new (t || _AttributeFormComponent)();
       };
+      /** @nocollapse */
 
-      AttributeFormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-        type: AttributeFormComponent,
+
+      _AttributeFormComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+        type: _AttributeFormComponent,
         selectors: [["dk-app-attribute-form"]],
         inputs: {
           attributeControl: "attributeControl",
@@ -4352,134 +3612,98 @@
         consts: [[1, "form-group", "row", 3, "formGroup"], [1, "col-4", "col-form-label", "text-right"], ["class", "primaryKey", 4, "ngIf"], [1, "col-8", 3, "attributeControl", "formGroup", "isSmallSize", "readonly"], [1, "primaryKey"]],
         template: function AttributeFormComponent_Template(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AttributeFormComponent_strong_3_Template, 2, 0, "strong", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, AttributeFormComponent_strong_3_Template, 2, 0, "strong", 2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, ": ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, ": ");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "dk-app-attribute", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](5, "dk-app-attribute", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.formGroup);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.formGroup);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx.isSmallSize);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx.isSmallSize);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("for", ctx.attributeControl.key);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("for", ctx.attributeControl.key);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.attributeControl.label, "");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx.attributeControl.label, "");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.attributeControl.primaryKey);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.attributeControl.primaryKey);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("attributeControl", ctx.attributeControl)("formGroup", ctx.formGroup)("isSmallSize", ctx.isSmallSize)("readonly", ctx.readonly);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("attributeControl", ctx.attributeControl)("formGroup", ctx.formGroup)("isSmallSize", ctx.isSmallSize)("readonly", ctx.readonly);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], AttributeComponent],
+        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroupDirective, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _AttributeComponent],
         styles: [""]
       });
-      /** @nocollapse */
-
-      AttributeFormComponent.ctorParameters = function () {
-        return [];
-      };
-
-      AttributeFormComponent.propDecorators = {
-        attributeControl: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        formGroup: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        readonly: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        isSmallSize: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }]
-      };
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AttributeFormComponent, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_AttributeFormComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-app-attribute-form',
-            template: "<div class=\"form-group row\" [formGroup]=\"formGroup\">\n  <label class=\"col-4 col-form-label text-right\"\n         [class.form-control-sm]=\"isSmallSize\"\n         [attr.for]=\"attributeControl.key\">\n    {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>:\n  </label>\n\n  <dk-app-attribute class=\"col-8\" [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\"\n                 [isSmallSize]=\"isSmallSize\" [readonly]=\"readonly\">\n  </dk-app-attribute>\n\n</div>\n",
-            styles: [""]
+            templateUrl: './attribute-form.component.html',
+            styleUrls: ['./attribute-form.component.css']
           }]
         }], function () {
           return [];
         }, {
           attributeControl: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           formGroup: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           readonly: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           isSmallSize: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }]
         });
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-form2/attribute-form2.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var AttributeForm2Component = /*#__PURE__*/function () {
-        function AttributeForm2Component() {
-          _classCallCheck(this, AttributeForm2Component);
+      var _AttributeForm2Component = /*#__PURE__*/function () {
+        function _AttributeForm2Component() {
+          _classCallCheck(this, _AttributeForm2Component);
         }
-        /**
-         * @return {?}
-         */
 
-
-        _createClass(AttributeForm2Component, [{
+        _createClass(_AttributeForm2Component, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "invalid",
           get: function get() {
-            return this.formGroup.controls[this.attributeControl.name].invalid;
-          }
-          /**
-           * @return {?}
-           */
+            var _a;
 
+            return (_a = this.formGroup.controls[this.attributeControl.name]) === null || _a === void 0 ? void 0 : _a.invalid;
+          }
         }, {
           key: "errorMessage",
           get: function get() {
-            /** @type {?} */
             var fieldCtrl = this.formGroup.get(this.attributeControl.name);
+
+            if (!fieldCtrl) {
+              return null;
+            }
 
             if (fieldCtrl.getError('pattern')) {
               return 'The pattern is not correct';
@@ -4493,15 +3717,19 @@
           }
         }]);
 
-        return AttributeForm2Component;
+        return _AttributeForm2Component;
       }();
+      /** @nocollapse */
 
-      AttributeForm2Component.ɵfac = function AttributeForm2Component_Factory(t) {
-        return new (t || AttributeForm2Component)();
+
+      _AttributeForm2Component.ɵfac = function AttributeForm2Component_Factory(t) {
+        return new (t || _AttributeForm2Component)();
       };
+      /** @nocollapse */
 
-      AttributeForm2Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-        type: AttributeForm2Component,
+
+      _AttributeForm2Component.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+        type: _AttributeForm2Component,
         selectors: [["dk-app-attribute-form2"]],
         inputs: {
           attributeControl: "attributeControl",
@@ -4514,152 +3742,116 @@
         consts: [[1, "form-group", 3, "formGroup"], [1, "col-form-label"], ["class", "primaryKey", 4, "ngIf"], [1, "dk-invalid-feedback"], [3, "attributeControl", "formGroup", "isSmallSize", "readonly", "noErrorMsg"], [1, "primaryKey"]],
         template: function AttributeForm2Component_Template(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AttributeForm2Component_strong_3_Template, 2, 0, "strong", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, AttributeForm2Component_strong_3_Template, 2, 0, "strong", 2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, ": ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, ": ");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "dk-app-attribute", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "dk-app-attribute", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.formGroup);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.formGroup);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("form-control-sm", ctx.isSmallSize);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("form-control-sm", ctx.isSmallSize);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("for", ctx.attributeControl.key);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("for", ctx.attributeControl.key);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.attributeControl.label, "");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx.attributeControl.label, "");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.attributeControl.primaryKey);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.attributeControl.primaryKey);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("ng-invalid", ctx.invalid);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("ng-invalid", ctx.invalid);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.errorMessage);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.errorMessage);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("attributeControl", ctx.attributeControl)("formGroup", ctx.formGroup)("isSmallSize", ctx.isSmallSize)("readonly", ctx.readonly)("noErrorMsg", true);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("attributeControl", ctx.attributeControl)("formGroup", ctx.formGroup)("isSmallSize", ctx.isSmallSize)("readonly", ctx.readonly)("noErrorMsg", true);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], AttributeComponent],
+        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroupDirective, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _AttributeComponent],
         styles: [""]
       });
-      /** @nocollapse */
-
-      AttributeForm2Component.ctorParameters = function () {
-        return [];
-      };
-
-      AttributeForm2Component.propDecorators = {
-        attributeControl: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        formGroup: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        readonly: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        isSmallSize: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }]
-      };
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AttributeForm2Component, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_AttributeForm2Component, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-app-attribute-form2',
-            template: "<div class=\"form-group\" [formGroup]=\"formGroup\">\n  <label class=\"col-form-label\"\n         [class.form-control-sm]=\"isSmallSize\"\n         [attr.for]=\"attributeControl.key\">\n    {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>:\n    <span [class.ng-invalid]=\"invalid\" class=\"dk-invalid-feedback\">{{errorMessage}}</span>\n  </label>\n\n  <dk-app-attribute [attributeControl]=\"attributeControl\" [formGroup]=\"formGroup\"\n                    [isSmallSize]=\"isSmallSize\" [readonly]=\"readonly\" [noErrorMsg]=\"true\">\n  </dk-app-attribute>\n\n</div>\n",
-            styles: [""]
+            templateUrl: './attribute-form2.component.html',
+            styleUrls: ['./attribute-form2.component.css']
           }]
         }], function () {
           return [];
         }, {
           attributeControl: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           formGroup: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           readonly: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           isSmallSize: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }]
         });
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/attribute/attribute-table/attribute-table.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-
-      var AttributeTableComponent = /*#__PURE__*/function () {
-        function AttributeTableComponent() {
-          _classCallCheck(this, AttributeTableComponent);
+      var _AttributeTableComponent = /*#__PURE__*/function () {
+        function _AttributeTableComponent() {
+          _classCallCheck(this, _AttributeTableComponent);
 
           this.isDetailModalShown = false;
           this.isErrorModalShown = false;
         }
-        /**
-         * @return {?}
-         */
 
-
-        _createClass(AttributeTableComponent, [{
+        _createClass(_AttributeTableComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
-          /**
-           * @return {?}
-           */
-
+        }, {
+          key: "displayDetailModal",
+          get: function get() {
+            return this.isDetailModalShown ? 'block' : 'none';
+          }
+        }, {
+          key: "displayErrorModal",
+          get: function get() {
+            return this.isErrorModalShown ? 'block' : 'none';
+          }
         }, {
           key: "openDetailModal",
-
-          /**
-           * @param {?} index
-           * @return {?}
-           */
           value: function openDetailModal(index) {
             this.currentFormGroup = this.formArray.at(index);
             this.isDetailModalShown = true;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "closeDetailModal",
           value: function closeDetailModal() {
@@ -4669,12 +3861,6 @@
 
             this.isDetailModalShown = false;
           }
-          /**
-           * @param {?} errorTitle
-           * @param {?} errorDescription
-           * @return {?}
-           */
-
         }, {
           key: "openErrorModal",
           value: function openErrorModal(errorTitle, errorDescription) {
@@ -4682,20 +3868,11 @@
             this.errorDescription = errorDescription;
             this.isErrorModalShown = true;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "closeErrorModal",
           value: function closeErrorModal() {
             this.isErrorModalShown = false;
           }
-          /**
-           * @param {?=} index
-           * @return {?}
-           */
-
         }, {
           key: "deleteRelationInstance",
           value: function deleteRelationInstance() {
@@ -4722,31 +3899,21 @@
 
             }
           }
-        }, {
-          key: "displayDetailModal",
-          get: function get() {
-            return this.isDetailModalShown ? 'block' : 'none';
-          }
-          /**
-           * @return {?}
-           */
-
-        }, {
-          key: "displayErrorModal",
-          get: function get() {
-            return this.isErrorModalShown ? 'block' : 'none';
-          }
         }]);
 
-        return AttributeTableComponent;
+        return _AttributeTableComponent;
       }();
+      /** @nocollapse */
 
-      AttributeTableComponent.ɵfac = function AttributeTableComponent_Factory(t) {
-        return new (t || AttributeTableComponent)();
+
+      _AttributeTableComponent.ɵfac = function AttributeTableComponent_Factory(t) {
+        return new (t || _AttributeTableComponent)();
       };
+      /** @nocollapse */
 
-      AttributeTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-        type: AttributeTableComponent,
+
+      _AttributeTableComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+        type: _AttributeTableComponent,
         selectors: [["dk-app-attribute-table"]],
         inputs: {
           attributeControls: "attributeControls",
@@ -4761,212 +3928,173 @@
         consts: [[1, "table", "table-bordered", "relation-table", 3, "formGroup"], [1, "thead-light"], ["scope", "col"], ["scope", "col", 4, "ngFor", "ngForOf"], [3, "formArrayName"], [4, "ngFor", "ngForOf"], ["class", "modal fade dk-modal-open", "id", "detailModal", "tabindex", "-1", "role", "dialog", 3, "ngClass", "ngStyle", 4, "ngIf"], ["id", "errorModal", "tabindex", "-1", "role", "dialog", 1, "modal", "fade", 3, "ngClass", "ngStyle"], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "error", 1, "modal-title"], ["type", "button", 1, "close", 3, "click"], ["aria-hidden", "true"], [1, "modal-body"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], ["class", "primaryKey", 4, "ngIf"], [1, "primaryKey"], [1, "actions"], ["type", "button", "title", "Detail", 1, "btn", 3, "click"], ["class", "fas fa-search", 4, "ngIf"], ["class", "fas fa-pen", 4, "ngIf"], ["type", "button", "title", "Delete", 1, "btn", 3, "disabled", "click"], [1, "far", "fa-trash-alt"], [1, "fas", "fa-search"], [1, "fas", "fa-pen"], [3, "attributeControl", "isSmallSize", "formGroup", "readonly"], ["id", "detailModal", "tabindex", "-1", "role", "dialog", 1, "modal", "fade", "dk-modal-open", 3, "ngClass", "ngStyle"], ["role", "document", 1, "modal-dialog", "modal-lg"], ["id", "detail", 1, "modal-title"], [3, "readonly", "isSmallSize", "attributeControl", "formGroup", 4, "ngFor", "ngForOf"], [3, "readonly", "isSmallSize", "attributeControl", "formGroup"]],
         template: function AttributeTableComponent_Template(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "table", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "thead", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "thead", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "tr");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "th", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "th", 2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Action ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, " Action ");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AttributeTableComponent_th_5_Template, 3, 2, "th", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, AttributeTableComponent_th_5_Template, 3, 2, "th", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "tbody", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "tbody", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, AttributeTableComponent_tr_7_Template, 8, 8, "tr", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, AttributeTableComponent_tr_7_Template, 8, 8, "tr", 5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, AttributeTableComponent_div_8_Template, 14, 9, "div", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, AttributeTableComponent_div_8_Template, 14, 9, "div", 6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 7);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "div", 8);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 9);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "div", 10);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "h5", 11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "h5", 11);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "button", 12);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_Template_button_click_15_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_Template_button_click_15_listener() {
               return ctx.closeErrorModal();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "span", 13);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "span", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "\xD7");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\xD7");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 14);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "div", 14);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "p");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 15);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "div", 15);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 16);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "button", 16);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AttributeTableComponent_Template_button_click_22_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AttributeTableComponent_Template_button_click_22_listener() {
               return ctx.closeErrorModal();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "OK");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "OK");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("table-sm", ctx.isSmallSize);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("table-sm", ctx.isSmallSize);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.parentFormGroup);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.parentFormGroup);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.attributeControls);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.attributeControls);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formArrayName", ctx.entityRelation.RELATION_ID);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formArrayName", ctx.entityRelation.RELATION_ID);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.formArray.controls);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.formArray.controls);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentFormGroup);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.currentFormGroup);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](13, _c0, ctx.isErrorModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](15, _c1, ctx.displayErrorModal));
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](13, _c0, ctx.isErrorModalShown))("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](15, _c1, ctx.displayErrorModal));
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.errorTitle);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.errorTitle);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.errorDescription);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.errorDescription);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-sm", ctx.isSmallSize);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("btn-sm", ctx.isSmallSize);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormArrayName"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgStyle"], AttributeComponent, AttributeFormComponent],
-        styles: [".relation-table[_ngcontent-%COMP%]{border:none;display:block;overflow-x:auto;white-space:nowrap}.actions[_ngcontent-%COMP%]{max-width:6rem;min-width:5rem;width:5rem}.dk-modal-open[_ngcontent-%COMP%]{overflow:auto}"]
+        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroupDirective, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormArrayName, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgStyle, _AttributeComponent, _AttributeFormComponent],
+        styles: [".relation-table[_ngcontent-%COMP%]{display:block;overflow-x:auto;white-space:nowrap;border:none}.actions[_ngcontent-%COMP%]{width:5rem;min-width:5rem;max-width:6rem}.dk-modal-open[_ngcontent-%COMP%]{overflow:auto}"]
       });
-      /** @nocollapse */
-
-      AttributeTableComponent.ctorParameters = function () {
-        return [];
-      };
-
-      AttributeTableComponent.propDecorators = {
-        attributeControls: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        formArray: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        parentFormGroup: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        entityRelation: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        isSmallSize: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        readonly: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }]
-      };
-      /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AttributeTableComponent, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_AttributeTableComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-app-attribute-table',
-            template: "<table class=\"table table-bordered relation-table\"\n       [class.table-sm]=\"isSmallSize\"\n       [formGroup]=\"parentFormGroup\">\n  <thead class=\"thead-light\">\n  <tr>\n    <th scope=\"col\">\n      Action\n    </th>\n    <th scope=\"col\" *ngFor=\"let attributeControl of attributeControls\">\n      {{attributeControl.label}}<strong *ngIf=\"attributeControl.primaryKey\" class=\"primaryKey\">*</strong>\n    </th>\n  </tr>\n  </thead>\n\n  <tbody [formArrayName]=\"entityRelation.RELATION_ID\">\n    <tr *ngFor=\"let formGroup of formArray.controls; let i = index\">\n      <td class=\"actions\">\n        <button class=\"btn\" [class.btn-sm]=\"isSmallSize\" type=\"button\" (click)=\"openDetailModal(i)\" title=\"Detail\">\n          <span *ngIf=\"readonly\" class=\"fas fa-search\"></span>\n          <span *ngIf=\"!readonly\" class=\"fas fa-pen\"></span>\n        </button>\n        <button class=\"btn\" [class.btn-sm]=\"isSmallSize\" type=\"button\" [disabled]=\"readonly\" (click)=\"deleteRelationInstance(i)\" title=\"Delete\">\n          <span class=\"far fa-trash-alt\"></span>\n        </button>\n      </td>\n      <td *ngFor=\"let attributeControl of attributeControls\">\n        <dk-app-attribute [attributeControl]=\"attributeControl\" [isSmallSize] = \"isSmallSize\"\n                          [formGroup]=\"formGroup\" [readonly]=\"readonly\">\n\n        </dk-app-attribute>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<div *ngIf=\"currentFormGroup\" class=\"modal fade dk-modal-open\" [ngClass]=\"{'show': isDetailModalShown}\"\n     [ngStyle]=\"{'display': displayDetailModal}\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"detail\">Line Detail</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeDetailModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <dk-app-attribute-form *ngFor=\"let attributeControl of attributeControls\"\n                               [readonly]=\"readonly\" [isSmallSize]=\"isSmallSize\"\n                            [attributeControl]=\"attributeControl\" [formGroup]=\"currentFormGroup\">\n        </dk-app-attribute-form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" [class.btn-sm]=\"isSmallSize\" (click)=\"closeDetailModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"modal fade\" [ngClass]=\"{'show': isErrorModalShown}\"\n     [ngStyle]=\"{'display': displayErrorModal}\" id=\"errorModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"error\">{{errorTitle}}</h5>\n        <button type=\"button\" class=\"close\" (click)=\"closeErrorModal()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <p>{{errorDescription}}</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" [class.btn-sm]=\"isSmallSize\" (click)=\"closeErrorModal()\">OK</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n",
-            styles: [".relation-table{border:none;display:block;overflow-x:auto;white-space:nowrap}.actions{max-width:6rem;min-width:5rem;width:5rem}.dk-modal-open{overflow:auto}"]
+            templateUrl: './attribute-table.component.html',
+            styleUrls: ['./attribute-table.component.css']
           }]
         }], function () {
           return [];
         }, {
           attributeControls: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           formArray: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           parentFormGroup: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           entityRelation: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           isSmallSize: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }],
           readonly: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Input
           }]
         });
       })();
-
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/jor-angular.component.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
 
       var JorAngularComponent = /*#__PURE__*/function () {
         function JorAngularComponent() {
           _classCallCheck(this, JorAngularComponent);
         }
-        /**
-         * @return {?}
-         */
-
 
         _createClass(JorAngularComponent, [{
           key: "ngOnInit",
@@ -4975,12 +4103,16 @@
 
         return JorAngularComponent;
       }();
+      /** @nocollapse */
+
 
       JorAngularComponent.ɵfac = function JorAngularComponent_Factory(t) {
         return new (t || JorAngularComponent)();
       };
+      /** @nocollapse */
 
-      JorAngularComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+
+      JorAngularComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
         type: JorAngularComponent,
         selectors: [["dk-jor-angular"]],
         decls: 0,
@@ -4989,112 +4121,629 @@
         styles: ["@import \"/src/assets/css/global.css\";"],
         encapsulation: 2
       });
-      /** @nocollapse */
-
-      JorAngularComponent.ctorParameters = function () {
-        return [];
-      };
-      /*@__PURE__*/
-
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JorAngularComponent, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](JorAngularComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Component,
           args: [{
             selector: 'dk-jor-angular',
-            template: "<!-- html content -->\n",
-            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-            styles: ["@import \"/src/assets/css/global.css\";"]
+            templateUrl: './jor-angular.component.html',
+            styleUrls: ['./jor-angular.component.css'],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewEncapsulation.None
           }]
         }], function () {
           return [];
         }, null);
       })();
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/jor-angular.module.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
 
-
-      var JorAngularModule = function JorAngularModule() {
-        _classCallCheck(this, JorAngularModule);
+      var _JorAngularModule = function _JorAngularModule() {
+        _classCallCheck(this, _JorAngularModule);
       };
+      /** @nocollapse */
 
-      JorAngularModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
-        type: JorAngularModule
+
+      _JorAngularModule.ɵfac = function JorAngularModule_Factory(t) {
+        return new (t || _JorAngularModule)();
+      };
+      /** @nocollapse */
+
+
+      _JorAngularModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
+        type: _JorAngularModule,
+        declarations: [JorAngularComponent, _SearchHelpComponent, _AttributeComponent, _AttributeFormComponent, _AttributeTableComponent, _AttributeForm2Component, DatetimeDirective],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.CommonModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.ReactiveFormsModule],
+        exports: [_SearchHelpComponent, _AttributeComponent, _AttributeFormComponent, _AttributeForm2Component, _AttributeTableComponent]
       });
-      JorAngularModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
-        factory: function JorAngularModule_Factory(t) {
-          return new (t || JorAngularModule)();
-        },
-        imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]]]
+      /** @nocollapse */
+
+      _JorAngularModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
+        imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_7__.CommonModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.ReactiveFormsModule]]
       });
 
       (function () {
-        (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](JorAngularModule, {
-          declarations: function declarations() {
-            return [JorAngularComponent, SearchHelpComponent, AttributeComponent, AttributeFormComponent, AttributeTableComponent, AttributeForm2Component];
-          },
-          imports: function imports() {
-            return [_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]];
-          },
-          exports: function exports() {
-            return [SearchHelpComponent, AttributeComponent, AttributeFormComponent, AttributeForm2Component, AttributeTableComponent];
-          }
-        });
-      })();
-      /*@__PURE__*/
-
-
-      (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JorAngularModule, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](_JorAngularModule, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.NgModule,
           args: [{
-            declarations: [JorAngularComponent, SearchHelpComponent, AttributeComponent, AttributeFormComponent, AttributeTableComponent, AttributeForm2Component],
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]],
-            exports: [SearchHelpComponent, AttributeComponent, AttributeFormComponent, AttributeForm2Component, AttributeTableComponent]
+            declarations: [JorAngularComponent, _SearchHelpComponent, _AttributeComponent, _AttributeFormComponent, _AttributeTableComponent, _AttributeForm2Component, DatetimeDirective],
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.CommonModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.ReactiveFormsModule],
+            exports: [_SearchHelpComponent, _AttributeComponent, _AttributeFormComponent, _AttributeForm2Component, _AttributeTableComponent]
           }]
         }], null, null);
       })();
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: public_api.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+      /*
+       * Public API Surface of jor-angular
        */
 
       /**
-       * @fileoverview added by tsickle
-       * Generated from: jor-angular.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+       * Generated bundle index. Do not edit.
        */
-      //# sourceMappingURL=jor-angular.js.map
 
       /***/
 
     },
 
     /***/
-    "uLAD":
+    90158:
+    /*!***************************************!*\
+      !*** ./src/app/app-routing.module.ts ***!
+      \***************************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "AppRoutingModule": function AppRoutingModule() {
+          return (
+            /* binding */
+            _AppRoutingModule
+          );
+        }
+        /* harmony export */
+
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      37716);
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/router */
+      39895);
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var routes = [{
+        path: 'entity',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() */
+          [__webpack_require__.e("default-node_modules_ng-bootstrap_ng-bootstrap___ivy_ngcc___fesm2015_ng-bootstrap_js-src_app_-0a5a91"), __webpack_require__.e("src_app_entity_entity_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
+          /*! ./entity/entity.module */
+          51475)).then(function (m) {
+            return m.EntityModule;
+          });
+        }
+      }, {
+        path: 'model',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() */
+          [__webpack_require__.e("default-node_modules_ng-bootstrap_ng-bootstrap___ivy_ngcc___fesm2015_ng-bootstrap_js-src_app_-0a5a91"), __webpack_require__.e("src_app_model_model_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
+          /*! ./model/model.module */
+          28010)).then(function (m) {
+            return m.ModelModule;
+          });
+        }
+      }, {
+        path: '',
+        redirectTo: '/entity/list',
+        pathMatch: 'full'
+      }];
+
+      var _AppRoutingModule = function AppRoutingModule() {
+        _classCallCheck(this, AppRoutingModule);
+      };
+
+      _AppRoutingModule = __decorate([(0, _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule)({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__.RouterModule.forRoot(routes, {
+          relativeLinkResolution: 'legacy'
+        })],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__.RouterModule]
+      })], _AppRoutingModule);
+      /***/
+    },
+
+    /***/
+    55041:
+    /*!**********************************!*\
+      !*** ./src/app/app.component.ts ***!
+      \**********************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "AppComponent": function AppComponent() {
+          return (
+            /* binding */
+            _AppComponent
+          );
+        }
+        /* harmony export */
+
+      });
+      /* harmony import */
+
+
+      var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! !raw-loader!./app.component.html */
+      91106);
+      /* harmony import */
+
+
+      var _app_component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./app.component.css */
+      61249);
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! @angular/core */
+      37716);
+      /* harmony import */
+
+
+      var jor_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! jor-angular */
+      43340);
+      /* harmony import */
+
+
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ../environments/environment */
+      92340);
+      /* harmony import */
+
+
+      var ui_message_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ui-message-angular */
+      23540);
+      /* harmony import */
+
+
+      var _msgStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./msgStore */
+      87534);
+      /* harmony import */
+
+
+      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ui-logon-angular */
+      46231);
+      /* harmony import */
+
+
+      var _identity_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ./identity.service */
+      8934);
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var _AppComponent = function AppComponent(entityService, identityService, messageService, logonService) {
+        var _this11 = this;
+
+        _classCallCheck(this, AppComponent);
+
+        this.entityService = entityService;
+        this.identityService = identityService;
+        this.messageService = messageService;
+        this.logonService = logonService;
+        this.entityService.setOriginalHost(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.originalHost);
+        this.logonService.setHost(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.originalHost);
+        this.logonService.session().subscribe(function (data) {
+          _this11.identityService.setSession(data);
+
+          _this11.messageService.setMessageStore(_msgStore__WEBPACK_IMPORTED_MODULE_3__.msgStore, _this11.identityService.Session.LANGUAGE);
+        });
+      };
+
+      _AppComponent.ctorParameters = function () {
+        return [{
+          type: jor_angular__WEBPACK_IMPORTED_MODULE_5__.EntityService
+        }, {
+          type: _identity_service__WEBPACK_IMPORTED_MODULE_4__.IdentityService
+        }, {
+          type: ui_message_angular__WEBPACK_IMPORTED_MODULE_6__.MessageService
+        }, {
+          type: ui_logon_angular__WEBPACK_IMPORTED_MODULE_7__.LogonService
+        }];
+      };
+
+      _AppComponent = __decorate([(0, _angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+        selector: 'app-root',
+        template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
+        styles: [_app_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]]
+      })], _AppComponent);
+      /***/
+    },
+
+    /***/
+    36747:
+    /*!*******************************!*\
+      !*** ./src/app/app.module.ts ***!
+      \*******************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "AppModule": function AppModule() {
+          return (
+            /* binding */
+            _AppModule
+          );
+        }
+        /* harmony export */
+
+      });
+      /* harmony import */
+
+
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/platform-browser */
+      39075);
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/core */
+      37716);
+      /* harmony import */
+
+
+      var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./app.component */
+      55041);
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/common/http */
+      91841);
+      /* harmony import */
+
+
+      var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./app-routing.module */
+      90158);
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @angular/router */
+      39895);
+      /* harmony import */
+
+
+      var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./custom.reuse.strategy */
+      16850);
+      /* harmony import */
+
+
+      var jor_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! jor-angular */
+      43340);
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var _AppModule = function AppModule() {
+        _classCallCheck(this, AppModule);
+      };
+
+      _AppModule = __decorate([(0, _angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
+        imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClientModule, _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__.BrowserModule, jor_angular__WEBPACK_IMPORTED_MODULE_6__.JorAngularModule],
+        providers: [{
+          provide: _angular_router__WEBPACK_IMPORTED_MODULE_7__.RouteReuseStrategy,
+          useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_2__.CustomReuseStrategy
+        }],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent]
+      })], _AppModule);
+      /***/
+    },
+
+    /***/
+    16850:
+    /*!******************************************!*\
+      !*** ./src/app/custom.reuse.strategy.ts ***!
+      \******************************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "CustomReuseStrategy": function CustomReuseStrategy() {
+          return (
+            /* binding */
+            _CustomReuseStrategy
+          );
+        }
+        /* harmony export */
+
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      37716);
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var _CustomReuseStrategy = /*#__PURE__*/function () {
+        function CustomReuseStrategy() {
+          _classCallCheck(this, CustomReuseStrategy);
+
+          this.routesToCache = ['list'];
+          this.storedRouteHandles = new Map();
+        }
+        /**
+         * When navigation from a reusable component, and if shouldReuseRoute return false,
+         * this method is invoked to decide whether the current route should be stored.
+         * @param route
+         */
+
+
+        _createClass(CustomReuseStrategy, [{
+          key: "shouldDetach",
+          value: function shouldDetach(route) {
+            // console.log('detaching', route);
+            return this.routesToCache.indexOf(route.routeConfig.path) > -1;
+          }
+          /**
+           * If the current route need to be stored, that is shouldDetach return true,
+           * then on this method, you can implement a way to store routes. Usually in a Map.
+           * @param route
+           * @param handle
+           */
+
+        }, {
+          key: "store",
+          value: function store(route, handle) {
+            // console.log('store', route);
+            this.storedRouteHandles.set(route.routeConfig.path, handle);
+          }
+          /**
+           * When navigation to a reusable component, and if shouldReuseRoute return false,
+           * this method is invoked to decide whether the target component can be get from a reuse buffer.
+           * @param route
+           */
+
+        }, {
+          key: "shouldAttach",
+          value: function shouldAttach(route) {
+            // console.log('shouldAttach', route);
+            return this.storedRouteHandles.has(route.routeConfig.path);
+          }
+          /**
+           * If shouldAttach return true, then this method is invoke to retrieve the component from the buffer.
+           * @param route
+           */
+
+        }, {
+          key: "retrieve",
+          value: function retrieve(route) {
+            return this.storedRouteHandles.get(route.routeConfig.path);
+          }
+          /**
+           * By default, Angular doesn't re-initializing the same component if the navigation is not to
+           * a different one. For example, you switch different entity ID in the same entity type detail page.
+           * In this way, shouldReuseRoute should return true to avoid executing other methods in this Class.
+           * However, if you navigate from search&list component to entity detail component, then the method should return false.
+           * So that other methods can be executed to decide whether the search&list component should be stored for future reuse.
+           * @param future
+           * @param curr
+           */
+
+        }, {
+          key: "shouldReuseRoute",
+          value: function shouldReuseRoute(future, curr) {
+            // console.log('shouldReuseRoute, future:', future, 'current:', curr);
+            return future.routeConfig === curr.routeConfig;
+          }
+        }]);
+
+        return CustomReuseStrategy;
+      }();
+
+      _CustomReuseStrategy = __decorate([(0, _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable)()], _CustomReuseStrategy);
+      /***/
+    },
+
+    /***/
+    8934:
+    /*!*************************************!*\
+      !*** ./src/app/identity.service.ts ***!
+      \*************************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */
+
+
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "IdentityService": function IdentityService() {
+          return (
+            /* binding */
+            _IdentityService
+          );
+        }
+        /* harmony export */
+
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      37716);
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/common */
+      38583);
+      /* harmony import */
+
+
+      var ui_logon_angular__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ui-logon-angular */
+      46231);
+
+      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+        var c = arguments.length,
+            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+            d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        }
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+
+      var _IdentityService = /*#__PURE__*/function () {
+        function IdentityService() {
+          _classCallCheck(this, IdentityService);
+        }
+
+        _createClass(IdentityService, [{
+          key: "setSession",
+          value: function setSession(data) {
+            this.session = data;
+          }
+        }, {
+          key: "Session",
+          get: function get() {
+            if (this.session) {
+              return this.session;
+            }
+
+            var defaultSession = new ui_logon_angular__WEBPACK_IMPORTED_MODULE_0__.Session();
+            defaultSession.USER_ID = 'DH001';
+            defaultSession.LANGUAGE = 'EN';
+            return defaultSession;
+          }
+        }, {
+          key: "CurrentTime",
+          get: function get() {
+            return (0, _angular_common__WEBPACK_IMPORTED_MODULE_1__.formatDate)(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
+          }
+        }]);
+
+        return IdentityService;
+      }();
+
+      _IdentityService.ctorParameters = function () {
+        return [];
+      };
+
+      _IdentityService = __decorate([(0, _angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+      })], _IdentityService);
+      /***/
+    },
+
+    /***/
+    87534:
     /*!*****************************!*\
       !*** ./src/app/msgStore.ts ***!
       \*****************************/
 
-    /*! exports provided: msgStore */
-
     /***/
-    function uLAD(module, __webpack_exports__, __webpack_require__) {
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
+      /* harmony export */
 
 
-      __webpack_require__.d(__webpack_exports__, "msgStore", function () {
-        return msgStore;
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "msgStore": function msgStore() {
+          return (
+            /* binding */
+            _msgStore
+          );
+        }
+        /* harmony export */
+
       });
 
-      var msgStore = [{
+      var _msgStore = [{
         msgCat: 'EXCEPTION',
         msgName: 'GENERIC',
         msgText: {
@@ -5369,133 +5018,156 @@
     },
 
     /***/
-    "vY5A":
-    /*!***************************************!*\
-      !*** ./src/app/app-routing.module.ts ***!
-      \***************************************/
-
-    /*! exports provided: AppRoutingModule */
+    92340:
+    /*!*****************************************!*\
+      !*** ./src/environments/environment.ts ***!
+      \*****************************************/
 
     /***/
-    function vY5A(module, __webpack_exports__, __webpack_require__) {
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
+      /* harmony export */
 
 
-      __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function () {
-        return AppRoutingModule;
-      });
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "8Y7J");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/router */
-      "iInd");
-
-      var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-            d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */
+        "environment": function environment() {
+          return (
+            /* binding */
+            _environment
+          );
         }
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
+        /* harmony export */
+
+      }); // This file can be replaced during build by using the `fileReplacements` array.
+      // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
+      // The list of file replacements can be found in `angular.json`.
+
+
+      var _environment = {
+        production: false,
+        originalHost: 'http://localhost:3000'
       };
+      /*
+       * In development mode, to ignore zone related error stack frames such as
+       * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
+       * import the following file, but please comment it out in production mode
+       * because it will have performance impact when throw error
+       */
+      // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 
-      var routes = [{
-        path: 'entity',
-        loadChildren: function loadChildren() {
-          return Promise.all(
-          /*! import() | entity-entity-module */
-          [__webpack_require__.e("default~entity-entity-module~model-model-module"), __webpack_require__.e("entity-entity-module")]).then(__webpack_require__.bind(null,
-          /*! ./entity/entity.module */
-          "enwJ")).then(function (m) {
-            return m.EntityModule;
-          });
-        }
-      }, {
-        path: 'model',
-        loadChildren: function loadChildren() {
-          return Promise.all(
-          /*! import() | model-model-module */
-          [__webpack_require__.e("default~entity-entity-module~model-model-module"), __webpack_require__.e("model-model-module")]).then(__webpack_require__.bind(null,
-          /*! ./model/model.module */
-          "DIJg")).then(function (m) {
-            return m.ModelModule;
-          });
-        }
-      }, {
-        path: '',
-        redirectTo: '/entity/list',
-        pathMatch: 'full'
-      }];
-
-      var AppRoutingModule = function AppRoutingModule() {
-        _classCallCheck(this, AppRoutingModule);
-      };
-
-      AppRoutingModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
-      })], AppRoutingModule);
       /***/
     },
 
     /***/
-    "zUnb":
+    14431:
     /*!*********************!*\
       !*** ./src/main.ts ***!
       \*********************/
 
-    /*! no exports provided */
-
     /***/
-    function zUnb(module, __webpack_exports__, __webpack_require__) {
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "8Y7J");
+      37716);
       /* harmony import */
 
 
-      var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/platform-browser-dynamic */
-      "wAiw");
+      24608);
       /* harmony import */
 
 
-      var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! ./app/app.module */
-      "ZAI4");
+      36747);
       /* harmony import */
 
 
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! ./environments/environment */
-      "AytR");
+      92340);
 
-      if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
+      if (_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.production) {
+        (0, _angular_core__WEBPACK_IMPORTED_MODULE_2__.enableProdMode)();
       }
 
-      Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])["catch"](function (err) {
+      (0, _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__.platformBrowserDynamic)().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_0__.AppModule)["catch"](function (err) {
         return console.log(err);
       });
       /***/
+    },
+
+    /***/
+    61249:
+    /*!***********************************!*\
+      !*** ./src/app/app.component.css ***!
+      \***********************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */";
+      /***/
+    },
+
+    /***/
+    91106:
+    /*!**************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
+      \**************************************************************************/
+
+    /***/
+    function _(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<div class=\"container-fluid\">\n  <router-outlet></router-outlet>\n</div>\n";
+      /***/
     }
-  }, [[0, "runtime", "vendor"]]]);
+  },
+  /******/
+  function (__webpack_require__) {
+    // webpackRuntimeModules
+
+    /******/
+    "use strict";
+    /******/
+
+    /******/
+
+    var __webpack_exec__ = function __webpack_exec__(moduleId) {
+      return __webpack_require__(__webpack_require__.s = moduleId);
+    };
+    /******/
+
+
+    __webpack_require__.O(0, ["vendor"], function () {
+      return __webpack_exec__(14431);
+    });
+    /******/
+
+
+    var __webpack_exports__ = __webpack_require__.O();
+    /******/
+
+  }]);
 })();
 //# sourceMappingURL=main-es5.js.map
