@@ -1,6 +1,6 @@
 {
   "name": "angular-portal",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A role-based navigation framework in Angular5.",
   "scripts": {
     "ng": "ng",
@@ -83,9 +83,9 @@
     "portal",
     "navigation",
     "console",
-    "admin template",
-    "software system",
-    "nodejs",
+    "lunchpad",
+    "system admin",
+    "framework",
     "angular"
   ],
   "author": "vincezk",
