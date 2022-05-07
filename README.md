@@ -27,7 +27,7 @@ Please logon with user **DH001** and password **Dark1234**.
 2. Create the database in MySQL(So far, only for MySQL 5.x):
  
    Copy file "MDB.sql" in the project root to your sql console and execute.
-   The script will create database "MDB" which contains all the tables and test data. 
+   The script will create database "MDB" which contains all the tables and the data. 
       
    Please also create a DB user 'nodejs' with password 'nodejs'. 
    By default, Portal uses credential 'nodejs/nodejs' to connect MySql at port 3306. 
