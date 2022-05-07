@@ -31,7 +31,7 @@ Content-Type: application/json
   "INSTANCE_GUID":"BDB10BD0F66411E987B477267358BDE8",
   "r_retail_customer":{"action":"update", "CUSTOMER_NO":"C0001","CELL_PHONE":"+8613712394666"},
   "r_address":[
-    {"action":"add","TYPE":"WORK","ADDRESS_VALUE":"#1001, XXX Road, Shanghai","POSTCODE":"200001","CITY":"Shanghai","COUNTRY":"China"}]
+    {"action":"add","TYPE":"WORK","ADDRESS_VALUE":"#1001, XXX Road, Shanghai","POSTCODE":"200201","CITY":"Shanghai","COUNTRY":"China"}]
 }
 
 ### Get Role Detail 2
