@@ -1764,7 +1764,6 @@ class SideMenuComponent {
         this.menuDisplay = !term;
     }
     enterApp($event) {
-        console.log($event);
         if ($event.keyCode === 13 && this.searchedApps[0]) {
             this.router.navigate([this.searchedApps[0].routeLink]);
         }
